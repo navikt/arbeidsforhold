@@ -1,0 +1,23 @@
+{
+  "name": "@navikt/nav-frontend-arbeidsforhold",
+  "version": "1.0.0",
+  "description": "React modul som viser brukerens arbeidsforhold",
+  "main": "src/index.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/navikt/nav-frontend-arbeidsforhold.git"
+  },
+  "keywords": [
+    "react",
+    "arbeidsforhold"
+  ],
+  "author": "NAVIKT",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/navikt/nav-frontend-arbeidsforhold/issues"
+  },
+  "homepage": "https://github.com/navikt/nav-frontend-arbeidsforhold#readme"
+}

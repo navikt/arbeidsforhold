@@ -1,7 +1,7 @@
-import ExampleComponent from './'
+import Arbeidsforhold from './'
 
-describe('ExampleComponent', () => {
+describe('Arbeidsforhold', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
+    expect(Arbeidsforhold).toBeTruthy()
   })
 })

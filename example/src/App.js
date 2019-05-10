@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-import ExampleComponent from 'test'
+import Arbeidsforhold from '@navikt/nav-frontend-arbeidsforhold'
 
 export default class App extends Component {
   render () {
     return (
       <div>
-        <ExampleComponent text='Modern React component module' />
+        <Arbeidsforhold text='Modern React component module' />
       </div>
     )
   }

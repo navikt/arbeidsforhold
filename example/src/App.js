@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Arbeidsforhold from '@navikt/nav-frontend-arbeidsforhold'
+import Arbeidsforhold from '@navikt/arbeidsforhold'
 
 export default class App extends Component {
   render () {
@@ -11,3 +11,4 @@ export default class App extends Component {
     )
   }
 }
+ 

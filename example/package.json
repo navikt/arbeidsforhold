@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@navikt/nav-frontend-arbeidsforhold": "file:..",
+    "@navikt/arbeidsforhold": "file:..",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

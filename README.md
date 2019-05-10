@@ -22,7 +22,7 @@ cd example && npm start
 Vi bruker fo-frontendlogger for logging. For oppslag i kibana:
 
 ```
-application:frontendlogger AND x_appname:nav-frontend-arbeidsforhold
+application:frontendlogger AND x_appname:arbeidsforhold
 ```
 
 # Henvendelser

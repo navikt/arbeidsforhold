@@ -1,5 +1,5 @@
 {
-  "name": "@navikt/nav-frontend-arbeidsforhold",
+  "name": "@navikt/arbeidsforhold",
   "author": "NAVIKT",
   "version": "1.0.0",
   "description": "React modul som viser brukerens arbeidsforhold",
@@ -15,17 +15,17 @@
     "predeploy": "cd example && npm install && npm run build",
     "deploy": "gh-pages -d example/build"
   },
-  "homepage": "https://github.com/navikt/nav-frontend-arbeidsforhold#readme",
+  "homepage": "https://github.com/navikt/arbeidsforhold#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/navikt/nav-frontend-arbeidsforhold.git"
+    "url": "git+https://github.com/navikt/arbeidsforhold.git"
   },
   "keywords": [
     "react",
     "arbeidsforhold"
   ],
   "bugs": {
-    "url": "https://github.com/navikt/nav-frontend-arbeidsforhold/issues"
+    "url": "https://github.com/navikt/arbeidsforhold/issues"
   },
   "engines": {
     "node": ">=8",

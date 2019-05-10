@@ -1,4 +1,4 @@
-import Arbeidsforhold from './'
+import Arbeidsforhold from '..'
 
 describe('Arbeidsforhold', () => {
   it('is truthy', () => {

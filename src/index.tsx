@@ -1,23 +1,55 @@
-/**
- * @class ExampleComponent
- */
+import React, { Component } from "react";
+import {HTTPError} from "./components/error/Error";
+import {Arbeidsforhold} from "./types/arbeidsforhold";
+import {hentArbeidsforhold} from "./clients/apiClient";
+import Spinner from "./components/spinner/Spinner";
+import {setUpMock} from "./clients/apiMock";
 
-import * as React from 'react'
+type State =
+    | { status: "LOADING" }
+    | { status: "RESULT"; arbeidsforhold: Arbeidsforhold }
+    | { status: "ERROR"; error: HTTPError };
 
-import styles from './styles.css'
-
-export type Props = { text: string }
-
-export default class Arbeidsforhold extends React.Component<Props> {
-  render() {
-    const {
-      text
-    } = this.props
-
-    return (
-      <div className={styles.test}>
-        Example Component: {text}
-      </div>
-    )
-  }
+if (process.env.NODE_ENV === "development") {
+    setUpMock();
 }
+
+class App extends Component<{}, State> {
+  state: State = {
+    status: "LOADING"
+  };
+
+  componentDidMount = () =>
+      hentArbeidsforhold()
+          .then((arbeidsforhold: Arbeidsforhold) =>
+              this.setState({
+                status: "RESULT",
+                arbeidsforhold
+              })
+          )
+          .catch((error: HTTPError) =>
+              this.setState({
+                status: "ERROR",
+                error
+              })
+          );
+
+  render = () => {
+    switch (this.state.status) {
+      case "LOADING":
+        return <Spinner />;
+      case "RESULT":
+        const { arbeidsforhold } = this.state;
+        return (
+            <div>
+                {console.log(arbeidsforhold)}
+             test
+            </div>
+        );
+      case "ERROR":
+        return <Error error={this.state.error} />;
+    }
+  };
+}
+
+export default App;

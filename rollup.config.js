@@ -4,6 +4,7 @@ import commonjs from 'rollup-plugin-commonjs'
 import external from 'rollup-plugin-peer-deps-external'
 import postcss from 'rollup-plugin-postcss'
 import resolve from 'rollup-plugin-node-resolve'
+import json from 'rollup-plugin-json'
 import url from 'rollup-plugin-url'
 
 import svgr from '@svgr/rollup'
@@ -37,6 +38,7 @@ export default {
     svgr(),
     resolve(),
     typescript(),
-    commonjs()
+    commonjs(),
+    json()
   ]
 }

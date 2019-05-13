@@ -1,4 +1,5 @@
 import "babel-polyfill";
+import "core-js"
 
 import React, { Component } from "react";
 import Error, {HTTPError} from "./components/error/Error";

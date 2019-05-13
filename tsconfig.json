@@ -6,7 +6,7 @@
     "lib": ["es2017", "dom", "dom.iterable", "esnext"],
     "sourceMap": true,
     "allowJs": false,
-    "jsx": "react",
+    "jsx": "preserve",
     "declaration": true,
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,

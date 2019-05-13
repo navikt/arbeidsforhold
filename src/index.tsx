@@ -20,7 +20,11 @@ type State =
     | { status: "RESULT"; arbeidsforhold: Arbeidsforhold }
     | { status: "ERROR"; error: HTTPError };
 
-class App extends Component<{}, State> {
+interface Props{
+    classNameContainer?: string;
+}
+
+class App extends Component<Props, State> {
   state: State = {
     status: "LOADING"
   };
@@ -47,7 +51,7 @@ class App extends Component<{}, State> {
       case "RESULT":
         const { arbeidsforhold } = this.state;
         return (
-            <div>
+            <div className={this.props.classNameContainer}>
                 {console.log(arbeidsforhold)}
              test
             </div>

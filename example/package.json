@@ -18,7 +18,11 @@
     "react-scripts": "^3.0.1"
   },
   "devDependencies": {
-    "fetch-mock": "^7.3.3"
+    "@types/react": "^16.8.17",
+    "@types/react-dom": "^16.8.4",
+    "fetch-mock": "^7.3.3",
+    "less": "^3.9.0",
+    "typescript": "^3.4.5"
   },
   "browserslist": {
     "production": [

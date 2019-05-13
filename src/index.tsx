@@ -1,10 +1,10 @@
 import "babel-polyfill";
-import "core-js"
+import "core-js";
 
 import React, { Component } from "react";
-import Error, {HTTPError} from "./components/error/Error";
-import {Arbeidsforhold} from "./types/arbeidsforhold";
-import {hentArbeidsforhold} from "./clients/apiClient";
+import Error, { HTTPError } from "./components/error/Error";
+import { Arbeidsforhold } from "./types/arbeidsforhold";
+import { hentArbeidsforhold } from "./clients/apiClient";
 import Spinner from "./components/spinner/Spinner";
 
 /*
@@ -16,12 +16,12 @@ if (process.env.NODE_ENV === "development") {
 */
 
 type State =
-    | { status: "LOADING" }
-    | { status: "RESULT"; arbeidsforhold: Arbeidsforhold }
-    | { status: "ERROR"; error: HTTPError };
+  | { status: "LOADING" }
+  | { status: "RESULT"; arbeidsforhold: Arbeidsforhold }
+  | { status: "ERROR"; error: HTTPError };
 
-interface Props{
-    classNameContainer?: string;
+interface Props {
+  classNameContainer?: string;
 }
 
 class App extends Component<Props, State> {
@@ -30,19 +30,19 @@ class App extends Component<Props, State> {
   };
 
   componentDidMount = () =>
-      hentArbeidsforhold()
-          .then((arbeidsforhold: Arbeidsforhold) =>
-              this.setState({
-                status: "RESULT",
-                arbeidsforhold
-              })
-          )
-          .catch((error: HTTPError) =>
-              this.setState({
-                status: "ERROR",
-                error
-              })
-          );
+    hentArbeidsforhold()
+      .then((arbeidsforhold: Arbeidsforhold) =>
+        this.setState({
+          status: "RESULT",
+          arbeidsforhold
+        })
+      )
+      .catch((error: HTTPError) =>
+        this.setState({
+          status: "ERROR",
+          error
+        })
+      );
 
   render = () => {
     switch (this.state.status) {
@@ -51,10 +51,10 @@ class App extends Component<Props, State> {
       case "RESULT":
         const { arbeidsforhold } = this.state;
         return (
-            <div className={this.props.classNameContainer}>
-                {console.log(arbeidsforhold)}
-             test
-            </div>
+          <div className={this.props.classNameContainer}>
+            {console.log(arbeidsforhold)}
+            test
+          </div>
         );
       case "ERROR":
         return <Error error={this.state.error} />;

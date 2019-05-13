@@ -1,6 +1,5 @@
 # NAV Arbeidsforhold
 
-
 React modul som viser brukerens arbeidsforhold
 
 ## Komme i gang

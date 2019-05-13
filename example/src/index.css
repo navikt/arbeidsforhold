@@ -5,14 +5,16 @@ body {
   background-color: #efefef;
 }
 
-.app {
+.example__app {
   display: flex;
   -webkit-justify-content: center;
   justify-content: center;
 }
 
-.content {
+.example__content {
   width: 100%;
   max-width: 800px;
-  padding: 2rem 0.2rem;
+  padding: 1rem;
+  margin: 4rem 0;
+  background: white;
 }

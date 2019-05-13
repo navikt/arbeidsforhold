@@ -12,7 +12,11 @@ const Arbeidsforhold = (props: MergedProps) => {
   console.log(arbeidsforhold);
 
   return (
-    <div className={`arbeidsforhold__container ${classNameContainer ? classNameContainer : ""}`}>
+    <div
+      className={`arbeidsforhold__container ${
+        classNameContainer ? classNameContainer : ""
+      }`}
+    >
       Vellykket kall!
     </div>
   );

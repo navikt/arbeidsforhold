@@ -8,13 +8,11 @@ import { hentArbeidsforhold } from "./clients/apiClient";
 import Spinner from "./components/spinner/Spinner";
 import VisArbeidsforhold from "./Arbeidsforhold";
 
-/*
-import {setUpMock} from "./clients/apiMock";
+import { setUpMock } from "./clients/apiMock";
 
 if (process.env.NODE_ENV === "development") {
-    setUpMock();
+  setUpMock();
 }
-*/
 
 type State =
   | { status: "LOADING" }

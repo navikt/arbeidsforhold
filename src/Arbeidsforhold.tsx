@@ -3,7 +3,7 @@ import { Arbeidsforhold } from "./types/arbeidsforhold";
 import { AppProps } from "./index";
 
 interface Props {
-  arbeidsforhold: Arbeidsforhold;
+  arbeidsforhold: Arbeidsforhold[];
 }
 
 type MergedProps = AppProps & Props;
@@ -17,7 +17,11 @@ const Arbeidsforhold = (props: MergedProps) => {
         classNameContainer ? classNameContainer : ""
       }`}
     >
-      Vellykket kall!
+      {arbeidsforhold.map(foretak => (
+        <div key={foretak.navArbeidsforholdId}>
+          {foretak.arbeidsgiver.organisasjonsnummer}
+        </div>
+      ))}
     </div>
   );
 };

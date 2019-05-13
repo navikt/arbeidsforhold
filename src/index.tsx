@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "development") {
 
 type State =
   | { status: "LOADING" }
-  | { status: "RESULT"; arbeidsforhold: Arbeidsforhold }
+  | { status: "RESULT"; arbeidsforhold: Arbeidsforhold[] }
   | { status: "ERROR"; error: HTTPError };
 
 export interface AppProps {
@@ -30,10 +30,10 @@ class App extends Component<AppProps, State> {
 
   componentDidMount = () =>
     hentArbeidsforhold()
-      .then((arbeidsforhold: Arbeidsforhold) =>
+      .then(arbeidsforhold =>
         this.setState({
           status: "RESULT",
-          arbeidsforhold
+          arbeidsforhold: arbeidsforhold as Arbeidsforhold[]
         })
       )
       .catch((error: HTTPError) =>

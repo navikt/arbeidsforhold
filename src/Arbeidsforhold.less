@@ -1,6 +1,30 @@
 .arbeidsforhold {
   &__container {
     background: white;
-    padding: 0.5rem;
+    padding: 1rem;
+  }
+}
+
+.oversikt {
+  &__rad {
+    display: flex;
+    width: 100%;
+    height: 38px;
+    border-bottom: solid 1px #979797;
+  }
+  &__kolonne {
+    display: flex;
+    align-items: center;
+    min-width: 7rem;
+  }
+  &__kolonne:not(:last-child) {
+    padding: 0 1rem 0 0;
+  }
+  &__kolonne:last-child {
+    justify-content: flex-end;
+    padding: 0 0.5rem 0 0;
+  }
+  &__tittel {
+    flex: 1;
   }
 }

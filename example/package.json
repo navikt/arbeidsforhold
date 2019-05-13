@@ -1,5 +1,5 @@
 {
-  "name": "test-example",
+  "name": "arbeidsforhold-example",
   "homepage": "https://test.github.io/test",
   "version": "0.0.0",
   "license": "MIT",
@@ -18,8 +18,7 @@
     "react-scripts": "^3.0.1"
   },
   "devDependencies": {
-    "fetch-mock": "^7.3.3",
-    "nav-frontend-typografi-style": "^1.0.13"
+    "fetch-mock": "^7.3.3"
   },
   "browserslist": {
     "production": [

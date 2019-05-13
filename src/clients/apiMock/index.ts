@@ -1,6 +1,6 @@
 import fetchMock from "fetch-mock";
-import {apiUrl} from "../../utils/environment";
-import arbeidsforhold from "./arbeidsforhold.json"
+import { apiUrl } from "../../utils/environment";
+import arbeidsforhold from "./arbeidsforhold.json";
 
 const delay = (min: number, max: number) => {
   return new Promise(resolve => {

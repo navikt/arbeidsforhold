@@ -1,12 +1,12 @@
 import "@babel/polyfill";
 import "core-js";
-
 import React, { Component } from "react";
 import Error, { HTTPError } from "./components/error/Error";
 import { Arbeidsforhold } from "./types/arbeidsforhold";
 import { hentArbeidsforhold } from "./clients/apiClient";
 import Spinner from "./components/spinner/Spinner";
 import VisArbeidsforhold from "./Arbeidsforhold";
+import "./index.less";
 
 import { setUpMock } from "./clients/apiMock";
 

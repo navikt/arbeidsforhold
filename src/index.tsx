@@ -1,18 +1,23 @@
+import "babel-polyfill";
+
 import React, { Component } from "react";
-import {HTTPError} from "./components/error/Error";
+import Error, {HTTPError} from "./components/error/Error";
 import {Arbeidsforhold} from "./types/arbeidsforhold";
 import {hentArbeidsforhold} from "./clients/apiClient";
 import Spinner from "./components/spinner/Spinner";
+
+/*
 import {setUpMock} from "./clients/apiMock";
+
+if (process.env.NODE_ENV === "development") {
+    setUpMock();
+}
+*/
 
 type State =
     | { status: "LOADING" }
     | { status: "RESULT"; arbeidsforhold: Arbeidsforhold }
     | { status: "ERROR"; error: HTTPError };
-
-if (process.env.NODE_ENV === "development") {
-    setUpMock();
-}
 
 class App extends Component<{}, State> {
   state: State = {

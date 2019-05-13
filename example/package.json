@@ -4,6 +4,12 @@
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@navikt/arbeidsforhold": "file:..",
     "prop-types": "^15.7.2",
@@ -11,11 +17,9 @@
     "react-dom": "^16.8.6",
     "react-scripts": "^3.0.1"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "fetch-mock": "^7.3.3",
+    "nav-frontend-typografi-style": "^1.0.13"
   },
   "browserslist": {
     "production": [

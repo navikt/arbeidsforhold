@@ -1,6 +1,8 @@
 import babel from 'rollup-plugin-babel';
-import typescript from 'rollup-plugin-typescript'
+import typescript from 'rollup-plugin-typescript2'
 import commonjs from 'rollup-plugin-commonjs'
+import sourceMaps from 'rollup-plugin-sourcemaps';
+import npmImport from 'less-plugin-npm-import';
 import external from 'rollup-plugin-peer-deps-external'
 import postcss from 'rollup-plugin-postcss'
 import resolve from 'rollup-plugin-node-resolve'
@@ -29,16 +31,25 @@ export default {
   plugins: [
     external(),
     postcss({
-      modules: true
-    }),
-    babel({
-      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      use: [['less', {
+        plugins: [new npmImport({prefix: '~'})],
+      }]],
     }),
     url(),
     svgr(),
-    resolve(),
-    typescript(),
+    resolve({
+      browser: true,
+      modulesOnly: true,
+    }),
+    typescript({
+      objectHashIgnoreUnknownHack: true,
+    }),
     commonjs(),
-    json()
+    json(),
+    babel({
+      extensions: ['.js', '.jsx', '.ts', '.tsx']
+    }),
+    // Resolve source maps to the original source
+    sourceMaps()
   ]
 }

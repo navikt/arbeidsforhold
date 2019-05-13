@@ -41,13 +41,12 @@
     "fetch-mock": "^7.3.3"
   },
   "devDependencies": {
-    "@babel/plugin-external-helpers": "^7.2.0",
+    "@babel/core": "^7.4.4",
     "@svgr/rollup": "^4.2.0",
     "@types/fetch-mock": "^7.2.3",
     "@types/jest": "^24.0.12",
     "@types/react": "^16.8.17",
     "@types/react-dom": "^16.8.4",
-    "babel-core": "^6.26.3",
     "classnames": "^2.2.6",
     "gh-pages": "^2.0.1",
     "less": "^3.9.0",

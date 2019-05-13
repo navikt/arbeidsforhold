@@ -1,14 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import Arbeidsforhold from '@navikt/arbeidsforhold'
+import Arbeidsforhold from "@navikt/arbeidsforhold";
 
 export default class App extends Component {
-  render () {
+  render() {
     return (
-      <div>
-        <Arbeidsforhold />
+      <div className="app">
+        <div className="content">
+          <Arbeidsforhold />
+        </div>
       </div>
-    )
+    );
   }
 }
- 

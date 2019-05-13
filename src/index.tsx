@@ -6,6 +6,7 @@ import Error, { HTTPError } from "./components/error/Error";
 import { Arbeidsforhold } from "./types/arbeidsforhold";
 import { hentArbeidsforhold } from "./clients/apiClient";
 import Spinner from "./components/spinner/Spinner";
+import VisArbeidsforhold from "./Arbeidsforhold";
 
 /*
 import {setUpMock} from "./clients/apiMock";
@@ -20,11 +21,11 @@ type State =
   | { status: "RESULT"; arbeidsforhold: Arbeidsforhold }
   | { status: "ERROR"; error: HTTPError };
 
-interface Props {
+export interface AppProps {
   classNameContainer?: string;
 }
 
-class App extends Component<Props, State> {
+class App extends Component<AppProps, State> {
   state: State = {
     status: "LOADING"
   };
@@ -49,12 +50,11 @@ class App extends Component<Props, State> {
       case "LOADING":
         return <Spinner />;
       case "RESULT":
-        const { arbeidsforhold } = this.state;
         return (
-          <div className={this.props.classNameContainer}>
-            {console.log(arbeidsforhold)}
-            test
-          </div>
+          <VisArbeidsforhold
+            arbeidsforhold={this.state.arbeidsforhold}
+            {...this.props}
+          />
         );
       case "ERROR":
         return <Error error={this.state.error} />;

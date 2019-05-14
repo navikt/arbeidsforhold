@@ -12,11 +12,16 @@ type State =
   | { status: "RESULT"; arbeidsforhold: AFSimpel[] }
   | { status: "ERROR"; error: HTTPError };
 
-export interface AppProps {
+export interface AFListeProps {
   classNameContainer?: string;
+  onClick: (arbeidsforholdId: string) => void;
 }
 
-class ListeMedArbeidsforhold extends Component<AppProps, State> {
+export interface AFListeData {
+  arbeidsforhold: AFSimpel[];
+}
+
+class ListeMedArbeidsforhold extends Component<AFListeProps, State> {
   state: State = {
     status: "LOADING"
   };

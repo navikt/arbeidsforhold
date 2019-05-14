@@ -1,15 +1,11 @@
 import React from "react";
-import { AFSimpel } from "../../types/arbeidsforhold";
 import { Normaltekst, Element } from "nav-frontend-typografi";
 import Lenke from "nav-frontend-lenker";
+import { HoyreChevron } from "nav-frontend-chevron";
+import { AFListeProps, AFListeData } from "./index";
 
-interface Props {
-  arbeidsforhold: AFSimpel[];
-  classNameContainer?: string;
-}
-
-const Arbeidsforhold = (props: Props) => {
-  const { arbeidsforhold, classNameContainer } = props;
+const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
+  const { arbeidsforhold, classNameContainer, onClick } = props;
   return (
     <div
       className={`arbeidsforhold__container ${
@@ -40,7 +36,11 @@ const Arbeidsforhold = (props: Props) => {
             <Normaltekst>{foretak.ansettelsesPeriode.periodeTil}</Normaltekst>
           </div>
           <div className="oversikt__kolonne">
-            <Lenke href="#test">Vis detaljer</Lenke>
+            <Lenke href={`#`} onClick={() => onClick(foretak.arbeidsforholdId)}>
+              <Normaltekst>
+                Vis detaljer <HoyreChevron />
+              </Normaltekst>
+            </Lenke>
           </div>
         </div>
       ))}

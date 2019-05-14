@@ -6,12 +6,14 @@ import {
 } from "@navikt/arbeidsforhold";
 
 export default class App extends Component {
+  onClick = (arbeidsforoldId: string) => console.log(arbeidsforoldId);
+
   render() {
     return (
       <div className="example__app">
         <div className="example__content">
           <div className="example__section">
-            <ListeMedArbeidsforhold />
+            <ListeMedArbeidsforhold onClick={this.onClick} />
           </div>
           <div className="example__section">
             <DetaljertArbeidsforhold arbeidsforholdId="konvertert_af709505-128e-45dc-a241-7e14180f787d" />

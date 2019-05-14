@@ -1,13 +1,8 @@
 import React from "react";
-import { AFUtvidet } from "../../types/arbeidsforhold";
 import { Normaltekst } from "nav-frontend-typografi";
+import { AFDetaljertData, AFDetaljertProps } from "./index";
 
-interface Props {
-  arbeidsforhold: AFUtvidet;
-  classNameContainer?: string;
-}
-
-const Arbeidsforhold = (props: Props) => {
+const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, classNameContainer } = props;
   console.log(arbeidsforhold);
   return (

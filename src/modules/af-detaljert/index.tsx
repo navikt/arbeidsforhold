@@ -12,12 +12,16 @@ type State =
   | { status: "RESULT"; arbeidsforhold: AFUtvidet }
   | { status: "ERROR"; error: HTTPError };
 
-export interface AppProps {
+export interface AFDetaljertProps {
   arbeidsforholdId: string;
   classNameContainer?: string;
 }
 
-class DetaljertArbeidsforhold extends Component<AppProps, State> {
+export interface AFDetaljertData {
+  arbeidsforhold: AFUtvidet;
+}
+
+class DetaljertArbeidsforhold extends Component<AFDetaljertProps, State> {
   state: State = {
     status: "LOADING"
   };

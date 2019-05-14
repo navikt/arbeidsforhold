@@ -7,12 +7,6 @@ import { hentListeMedArbeidsforhold } from "../../clients/apiClient";
 import Spinner from "../../components/spinner/Spinner";
 import Liste from "./Liste";
 
-import { setUpMock } from "../../clients/apiMock";
-
-if (process.env.NODE_ENV === "development") {
-  setUpMock();
-}
-
 type State =
   | { status: "LOADING" }
   | { status: "RESULT"; arbeidsforhold: AFSimpel[] }

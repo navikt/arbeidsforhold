@@ -10,7 +10,6 @@ interface Props {
 const Arbeidsforhold = (props: Props) => {
   const { arbeidsforhold, classNameContainer } = props;
   console.log(arbeidsforhold);
-
   return (
     <div
       className={`arbeidsforhold__container ${

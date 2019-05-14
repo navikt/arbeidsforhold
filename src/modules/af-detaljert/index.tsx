@@ -7,12 +7,6 @@ import { hentDetaljertArbeidsforhold } from "../../clients/apiClient";
 import Spinner from "../../components/spinner/Spinner";
 import DetaljerArbeidsforhold from "./Detaljert";
 
-import { setUpMock } from "../../clients/apiMock";
-
-if (process.env.NODE_ENV === "development") {
-  setUpMock();
-}
-
 type State =
   | { status: "LOADING" }
   | { status: "RESULT"; arbeidsforhold: AFUtvidet }

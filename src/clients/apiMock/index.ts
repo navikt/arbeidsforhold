@@ -15,7 +15,7 @@ export const setUpMock = async () => {
     delay(200, 500).then(() => afListe)
   );
   fetchMock.get(
-    `${apiUrl}/arbeidsforholdinnslag/:id`,
+    `begin:${apiUrl}/arbeidsforholdinnslag`,
     delay(200, 500).then(() => afDetaljert)
   );
 };

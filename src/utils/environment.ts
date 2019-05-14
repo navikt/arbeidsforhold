@@ -1,2 +1,2 @@
-export const apiUrl = "Bare tull";
-export const loginUrl = "Annet tulll";
+export const apiUrl = "https://eksempel-api.no";
+export const loginUrl = "https://eksempel-login.no";

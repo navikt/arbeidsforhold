@@ -1,0 +1,62 @@
+{
+  "navArbeidsforholdId": 7597029,
+  "arbeidsforholdId": "konvertert_af709505-128e-45dc-a241-7e14180f787d",
+  "arbeidsgiver": {
+    "organisasjonsnummer": "***********",
+    "organisasjonsnavn": "Capgemini Norge AS",
+    "type": "Organisasjon"
+  },
+  "opplysningspliktig": {
+    "organisasjonsnummer": "***********",
+    "type": "Organisasjon"
+  },
+  "type": "ordinaertArbeidsforhold",
+  "ansettelsesperiode": {
+    "periode": {
+      "fom": "1988-10-03",
+      "tom": "1989-05-31"
+    },
+    "bruksperiode": {
+      "fom": "2014-12-13T13:59:11.893"
+    },
+    "sporingsinformasjon": {
+      "opprettetTidspunkt": "2014-12-13T13:59:11.91",
+      "opprettetAv": "BAAREG002",
+      "opprettetKilde": "KONVERTERING",
+      "endretTidspunkt": "2014-12-13T13:59:11.91",
+      "endretAv": "BAAREG002",
+      "endretKilde": "KONVERTERING"
+    }
+  },
+  "arbeidsavtaler": [
+    {
+      "yrke": "INGEN_YRKESKODE",
+      "beregnetAntallTimerPrUke": 19.0,
+      "sistStillingsendring": "1988-10-03",
+      "bruksperiode": {
+        "fom": "2014-12-13T13:59:11.893"
+      },
+      "gyldighetsperiode": {
+        "fom": "1988-10-01"
+      },
+      "sporingsinformasjon": {
+        "opprettetTidspunkt": "2014-12-13T13:59:11.91",
+        "opprettetAv": "BAAREG002",
+        "opprettetKilde": "KONVERTERING",
+        "endretTidspunkt": "2014-12-13T13:59:11.91",
+        "endretAv": "BAAREG002",
+        "endretKilde": "KONVERTERING"
+      }
+    }
+  ],
+  "innrapportertEtterAOrdningen": false,
+  "sistBekreftet": "1989-05-31T00:00:00",
+  "sporingsinformasjon": {
+    "opprettetTidspunkt": "2014-12-13T13:59:11.91",
+    "opprettetAv": "BAAREG002",
+    "opprettetKilde": "KONVERTERING",
+    "endretTidspunkt": "2015-05-31T14:05:43.561",
+    "endretAv": "EDAG-1456",
+    "endretKilde": "KONVERTERING"
+  }
+}

@@ -31,17 +31,15 @@ const Arbeidsforhold = (props: Props) => {
         <div className="oversikt__kolonne" />
       </div>
       {arbeidsforhold.map(foretak => (
-        <div className="oversikt__rad" key={foretak.navArbeidsforholdId}>
+        <div className="oversikt__rad" key={foretak.arbeidsforholdId}>
           <div className="oversikt__kolonne oversikt__tittel">
-            <Normaltekst>
-              {foretak.arbeidsgiver.organisasjonsnummer}
-            </Normaltekst>
+            <Normaltekst>{foretak.arbeidsgiver.organisasjonsnavn}</Normaltekst>
           </div>
           <div className="oversikt__kolonne">
-            <Normaltekst>{foretak.ansettelsesperiode.periode.fom}</Normaltekst>
+            <Normaltekst>{foretak.ansettelsesPeriode.periodeFra}</Normaltekst>
           </div>
           <div className="oversikt__kolonne">
-            <Normaltekst>{foretak.ansettelsesperiode.periode.tom}</Normaltekst>
+            <Normaltekst>{foretak.ansettelsesPeriode.periodeTil}</Normaltekst>
           </div>
           <div className="oversikt__kolonne">
             <Lenke href="#test">Vis detaljer</Lenke>

@@ -14,7 +14,7 @@ export default class App extends Component {
             <ListeMedArbeidsforhold />
           </div>
           <div className="example__section">
-            <DetaljertArbeidsforhold />
+            <DetaljertArbeidsforhold arbeidsforholdId="konvertert_af709505-128e-45dc-a241-7e14180f787d" />
           </div>
         </div>
       </div>

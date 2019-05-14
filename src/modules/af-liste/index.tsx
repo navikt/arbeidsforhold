@@ -3,7 +3,7 @@ import "core-js";
 import React, { Component } from "react";
 import Error, { HTTPError } from "../../components/error/Error";
 import { AFSimpel } from "../../types/arbeidsforhold";
-import { hentArbeidsforhold } from "../../clients/apiClient";
+import { hentListeMedArbeidsforhold } from "../../clients/apiClient";
 import Spinner from "../../components/spinner/Spinner";
 import Liste from "./Liste";
 
@@ -28,7 +28,7 @@ class ListeMedArbeidsforhold extends Component<AppProps, State> {
   };
 
   componentDidMount = () =>
-    hentArbeidsforhold()
+    hentListeMedArbeidsforhold()
       .then(arbeidsforhold =>
         this.setState({
           status: "RESULT",

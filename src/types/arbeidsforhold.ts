@@ -1,63 +1,93 @@
 export interface AFSimpel {
-  navArbeidsforholdId: number;
   arbeidsforholdId: string;
   arbeidsgiver: {
     organisasjonsnummer: string;
-    type: string;
+    organisasjonsnavn: string;
   };
-  opplysningspliktig: {
-    organisasjonsnummer: string;
-    type: string;
+  ansettelsesPeriode: {
+    periodeFra?: string;
+    periodeTil?: string;
   };
-  type: string;
+}
+
+export interface AFUtvidet {
   ansettelsesperiode: {
+    bruksperiode: {
+      fom: string;
+      tom: string;
+    };
     periode: {
       fom: string;
       tom: string;
     };
-    bruksperiode: {
-      fom: string;
-    };
-    sporingsinformasjon: {
-      opprettetTidspunkt: string;
-      opprettetAv: string;
-      opprettetKilde: string;
-      endretTidspunkt: string;
-      endretAv: string;
-      endretKilde: string;
-    };
+    varslingskode: string;
   };
+  antallTimerForTimeloennet: [
+    {
+      antallTimer: number;
+      periode: {
+        fom: string;
+        tom: string;
+      };
+      rapporteringsperiode: string;
+    }
+  ];
   arbeidsavtaler: [
     {
-      yrke: string;
+      antallTimerPrUke: number;
+      arbeidstidsordning: string;
       beregnetAntallTimerPrUke: number;
-      sistStillingsendring: string;
       bruksperiode: {
         fom: string;
+        tom: string;
       };
       gyldighetsperiode: {
         fom: string;
+        tom: string;
       };
-      sporingsinformasjon: {
-        opprettetTidspunkt: string;
-        opprettetAv: string;
-        opprettetKilde: string;
-        endretTidspunkt: string;
-        endretAv: string;
-        endretKilde: string;
-      };
+      sistLoennsendring: string;
+      sistStillingsendring: string;
+      stillingsprosent: number;
+      yrke: number;
     }
   ];
-  innrapportertEtterAOrdningen: boolean;
-  sistBekreftet: string;
-  sporingsinformasjon: {
-    opprettetTidspunkt: string;
-    opprettetAv: string;
-    opprettetKilde: string;
-    endretTidspunkt: string;
-    endretAv: string;
-    endretKilde: string;
+  arbeidsforholdId: string;
+  arbeidsgiver: {
+    organisasjonsnummer: string;
+    organisasjonsnavn: string;
   };
+  arbeidstaker: {
+    type: string;
+    aktoerId: number;
+    offentligIdent: number;
+  };
+  innrapportertEtterAOrdningen: boolean;
+  navArbeidsforholdId: number;
+  opplysningspliktig: {
+    type: string;
+  };
+  permisjonPermitteringer: [
+    {
+      periode: {
+        fom: string;
+        tom: string;
+      };
+      permisjonPermitteringId: string;
+      prosent: number;
+      type: string;
+    }
+  ];
+  registrert: string;
+  sistBekreftet: string;
+  type: string;
+  utenlandsopphold: [
+    {
+      landkode: string;
+      periode: {
+        fom: string;
+        tom: string;
+      };
+      rapporteringsperiode: string;
+    }
+  ];
 }
-
-export interface AFUtvidet {}

@@ -3,7 +3,7 @@ import "core-js";
 import React, { Component } from "react";
 import Error, { HTTPError } from "../../components/error/Error";
 import { AFUtvidet } from "../../types/arbeidsforhold";
-import { hentArbeidsforhold } from "../../clients/apiClient";
+import { hentDetaljertArbeidsforhold } from "../../clients/apiClient";
 import Spinner from "../../components/spinner/Spinner";
 import DetaljerArbeidsforhold from "./Detaljert";
 
@@ -19,6 +19,7 @@ type State =
   | { status: "ERROR"; error: HTTPError };
 
 export interface AppProps {
+  arbeidsforholdId: string;
   classNameContainer?: string;
 }
 
@@ -28,7 +29,7 @@ class DetaljertArbeidsforhold extends Component<AppProps, State> {
   };
 
   componentDidMount = () =>
-    hentArbeidsforhold()
+    hentDetaljertArbeidsforhold(this.props.arbeidsforholdId)
       .then(arbeidsforhold =>
         this.setState({
           status: "RESULT",

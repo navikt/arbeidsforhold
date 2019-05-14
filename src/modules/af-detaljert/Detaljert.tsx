@@ -17,7 +17,7 @@ const Arbeidsforhold = (props: Props) => {
         classNameContainer ? classNameContainer : ""
       }`}
     >
-      <Normaltekst>ffafa</Normaltekst>
+      <Normaltekst>{arbeidsforhold.arbeidsgiver.organisasjonsnavn}</Normaltekst>
     </div>
   );
 };

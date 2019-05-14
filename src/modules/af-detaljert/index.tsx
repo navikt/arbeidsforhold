@@ -21,13 +21,15 @@ export interface AFDetaljertData {
   arbeidsforhold: AFUtvidet;
 }
 
+const initState: State = {
+  status: "LOADING"
+};
+
 class DetaljertArbeidsforhold extends PureComponent<AFDetaljertProps, State> {
-  state: State = {
-    status: "LOADING"
-  };
+  state = initState;
 
   componentDidMount = () => this.hentData();
-  componentDidUpdate = (props: AFDetaljertProps) => {
+  componentWillReceiveProps = (props: AFDetaljertProps) => {
     if (this.props.arbeidsforholdId !== props.arbeidsforholdId) {
       console.log(`Nye props, arbeidsforhold ${props.arbeidsforholdId}`);
       this.hentData();
@@ -35,19 +37,21 @@ class DetaljertArbeidsforhold extends PureComponent<AFDetaljertProps, State> {
   };
 
   hentData = () =>
-    hentDetaljertArbeidsforhold(this.props.arbeidsforholdId)
-      .then(arbeidsforhold =>
-        this.setState({
-          status: "RESULT",
-          arbeidsforhold: arbeidsforhold as AFUtvidet
-        })
-      )
-      .catch((error: HTTPError) =>
-        this.setState({
-          status: "ERROR",
-          error
-        })
-      );
+    this.setState(initState, () =>
+      hentDetaljertArbeidsforhold(this.props.arbeidsforholdId)
+        .then(arbeidsforhold =>
+          this.setState({
+            status: "RESULT",
+            arbeidsforhold: arbeidsforhold as AFUtvidet
+          })
+        )
+        .catch((error: HTTPError) =>
+          this.setState({
+            status: "ERROR",
+            error
+          })
+        )
+    );
 
   render = () => {
     switch (this.state.status) {

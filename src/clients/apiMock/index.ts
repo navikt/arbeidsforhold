@@ -12,10 +12,10 @@ const delay = (min: number, max: number) => {
 export const setUpMock = async () => {
   fetchMock.get(
     `${apiUrl}/arbeidsforhold`,
-    delay(200, 500).then(() => afListe)
+    delay(500, 900).then(() => afListe)
   );
   fetchMock.get(
     `begin:${apiUrl}/arbeidsforholdinnslag`,
-    delay(200, 500).then(() => afDetaljert)
+    delay(500, 900).then(() => afDetaljert)
   );
 };

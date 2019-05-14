@@ -5,8 +5,16 @@ import {
   DetaljertArbeidsforhold
 } from "@navikt/arbeidsforhold";
 
+interface State {
+  valgtArbeidsforholdId: string;
+}
 export default class App extends Component {
-  onClick = (arbeidsforoldId: string) => console.log(arbeidsforoldId);
+  state: State = {
+    valgtArbeidsforholdId: "konvertert_af709505-128e-45dc-a241-7e14180f787d"
+  };
+
+  onClick = (arbeidsforoldId: string) =>
+    this.setState({ valgtArbeidsforholdId: arbeidsforoldId });
 
   render() {
     return (
@@ -16,7 +24,9 @@ export default class App extends Component {
             <ListeMedArbeidsforhold onClick={this.onClick} />
           </div>
           <div className="example__section">
-            <DetaljertArbeidsforhold arbeidsforholdId="konvertert_af709505-128e-45dc-a241-7e14180f787d" />
+            <DetaljertArbeidsforhold
+              arbeidsforholdId={this.state.valgtArbeidsforholdId}
+            />
           </div>
         </div>
       </div>

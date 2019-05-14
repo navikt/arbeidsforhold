@@ -1,6 +1,6 @@
 import "@babel/polyfill";
 import "core-js";
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Error, { HTTPError } from "../../components/error/Error";
 import { AFUtvidet } from "../../types/arbeidsforhold";
 import { hentDetaljertArbeidsforhold } from "../../clients/apiClient";
@@ -21,12 +21,20 @@ export interface AFDetaljertData {
   arbeidsforhold: AFUtvidet;
 }
 
-class DetaljertArbeidsforhold extends Component<AFDetaljertProps, State> {
+class DetaljertArbeidsforhold extends PureComponent<AFDetaljertProps, State> {
   state: State = {
     status: "LOADING"
   };
 
-  componentDidMount = () =>
+  componentDidMount = () => this.hentData();
+  componentDidUpdate = (props: AFDetaljertProps) => {
+    if (this.props.arbeidsforholdId !== props.arbeidsforholdId) {
+      console.log(`Nye props, arbeidsforhold ${props.arbeidsforholdId}`);
+      this.hentData();
+    }
+  };
+
+  hentData = () =>
     hentDetaljertArbeidsforhold(this.props.arbeidsforholdId)
       .then(arbeidsforhold =>
         this.setState({

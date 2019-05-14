@@ -4,7 +4,6 @@ import { AFDetaljertData, AFDetaljertProps } from "./index";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, classNameContainer } = props;
-  console.log(arbeidsforhold);
   return (
     <div
       className={`arbeidsforhold__container ${

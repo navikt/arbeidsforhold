@@ -1,15 +1,14 @@
 import React from "react";
-import { Arbeidsforhold } from "./types/arbeidsforhold";
-import { AppProps } from "./index";
+import { AFSimpel } from "../../types/arbeidsforhold";
 import { Normaltekst, Element } from "nav-frontend-typografi";
 import Lenke from "nav-frontend-lenker";
 
 interface Props {
-  arbeidsforhold: Arbeidsforhold[];
+  arbeidsforhold: AFSimpel[];
+  classNameContainer?: string;
 }
 
-type MergedProps = AppProps & Props;
-const Arbeidsforhold = (props: MergedProps) => {
+const Arbeidsforhold = (props: Props) => {
   const { arbeidsforhold, classNameContainer } = props;
   console.log(arbeidsforhold);
 

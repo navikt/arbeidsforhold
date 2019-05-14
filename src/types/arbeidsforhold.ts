@@ -1,4 +1,4 @@
-export interface Arbeidsforhold {
+export interface AFSimpel {
   navArbeidsforholdId: number;
   arbeidsforholdId: string;
   arbeidsgiver: {
@@ -59,3 +59,5 @@ export interface Arbeidsforhold {
     endretKilde: string;
   };
 }
+
+export interface AFUtvidet {}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Normaltekst, Element } from "nav-frontend-typografi";
-import { HoyreChevron, NedChevron } from "nav-frontend-chevron";
+import { HoyreChevron, NedChevron, OppChevron } from "nav-frontend-chevron";
 import { AFListeProps, AFListeData } from "./index";
 
 const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
@@ -50,7 +50,15 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
           </div>
         ))}
       <div className="af-liste__vis-flere" onClick={toggleVisAlle}>
-        Vis flere arbeidsforhold <NedChevron />
+        {visAlle ? (
+          <span>
+            Vis færre arbeidsforhold <OppChevron />
+          </span>
+        ) : (
+          <span>
+            Vis flere arbeidsforhold <NedChevron />
+          </span>
+        )}
       </div>
     </div>
   );

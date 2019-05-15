@@ -1,14 +1,23 @@
-.arbeidsforhold {
+.af-liste {
   &__container {
   }
-}
-
-.oversikt {
-  &__rad {
+  &__rad,
+  &__header {
     display: flex;
     width: 100%;
     height: 38px;
     border-bottom: solid 1px #979797;
+  }
+  &__rad {
+    cursor: pointer;
+    &:hover > div > p {
+      font-weight: bold;
+      text-decoration: underline;
+      color: #0067c5;
+    }
+  }
+  &__vis-flere {
+    margin: 1rem 0;
   }
   &__kolonne {
     display: flex;

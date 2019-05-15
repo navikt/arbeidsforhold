@@ -8,13 +8,13 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const sisteArbeidsavtale = arbeidsforhold.arbeidsavtaler[0];
   return (
     <div
-      className={`arbeidsforhold__container ${
+      className={`af-detaljert__container ${
         classNameContainer ? classNameContainer : ""
       }`}
     >
-      <div className="arbeidsforhold__header">
-        <div className="arbeidsforhold__kolonne">
-          <div className="arbeidsforhold__arbeidsgiver">
+      <div className="af-detaljert__header">
+        <div className="af-detaljert__kolonne">
+          <div className="af-detaljert__arbeidsgiver">
             <Undertittel>
               {arbeidsforhold.arbeidsgiver.organisasjonsnavn}
             </Undertittel>
@@ -23,27 +23,27 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
             {arbeidsforhold.ansettelsesperiode.periode.fom}
           </Normaltekst>
         </div>
-        <div className="arbeidsforhold__kolonne arbeidsforhold__status">
+        <div className="af-detaljert__kolonne af-detaljert__status">
           <EtikettSuksess>Nåværende jobb</EtikettSuksess>
         </div>
       </div>
       <hr />
-      <div className="arbeidsforhold__innhold">
-        <div className="arbeidsforhold__boks">
+      <div className="af-detaljert__innhold">
+        <div className="af-detaljert__boks">
           <Element>Organisasjonsnumer</Element>
           <Normaltekst>
             {arbeidsforhold.arbeidsgiver.organisasjonsnummer}
           </Normaltekst>
         </div>
-        <div className="arbeidsforhold__boks">
+        <div className="af-detaljert__boks">
           <Element>Yrke</Element>
           <Normaltekst>{sisteArbeidsavtale.yrke}</Normaltekst>
         </div>
-        <div className="arbeidsforhold__boks">
+        <div className="af-detaljert__boks">
           <Element>Stilling</Element>
           <Normaltekst>{sisteArbeidsavtale.stillingsprosent}</Normaltekst>
         </div>
-        <div className="arbeidsforhold__boks">
+        <div className="af-detaljert__boks">
           <Element>Type arbeidsforhold</Element>
           <Normaltekst>{arbeidsforhold.type}</Normaltekst>
         </div>

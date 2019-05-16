@@ -1,6 +1,6 @@
 # NAV Arbeidsforhold
 
-React modul som viser brukerens arbeidsforhold
+React moduler / mikro-frontends som viser brukerens arbeidsforhold
 
 ## Installasjon
 
@@ -10,9 +10,11 @@ npm install @navikt/arbeidsforhold
 
 ## Komponenter
 
-Biblioteket består av React-komponenter knyttet til Arbeidsforhold som kan installeres via npm.
+
+Prosjektet er delt opp i uavhengige moduler som kan importeres
 
 #### Liste med arbeidsforhold
+
 
 ```js
 import { ListeMedArbeidsforhold } from "@navikt/arbeidsforhold";

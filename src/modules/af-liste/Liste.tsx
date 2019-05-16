@@ -17,11 +17,7 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
         {arbeidsforhold
           .slice(0, visAlle ? arbeidsforhold.length : 5)
           .map(foretak => (
-            <div
-              className="af-liste__rad"
-              key={foretak.arbeidsforholdId}
-              onClick={() => onClick(foretak.arbeidsforholdId)}
-            >
+            <div className="af-liste__rad" key={foretak.arbeidsforholdId}>
               <div className="af-liste__innhold">
                 <div>
                   <Element>{foretak.arbeidsgiver.organisasjonsnavn}</Element>
@@ -36,8 +32,11 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
                   </Normaltekst>{" "}
                 </div>
               </div>
-              <div className="af-liste__lenke">
-                Vis detaljer <HoyreChevron />
+              <div
+                onClick={() => onClick(foretak.arbeidsforholdId)}
+                className="af-liste__lenke"
+              >
+                Detaljer <HoyreChevron />
               </div>
             </div>
           ))}

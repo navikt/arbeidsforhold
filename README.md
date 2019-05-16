@@ -15,6 +15,7 @@ Prosjektet er delt opp i uavhengige moduler som kan importeres
 
 #### Liste med arbeidsforhold
 
+![Screenshot av liste med arbeidsforhold](screenshots/ListeMedArbeidsforhold.png)
 
 ```js
 import { ListeMedArbeidsforhold } from "@navikt/arbeidsforhold";
@@ -30,6 +31,8 @@ render = () => {
 ```
 
 #### Detaljert arbeidsforhold
+
+![Screenshot av detaljert arbeidsforhold](screenshots/DetaljertArbeidsforhold.png)
 
 ```js
 import { DetaljertArbeidsforhold } from "@navikt/arbeidsforhold";

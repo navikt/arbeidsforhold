@@ -26,7 +26,7 @@ Screenshot
 Eksempel
 
 ```js
-onClick = (arbeidsforoldId: string) => console.log(arbeidsforholdId);
+onClick = (arbeidsforholdId: string) => console.log(arbeidsforholdId);
 render = () => {
   return <ListeMedArbeidsforhold onClick={this.onClick} />;
 };

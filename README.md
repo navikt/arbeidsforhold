@@ -10,7 +10,6 @@ npm install @navikt/arbeidsforhold
 
 ## Komponenter
 
-
 Prosjektet er delt opp i uavhengige moduler som kan importeres
 
 #### Liste med arbeidsforhold
@@ -24,9 +23,14 @@ import { ListeMedArbeidsforhold } from "@navikt/arbeidsforhold";
 Eksempel
 
 ```js
-onClick = (arbeidsforoldId: string) => console.log(arbeidsforholdId);
+
+onClick = (arbeidsforoldId: string) =>
+    console.log(arbeidsforholdId);
+
 render = () => {
-  return <ListeMedArbeidsforhold onClick={this.onClick} />;
+  return <ListeMedArbeidsforhold
+            miljo={"DEV" as "LOCAL" | "DEV" | "PROD"}
+            onClick={this.onClick} />;
 };
 ```
 
@@ -42,27 +46,32 @@ Eksempel
 
 ```js
 render = () => {
+  const mijo = "DEV" as "LOCAL" | "DEV" | "PROD";
   const arbeidsforholdId = "konvertert_af709505-128e-45dc-a241-7e14180f787d";
-  return <DetaljertArbeidsforhold arbeidsforholdId={arbeidsforholdId} />;
+
+  return <DetaljertArbeidsforhold
+            miljo={miljo}
+            arbeidsforholdId={arbeidsforholdId} />;
 };
 ```
 
+Komponenten vil hente data fra arbeidsforhold-api basert på miljo-variabelen
+
 ## Videreutvikling / test
 
-* Hent repoet fra github
+- Hent repoet fra github
 
 ```
 git clone https://github.com/navikt/arbeidsforhold.git
 ```
 
-* Installer nødvendige pakker og start kompilering
+- Installer nødvendige pakker og start kompilering
 
 ```
 npm install && npm start
 ```
 
-
-* Start test applikasjonen <br>
+- Start test applikasjonen <br>
 
 ```
 cd example && npm install && npm start

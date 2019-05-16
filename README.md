@@ -21,7 +21,7 @@ import { ListeMedArbeidsforhold } from "@navikt/arbeidsforhold";
 
 Screenshot 
 
-<img alt="Screenshot av liste med arbeidsforhold" src="screenshots/ListeMedArbeidsforhold.png" width="50%"/>
+<img alt="Screenshot av liste med arbeidsforhold" src="screenshots/ListeMedArbeidsforhold.png" width="60%"/>
 
 Eksempel
 
@@ -40,7 +40,7 @@ import { DetaljertArbeidsforhold } from "@navikt/arbeidsforhold";
 
 Screenshot
 
-<img alt="Screenshot av detaljert arbeidsforhold" src="screenshots/DetaljertArbeidsforhold.png" width="50%"/>
+<img alt="Screenshot av detaljert arbeidsforhold" src="screenshots/DetaljertArbeidsforhold.png" width="60%"/>
 
 Eksempel
 

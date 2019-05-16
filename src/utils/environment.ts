@@ -5,13 +5,13 @@ class Environment {
   static loginUrl: string;
   static logoutUrl: string;
 
-  constructor(miljo: MILJO) {
+  static settEnv = (miljo: MILJO) => {
     switch (miljo) {
       default:
       case "LOCAL":
         Environment.apiUrl = `http://localhost:8080/person/arbeidsforhold-api`;
-        Environment.loginUrl = `http://localhost:8080/person/arbeidsforhold-api`;
-        Environment.logoutUrl = `http://localhost:8080/person/arbeidsforhold-api`;
+        Environment.loginUrl = `https://loginservice-q.nav.no/login`;
+        Environment.logoutUrl = `https://loginservice-q.nav.no/slo`;
         break;
       case "DEV":
         Environment.apiUrl = `https://www-q0.nav.no/person/arbeidsforhold-api`;
@@ -24,7 +24,7 @@ class Environment {
         Environment.logoutUrl = `https://loginservice.nav.no/slo`;
         break;
     }
-  }
+  };
 }
 
 export default Environment;

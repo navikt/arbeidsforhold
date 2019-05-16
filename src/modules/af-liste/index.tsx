@@ -31,7 +31,7 @@ class ListeMedArbeidsforhold extends Component<AFListeProps, State> {
 
   constructor(props: AFListeProps) {
     super(props);
-    new Environment(props.miljo);
+    Environment.settEnv(props.miljo);
   }
 
   componentDidMount = () =>

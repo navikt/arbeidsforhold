@@ -33,7 +33,7 @@ class DetaljertArbeidsforhold extends PureComponent<AFDetaljertProps, State> {
 
   constructor(props: AFDetaljertProps) {
     super(props);
-    new Environment(props.miljo);
+    Environment.settEnv(props.miljo);
   }
 
   componentDidMount = () => this.hentData();

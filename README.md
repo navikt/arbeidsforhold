@@ -15,13 +15,15 @@ Prosjektet er delt opp i uavhengige moduler som kan importeres
 
 #### Liste med arbeidsforhold
 
-![Screenshot av liste med arbeidsforhold](screenshots/ListeMedArbeidsforhold.png)
-
 ```js
 import { ListeMedArbeidsforhold } from "@navikt/arbeidsforhold";
 ```
 
-Eksempel:
+Screenshot 
+
+![Screenshot av liste med arbeidsforhold](screenshots/ListeMedArbeidsforhold.png)
+
+Eksempel
 
 ```js
 onClick = (arbeidsforoldId: string) => console.log(arbeidsforholdId);
@@ -32,13 +34,16 @@ render = () => {
 
 #### Detaljert arbeidsforhold
 
-![Screenshot av detaljert arbeidsforhold](screenshots/DetaljertArbeidsforhold.png)
-
 ```js
 import { DetaljertArbeidsforhold } from "@navikt/arbeidsforhold";
 ```
 
-Eksempel:
+Screenshot
+
+![Screenshot av detaljert arbeidsforhold](screenshots/DetaljertArbeidsforhold.png)
+
+
+Eksempel
 
 ```js
 render = () => {

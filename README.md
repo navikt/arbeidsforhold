@@ -54,25 +54,26 @@ render = () => {
 
 ## Videreutvikling / test
 
-Hent repoet fra github og installer NPM pakker
+* Hent repoet fra github
 
 ```
-npm install
+git clone https://github.com/navikt/arbeidsforhold.git
 ```
 
-Start kompileringen av komponenten
+* Installer nødvendige pakker og start kompilering
 
 ```
-npm start
+npm install && npm start
 ```
 
-Start test applikasjonen <br>
-En simpel create-react-app som importerer og benytter pakkene
+
+* Start test applikasjonen <br>
 
 ```
-cd example && npm start
+cd example && npm install && npm start
 ```
 
+Test-applikasjonen består av en simpel create-react-app som importerer og benytter pakkene <br>
 Prosjektet støtter hot-reloading, endringer i komponentene vil føre til at test-applikasjonen oppdateres
 
 ##Logging

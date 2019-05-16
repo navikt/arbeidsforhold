@@ -1,15 +1,13 @@
 import { logApiError } from "../utils/logger";
 import Environment from "../utils/environment";
 
-const environment = Environment();
-const apiUrl = environment.apiUrl;
-const loginUrl = environment.loginUrl;
-
 const parseJson = (data: any) => data.json();
 
 const sendTilLogin = () =>
   new Promise(() =>
-    window.location.assign(`${loginUrl}?redirect=${window.location.href}`)
+    window.location.assign(
+      `${Environment.loginUrl}?redirect=${window.location.href}`
+    )
   );
 
 const sjekkAuth = (response: Response): Response | Promise<any> =>
@@ -47,7 +45,7 @@ const hentJsonOgSjekkAuth = (url: string) =>
   );
 
 export const hentListeMedArbeidsforhold = () =>
-  hentJsonOgSjekkAuth(`${apiUrl}/arbeidsforhold`);
+  hentJsonOgSjekkAuth(`${Environment.apiUrl}/arbeidsforhold`);
 
 export const hentDetaljertArbeidsforhold = (id: string) =>
-  hentJsonOgSjekkAuth(`${apiUrl}/arbeidsforholdinnslag/${id}`);
+  hentJsonOgSjekkAuth(`${Environment.apiUrl}/arbeidsforholdinnslag/${id}`);

@@ -28,7 +28,7 @@ Eksempel
 ```js
 onClick = (arbeidsforoldId: string) => console.log(arbeidsforholdId);
 render = () => {
-  return <ListeMedArbeidsforhold onClick={onClick} />;
+  return <ListeMedArbeidsforhold onClick={this.onClick} />;
 };
 ```
 

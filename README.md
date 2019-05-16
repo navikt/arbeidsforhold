@@ -36,6 +36,7 @@ render = () => {
 import { DetaljertArbeidsforhold } from "@navikt/arbeidsforhold";
 ```
 
+<img alt="Screenshot av detaljert arbeidsforhold" src="screenshots/DetaljertArbeidsforhold.png" width="60%"/>
 
 Eksempel
 

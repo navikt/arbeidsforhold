@@ -37,7 +37,7 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
                 </div>
               </div>
               <div className="af-liste__lenke">
-                <HoyreChevron />
+                Vis detaljer <HoyreChevron />
               </div>
             </div>
           ))}

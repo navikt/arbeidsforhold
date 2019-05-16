@@ -4,29 +4,35 @@
   &__rad {
     padding: 0.5rem 0;
     display: flex;
-    cursor: pointer;
     align-items: center;
     justify-content: space-between;
     border-top: 1px solid #979797;
     &:last-child {
       border-bottom: 1px solid #979797;
     }
-    &:hover > div > p {
-      font-weight: bold;
-      text-decoration: underline;
-      color: #0067c5;
-    }
   }
   &__vis-flere {
     margin: 1rem 0;
     color: #0067c5;
     cursor: pointer;
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
   }
   &__innhold {
     min-width: 7rem;
   }
   &__lenke {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0067c5;
+    cursor: pointer;
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
   }
   &__tittel {
     flex: 1;

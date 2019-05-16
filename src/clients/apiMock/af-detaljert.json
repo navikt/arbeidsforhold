@@ -10,7 +10,7 @@
     "organisasjonsnummer": "972165050",
     "type": "Organisasjon"
   },
-  "type": "ordinaertArbeidsforhold",
+  "type": "Ordinært",
   "ansettelsesperiode": {
     "periode": {
       "fom": "1988-10-03",
@@ -30,7 +30,7 @@
   },
   "arbeidsavtaler": [
     {
-      "yrke": "INGEN_YRKESKODE",
+      "yrke": "Klovn",
       "beregnetAntallTimerPrUke": 19.0,
       "sistStillingsendring": "1988-10-03",
       "stillingsprosent": "100%",

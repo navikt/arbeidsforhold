@@ -20,7 +20,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
             </Undertittel>
           </div>
           <Normaltekst>
-            {arbeidsforhold.ansettelsesperiode.periode.fom}
+            Startdato: {arbeidsforhold.ansettelsesperiode.periode.fom}
           </Normaltekst>
         </div>
         <div className="af-detaljert__kolonne af-detaljert__status">

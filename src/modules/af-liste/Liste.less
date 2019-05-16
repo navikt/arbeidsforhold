@@ -1,15 +1,16 @@
 .af-liste {
   &__container {
   }
-  &__rad,
-  &__header {
-    display: flex;
-    width: 100%;
-    height: 38px;
-    border-bottom: solid 1px #979797;
-  }
   &__rad {
+    padding: 0.5rem 0;
+    display: flex;
     cursor: pointer;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #979797;
+    &:last-child {
+      border-bottom: 1px solid #979797;
+    }
     &:hover > div > p {
       font-weight: bold;
       text-decoration: underline;
@@ -21,17 +22,11 @@
     color: #0067c5;
     cursor: pointer;
   }
-  &__kolonne {
-    display: flex;
-    align-items: center;
+  &__innhold {
     min-width: 7rem;
   }
-  &__kolonne:not(:last-child) {
-    padding: 0 1rem 0 0;
-  }
-  &__kolonne:last-child {
-    justify-content: flex-end;
-    padding: 0 0.5rem 0 0;
+  &__lenke {
+    display: flex;
   }
   &__tittel {
     flex: 1;

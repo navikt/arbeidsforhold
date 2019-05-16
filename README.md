@@ -44,7 +44,7 @@ render = () => {
 };
 ```
 
-## Videreutvikling
+## Videreutvikling / test
 
 Hent repoet fra github og installer NPM pakker
 

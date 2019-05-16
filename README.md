@@ -76,7 +76,7 @@ cd example && npm install && npm start
 Test-applikasjonen består av en simpel create-react-app som importerer og benytter pakkene <br>
 Prosjektet støtter hot-reloading, endringer i komponentene vil føre til at test-applikasjonen oppdateres
 
-##Logging
+## Logging
 
 Vi bruker fo-frontendlogger for logging. For oppslag i kibana:
 

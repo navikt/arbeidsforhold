@@ -7,7 +7,7 @@ import { hentDetaljertArbeidsforhold } from "../../clients/apiClient";
 import Spinner from "../../components/spinner/Spinner";
 import DetaljerArbeidsforhold from "./Detaljert";
 import Environment from "../../utils/environment";
-import { MILJO } from "../../types/miljo";
+import Miljo from "../../types/miljo";
 
 type State =
   | { status: "LOADING" }
@@ -15,7 +15,7 @@ type State =
   | { status: "ERROR"; error: HTTPError };
 
 export interface AFDetaljertProps {
-  miljo: MILJO;
+  miljo: "LOCAL" | "DEV" | "PROD";
   arbeidsforholdId: string;
   classNameContainer?: string;
 }
@@ -33,7 +33,7 @@ class DetaljertArbeidsforhold extends PureComponent<AFDetaljertProps, State> {
 
   constructor(props: AFDetaljertProps) {
     super(props);
-    Environment.settEnv(props.miljo);
+    Environment.settEnv(props.miljo as Miljo);
   }
 
   componentDidMount = () => this.hentData();

@@ -1,11 +1,11 @@
-import { MILJO } from "../types/miljo";
+import Miljo from "../types/miljo";
 
 class Environment {
   static apiUrl: string;
   static loginUrl: string;
   static logoutUrl: string;
 
-  static settEnv = (miljo: MILJO) => {
+  static settEnv = (miljo: Miljo) => {
     switch (miljo) {
       default:
       case "LOCAL":

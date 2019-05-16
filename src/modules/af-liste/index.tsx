@@ -7,7 +7,7 @@ import { hentListeMedArbeidsforhold } from "../../clients/apiClient";
 import Spinner from "../../components/spinner/Spinner";
 import Liste from "./Liste";
 import Environment from "../../utils/environment";
-import { MILJO } from "../../types/miljo";
+import Miljo from "../../types/miljo";
 
 type State =
   | { status: "LOADING" }
@@ -15,7 +15,7 @@ type State =
   | { status: "ERROR"; error: HTTPError };
 
 export interface AFListeProps {
-  miljo: MILJO;
+  miljo: "LOCAL" | "DEV" | "PROD";
   classNameContainer?: string;
   onClick: (arbeidsforholdId: string) => void;
 }
@@ -31,7 +31,7 @@ class ListeMedArbeidsforhold extends Component<AFListeProps, State> {
 
   constructor(props: AFListeProps) {
     super(props);
-    Environment.settEnv(props.miljo);
+    Environment.settEnv(props.miljo as Miljo);
   }
 
   componentDidMount = () =>

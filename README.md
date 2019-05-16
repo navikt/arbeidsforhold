@@ -19,8 +19,6 @@ Prosjektet er delt opp i uavhengige moduler som kan importeres
 import { ListeMedArbeidsforhold } from "@navikt/arbeidsforhold";
 ```
 
-Screenshot 
-
 <img alt="Screenshot av liste med arbeidsforhold" src="screenshots/ListeMedArbeidsforhold.png" width="60%"/>
 
 Eksempel
@@ -38,9 +36,6 @@ render = () => {
 import { DetaljertArbeidsforhold } from "@navikt/arbeidsforhold";
 ```
 
-Screenshot
-
-<img alt="Screenshot av detaljert arbeidsforhold" src="screenshots/DetaljertArbeidsforhold.png" width="60%"/>
 
 Eksempel
 

@@ -1,5 +1,9 @@
 import { logApiError } from "../utils/logger";
-import { apiUrl, loginUrl } from "../utils/environment";
+import Environment from "../utils/environment";
+
+const environment = Environment();
+const apiUrl = environment.apiUrl;
+const loginUrl = environment.loginUrl;
 
 const parseJson = (data: any) => data.json();
 

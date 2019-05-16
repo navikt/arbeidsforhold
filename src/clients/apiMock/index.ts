@@ -1,7 +1,10 @@
 import fetchMock from "fetch-mock";
-import { apiUrl } from "../../utils/environment";
 import afListe from "./af-liste.json";
 import afDetaljert from "./af-detaljert.json";
+import Environment from "../../utils/environment";
+
+const environment = Environment();
+const apiUrl = environment.apiUrl;
 
 const delay = (min: number, max: number) => {
   return new Promise(resolve => {

@@ -93,7 +93,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       {(() => {
         switch (visTab) {
           case "Historikk":
-            return <Historikk />;
+            return <Historikk arbeidsavtaler={arbeidsforhold.arbeidsavtaler} />;
           case "Permisjon/Permittering":
             return <Permisjon />;
           case "Timer for timelønnet":

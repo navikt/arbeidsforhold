@@ -18,14 +18,6 @@
     },
     "bruksperiode": {
       "fom": "2014-12-13T13:59:11.893"
-    },
-    "sporingsinformasjon": {
-      "opprettetTidspunkt": "2014-12-13T13:59:11.91",
-      "opprettetAv": "BAAREG002",
-      "opprettetKilde": "KONVERTERING",
-      "endretTidspunkt": "2014-12-13T13:59:11.91",
-      "endretAv": "BAAREG002",
-      "endretKilde": "KONVERTERING"
     }
   },
   "arbeidsavtaler": [
@@ -39,25 +31,8 @@
       },
       "gyldighetsperiode": {
         "fom": "1988-10-01"
-      },
-      "sporingsinformasjon": {
-        "opprettetTidspunkt": "2014-12-13T13:59:11.91",
-        "opprettetAv": "BAAREG002",
-        "opprettetKilde": "KONVERTERING",
-        "endretTidspunkt": "2014-12-13T13:59:11.91",
-        "endretAv": "BAAREG002",
-        "endretKilde": "KONVERTERING"
       }
     }
   ],
-  "innrapportertEtterAOrdningen": false,
-  "sistBekreftet": "1989-05-31T00:00:00",
-  "sporingsinformasjon": {
-    "opprettetTidspunkt": "2014-12-13T13:59:11.91",
-    "opprettetAv": "BAAREG002",
-    "opprettetKilde": "KONVERTERING",
-    "endretTidspunkt": "2015-05-31T14:05:43.561",
-    "endretAv": "EDAG-1456",
-    "endretKilde": "KONVERTERING"
-  }
+  "sistBekreftet": "1989-05-31T00:00:00"
 }

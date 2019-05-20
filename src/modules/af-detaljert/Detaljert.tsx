@@ -8,11 +8,17 @@ import Historikk from "./tabs/Historikk";
 import Permisjon from "./tabs/Permisjon";
 import Timer from "./tabs/Timer";
 import Utenlandsopphold from "./tabs/Utenlandsopphold";
+import moment from "moment";
+import Moment from "react-moment";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, classNameContainer } = props;
-  const sisteArbeidsavtale = arbeidsforhold.arbeidsavtaler[0];
+  const { arbeidsavtaler } = arbeidsforhold;
   const [visTab, settVisTab] = useState("Historikk");
+  const sorterteArbeidsavtaler = arbeidsavtaler.sort((left, right) =>
+    moment.utc(left.bruksperiode.fom).diff(moment.utc(right.bruksperiode.fom))
+  );
+  const sisteArbeidsavtale = sorterteArbeidsavtaler[0];
   const tabs = [
     { label: "Historikk" },
     { label: "Permisjon/Permittering" },
@@ -33,7 +39,10 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
             </Undertittel>
           </div>
           <Normaltekst>
-            Startdato: {arbeidsforhold.ansettelsesperiode.periode.fom}
+            Startdato:
+            <Moment format="DD.MM.YYYY">
+              {arbeidsforhold.ansettelsesperiode.periode.fom}
+            </Moment>
           </Normaltekst>
         </div>
         <div className="af-detaljert__kolonne af-detaljert__status">
@@ -66,19 +75,13 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
         </div>
         <div className="af-detaljert__boks">
           <Element>Arbeidstidsordning</Element>
-          <Normaltekst>{arbeidsforhold.type}</Normaltekst>
-        </div>
-        <div className="af-detaljert__boks">
-          <Element>Timer i full stilling</Element>
-          <Normaltekst>{arbeidsforhold.type}</Normaltekst>
+          <Normaltekst>{sisteArbeidsavtale.arbeidstidsordning}</Normaltekst>
         </div>
         <div className="af-detaljert__boks">
           <Element>Sist bekreftet av arbeidsgiver</Element>
-          <Normaltekst>{arbeidsforhold.type}</Normaltekst>
-        </div>
-        <div className="af-detaljert__boks">
-          <Element>Oppdatert</Element>
-          <Normaltekst>{arbeidsforhold.type}</Normaltekst>
+          <Normaltekst>
+            <Moment format="DD.MM.YYYY">{arbeidsforhold.sistBekreftet}</Moment>
+          </Normaltekst>
         </div>
       </div>
       <div className="af-detaljert__tabs">
@@ -93,7 +96,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       {(() => {
         switch (visTab) {
           case "Historikk":
-            return <Historikk arbeidsavtaler={arbeidsforhold.arbeidsavtaler} />;
+            return <Historikk arbeidsavtaler={sorterteArbeidsavtaler} />;
           case "Permisjon/Permittering":
             return <Permisjon />;
           case "Timer for timelønnet":

@@ -22,17 +22,36 @@
   },
   "arbeidsavtaler": [
     {
-      "yrke": "Klovn",
-      "beregnetAntallTimerPrUke": 19.0,
-      "sistStillingsendring": "1988-10-03",
-      "stillingsprosent": "100%",
+      "antallTimerPrUke": 37.5,
+      "arbeidstidsordning": "ikkeSkift",
+      "beregnetAntallTimerPrUke": 40,
       "bruksperiode": {
-        "fom": "2014-12-13T13:59:11.893"
+        "fom": "2016-12-13T13:59:11.893"
       },
       "gyldighetsperiode": {
         "fom": "1988-10-01"
-      }
+      },
+      "sistLonnsendring": "2016-12-16",
+      "sistStillingsendring": "1988-10-03",
+      "stillingsprosent": "100%",
+      "yrke": "Klovn"
+    },
+    {
+      "antallTimerPrUke": 37.5,
+      "arbeidstidsordning": "ikkeSkift",
+      "beregnetAntallTimerPrUke": 40,
+      "bruksperiode": {
+        "fom": "2014-12-13T13:59:11.893",
+        "tom": "2016-12-13T13:59:11.893"
+      },
+      "gyldighetsperiode": {
+        "fom": "1988-10-01"
+      },
+      "sistLonnsendring": "2016-12-16",
+      "sistStillingsendring": "1988-10-03",
+      "stillingsprosent": "100%",
+      "yrke": "Klovn"
     }
   ],
-  "sistBekreftet": "1989-05-31T00:00:00"
+  "sistBekreftet": "2016-12-13T13:59:11.893"
 }

@@ -20,7 +20,7 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
             <div className="af-liste__rad" key={foretak.arbeidsforholdId}>
               <div className="af-liste__innhold">
                 <div>
-                  <Element>{foretak.arbeidsgiver.organisasjonsnavn}</Element>
+                  <Element>{foretak.arbeidsgiver.navn}</Element>
                 </div>
                 <div>
                   <Normaltekst>{foretak.yrke}</Normaltekst>

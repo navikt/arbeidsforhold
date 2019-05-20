@@ -1,8 +1,8 @@
 export interface AFSimpel {
   arbeidsforholdId: string;
   arbeidsgiver: {
-    organisasjonsnummer: string;
-    organisasjonsnavn: string;
+    orgnr: string;
+    navn: string;
   };
   ansettelsesPeriode: {
     periodeFra?: string;

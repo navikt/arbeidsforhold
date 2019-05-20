@@ -39,6 +39,24 @@ export interface AFPermisjonPermittering {
   type: string;
 }
 
+export interface AFTimerForTimelonnet {
+  antallTimer: number;
+  periode: {
+    fom: string;
+    tom: string;
+  };
+  rapporteringsperiode: string;
+}
+
+export interface AFUtenlandsopphold {
+  landkode: string;
+  periode: {
+    fom: string;
+    tom: string;
+  };
+  rapporteringsperiode: string;
+}
+
 export interface AFUtvidet {
   ansettelsesperiode: {
     bruksperiode: {
@@ -51,16 +69,7 @@ export interface AFUtvidet {
     };
     varslingskode: string;
   };
-  antallTimerForTimeloennet: [
-    {
-      antallTimer: number;
-      periode: {
-        fom: string;
-        tom: string;
-      };
-      rapporteringsperiode: string;
-    }
-  ];
+  antallTimerForTimeloennet: AFTimerForTimelonnet[];
   arbeidsavtaler: AFArbeidsavtaler[];
   arbeidsforholdId: string;
   arbeidsgiver: {
@@ -81,14 +90,5 @@ export interface AFUtvidet {
   registrert: string;
   sistBekreftet: string;
   type: string;
-  utenlandsopphold: [
-    {
-      landkode: string;
-      periode: {
-        fom: string;
-        tom: string;
-      };
-      rapporteringsperiode: string;
-    }
-  ];
+  utenlandsopphold: AFUtenlandsopphold[];
 }

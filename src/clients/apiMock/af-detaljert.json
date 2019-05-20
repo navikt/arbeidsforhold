@@ -20,6 +20,32 @@
       "fom": "2014-12-13T13:59:11.893"
     }
   },
+  "antallTimerForTimeloennet": [
+    {
+      "antallTimer": 37.5,
+      "periode": {
+        "fom": "2014-07-01",
+        "tom": "2015-12-31"
+      },
+      "rapporteringsperiode": "2015-05"
+    },
+    {
+      "antallTimer": 37.5,
+      "periode": {
+        "fom": "2015-04-25",
+        "tom": "2015-04-30"
+      },
+      "rapporteringsperiode": "2015-06"
+    },
+    {
+      "antallTimer": 37.5,
+      "periode": {
+        "fom": "2016-01-01",
+        "tom": "2016-01-01"
+      },
+      "rapporteringsperiode": "2016-02"
+    }
+  ],
   "arbeidsavtaler": [
     {
       "antallTimerPrUke": 37.5,

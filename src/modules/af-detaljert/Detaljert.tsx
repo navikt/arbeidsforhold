@@ -13,7 +13,7 @@ import Moment from "react-moment";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, classNameContainer } = props;
-  const { arbeidsavtaler } = arbeidsforhold;
+  const { arbeidsavtaler, permisjonPermitteringer } = arbeidsforhold;
   const [visTab, settVisTab] = useState("Historikk");
   const sorterteArbeidsavtaler = arbeidsavtaler.sort((left, right) =>
     moment.utc(left.bruksperiode.fom).diff(moment.utc(right.bruksperiode.fom))
@@ -98,7 +98,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           case "Historikk":
             return <Historikk arbeidsavtaler={sorterteArbeidsavtaler} />;
           case "Permisjon/Permittering":
-            return <Permisjon />;
+            return <Permisjon permisjoner={permisjonPermitteringer} />;
           case "Timer for timelønnet":
             return <Timer />;
           case "Utenlandsopphold":

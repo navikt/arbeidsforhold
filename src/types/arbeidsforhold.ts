@@ -29,6 +29,16 @@ export interface AFArbeidsavtaler {
   yrke: number;
 }
 
+export interface AFPermisjonPermittering {
+  periode: {
+    fom: string;
+    tom: string;
+  };
+  permisjonPermitteringId: string;
+  prosent: number;
+  type: string;
+}
+
 export interface AFUtvidet {
   ansettelsesperiode: {
     bruksperiode: {
@@ -67,17 +77,7 @@ export interface AFUtvidet {
   opplysningspliktig: {
     type: string;
   };
-  permisjonPermitteringer: [
-    {
-      periode: {
-        fom: string;
-        tom: string;
-      };
-      permisjonPermitteringId: string;
-      prosent: number;
-      type: string;
-    }
-  ];
+  permisjonPermitteringer: AFPermisjonPermittering[];
   registrert: string;
   sistBekreftet: string;
   type: string;

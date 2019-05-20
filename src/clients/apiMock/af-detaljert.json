@@ -53,5 +53,25 @@
       "yrke": "Klovn"
     }
   ],
+  "permisjonPermitteringer": [
+    {
+      "periode": {
+        "fom": "2014-07-01",
+        "tom": "2015-12-31"
+      },
+      "permisjonPermitteringId": "123-xyz",
+      "prosent": 50.5,
+      "type": "permisjonMedForeldrepenger"
+    },
+    {
+      "periode": {
+        "fom": "2015-01-03",
+        "tom": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "permisjonMedForeldrepenger"
+    }
+  ],
   "sistBekreftet": "2016-12-13T13:59:11.893"
 }

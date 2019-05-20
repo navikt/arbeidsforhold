@@ -17,13 +17,13 @@ const Historikk = (props: Props) => (
         <Element>Stillingsprosent</Element>
       </td>
       <td className="af-liste__kolonne">
-        <Element>Periode</Element>
-      </td>
-      <td className="af-liste__kolonne">
         <Element>Timer/uke</Element>
       </td>
       <td className="af-liste__kolonne">
         <Element>Lønnsendring</Element>
+      </td>
+      <td className="af-liste__kolonne">
+        <Element>Periode</Element>
       </td>
     </tr>
     {props.arbeidsavtaler.map(arbeidsavtale => (
@@ -35,14 +35,14 @@ const Historikk = (props: Props) => (
       >
         <td className="af-liste__kolonne">{arbeidsavtale.yrke}</td>
         <td className="af-liste__kolonne">{arbeidsavtale.stillingsprosent}</td>
+        <td className="af-liste__kolonne">{arbeidsavtale.antallTimerPrUke}</td>
+        <td className="af-liste__kolonne">
+          <Moment format="DD.MM.YYYY">{arbeidsavtale.sistLoennsendring}</Moment>
+        </td>
         <td className="af-liste__kolonne">
           <Moment format="DD.MM.YYYY">{arbeidsavtale.bruksperiode.fom}</Moment>
           -<br />
           <Moment format="DD.MM.YYYY">{arbeidsavtale.bruksperiode.tom}</Moment>
-        </td>
-        <td className="af-liste__kolonne">{arbeidsavtale.antallTimerPrUke}</td>
-        <td className="af-liste__kolonne">
-          <Moment format="DD.MM.YYYY">{arbeidsavtale.sistLoennsendring}</Moment>
         </td>
       </tr>
     ))}

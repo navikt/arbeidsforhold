@@ -8,6 +8,7 @@ interface Props {
 }
 
 const typer = {
+  velferdspermisjon: "Velferdspermisjon",
   permisjonMedForeldrepenger: "Permisjon med foreldrepenger"
 };
 

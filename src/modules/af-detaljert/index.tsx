@@ -36,17 +36,17 @@ class DetaljertArbeidsforhold extends PureComponent<AFDetaljertProps, State> {
     Environment.settEnv(props.miljo as Miljo);
   }
 
-  componentDidMount = () => this.hentData();
+  componentDidMount = () => this.hentData(this.props.arbeidsforholdId);
   componentWillReceiveProps = (props: AFDetaljertProps) => {
     if (this.props.arbeidsforholdId !== props.arbeidsforholdId) {
       console.log(`Nye props, arbeidsforhold ${props.arbeidsforholdId}`);
-      this.hentData();
+      this.hentData(props.arbeidsforholdId);
     }
   };
 
-  hentData = () =>
+  hentData = (arbeidsforholdId: string) =>
     this.setState(initState, () =>
-      hentDetaljertArbeidsforhold(this.props.arbeidsforholdId)
+      hentDetaljertArbeidsforhold(arbeidsforholdId)
         .then(arbeidsforhold =>
           this.setState({
             status: "RESULT",

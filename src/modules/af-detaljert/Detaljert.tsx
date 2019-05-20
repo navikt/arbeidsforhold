@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useState, SyntheticEvent } from "react";
 import { Normaltekst, Undertittel, Element } from "nav-frontend-typografi";
 import { AFDetaljertData, AFDetaljertProps } from "./index";
 import { EtikettSuksess } from "nav-frontend-etiketter";
 import { AlertStripeInfo } from "nav-frontend-alertstriper";
 import Tabs from "nav-frontend-tabs";
+import Historikk from "./tabs/Historikk";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, classNameContainer } = props;
   const sisteArbeidsavtale = arbeidsforhold.arbeidsavtaler[0];
+  const [visTab, settVisTab] = useState("Historikk");
+  const tabs = [
+    { label: "Historikk" },
+    { label: "Permisjon/Permittering" },
+    { label: "Timer for timelønnet" },
+    { label: "Utenlandsopphold" }
+  ];
   return (
     <div
       className={`af-detaljert__container ${
@@ -72,16 +80,27 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       </div>
       <div className="af-detaljert__tabs">
         <Tabs
-          tabs={[
-            { label: "Historikk" },
-            { label: "Permisjon/Permittering" },
-            { label: "Timer for timelønnet" },
-            { label: "Utenlandsopphold" }
-          ]}
-          onChange={() => {}}
+          tabs={tabs}
+          onChange={(
+            _event: SyntheticEvent<EventTarget, Event>,
+            index: number
+          ) => settVisTab(tabs[index].label)}
         />
       </div>
-      <div className="af-detaljert__tabs-innhold">Innhold i tabs</div>
+      {(() => {
+        switch (visTab) {
+          case "Historikk":
+            return <Historikk />;
+          case "Permisjon/Permittering":
+            return <Historikk />;
+          case "Timer for timelønnet":
+            return <Historikk />;
+          case "Utenlandsopphold":
+            return <Historikk />;
+          default:
+            return null;
+        }
+      })()}
       <AlertStripeInfo>
         Hvis noe er feil med et arbeidsforhold må du kontakte arbeidsgiveren det
         gjelder, slik at de kan rette det opp.

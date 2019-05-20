@@ -13,7 +13,7 @@ export default class App extends Component {
     valgtArbeidsforholdId: "konvertert_af709505-128e-45dc-a241-7e14180f787d"
   };
 
-  onClick = (arbeidsforoldId: string) =>
+  arbeidsforholdOnClick = (arbeidsforoldId: string) =>
     this.setState({ valgtArbeidsforholdId: arbeidsforoldId });
 
   render() {
@@ -21,10 +21,14 @@ export default class App extends Component {
       <div className="example__app">
         <div className="example__content">
           <div className="example__section">
-            <ListeMedArbeidsforhold onClick={this.onClick} />
+            <ListeMedArbeidsforhold
+              miljo="LOCAL"
+              onClick={this.arbeidsforholdOnClick}
+            />
           </div>
           <div className="example__section">
             <DetaljertArbeidsforhold
+              miljo="LOCAL"
               arbeidsforholdId={this.state.valgtArbeidsforholdId}
             />
           </div>

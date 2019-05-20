@@ -17,10 +17,10 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
         {arbeidsforhold
           .slice(0, visAlle ? arbeidsforhold.length : 5)
           .map(foretak => (
-            <div className="af-liste__rad" key={foretak.arbeidsforholdId}>
-              <div className="af-liste__innhold">
+            <div className="af-liste__flex-rad" key={foretak.arbeidsforholdId}>
+              <div className="af-liste__flex-innhold">
                 <div>
-                  <Element>{foretak.arbeidsgiver.organisasjonsnavn}</Element>
+                  <Element>{foretak.arbeidsgiver.navn}</Element>
                 </div>
                 <div>
                   <Normaltekst>{foretak.yrke}</Normaltekst>

@@ -12,12 +12,13 @@ interface Props {
 
 const Error = (props: Props) => {
   const { error } = props;
+  console.log(error);
   return (
     <div className="error__container">
       <AlertStripe type="feil">
         Oisann, noe gikk galt ved henting av data!
         <br />
-        <span>{` ${error.code}: ${error.text}`}</span>
+        {error && <span>{` ${error.code}: ${error.text}`}</span>}
       </AlertStripe>
     </div>
   );

@@ -1,7 +1,7 @@
 import fetchMock from "fetch-mock";
-import { apiUrl } from "../../utils/environment";
 import afListe from "./af-liste.json";
 import afDetaljert from "./af-detaljert.json";
+import Environment from "../../utils/environment";
 
 const delay = (min: number, max: number) => {
   return new Promise(resolve => {
@@ -11,11 +11,11 @@ const delay = (min: number, max: number) => {
 
 export const setUpMock = async () => {
   fetchMock.get(
-    `${apiUrl}/arbeidsforhold`,
+    `${Environment.apiUrl}/arbeidsforhold`,
     delay(250, 1250).then(() => afListe)
   );
   fetchMock.get(
-    `begin:${apiUrl}/arbeidsforholdinnslag`,
+    `begin:${Environment.apiUrl}/arbeidsforholdinnslag`,
     delay(250, 1250).then(() => afDetaljert)
   );
 };

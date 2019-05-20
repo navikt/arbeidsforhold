@@ -10,7 +10,6 @@ npm install @navikt/arbeidsforhold
 
 ## Komponenter
 
-
 Prosjektet er delt opp i uavhengige moduler som kan importeres
 
 #### Liste med arbeidsforhold
@@ -19,16 +18,18 @@ Prosjektet er delt opp i uavhengige moduler som kan importeres
 import { ListeMedArbeidsforhold } from "@navikt/arbeidsforhold";
 ```
 
-Screenshot 
-
-![Screenshot av liste med arbeidsforhold](screenshots/ListeMedArbeidsforhold.png)
+<img alt="Screenshot av liste med arbeidsforhold" src="screenshots/ListeMedArbeidsforhold.png" width="60%"/>
 
 Eksempel
 
 ```js
-onClick = (arbeidsforholdId: string) => console.log(arbeidsforholdId);
+onClick = (arbeidsforholdId: string) =>
+    console.log(arbeidsforholdId);
+
 render = () => {
-  return <ListeMedArbeidsforhold onClick={this.onClick} />;
+  return <ListeMedArbeidsforhold
+            miljo={"DEV" as "LOCAL" | "DEV" | "PROD"}
+            onClick={this.onClick} />;
 };
 ```
 
@@ -38,36 +39,38 @@ render = () => {
 import { DetaljertArbeidsforhold } from "@navikt/arbeidsforhold";
 ```
 
-Screenshot
-
-![Screenshot av detaljert arbeidsforhold](screenshots/DetaljertArbeidsforhold.png)
-
+<img alt="Screenshot av detaljert arbeidsforhold" src="screenshots/DetaljertArbeidsforhold.png" width="60%"/>
 
 Eksempel
 
 ```js
 render = () => {
+  const mijo = "DEV" as "LOCAL" | "DEV" | "PROD";
   const arbeidsforholdId = "konvertert_af709505-128e-45dc-a241-7e14180f787d";
-  return <DetaljertArbeidsforhold arbeidsforholdId={arbeidsforholdId} />;
+
+  return <DetaljertArbeidsforhold
+            miljo={miljo}
+            arbeidsforholdId={arbeidsforholdId} />;
 };
 ```
 
+Komponenten vil hente data fra arbeidsforhold-api basert på miljo-variabelen
+
 ## Videreutvikling / test
 
-* Hent repoet fra github
+- Hent repoet fra github
 
 ```
 git clone https://github.com/navikt/arbeidsforhold.git
 ```
 
-* Installer nødvendige pakker og start kompilering
+- Installer nødvendige pakker og start kompilering
 
 ```
 npm install && npm start
 ```
 
-
-* Start test applikasjonen <br>
+- Start test applikasjonen <br>
 
 ```
 cd example && npm install && npm start
@@ -76,7 +79,7 @@ cd example && npm install && npm start
 Test-applikasjonen består av en simpel create-react-app som importerer og benytter pakkene <br>
 Prosjektet støtter hot-reloading, endringer i komponentene vil føre til at test-applikasjonen oppdateres
 
-##Logging
+## Logging
 
 Vi bruker fo-frontendlogger for logging. For oppslag i kibana:
 

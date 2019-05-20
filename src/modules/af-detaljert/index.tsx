@@ -6,6 +6,8 @@ import { AFUtvidet } from "../../types/arbeidsforhold";
 import { hentDetaljertArbeidsforhold } from "../../clients/apiClient";
 import Spinner from "../../components/spinner/Spinner";
 import DetaljerArbeidsforhold from "./Detaljert";
+import Environment from "../../utils/environment";
+import Miljo from "../../types/miljo";
 
 type State =
   | { status: "LOADING" }
@@ -13,6 +15,7 @@ type State =
   | { status: "ERROR"; error: HTTPError };
 
 export interface AFDetaljertProps {
+  miljo: "LOCAL" | "DEV" | "PROD";
   arbeidsforholdId: string;
   classNameContainer?: string;
 }
@@ -28,17 +31,22 @@ const initState: State = {
 class DetaljertArbeidsforhold extends PureComponent<AFDetaljertProps, State> {
   state = initState;
 
-  componentDidMount = () => this.hentData();
+  constructor(props: AFDetaljertProps) {
+    super(props);
+    Environment.settEnv(props.miljo as Miljo);
+  }
+
+  componentDidMount = () => this.hentData(this.props.arbeidsforholdId);
   componentWillReceiveProps = (props: AFDetaljertProps) => {
     if (this.props.arbeidsforholdId !== props.arbeidsforholdId) {
       console.log(`Nye props, arbeidsforhold ${props.arbeidsforholdId}`);
-      this.hentData();
+      this.hentData(props.arbeidsforholdId);
     }
   };
 
-  hentData = () =>
+  hentData = (arbeidsforholdId: string) =>
     this.setState(initState, () =>
-      hentDetaljertArbeidsforhold(this.props.arbeidsforholdId)
+      hentDetaljertArbeidsforhold(arbeidsforholdId)
         .then(arbeidsforhold =>
           this.setState({
             status: "RESULT",

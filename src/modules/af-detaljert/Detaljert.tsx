@@ -5,6 +5,9 @@ import { EtikettSuksess } from "nav-frontend-etiketter";
 import { AlertStripeInfo } from "nav-frontend-alertstriper";
 import Tabs from "nav-frontend-tabs";
 import Historikk from "./tabs/Historikk";
+import Permisjon from "./tabs/Permisjon";
+import Timer from "./tabs/Timer";
+import Utenlandsopphold from "./tabs/Utenlandsopphold";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, classNameContainer } = props;
@@ -92,11 +95,11 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           case "Historikk":
             return <Historikk />;
           case "Permisjon/Permittering":
-            return <Historikk />;
+            return <Permisjon />;
           case "Timer for timelønnet":
-            return <Historikk />;
+            return <Timer />;
           case "Utenlandsopphold":
-            return <Historikk />;
+            return <Utenlandsopphold />;
           default:
             return null;
         }

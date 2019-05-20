@@ -23,8 +23,7 @@ import { ListeMedArbeidsforhold } from "@navikt/arbeidsforhold";
 Eksempel
 
 ```js
-
-onClick = (arbeidsforoldId: string) =>
+onClick = (arbeidsforholdId: string) =>
     console.log(arbeidsforholdId);
 
 render = () => {

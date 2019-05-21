@@ -14,31 +14,35 @@ const typer = {
 
 const Permisjon = (props: Props) => (
   <table className="af-detaljert__tabs-innhold af-liste__table">
-    <tr className="af-liste__rad">
-      <td className="af-liste__kolonne">
-        <Element>Type</Element>
-      </td>
-      <td className="af-liste__kolonne">
-        <Element>Prosent</Element>
-      </td>
-      <td className="af-liste__kolonne">
-        <Element>Periode</Element>
-      </td>
-    </tr>
-    {props.permisjoner.map(permisjon => (
-      <tr
-        className="af-liste__rad"
-        key={`${permisjon.periode.fom}-${permisjon.periode.tom}`}
-      >
-        <td className="af-liste__kolonne">{typer[permisjon.type]}</td>
-        <td className="af-liste__kolonne">{permisjon.prosent}</td>
+    <thead>
+      <tr className="af-liste__rad">
         <td className="af-liste__kolonne">
-          <Moment format="DD.MM.YYYY">{permisjon.periode.fom}</Moment>
-          -<br />
-          <Moment format="DD.MM.YYYY">{permisjon.periode.tom}</Moment>
+          <Element>Type</Element>
+        </td>
+        <td className="af-liste__kolonne">
+          <Element>Prosent</Element>
+        </td>
+        <td className="af-liste__kolonne">
+          <Element>Periode</Element>
         </td>
       </tr>
-    ))}
+    </thead>
+    <tbody>
+      {props.permisjoner.map(permisjon => (
+        <tr
+          className="af-liste__rad"
+          key={`${permisjon.periode.fom}-${permisjon.periode.tom}`}
+        >
+          <td className="af-liste__kolonne">{typer[permisjon.type]}</td>
+          <td className="af-liste__kolonne">{permisjon.prosent}</td>
+          <td className="af-liste__kolonne">
+            <Moment format="DD.MM.YYYY">{permisjon.periode.fom}</Moment>
+            -<br />
+            <Moment format="DD.MM.YYYY">{permisjon.periode.tom}</Moment>
+          </td>
+        </tr>
+      ))}
+    </tbody>
   </table>
 );
 

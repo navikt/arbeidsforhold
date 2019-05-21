@@ -39,7 +39,6 @@ class DetaljertArbeidsforhold extends PureComponent<AFDetaljertProps, State> {
   componentDidMount = () => this.hentData(this.props.arbeidsforholdId);
   componentWillReceiveProps = (props: AFDetaljertProps) => {
     if (this.props.arbeidsforholdId !== props.arbeidsforholdId) {
-      console.log(`Nye props, arbeidsforhold ${props.arbeidsforholdId}`);
       this.hentData(props.arbeidsforholdId);
     }
   };

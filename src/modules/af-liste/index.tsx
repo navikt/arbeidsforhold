@@ -25,7 +25,7 @@ export interface AFListeData {
 }
 
 class ListeMedArbeidsforhold extends Component<AFListeProps, State> {
-  state: State = {
+  static state: State = {
     status: "LOADING"
   };
 
@@ -34,31 +34,38 @@ class ListeMedArbeidsforhold extends Component<AFListeProps, State> {
     Environment.settEnv(props.miljo as Miljo);
   }
 
-  componentDidMount = () =>
-    hentListeMedArbeidsforhold()
-      .then(arbeidsforhold =>
-        this.setState({
-          status: "RESULT",
-          arbeidsforhold: arbeidsforhold as AFSimpel[]
+  componentDidMount = () => {
+    if (ListeMedArbeidsforhold.state.status !== "RESULT") {
+      hentListeMedArbeidsforhold()
+        .then(arbeidsforhold => {
+          ListeMedArbeidsforhold.state = {
+            status: "RESULT",
+            arbeidsforhold: arbeidsforhold as AFSimpel[]
+          };
         })
-      )
-      .catch((error: HTTPError) =>
-        this.setState({
-          status: "ERROR",
-          error
+        .catch((error: HTTPError) => {
+          ListeMedArbeidsforhold.state = {
+            status: "ERROR",
+            error
+          };
         })
-      );
+        .then(() => this.forceUpdate());
+    }
+  };
 
   render = () => {
-    switch (this.state.status) {
+    switch (ListeMedArbeidsforhold.state.status) {
       case "LOADING":
         return <Spinner />;
       case "RESULT":
         return (
-          <Liste arbeidsforhold={this.state.arbeidsforhold} {...this.props} />
+          <Liste
+            arbeidsforhold={ListeMedArbeidsforhold.state.arbeidsforhold}
+            {...this.props}
+          />
         );
       case "ERROR":
-        return <Error error={this.state.error} />;
+        return <Error error={ListeMedArbeidsforhold.state.error} />;
     }
   };
 }

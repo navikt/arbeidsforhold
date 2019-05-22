@@ -12,7 +12,6 @@ interface Props {
 
 const Error = (props: Props) => {
   const { error } = props;
-  console.log(error);
   return (
     <div className="error__container">
       <AlertStripe type="feil">

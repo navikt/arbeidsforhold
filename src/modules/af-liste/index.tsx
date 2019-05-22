@@ -1,6 +1,6 @@
 import "@babel/polyfill";
 import "core-js";
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import Error, { HTTPError } from "../../components/error/Error";
 import { AFSimpel } from "../../types/arbeidsforhold";
 import { hentListeMedArbeidsforhold } from "../../clients/apiClient";
@@ -24,50 +24,43 @@ export interface AFListeData {
   arbeidsforhold: AFSimpel[];
 }
 
-class ListeMedArbeidsforhold extends Component<AFListeProps, State> {
-  static state: State = {
-    status: "LOADING"
-  };
+// Lagre i minne og ikke i
+// sessionStorage pga sensitive data
+let persistState: State = { status: "LOADING" };
 
-  constructor(props: AFListeProps) {
-    super(props);
-    Environment.settEnv(props.miljo as Miljo);
-  }
+const ListeMedArbeidsforhold = (props: AFListeProps) => {
+  const [state, setState] = useState(persistState);
+  Environment.settEnv(props.miljo as Miljo);
 
-  componentDidMount = () => {
-    if (ListeMedArbeidsforhold.state.status !== "RESULT") {
+  useEffect(() => {
+    if (state.status !== "RESULT") {
       hentListeMedArbeidsforhold()
-        .then(arbeidsforhold => {
-          ListeMedArbeidsforhold.state = {
+        .then(arbeidsforhold =>
+          setState({
             status: "RESULT",
             arbeidsforhold: arbeidsforhold as AFSimpel[]
-          };
-        })
-        .catch((error: HTTPError) => {
-          ListeMedArbeidsforhold.state = {
+          })
+        )
+        .catch((error: HTTPError) =>
+          setState({
             status: "ERROR",
-            error
-          };
-        })
-        .then(() => this.forceUpdate());
-    }
-  };
-
-  render = () => {
-    switch (ListeMedArbeidsforhold.state.status) {
-      case "LOADING":
-        return <Spinner />;
-      case "RESULT":
-        return (
-          <Liste
-            arbeidsforhold={ListeMedArbeidsforhold.state.arbeidsforhold}
-            {...this.props}
-          />
+            error: error
+          })
         );
-      case "ERROR":
-        return <Error error={ListeMedArbeidsforhold.state.error} />;
     }
-  };
-}
+    return () => {
+      persistState = state;
+    };
+  }, [state]);
+
+  switch (state.status) {
+    case "LOADING":
+      return <Spinner />;
+    case "RESULT":
+      return <Liste arbeidsforhold={state.arbeidsforhold} {...props} />;
+    case "ERROR":
+      return <Error error={state.error} />;
+  }
+};
 
 export default ListeMedArbeidsforhold;

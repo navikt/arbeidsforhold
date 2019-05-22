@@ -24,12 +24,8 @@ export interface AFDetaljertData {
   arbeidsforhold: AFUtvidet;
 }
 
-// Lagre i minne og ikke i
-// sessionStorage pga sensitive data
-let persistState: State = { status: "LOADING" };
-
 const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
-  const [state, setState] = useState(persistState);
+  const [state, setState] = useState({ status: "LOADING" } as State);
   Environment.settEnv(props.miljo as Miljo);
 
   useEffect(() => {
@@ -48,9 +44,6 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
           })
         );
     }
-    return () => {
-      persistState = state;
-    };
   }, [state]);
 
   switch (state.status) {

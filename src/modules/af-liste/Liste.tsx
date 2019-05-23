@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Normaltekst, Element } from "nav-frontend-typografi";
+import { Normaltekst, Element, Undertekst } from "nav-frontend-typografi";
 import { HoyreChevron, NedChevron, OppChevron } from "nav-frontend-chevron";
 import { AFListeProps, AFListeData } from "./index";
+import Moment from "react-moment";
 
 const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
   const { arbeidsforhold, classNameContainer, onClick } = props;
@@ -19,17 +20,22 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
           .map(foretak => (
             <div className="af-liste__flex-rad" key={foretak.arbeidsforholdId}>
               <div className="af-liste__flex-innhold">
-                <div>
+                <div className="af-liste__tekst">
                   <Element>{foretak.arbeidsgiver.orgnavn}</Element>
                 </div>
-                <div>
+                <div className="af-liste__tekst">
                   <Normaltekst>{foretak.yrke}</Normaltekst>
                 </div>
-                <div>
-                  <Normaltekst>
-                    {foretak.ansettelsesPeriode.periodeFra}-
-                    {foretak.ansettelsesPeriode.periodeTil}
-                  </Normaltekst>
+                <div className="af-liste__tekst">
+                  <Undertekst>
+                    <Moment format="DD.MM.YYYY">
+                      {foretak.ansettelsesPeriode.periodeFra}
+                    </Moment>
+                    {` - `}
+                    <Moment format="DD.MM.YYYY">
+                      {foretak.ansettelsesPeriode.periodeTil}
+                    </Moment>
+                  </Undertekst>
                 </div>
               </div>
               <div

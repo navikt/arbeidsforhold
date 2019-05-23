@@ -35,9 +35,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       <div className="af-detaljert__header">
         <div className="af-detaljert__kolonne">
           <div className="af-detaljert__arbeidsgiver">
-            <Undertittel>
-              {arbeidsforhold.arbeidsgiver.organisasjonsnavn}
-            </Undertittel>
+            <Undertittel>{arbeidsforhold.arbeidsgiver.orgnavn}</Undertittel>
           </div>
           <Normaltekst>
             Startdato:
@@ -58,9 +56,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
         </div>
         <div className="af-detaljert__boks">
           <Element>Organisasjonsnumer</Element>
-          <Normaltekst>
-            {arbeidsforhold.arbeidsgiver.organisasjonsnummer}
-          </Normaltekst>
+          <Normaltekst>{arbeidsforhold.arbeidsgiver.orgnr}</Normaltekst>
         </div>
         <div className="af-detaljert__boks">
           <Element>Yrke</Element>

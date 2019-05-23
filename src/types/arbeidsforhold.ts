@@ -2,7 +2,7 @@ export interface AFSimpel {
   arbeidsforholdId: string;
   arbeidsgiver: {
     orgnr: string;
-    navn: string;
+    orgnavn: string;
   };
   ansettelsesPeriode: {
     periodeFra?: string;
@@ -73,8 +73,8 @@ export interface AFUtvidet {
   arbeidsavtaler: AFArbeidsavtaler[];
   arbeidsforholdId: string;
   arbeidsgiver: {
-    organisasjonsnummer: string;
-    organisasjonsnavn: string;
+    orgnr: string;
+    orgnavn: string;
   };
   arbeidstaker: {
     type: string;

@@ -20,7 +20,7 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
             <div className="af-liste__flex-rad" key={foretak.arbeidsforholdId}>
               <div className="af-liste__flex-innhold">
                 <div>
-                  <Element>{foretak.arbeidsgiver.navn}</Element>
+                  <Element>{foretak.arbeidsgiver.orgnavn}</Element>
                 </div>
                 <div>
                   <Normaltekst>{foretak.yrke}</Normaltekst>
@@ -29,7 +29,7 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
                   <Normaltekst>
                     {foretak.ansettelsesPeriode.periodeFra}-
                     {foretak.ansettelsesPeriode.periodeTil}
-                  </Normaltekst>{" "}
+                  </Normaltekst>
                 </div>
               </div>
               <div

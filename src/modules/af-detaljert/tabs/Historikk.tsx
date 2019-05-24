@@ -3,6 +3,7 @@ import { AFArbeidsavtaler } from "../../../types/arbeidsforhold";
 import { Element } from "nav-frontend-typografi";
 import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
 import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
+import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
 
 interface Props {
   arbeidsavtaler: AFArbeidsavtaler[];
@@ -42,7 +43,7 @@ const Historikk = (props: Props) => (
             <CheckAndPrint data={arbeidsavtale.antallTimerPrUke} />
           </td>
           <td className="af-liste__kolonne">
-            <CheckAndPrint data={arbeidsavtale.sisteLoennsendring} />
+            <CheckDateAndPrint data={arbeidsavtale.sisteLoennsendring} />
           </td>
           <td className="af-liste__kolonne">
             <CheckPeriodAndPrint

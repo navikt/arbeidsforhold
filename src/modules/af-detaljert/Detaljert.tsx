@@ -27,7 +27,6 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
         )
       : 0
   );
-  const sisteArbeidsavtale = sorterteArbeidsavtaler[0];
 
   // Tabs
   const tabs = [] as { label: string }[];
@@ -54,11 +53,11 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           <CheckPeriodAndPrint data={arbeidsforhold.ansettelsesPeriode} />
         </div>
         {arbeidsforhold.ansettelsesPeriode &&
-          arbeidsforhold.ansettelsesPeriode.periodeTil}
-        <div className="af-detaljert__kolonne af-detaljert__status">
-          <EtikettSuksess>Nåværende jobb</EtikettSuksess>
-        </div>
-        }
+          !arbeidsforhold.ansettelsesPeriode.periodeTil && (
+            <div className="af-detaljert__kolonne af-detaljert__status">
+              <EtikettSuksess>Nåværende jobb</EtikettSuksess>
+            </div>
+          )}
       </div>
       <hr />
       <div className="af-detaljert__innhold">
@@ -66,10 +65,10 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           title="Organisasjonsnummer"
           data={arbeidsforhold.arbeidsgiver.orgnr}
         />
-        <CheckAndPrintBox title="Yrke" data={sisteArbeidsavtale.yrke} />
+        <CheckAndPrintBox title="Yrke" data={arbeidsforhold.yrke} />
         <CheckAndPrintBox
           title="Stilling"
-          data={sisteArbeidsavtale.stillingsprosent}
+          data={arbeidsforhold.stillingsprosent}
         />
         <CheckAndPrintBox
           title="Type Arbeidsforhold"
@@ -77,11 +76,26 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
         />
         <CheckAndPrintBox
           title="Arbeidstidsordning"
-          data={sisteArbeidsavtale.arbeidstidsordning}
+          data={arbeidsforhold.arbeidstidsordning}
+        />
+        <CheckAndPrintBox
+          title="Timer i full stilling"
+          data={arbeidsforhold.antallTimerPrUke}
         />
         <CheckAndPrintBox
           title="Sist bekreftet av arbeidsgiver"
           data={arbeidsforhold.sistBekreftet}
+          date={true}
+        />
+        <CheckAndPrintBox
+          title="Siste stillingsendring"
+          data={arbeidsforhold.sisteStillingsendring}
+          date={true}
+        />
+        <CheckAndPrintBox
+          title="Endret stillingsprosent"
+          data={arbeidsforhold.sisteLoennsendring}
+          date={true}
         />
       </div>
       <div className="af-detaljert__tabs">

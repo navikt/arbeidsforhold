@@ -46,7 +46,7 @@ export interface AFArbeidsgiver {
   orgnavn: string;
 }
 
-export interface AFUtvidet {
+export interface AFUtvidet extends AFArbeidsavtaler {
   ansettelsesPeriode?: AFPeriode;
   antallTimerForTimeloennet: AFTimerForTimelonnet[];
   arbeidsavtaler: AFArbeidsavtaler[];

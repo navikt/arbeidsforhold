@@ -1,7 +1,7 @@
 import React from "react";
 import { AFPeriode } from "../../types/arbeidsforhold";
-import CheckAndPrint from "../check-and-print/CheckAndPrint";
 import NoData from "../no-data/NoData";
+import CheckDateAndPrint from "../check-date-and-print/CheckDateAndPrint";
 
 interface Props {
   data?: AFPeriode;
@@ -11,10 +11,10 @@ interface Props {
 const CheckPeriodAndPrint = (props: Props) =>
   props.data ? (
     <>
-      <CheckAndPrint data={props.data.periodeFra} />
+      <CheckDateAndPrint data={props.data.periodeFra} />
       {` - `}
       {props.twoLines && <br />}
-      <CheckAndPrint data={props.data.periodeTil} />
+      <CheckDateAndPrint data={props.data.periodeTil} />
     </>
   ) : (
     <NoData />

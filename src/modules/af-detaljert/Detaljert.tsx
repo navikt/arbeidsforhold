@@ -1,5 +1,5 @@
 import React, { useState, SyntheticEvent } from "react";
-import { Normaltekst, Undertittel, Element } from "nav-frontend-typografi";
+import { Undertittel } from "nav-frontend-typografi";
 import { AFDetaljertData, AFDetaljertProps } from "./index";
 import { EtikettSuksess } from "nav-frontend-etiketter";
 import { AlertStripeInfo } from "nav-frontend-alertstriper";
@@ -9,8 +9,8 @@ import Permisjon from "./tabs/Permisjon";
 import Timer from "./tabs/Timer";
 import Utenlandsopphold from "./tabs/Utenlandsopphold";
 import { sortDateString } from "../../utils/date";
-import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
+import CheckAndPrintBox from "../../components/check-and-print-box/CheckAndPrintBox";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold } = props;
@@ -53,48 +53,36 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           </div>
           <CheckPeriodAndPrint data={arbeidsforhold.ansettelsesPeriode} />
         </div>
+        {arbeidsforhold.ansettelsesPeriode &&
+          arbeidsforhold.ansettelsesPeriode.periodeTil}
         <div className="af-detaljert__kolonne af-detaljert__status">
           <EtikettSuksess>Nåværende jobb</EtikettSuksess>
         </div>
+        }
       </div>
       <hr />
       <div className="af-detaljert__innhold">
-        <div className="af-detaljert__boks">
-          <Element>Organisasjonsnumer</Element>
-          <Normaltekst>
-            <CheckAndPrint data={arbeidsforhold.arbeidsgiver.orgnr} />
-          </Normaltekst>
-        </div>
-        <div className="af-detaljert__boks">
-          <Element>Yrke</Element>
-          <Normaltekst>
-            <CheckAndPrint data={sisteArbeidsavtale.yrke} />
-          </Normaltekst>
-        </div>
-        <div className="af-detaljert__boks">
-          <Element>Stilling</Element>
-          <Normaltekst>
-            <CheckAndPrint data={sisteArbeidsavtale.stillingsprosent} />
-          </Normaltekst>
-        </div>
-        <div className="af-detaljert__boks">
-          <Element>Type arbeidsforhold</Element>
-          <Normaltekst>
-            <CheckAndPrint data={arbeidsforhold.type} />
-          </Normaltekst>
-        </div>
-        <div className="af-detaljert__boks">
-          <Element>Arbeidstidsordning</Element>
-          <Normaltekst>
-            <CheckAndPrint data={sisteArbeidsavtale.arbeidstidsordning} />
-          </Normaltekst>
-        </div>
-        <div className="af-detaljert__boks">
-          <Element>Sist bekreftet av arbeidsgiver</Element>
-          <Normaltekst>
-            <CheckAndPrint data={arbeidsforhold.sistBekreftet} />
-          </Normaltekst>
-        </div>
+        <CheckAndPrintBox
+          title="Organisasjonsnummer"
+          data={arbeidsforhold.arbeidsgiver.orgnr}
+        />
+        <CheckAndPrintBox title="Yrke" data={sisteArbeidsavtale.yrke} />
+        <CheckAndPrintBox
+          title="Stilling"
+          data={sisteArbeidsavtale.stillingsprosent}
+        />
+        <CheckAndPrintBox
+          title="Type Arbeidsforhold"
+          data={arbeidsforhold.type}
+        />
+        <CheckAndPrintBox
+          title="Arbeidstidsordning"
+          data={sisteArbeidsavtale.arbeidstidsordning}
+        />
+        <CheckAndPrintBox
+          title="Sist bekreftet av arbeidsgiver"
+          data={arbeidsforhold.sistBekreftet}
+        />
       </div>
       <div className="af-detaljert__tabs">
         <Tabs

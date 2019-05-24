@@ -17,6 +17,8 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsavtaler, permisjonPermitteringer } = arbeidsforhold;
   const { antallTimerForTimeloennet, utenlandsopphold } = arbeidsforhold;
   const [visTab, settVisTab] = useState("Historikk");
+
+  // Arbeidsavtaler
   const sorterteArbeidsavtaler = arbeidsavtaler.sort((left, right) =>
     left.gyldighetsperiode && right.gyldighetsperiode
       ? sortDateString(
@@ -26,12 +28,22 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       : 0
   );
   const sisteArbeidsavtale = sorterteArbeidsavtaler[0];
-  const tabs = [
-    { label: "Historikk" },
-    { label: "Permisjon/Permittering" },
-    { label: "Timer for timelønnet" },
-    { label: "Utenlandsopphold" }
-  ];
+
+  // Tabs
+  const tabs = [] as { label: string }[];
+  if (arbeidsavtaler && arbeidsavtaler.length > 0) {
+    tabs.push({ label: "Historikk" });
+  }
+  if (permisjonPermitteringer && permisjonPermitteringer.length > 0) {
+    tabs.push({ label: "Permisjon/Permittering" });
+  }
+  if (antallTimerForTimeloennet && antallTimerForTimeloennet.length > 0) {
+    tabs.push({ label: "Timer for timelønnet" });
+  }
+  if (utenlandsopphold && utenlandsopphold.length > 0) {
+    tabs.push({ label: "Utenlandsopphold" });
+  }
+
   return (
     <div className={`af-detaljert__container`}>
       <div className="af-detaljert__header">

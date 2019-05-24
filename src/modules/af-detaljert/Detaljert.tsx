@@ -67,7 +67,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
         />
         <CheckAndPrintBox title="Yrke" data={arbeidsforhold.yrke} />
         <CheckAndPrintBox
-          title="Stilling"
+          title="Stillingsprosent"
           data={arbeidsforhold.stillingsprosent}
         />
         <CheckAndPrintBox

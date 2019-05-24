@@ -1,7 +1,8 @@
 import React from "react";
 import { AFArbeidsavtaler } from "../../../types/arbeidsforhold";
-import Moment from "react-moment";
 import { Element } from "nav-frontend-typografi";
+import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
+import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 
 interface Props {
   arbeidsavtaler: AFArbeidsavtaler[];
@@ -29,33 +30,25 @@ const Historikk = (props: Props) => (
       </tr>
     </thead>
     <tbody>
-      {props.arbeidsavtaler.map(arbeidsavtale => (
-        <tr
-          className="af-liste__rad"
-          key={`${arbeidsavtale.bruksperiode.fom}-${
-            arbeidsavtale.bruksperiode.tom
-          }`}
-        >
-          <td className="af-liste__kolonne">{arbeidsavtale.yrke}</td>
+      {props.arbeidsavtaler.map((arbeidsavtale, counter) => (
+        <tr className="af-liste__rad" key={counter}>
           <td className="af-liste__kolonne">
-            {arbeidsavtale.stillingsprosent}
+            <CheckAndPrint data={arbeidsavtale.yrke} />
           </td>
           <td className="af-liste__kolonne">
-            {arbeidsavtale.antallTimerPrUke}
+            <CheckAndPrint data={arbeidsavtale.stillingsprosent} />
           </td>
           <td className="af-liste__kolonne">
-            <Moment format="DD.MM.YYYY">
-              {arbeidsavtale.sistLoennsendring}
-            </Moment>
+            <CheckAndPrint data={arbeidsavtale.antallTimerPrUke} />
           </td>
           <td className="af-liste__kolonne">
-            <Moment format="DD.MM.YYYY">
-              {arbeidsavtale.bruksperiode.fom}
-            </Moment>
-            -<br />
-            <Moment format="DD.MM.YYYY">
-              {arbeidsavtale.bruksperiode.tom}
-            </Moment>
+            <CheckAndPrint data={arbeidsavtale.sisteLoennsendring} />
+          </td>
+          <td className="af-liste__kolonne">
+            <CheckPeriodAndPrint
+              data={arbeidsavtale.gyldighetsperiode}
+              twoLines={true}
+            />
           </td>
         </tr>
       ))}

@@ -8,16 +8,22 @@ import Historikk from "./tabs/Historikk";
 import Permisjon from "./tabs/Permisjon";
 import Timer from "./tabs/Timer";
 import Utenlandsopphold from "./tabs/Utenlandsopphold";
-import moment from "moment";
-import Moment from "react-moment";
+import { sortDateString } from "../../utils/date";
+import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
+import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
-  const { arbeidsforhold, classNameContainer } = props;
+  const { arbeidsforhold } = props;
   const { arbeidsavtaler, permisjonPermitteringer } = arbeidsforhold;
   const { antallTimerForTimeloennet, utenlandsopphold } = arbeidsforhold;
   const [visTab, settVisTab] = useState("Historikk");
   const sorterteArbeidsavtaler = arbeidsavtaler.sort((left, right) =>
-    moment.utc(left.bruksperiode.fom).diff(moment.utc(right.bruksperiode.fom))
+    left.gyldighetsperiode && right.gyldighetsperiode
+      ? sortDateString(
+          left.gyldighetsperiode.periodeFra,
+          right.gyldighetsperiode.periodeFra
+        )
+      : 0
   );
   const sisteArbeidsavtale = sorterteArbeidsavtaler[0];
   const tabs = [
@@ -27,22 +33,13 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
     { label: "Utenlandsopphold" }
   ];
   return (
-    <div
-      className={`af-detaljert__container ${
-        classNameContainer ? classNameContainer : ""
-      }`}
-    >
+    <div className={`af-detaljert__container`}>
       <div className="af-detaljert__header">
         <div className="af-detaljert__kolonne">
           <div className="af-detaljert__arbeidsgiver">
             <Undertittel>{arbeidsforhold.arbeidsgiver.orgnavn}</Undertittel>
           </div>
-          <Normaltekst>
-            Startdato:
-            <Moment format="DD.MM.YYYY">
-              {arbeidsforhold.ansettelsesperiode.periode.fom}
-            </Moment>
-          </Normaltekst>
+          <CheckPeriodAndPrint data={arbeidsforhold.ansettelsesPeriode} />
         </div>
         <div className="af-detaljert__kolonne af-detaljert__status">
           <EtikettSuksess>Nåværende jobb</EtikettSuksess>
@@ -51,33 +48,39 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       <hr />
       <div className="af-detaljert__innhold">
         <div className="af-detaljert__boks">
-          <Element>Lokal enhet</Element>
-          <Normaltekst>{arbeidsforhold.type}</Normaltekst>
-        </div>
-        <div className="af-detaljert__boks">
           <Element>Organisasjonsnumer</Element>
-          <Normaltekst>{arbeidsforhold.arbeidsgiver.orgnr}</Normaltekst>
+          <Normaltekst>
+            <CheckAndPrint data={arbeidsforhold.arbeidsgiver.orgnr} />
+          </Normaltekst>
         </div>
         <div className="af-detaljert__boks">
           <Element>Yrke</Element>
-          <Normaltekst>{sisteArbeidsavtale.yrke}</Normaltekst>
+          <Normaltekst>
+            <CheckAndPrint data={sisteArbeidsavtale.yrke} />
+          </Normaltekst>
         </div>
         <div className="af-detaljert__boks">
           <Element>Stilling</Element>
-          <Normaltekst>{sisteArbeidsavtale.stillingsprosent}</Normaltekst>
+          <Normaltekst>
+            <CheckAndPrint data={sisteArbeidsavtale.stillingsprosent} />
+          </Normaltekst>
         </div>
         <div className="af-detaljert__boks">
           <Element>Type arbeidsforhold</Element>
-          <Normaltekst>{arbeidsforhold.type}</Normaltekst>
+          <Normaltekst>
+            <CheckAndPrint data={arbeidsforhold.type} />
+          </Normaltekst>
         </div>
         <div className="af-detaljert__boks">
           <Element>Arbeidstidsordning</Element>
-          <Normaltekst>{sisteArbeidsavtale.arbeidstidsordning}</Normaltekst>
+          <Normaltekst>
+            <CheckAndPrint data={sisteArbeidsavtale.arbeidstidsordning} />
+          </Normaltekst>
         </div>
         <div className="af-detaljert__boks">
           <Element>Sist bekreftet av arbeidsgiver</Element>
           <Normaltekst>
-            <Moment format="DD.MM.YYYY">{arbeidsforhold.sistBekreftet}</Moment>
+            <CheckAndPrint data={arbeidsforhold.sistBekreftet} />
           </Normaltekst>
         </div>
       </div>

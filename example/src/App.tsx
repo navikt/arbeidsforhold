@@ -13,8 +13,10 @@ export default class App extends Component {
     valgtArbeidsforholdId: "konvertert_af709505-128e-45dc-a241-7e14180f787d"
   };
 
-  arbeidsforholdOnClick = (arbeidsforoldId: string) =>
+  arbeidsforholdOnClick = (arbeidsforoldId: string) => {
+    console.log(`Clicked on ${arbeidsforoldId}`);
     this.setState({ valgtArbeidsforholdId: arbeidsforoldId });
+  };
 
   render() {
     return (

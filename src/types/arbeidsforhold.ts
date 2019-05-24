@@ -5,7 +5,7 @@ export interface AFSimpel {
     orgnavn: string;
   };
   ansettelsesPeriode: {
-    periodeFra?: string;
+    periodeFra: string;
     periodeTil?: string;
   };
   yrke: string;

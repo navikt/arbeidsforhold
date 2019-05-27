@@ -1,7 +1,8 @@
 import React from "react";
 import { AFUtenlandsopphold } from "../../../types/arbeidsforhold";
 import { Element } from "nav-frontend-typografi";
-import Moment from "react-moment";
+import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
+import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
 
 interface Props {
   utenlandsopphold: AFUtenlandsopphold[];
@@ -23,19 +24,16 @@ const Utenlandsopphold = (props: Props) => (
       </tr>
     </thead>
     <tbody>
-      {props.utenlandsopphold.map(opphold => (
-        <tr
-          className="af-liste__rad"
-          key={`${opphold.periode.fom}-${opphold.periode.tom}`}
-        >
-          <td className="af-liste__kolonne">{opphold.landkode}</td>
+      {props.utenlandsopphold.map((opphold, i) => (
+        <tr className="af-liste__rad" key={`${i}`}>
           <td className="af-liste__kolonne">
-            <Moment format="MM.YYYY">{opphold.rapporteringsperiode}</Moment>
+            <CheckAndPrint data={opphold.landkode} />
           </td>
           <td className="af-liste__kolonne">
-            <Moment format="DD.MM.YYYY">{opphold.periode.fom}</Moment>
-            -<br />
-            <Moment format="DD.MM.YYYY">{opphold.periode.tom}</Moment>
+            <CheckAndPrint data={opphold.rapporteringsperiode} />
+          </td>
+          <td className="af-liste__kolonne">
+            <CheckPeriodAndPrint data={opphold.periode} twoLines={true} />
           </td>
         </tr>
       ))}

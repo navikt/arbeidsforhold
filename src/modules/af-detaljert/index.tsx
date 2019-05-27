@@ -17,7 +17,6 @@ type State =
 export interface AFDetaljertProps {
   miljo: "LOCAL" | "DEV" | "PROD";
   arbeidsforholdId: string;
-  classNameContainer?: string;
 }
 
 export interface AFDetaljertData {
@@ -29,7 +28,7 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
   Environment.settEnv(props.miljo as Miljo);
 
   useEffect(() => {
-    if (state.status !== "RESULT") {
+    if (state.status === "LOADING") {
       hentDetaljertArbeidsforhold(props.arbeidsforholdId)
         .then(arbeidsforhold =>
           setState({

@@ -1,82 +1,58 @@
 export interface AFSimpel {
   arbeidsforholdId: string;
-  arbeidsgiver: {
-    orgnr: string;
-    orgnavn: string;
-  };
-  ansettelsesPeriode: {
-    periodeFra: string;
-    periodeTil?: string;
-  };
+  arbeidsgiver: AFArbeidsgiver;
+  ansettelsesPeriode: AFPeriode;
   yrke: string;
 }
 
 export interface AFArbeidsavtaler {
-  antallTimerPrUke: number;
-  arbeidstidsordning: string;
-  beregnetAntallTimerPrUke: number;
-  bruksperiode: {
-    fom: string;
-    tom: string;
-  };
-  gyldighetsperiode: {
-    fom: string;
-    tom: string;
-  };
-  sistLoennsendring: string;
-  sistStillingsendring: string;
-  stillingsprosent: number;
-  yrke: number;
+  antallTimerPrUke?: number;
+  arbeidstidsordning?: string;
+  beregnetAntallTimerPrUke?: number;
+  gyldighetsperiode?: AFPeriode;
+  sisteLoennsendring?: string;
+  sisteStillingsendring?: string;
+  stillingsprosent?: number;
+  yrke?: number;
 }
 
 export interface AFPermisjonPermittering {
-  periode: {
-    fom: string;
-    tom: string;
-  };
+  periode?: AFPeriode;
   permisjonPermitteringId: string;
-  prosent: number;
+  prosent?: number;
   type: string;
+  f;
 }
 
 export interface AFTimerForTimelonnet {
-  antallTimer: number;
-  periode: {
-    fom: string;
-    tom: string;
-  };
-  rapporteringsperiode: string;
+  antallTimer?: number;
+  periode?: AFPeriode;
+  rapporteringsperiode?: string;
 }
 
 export interface AFUtenlandsopphold {
   landkode: string;
-  periode: {
-    fom: string;
-    tom: string;
-  };
+  periode: AFPeriode;
   rapporteringsperiode: string;
 }
 
-export interface AFUtvidet {
-  ansettelsesperiode: {
-    bruksperiode: {
-      fom: string;
-      tom: string;
-    };
-    periode: {
-      fom: string;
-      tom: string;
-    };
-    varslingskode: string;
-  };
+export interface AFPeriode {
+  periodeFra: string;
+  periodeTil?: string;
+}
+
+export interface AFArbeidsgiver {
+  orgnr: string;
+  orgnavn: string;
+}
+
+export interface AFUtvidet extends AFArbeidsavtaler {
+  ansettelsesPeriode?: AFPeriode;
   antallTimerForTimeloennet: AFTimerForTimelonnet[];
   arbeidsavtaler: AFArbeidsavtaler[];
   arbeidsforholdId: string;
-  arbeidsgiver: {
-    orgnr: string;
-    orgnavn: string;
-  };
-  arbeidstaker: {
+  arbeidsgiver: AFArbeidsgiver;
+  arbeidstaker?: {
     type: string;
     aktoerId: number;
     offentligIdent: number;
@@ -87,8 +63,8 @@ export interface AFUtvidet {
     type: string;
   };
   permisjonPermitteringer: AFPermisjonPermittering[];
-  registrert: string;
-  sistBekreftet: string;
-  type: string;
+  registrert?: string;
+  sistBekreftet?: string;
+  type?: string;
   utenlandsopphold: AFUtenlandsopphold[];
 }

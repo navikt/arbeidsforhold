@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Normaltekst, Element, Undertekst } from "nav-frontend-typografi";
-import { HoyreChevron, NedChevron, OppChevron } from "nav-frontend-chevron";
+import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import { AFListeProps, AFListeData } from "./index";
-import Moment from "react-moment";
 import { sortDateString } from "../../utils/date";
+import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
+import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
 
 const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
-  const { arbeidsforhold, classNameContainer, onClick } = props;
+  const { arbeidsforhold, onClick } = props;
   const [visAlle, settVisAlle] = useState(false);
   const toggleVisAlle = () => settVisAlle(!visAlle);
 
@@ -25,42 +26,36 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
     );
 
   return (
-    <div
-      className={`af-liste__container ${
-        classNameContainer ? classNameContainer : ""
-      }`}
-    >
+    <div className={`af-liste__container`}>
       <div className="af-liste__table">
         {sorterteArbeidsforhold
           .slice(0, visAlle ? arbeidsforhold.length : 5)
-          .map(foretak => (
-            <div className="af-liste__flex-rad" key={foretak.arbeidsforholdId}>
+          .map((foretak, counter) => (
+            <div
+              className="af-liste__flex-rad"
+              key={`${foretak.arbeidsforholdId}-${counter}`}
+            >
               <div className="af-liste__flex-innhold">
                 <div className="af-liste__tekst">
-                  <Element>{foretak.arbeidsgiver.orgnavn}</Element>
+                  <div
+                    className={"lenke"}
+                    onClick={() => onClick(foretak.arbeidsforholdId)}
+                  >
+                    <Element>
+                      <CheckAndPrint data={foretak.arbeidsgiver.orgnavn} />
+                    </Element>
+                  </div>
                 </div>
                 <div className="af-liste__tekst">
-                  <Normaltekst>{foretak.yrke}</Normaltekst>
+                  <Normaltekst>
+                    <CheckAndPrint data={foretak.yrke} />
+                  </Normaltekst>
                 </div>
                 <div className="af-liste__tekst">
                   <Undertekst>
-                    <Moment format="DD.MM.YYYY">
-                      {foretak.ansettelsesPeriode.periodeFra}
-                    </Moment>
-                    {` - `}
-                    {foretak.ansettelsesPeriode.periodeTil && (
-                      <Moment format="DD.MM.YYYY">
-                        {foretak.ansettelsesPeriode.periodeTil}
-                      </Moment>
-                    )}
+                    <CheckPeriodAndPrint data={foretak.ansettelsesPeriode} />
                   </Undertekst>
                 </div>
-              </div>
-              <div
-                onClick={() => onClick(foretak.arbeidsforholdId)}
-                className="af-liste__lenke"
-              >
-                Detaljer <HoyreChevron />
               </div>
             </div>
           ))}

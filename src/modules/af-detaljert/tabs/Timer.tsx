@@ -1,7 +1,8 @@
 import React from "react";
 import { AFTimerForTimelonnet } from "../../../types/arbeidsforhold";
 import { Element } from "nav-frontend-typografi";
-import Moment from "react-moment";
+import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
+import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
 
 interface Props {
   timer: AFTimerForTimelonnet[];
@@ -23,19 +24,16 @@ const Timer = (props: Props) => (
       </tr>
     </thead>
     <tbody>
-      {props.timer.map(time => (
-        <tr
-          className="af-liste__rad"
-          key={`${time.periode.fom}-${time.periode.tom}`}
-        >
-          <td className="af-liste__kolonne">{time.antallTimer}</td>
+      {props.timer.map((time, i) => (
+        <tr className="af-liste__rad" key={`${i}`}>
           <td className="af-liste__kolonne">
-            <Moment format="MM.YYYY">{time.rapporteringsperiode}</Moment>
+            <CheckAndPrint data={time.antallTimer} />
           </td>
           <td className="af-liste__kolonne">
-            <Moment format="DD.MM.YYYY">{time.periode.fom}</Moment>
-            -<br />
-            <Moment format="DD.MM.YYYY">{time.periode.tom}</Moment>
+            <CheckAndPrint data={time.rapporteringsperiode} />
+          </td>
+          <td className="af-liste__kolonne">
+            <CheckPeriodAndPrint data={time.periode} twoLines={true} />
           </td>
         </tr>
       ))}

@@ -14,8 +14,8 @@
     "prepare": "npm run build",
     "predeploy": "cd example && npm install && npm run build",
     "deploy": "gh-pages -d example/build",
-    "docker-build": "docker build . -t arbeidsforhold",
-    "docker-start": "docker run --name arbeidsforhold -p 8080:80 -t -d arbeidsforhold",
+    "docker-build": "docker build . -t navikt/arbeidsforhold",
+    "docker-start": "docker run --name arbeidsforhold -p 8080:80 -t -d navikt/arbeidsforhold",
     "docker-ssh": "docker exec -it arbeidsforhold /bin/bash",
     "docker-stop": "docker stop arbeidsforhold",
     "docker-rm": "docker rm arbeidsforhold"

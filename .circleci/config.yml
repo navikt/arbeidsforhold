@@ -76,7 +76,7 @@ jobs:
     steps:
       - run:
           name: Autentiser med register
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
       - run:
           name: Publiser pakke
           command: npm publish

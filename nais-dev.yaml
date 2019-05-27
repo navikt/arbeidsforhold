@@ -7,11 +7,11 @@ metadata:
   labels:
     team: personbruker
 spec:
-  image: navikt/arbeidsforhold:7
+  image: navikt/arbeidsforhold:9
   team: personbruker
   port: 80
   ingresses:
-    - https://arbeidsforhold.nais.preprod.local/person/arbeidsforhold
+    - https://arbeidsforhold.nais.oera-q.local/person/arbeidsforhold
     - https://www-q0.nav.no/person/arbeidsforhold
   liveness:
     path: /person/arbeidsforhold/isAlive

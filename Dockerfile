@@ -15,7 +15,7 @@ RUN npm install && npm run build
 FROM nginx
 
 # Kopier statiske filer
-COPY --from=build /app/example/build /var/www
+COPY --from=build /app/example/build /var/www/person/arbeidsforhold
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
 # Definer produksjonsvller

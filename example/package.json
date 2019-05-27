@@ -1,6 +1,6 @@
 {
   "name": "arbeidsforhold-example",
-  "homepage": "https://arbeidsforhold.nais.preprod.local",
+  "homepage": "https://www-q0.nav.no/person/arbeidsforhold",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/navikt/arbeidsforhold.git"

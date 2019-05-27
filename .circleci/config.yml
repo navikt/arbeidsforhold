@@ -102,7 +102,7 @@ workflows:
             branches:
               only:
                 - master
-      - godkjenn-til-prod:
+      - godkjenn-til-npm:
           type: approval
           requires:
             - build
@@ -112,7 +112,7 @@ workflows:
                 - master
       - deploy-til-npm:
           requires:
-            - godkjenn-til-prod
+            - godkjenn-til-npm
           filters:
             branches:
               only:

@@ -13,7 +13,12 @@
     "start": "rollup -c -w",
     "prepare": "npm run build",
     "predeploy": "cd example && npm install && npm run build",
-    "deploy": "gh-pages -d example/build"
+    "deploy": "gh-pages -d example/build",
+    "docker-build": "docker build . -t arbeidsforhold",
+    "docker-start": "docker run --name arbeidsforhold -p 8080:80 -t -d arbeidsforhold",
+    "docker-ssh": "docker exec -it arbeidsforhold /bin/bash",
+    "docker-stop": "docker stop arbeidsforhold",
+    "docker-rm": "docker rm arbeidsforhold"
   },
   "homepage": "https://github.com/navikt/arbeidsforhold#readme",
   "repository": {

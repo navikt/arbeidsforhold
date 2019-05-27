@@ -69,6 +69,18 @@ jobs:
                 -u "$GH_USER":"$GH_TK" \
                 https://api.github.com/repos/navikt/arbeidsforhold/deployments
 
+  deploy-til-npm:
+    docker:
+      - image: circleci/node:11.7.0
+
+    steps:
+      - run:
+          name: Autentiser med register
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Publiser pakke
+          command: npm publish
+
 commands:
   sett-miljovariabler:
     steps:
@@ -81,15 +93,6 @@ commands:
             echo 'export BRANCH_PREFIX=`[ $BRANCH_NAME == "master" ] && echo "" || echo $BRANCH_NAME\_`' >> $BASH_ENV
             echo 'export DOCKER_IMAGE_VERSIONED="$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$BRANCH_PREFIX$RELEASE_VERSION"' >> $BASH_ENV
             echo 'export DOCKER_IMAGE_UNVERSIONED="$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"' >> $BASH_ENV
-
-  deploy-til-npm:
-    steps:
-      - run:
-          name: Autentiser med register
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
-      - run:
-          name: Publiser pakke
-          command: npm publish
 
 workflows:
   bygg_og_deploy:

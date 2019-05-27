@@ -11,7 +11,7 @@ const App = () => {
     "konvertert_af709505-128e-45dc-a241-7e14180f787d"
   );
 
-  const miljo = (window.location.hostname.indexOf("localhost")
+  const miljo = (window.location.hostname.indexOf("localhost") > -1
     ? "LOCAL"
     : "DEV") as Miljo;
 

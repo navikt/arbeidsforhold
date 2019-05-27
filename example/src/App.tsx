@@ -1,19 +1,17 @@
 import React, { useState } from "react";
-
+import Miljo from "../../src/types/miljo";
 import {
   ListeMedArbeidsforhold,
   DetaljertArbeidsforhold
 } from "@navikt/arbeidsforhold";
-import Miljo from "../../src/types/miljo";
 
 const App = () => {
+  const { hostname } = window.location;
+  const miljo = (hostname.indexOf("localhost") > -1 ? "LOCAL" : "DEV") as Miljo;
+
   const [valgtArbeidsforholdId, settValgtArbeidsforholdId] = useState(
     "konvertert_af709505-128e-45dc-a241-7e14180f787d"
   );
-
-  const miljo = (window.location.hostname.indexOf("localhost") > -1
-    ? "LOCAL"
-    : "DEV") as Miljo;
 
   const arbeidsforholdOnClick = (arbeidsforoldId: string) =>
     settValgtArbeidsforholdId(arbeidsforoldId);

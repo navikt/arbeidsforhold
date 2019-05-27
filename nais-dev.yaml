@@ -7,9 +7,9 @@ metadata:
   labels:
     team: personbruker
 spec:
-  image: navikt/arbeidsforhold:1
+  image: navikt/arbeidsforhold:2
   team: personbruker
-  port: 8080
+  port: 80
   ingresses:
     - https://arbeidsforhold.nais.preprod.local
   liveness:

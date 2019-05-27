@@ -1,6 +1,10 @@
 {
   "name": "arbeidsforhold-example",
-  "homepage": "https://test.github.io/test",
+  "homepage": "https://www-q0.nav.no/person/arbeidsforhold",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/navikt/arbeidsforhold.git"
+  },
   "version": "0.0.0",
   "license": "MIT",
   "private": true,

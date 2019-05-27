@@ -1,7 +1,7 @@
 import React from "react";
-import Moment from "react-moment";
 import { Element } from "nav-frontend-typografi";
 import { AFPermisjonPermittering } from "../../../types/arbeidsforhold";
+import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 
 interface Props {
   permisjoner: AFPermisjonPermittering[];
@@ -28,17 +28,15 @@ const Permisjon = (props: Props) => (
       </tr>
     </thead>
     <tbody>
-      {props.permisjoner.map(permisjon => (
+      {props.permisjoner.map((permisjon, i) => (
         <tr
           className="af-liste__rad"
-          key={`${permisjon.periode.fom}-${permisjon.periode.tom}`}
+          key={`${permisjon.permisjonPermitteringId}-${i}`}
         >
           <td className="af-liste__kolonne">{typer[permisjon.type]}</td>
           <td className="af-liste__kolonne">{permisjon.prosent}</td>
           <td className="af-liste__kolonne">
-            <Moment format="DD.MM.YYYY">{permisjon.periode.fom}</Moment>
-            -<br />
-            <Moment format="DD.MM.YYYY">{permisjon.periode.tom}</Moment>
+            <CheckPeriodAndPrint data={permisjon.periode} twoLines={true} />
           </td>
         </tr>
       ))}

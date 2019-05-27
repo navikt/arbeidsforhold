@@ -13,8 +13,10 @@ const App = () => {
     "konvertert_af709505-128e-45dc-a241-7e14180f787d"
   );
 
-  const arbeidsforholdOnClick = (arbeidsforoldId: string) =>
+  const arbeidsforholdOnClick = (arbeidsforoldId: string) => {
+    console.log(`Clicked on ${arbeidsforoldId}`);
     settValgtArbeidsforholdId(arbeidsforoldId);
+  };
 
   return (
     <div className="example__app">

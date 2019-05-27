@@ -16,7 +16,6 @@ type State =
 
 export interface AFListeProps {
   miljo: "LOCAL" | "DEV" | "PROD";
-  classNameContainer?: string;
   onClick: (arbeidsforholdId: string) => void;
 }
 
@@ -33,7 +32,7 @@ const ListeMedArbeidsforhold = (props: AFListeProps) => {
   Environment.settEnv(props.miljo as Miljo);
 
   useEffect(() => {
-    if (state.status !== "RESULT") {
+    if (state.status === "LOADING") {
       hentListeMedArbeidsforhold()
         .then(arbeidsforhold =>
           setState({

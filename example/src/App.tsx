@@ -1,39 +1,41 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
 import {
   ListeMedArbeidsforhold,
   DetaljertArbeidsforhold
 } from "@navikt/arbeidsforhold";
+import Miljo from "../../src/types/miljo";
 
-interface State {
-  valgtArbeidsforholdId: string;
-}
-export default class App extends Component {
-  state: State = {
-    valgtArbeidsforholdId: "konvertert_af709505-128e-45dc-a241-7e14180f787d"
-  };
+const App = () => {
+  const [valgtArbeidsforholdId, settValgtArbeidsforholdId] = useState(
+    "konvertert_af709505-128e-45dc-a241-7e14180f787d"
+  );
 
-  arbeidsforholdOnClick = (arbeidsforoldId: string) =>
-    this.setState({ valgtArbeidsforholdId: arbeidsforoldId });
+  const miljo = (window.location.hostname.indexOf("localhost")
+    ? "LOCAL"
+    : "DEV") as Miljo;
 
-  render() {
-    return (
-      <div className="example__app">
-        <div className="example__content">
-          <div className="example__section">
-            <ListeMedArbeidsforhold
-              miljo="LOCAL"
-              onClick={this.arbeidsforholdOnClick}
-            />
-          </div>
-          <div className="example__section">
-            <DetaljertArbeidsforhold
-              miljo="LOCAL"
-              arbeidsforholdId={this.state.valgtArbeidsforholdId}
-            />
-          </div>
+  const arbeidsforholdOnClick = (arbeidsforoldId: string) =>
+    settValgtArbeidsforholdId(arbeidsforoldId);
+
+  return (
+    <div className="example__app">
+      <div className="example__content">
+        <div className="example__section">
+          <ListeMedArbeidsforhold
+            miljo={miljo}
+            onClick={arbeidsforholdOnClick}
+          />
+        </div>
+        <div className="example__section">
+          <DetaljertArbeidsforhold
+            miljo={miljo}
+            arbeidsforholdId={valgtArbeidsforholdId}
+          />
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default App;

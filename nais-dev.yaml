@@ -7,7 +7,7 @@ metadata:
   labels:
     team: personbruker
 spec:
-  image: navikt/arbeidsforhold:2
+  image: navikt/arbeidsforhold:3
   team: personbruker
   port: 80
   ingresses:

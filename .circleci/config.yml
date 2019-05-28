@@ -72,12 +72,6 @@ jobs:
     docker:
       - image: circleci/node:11.7.0
 
-    parameters:
-      version:
-        description: "State npm release version"
-        default: latest
-        type: string
-
     steps:
       - checkout
       - run:

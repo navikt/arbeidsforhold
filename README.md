@@ -79,6 +79,21 @@ cd example && npm install && npm start
 Test-applikasjonen består av en simpel create-react-app som importerer og benytter pakkene <br>
 Prosjektet støtter hot-reloading, endringer i komponentene vil føre til at test-applikasjonen oppdateres
 
+## Deployering
+
+Applikasjonen bygges automatisk til dev / https://www-q0.nav.no/person/arbeidsforhold ved merge til master. <br>
+For å lansere applikasjonen til [npmjs](https://www.npmjs.com/package/@navikt/arbeidsforhold), benytt [npm version](https://docs.npmjs.com/cli/version) til å oppdatere package.json og lage en ny git-tag. Eks:
+
+```
+npm version patch -m "Din melding"
+```
+
+Push deretter den nye versjonen til Github, som vil plukkes opp av [CircleCI](https://circleci.com/gh/navikt/workflows/arbeidsforhold).
+
+```
+git push && git push --tags
+```
+
 ## Logging
 
 Vi bruker fo-frontendlogger for logging. For oppslag i kibana:

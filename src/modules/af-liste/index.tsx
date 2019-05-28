@@ -16,7 +16,7 @@ type State =
 
 export interface AFListeProps {
   miljo: "LOCAL" | "DEV" | "PROD";
-  onClick: (arbeidsforholdId: number) => void;
+  onClick: (navArbeidsforholdId: number) => void;
 }
 
 export interface AFListeData {

@@ -83,10 +83,10 @@ jobs:
       - run:
           name: Autentiser med register
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
-       - run:
-           name: Installererer avhengigheter
-           command: |
-             npm install
+      - run:
+          name: Installererer avhengigheter
+          command: |
+            npm install
       - run:
           name: Publiser pakke
           command: |

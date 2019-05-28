@@ -87,6 +87,9 @@ jobs:
           name: Endrer versjon i package.json
           command: cat package.json | jq '.version = "<< parameters.version >>"'
       - run:
+          name: Oppretter .npmrc
+          command: touch /app/.npmrc
+      - run:
           name: Autentiser med register
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > /app/.npmrc
       - run:

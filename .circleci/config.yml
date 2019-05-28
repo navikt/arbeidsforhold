@@ -120,8 +120,8 @@ workflows:
           requires:
             - build
           filters:
+            # ignore any commit on any branch by default
+            branches:
+              ignore: /.*/
             tags:
               only: /^v.*/
-          #  branches:
-          #    only:
-          #      - master

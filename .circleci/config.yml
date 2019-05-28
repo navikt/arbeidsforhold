@@ -73,16 +73,25 @@ jobs:
     docker:
       - image: circleci/node:11.7.0
 
+    parameters:
+      version:
+        description: "State npm release version"
+        default: "1.0.0"
+        type: string
+
     steps:
       - attach_workspace:
           at: /app
+      - run:
+          name: Versjon << parameters.saywhat >>
+          command: echo "Lanser versjon << parameters.saywhat >> til npmjs"
       - run:
           name: Autentiser med register
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > /app/.npmrc
       - run:
           name: Publiser pakke
           command: |
-            npm publish
+            npm publish --tag << parameters.version >>
 
 commands:
   sett-miljovariabler:
@@ -104,22 +113,22 @@ workflows:
       - deploy-til-dev:
           requires:
             - build
-          filters:
-            branches:
-              only:
-                - master
+          #filters:
+          #  branches:
+          #    only:
+          #      - master
       - godkjenn-til-npm:
           type: approval
           requires:
             - build
-          filters:
-            branches:
-              only:
-                - master
+          #filters:
+          #  branches:
+          #    only:
+          #      - master
       - deploy-til-npm:
           requires:
             - godkjenn-til-npm
-          filters:
-            branches:
-              only:
-                - master
+          #filters:
+          #  branches:
+          #    only:
+          #      - master

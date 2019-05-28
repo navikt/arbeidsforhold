@@ -9,7 +9,7 @@
     }
   },
   "spec": {
-    "image": "navikt/arbeidsforhold:9",
+    "image": "navikt/arbeidsforhold:LATEST",
     "team": "personbruker",
     "port": 80,
     "ingresses": [

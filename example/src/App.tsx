@@ -29,7 +29,7 @@ const App = () => {
           <div className="example__section">
             <DetaljertArbeidsforhold
               miljo={miljo}
-              arbeidsforholdId={valgtArbeidsforholdId}
+              navArbeidsforholdId={valgtArbeidsforholdId}
             />
           </div>
         )}

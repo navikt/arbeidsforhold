@@ -25,7 +25,7 @@ const App = () => {
             onClick={arbeidsforholdOnClick}
           />
         </div>
-        {settValgtArbeidsforholdId && (
+        {valgtArbeidsforholdId && (
           <div className="example__section">
             <DetaljertArbeidsforhold
               miljo={miljo}

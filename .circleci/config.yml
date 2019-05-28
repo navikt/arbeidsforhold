@@ -79,12 +79,13 @@ jobs:
         type: string
 
     steps:
+      - checkout
       - run:
           name: Versjon << parameters.version >>
           command: echo "Lanser versjon << parameters.version >> til npmjs"
       - run:
           name: Endrer versjon i package.json
-          command: cat package.json | jq '.version = "'<< parameters.version >>'"'
+          command: cat package.json | jq '.version = "<< parameters.version >>"'
       - run:
           name: Autentiser med register
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > /app/.npmrc

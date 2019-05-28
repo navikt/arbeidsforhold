@@ -75,7 +75,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Versjon $CIRCLE_TAG
+          name: Versjon ${CIRCLE_TAG}
           command: echo "Lanser versjon ${CIRCLE_TAG} til npmjs"
       - run:
           name: Endrer versjon i package.json

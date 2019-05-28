@@ -116,8 +116,6 @@ workflows:
           requires:
             - build
           filters:
-            tags:
-              only: /.*/
             branches:
               only:
                 - master

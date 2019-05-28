@@ -16,7 +16,7 @@ type State =
 
 export interface AFDetaljertProps {
   miljo: "LOCAL" | "DEV" | "PROD";
-  arbeidsforholdId: string;
+  navArbeidsforholdId: number;
 }
 
 export interface AFDetaljertData {
@@ -29,7 +29,7 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
 
   useEffect(() => {
     if (state.status === "LOADING") {
-      hentDetaljertArbeidsforhold(props.arbeidsforholdId)
+      hentDetaljertArbeidsforhold(props.navArbeidsforholdId)
         .then(arbeidsforhold =>
           setState({
             status: "RESULT",
@@ -43,7 +43,7 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
           })
         );
     }
-  }, [state]);
+  });
 
   switch (state.status) {
     case "LOADING":

@@ -79,8 +79,6 @@ jobs:
         type: string
 
     steps:
-      - attach_workspace:
-          at: /app
       - run:
           name: Versjon << parameters.version >>
           command: echo "Lanser versjon << parameters.version >> til npmjs"

@@ -109,6 +109,7 @@ workflows:
   bygg-og-deploy:
     jobs:
       - build
+        - build
       - deploy-til-dev:
           requires:
             - build
@@ -116,6 +117,9 @@ workflows:
             branches:
               only:
                 - master
+      - deploy-til-dev-manuelt:
+          type: approval
+          requires:
       - deploy-til-npm:
           requires:
             - build

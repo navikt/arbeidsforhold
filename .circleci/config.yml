@@ -19,7 +19,7 @@ jobs:
       - run:
           name: Bygg React app
           command: |
-            npm ci
+            npm ci && npm run build
       - save_cache:
           paths:
             - ~/usr/local/lib/node_modules # location depends on npm version
@@ -28,6 +28,13 @@ jobs:
           name: Tester
           command: |
             npm run test
+
+  deploy-til-dev:
+    docker:
+      - image: circleci/node:11.7.0
+
+    steps:
+      - checkout
       - setup_remote_docker
       - sett-miljovariabler
       - run:
@@ -39,14 +46,6 @@ jobs:
             echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
             docker push "$DOCKER_IMAGE_VERSIONED"
             docker push "$DOCKER_IMAGE_UNVERSIONED"
-
-  deploy-til-dev:
-    docker:
-      - image: circleci/node:11.7.0
-
-    steps:
-      - checkout
-      - sett-miljovariabler
       - run:
           name: Deployer til dev
           command: |
@@ -74,11 +73,20 @@ jobs:
       - image: circleci/node:11.7.0
 
     steps:
-      - attach_workspace:
-          at: /app
+      - checkout
+      - run:
+          name: Versjon ${CIRCLE_TAG}
+          command: echo "Lanser versjon ${CIRCLE_TAG} til npmjs"
+      - run:
+          name: Endrer versjon i package.json
+          command: cat package.json | jq '.version = "${CIRCLE_TAG}"'
       - run:
           name: Autentiser med register
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > /app/.npmrc
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+      - run:
+          name: Installererer avhengigheter
+          command: |
+            npm install
       - run:
           name: Publiser pakke
           command: |
@@ -98,9 +106,12 @@ commands:
             echo 'export DOCKER_IMAGE_UNVERSIONED="$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"' >> $BASH_ENV
 
 workflows:
-  bygg_og_deploy:
+  bygg-og-deploy:
     jobs:
-      - build
+      - build:
+          filters:
+            tags:
+              only: /.*/
       - deploy-til-dev:
           requires:
             - build
@@ -108,18 +119,16 @@ workflows:
             branches:
               only:
                 - master
-      - godkjenn-til-npm:
+      - deploy-til-dev-manuelt:
           type: approval
           requires:
             - build
-          filters:
-            branches:
-              only:
-                - master
       - deploy-til-npm:
           requires:
-            - godkjenn-til-npm
+            - build
           filters:
+            tags:
+              only: /^v.*/
             branches:
               only:
                 - master

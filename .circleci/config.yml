@@ -75,11 +75,12 @@ jobs:
     parameters:
       version:
         description: "State npm release version"
-        default: "1.0.0"
         type: string
 
     steps:
       - checkout
+      - say:
+          version: << parameters.version >>
       - run:
           name: Versjon << parameters.version >>
           command: echo "Lanser versjon << parameters.version >> til npmjs"

@@ -9,13 +9,11 @@ const App = () => {
   const { hostname } = window.location;
   const miljo = (hostname.indexOf("localhost") > -1 ? "LOCAL" : "DEV") as Miljo;
 
-  const [valgtArbeidsforholdId, settValgtArbeidsforholdId] = useState(
-    "konvertert_af709505-128e-45dc-a241-7e14180f787d"
-  );
+  const [valgtArbeidsforholdId, settValgtArbeidsforholdId] = useState();
 
-  const arbeidsforholdOnClick = (arbeidsforoldId: string) => {
-    console.log(`Clicked on ${arbeidsforoldId}`);
-    settValgtArbeidsforholdId(arbeidsforoldId);
+  const arbeidsforholdOnClick = (navArbeidsforholdId: number) => {
+    console.log(`Clicked on ${navArbeidsforholdId}`);
+    settValgtArbeidsforholdId(navArbeidsforholdId);
   };
 
   return (
@@ -27,12 +25,14 @@ const App = () => {
             onClick={arbeidsforholdOnClick}
           />
         </div>
-        <div className="example__section">
-          <DetaljertArbeidsforhold
-            miljo={miljo}
-            arbeidsforholdId={valgtArbeidsforholdId}
-          />
-        </div>
+        {settValgtArbeidsforholdId && (
+          <div className="example__section">
+            <DetaljertArbeidsforhold
+              miljo={miljo}
+              arbeidsforholdId={valgtArbeidsforholdId}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

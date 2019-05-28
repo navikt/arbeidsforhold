@@ -15,3 +15,5 @@ if (process.env.NODE_ENV === "development") {
 
 export { ListeMedArbeidsforhold, DetaljertArbeidsforhold };
 export default ListeMedArbeidsforhold;
+
+// Test pipeline

@@ -115,10 +115,6 @@ workflows:
       - deploy-til-dev:
           requires:
             - build
-          filters:
-            branches:
-              only:
-                - master
       - deploy-til-dev-manuelt:
           type: approval
           requires:

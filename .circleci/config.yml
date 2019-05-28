@@ -82,7 +82,7 @@ jobs:
           command: cat package.json | jq '.version = "${CIRCLE_TAG}"'
       - run:
           name: Autentiser med register
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > /app/.npmrc
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
       - run:
           name: Publiser pakke
           command: |

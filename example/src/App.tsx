@@ -25,14 +25,12 @@ const App = () => {
             onClick={arbeidsforholdOnClick}
           />
         </div>
-        {valgtArbeidsforholdId && (
-          <div className="example__section">
-            <DetaljertArbeidsforhold
-              miljo={miljo}
-              navArbeidsforholdId={valgtArbeidsforholdId}
-            />
-          </div>
-        )}
+        <div className="example__section">
+          <DetaljertArbeidsforhold
+            miljo={miljo}
+            navArbeidsforholdId={valgtArbeidsforholdId}
+          />
+        </div>
       </div>
     </div>
   );

@@ -75,18 +75,17 @@ jobs:
     parameters:
       version:
         description: "State npm release version"
+        default: latest
         type: string
 
     steps:
       - checkout
-      - say:
-          version: << parameters.version >>
       - run:
-          name: Versjon << parameters.version >>
-          command: echo "Lanser versjon << parameters.version >> til npmjs"
+          name: Versjon $CIRCLE_TAG
+          command: echo "Lanser versjon ${CIRCLE_TAG} til npmjs"
       - run:
           name: Endrer versjon i package.json
-          command: cat package.json | jq '.version = "<< parameters.version >>"'
+          command: cat package.json | jq '.version = "${CIRCLE_TAG}"'
       - run:
           name: Oppretter .npmrc
           command: touch /app/.npmrc
@@ -122,18 +121,10 @@ workflows:
           #  branches:
           #    only:
           #      - master
-      - godkjenn-til-npm:
-          type: approval
-          requires:
-            - build
-          #filters:
-          #  branches:
-          #    only:
-          #      - master
       - deploy-til-npm:
-          requires:
-            - godkjenn-til-npm
-          #filters:
+          filters:
+            tags:
+              only: /^v.*/
           #  branches:
           #    only:
           #      - master

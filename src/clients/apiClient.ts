@@ -47,5 +47,5 @@ const hentJsonOgSjekkAuth = (url: string) =>
 export const hentListeMedArbeidsforhold = () =>
   hentJsonOgSjekkAuth(`${Environment.apiUrl}/arbeidsforhold`);
 
-export const hentDetaljertArbeidsforhold = (id: string) =>
+export const hentDetaljertArbeidsforhold = (id: number) =>
   hentJsonOgSjekkAuth(`${Environment.apiUrl}/arbeidsforholdinnslag/${id}`);

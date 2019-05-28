@@ -112,17 +112,15 @@ workflows:
       - deploy-til-dev:
           requires:
             - build
-          #filters:
-          #  branches:
-          #    only:
-          #      - master
+          filters:
+            branches:
+              only:
+                - master
       - deploy-til-npm:
           requires:
             - build
           filters:
-            # ignore any commit on any branch by default
+            tags:
+              only: /^v.*/
             branches:
               ignore: /.*/
-            # only act on version tags
-            tags:
-              only: /^\d+\.\d+\.\d+$/

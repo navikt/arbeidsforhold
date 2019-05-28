@@ -116,6 +116,8 @@ workflows:
           requires:
             - build
           filters:
+            tags:
+              only: /.*/
             branches:
               only:
                 - master
@@ -123,6 +125,9 @@ workflows:
           type: approval
           requires:
             - build
+          filters:
+            tags:
+              only: /.*/
       - deploy-til-npm:
           requires:
             - build

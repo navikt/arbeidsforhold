@@ -111,13 +111,13 @@ workflows:
       - build:
           filters:
             tags:
-              only: /.*/
+              only: /^v.*/
       - deploy-til-dev:
           requires:
             - build
           filters:
             tags:
-              only: /.*/
+              only: /^v.*/
             branches:
               only:
                 - master
@@ -127,7 +127,7 @@ workflows:
             - build
           filters:
             tags:
-              only: /.*/
+              only: /^v.*/
       - deploy-til-npm:
           requires:
             - build

@@ -39,7 +39,7 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
                 <div className="af-liste__tekst">
                   <div
                     className={"lenke"}
-                    onClick={() => onClick(foretak.arbeidsforholdId)}
+                    onClick={() => onClick(foretak.navArbeidsforholdId)}
                   >
                     <Element>
                       <CheckAndPrint data={foretak.arbeidsgiver.orgnavn} />

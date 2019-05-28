@@ -19,7 +19,7 @@ jobs:
       - run:
           name: Bygg React app
           command: |
-            npm ci
+            npm ci && npm run build
       - save_cache:
           paths:
             - ~/usr/local/lib/node_modules # location depends on npm version
@@ -28,6 +28,13 @@ jobs:
           name: Tester
           command: |
             npm run test
+
+  deploy-til-dev:
+    docker:
+      - image: circleci/node:11.7.0
+
+    steps:
+      - checkout
       - setup_remote_docker
       - sett-miljovariabler
       - run:
@@ -39,14 +46,6 @@ jobs:
             echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
             docker push "$DOCKER_IMAGE_VERSIONED"
             docker push "$DOCKER_IMAGE_UNVERSIONED"
-
-  deploy-til-dev:
-    docker:
-      - image: circleci/node:11.7.0
-
-    steps:
-      - checkout
-      - sett-miljovariabler
       - run:
           name: Deployer til dev
           command: |
@@ -86,12 +85,15 @@ jobs:
           name: Versjon << parameters.version >>
           command: echo "Lanser versjon << parameters.version >> til npmjs"
       - run:
+          name: Endrer versjon i package.json
+          command: cat package.json | jq '.version = "'<< parameters.version >>'"'
+      - run:
           name: Autentiser med register
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > /app/.npmrc
       - run:
           name: Publiser pakke
           command: |
-            npm publish --tag << parameters.version >>
+            npm publish
 
 commands:
   sett-miljovariabler:

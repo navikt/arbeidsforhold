@@ -106,7 +106,7 @@ commands:
             echo 'export DOCKER_IMAGE_UNVERSIONED="$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"' >> $BASH_ENV
 
 workflows:
-  bygg-og-deploy:
+  untagged-bygg-og-deploy:
     jobs:
       - build
       - deploy-til-dev:
@@ -120,11 +120,12 @@ workflows:
           type: approval
           requires:
             - build
+  tagged-bygg-og-deploy:
+    jobs:
+      - build
       - deploy-til-npm:
           requires:
             - build
           filters:
             tags:
               only: /^v.*/
-            branches:
-              ignore: /.*/

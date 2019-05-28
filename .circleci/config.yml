@@ -83,8 +83,8 @@ jobs:
       - attach_workspace:
           at: /app
       - run:
-          name: Versjon << parameters.saywhat >>
-          command: echo "Lanser versjon << parameters.saywhat >> til npmjs"
+          name: Versjon << parameters.version >>
+          command: echo "Lanser versjon << parameters.version >> til npmjs"
       - run:
           name: Autentiser med register
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > /app/.npmrc

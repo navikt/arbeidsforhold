@@ -81,13 +81,17 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
         >
           <CheckDateAndPrint
             data={arbeidsforhold.sisteStillingsendring}
-            format="(Sist endret %s)"
+            format="(Endret stillingsprosent %s)"
           />
         </CheckAndPrintBox>
         <CheckAndPrintBox title="Yrke" data={arbeidsforhold.yrke} />
         <CheckAndPrintBox
-          title="Type Arbeidsforhold"
+          title="Type arbeidsforhold"
           data={arbeidsforhold.type}
+        />
+        <CheckAndPrintBox
+          title="Arbeidsforhold ID"
+          data={arbeidsforhold.navArbeidsforholdId}
         />
         <CheckAndPrintBox
           title="Arbeidstidsordning"

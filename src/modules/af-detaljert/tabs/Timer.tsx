@@ -21,6 +21,7 @@ const Timer = (props: Props) => {
   const initState: {
     [key: string]: {
       timerObjekt: AFTimerForTimelonnet[];
+      antallTimer: number;
       ekspandert: boolean;
     };
   } = {};
@@ -31,10 +32,12 @@ const Timer = (props: Props) => {
     if (!initState[year]) {
       initState[year] = {
         timerObjekt: [timerObjekt],
+        antallTimer: timerObjekt.antallTimer || 0,
         ekspandert: false
       };
     } else {
       initState[year].timerObjekt.unshift(timerObjekt);
+      initState[year].antallTimer += timerObjekt.antallTimer || 0;
     }
   });
 
@@ -65,7 +68,7 @@ const Timer = (props: Props) => {
                 <tr className="af-liste__rad" key={year}>
                   <td
                     className="af-liste__kolonne af-liste__ekspander"
-                    colSpan={3}
+                    colSpan={2}
                     onClick={() =>
                       setData({
                         ...data,
@@ -78,6 +81,7 @@ const Timer = (props: Props) => {
                   >
                     {year} {value.ekspandert ? <OppChevron /> : <NedChevron />}
                   </td>
+                  <td>{!value.ekspandert && value.antallTimer}</td>
                 </tr>
                 {value.ekspandert &&
                   value.timerObjekt.map((time, i) => (
@@ -98,6 +102,14 @@ const Timer = (props: Props) => {
                       </td>
                     </tr>
                   ))}
+                {value.ekspandert && (
+                  <tr className="af-liste__rad">
+                    <td className="af-liste__kolonne" colSpan={2}>
+                      Sum
+                    </td>
+                    <td className="af-liste__kolonne">{value.antallTimer}</td>
+                  </tr>
+                )}
               </React.Fragment>
             );
           })}

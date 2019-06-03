@@ -1,5 +1,5 @@
 import React, { useState, SyntheticEvent } from "react";
-import { Undertittel } from "nav-frontend-typografi";
+import { Undertittel, Normaltekst } from "nav-frontend-typografi";
 import { AFDetaljertData, AFDetaljertProps } from "./index";
 import { EtikettSuksess } from "nav-frontend-etiketter";
 import { AlertStripeInfo } from "nav-frontend-alertstriper";
@@ -11,6 +11,8 @@ import Utenlandsopphold from "./tabs/Utenlandsopphold";
 import { sortDateString } from "../../utils/date";
 import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
 import CheckAndPrintBox from "../../components/check-and-print-box/CheckAndPrintBox";
+import CheckDateAndPrint from "../../components/check-date-and-print/CheckDateAndPrint";
+import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold } = props;
@@ -49,6 +51,9 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
         <div className="af-detaljert__kolonne">
           <div className="af-detaljert__arbeidsgiver">
             <Undertittel>{arbeidsforhold.arbeidsgiver.orgnavn}</Undertittel>
+            <div className="af-detaljert__orgnr">
+              <Normaltekst>({arbeidsforhold.arbeidsgiver.orgnr})</Normaltekst>
+            </div>
           </div>
           <CheckPeriodAndPrint data={arbeidsforhold.ansettelsesPeriode} />
         </div>
@@ -62,14 +67,24 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       <hr />
       <div className="af-detaljert__innhold">
         <CheckAndPrintBox
-          title="Organisasjonsnummer"
-          data={arbeidsforhold.arbeidsgiver.orgnr}
-        />
-        <CheckAndPrintBox title="Yrke" data={arbeidsforhold.yrke} />
+          title="Hovedenhet"
+          data={arbeidsforhold.opplysningspliktig.orgnavn}
+        >
+          <CheckAndPrint
+            data={arbeidsforhold.opplysningspliktig.orgnr}
+            format="(%s)"
+          />
+        </CheckAndPrintBox>
         <CheckAndPrintBox
           title="Stillingsprosent"
           data={arbeidsforhold.stillingsprosent}
-        />
+        >
+          <CheckDateAndPrint
+            data={arbeidsforhold.sisteStillingsendring}
+            format="(Sist endret %s)"
+          />
+        </CheckAndPrintBox>
+        <CheckAndPrintBox title="Yrke" data={arbeidsforhold.yrke} />
         <CheckAndPrintBox
           title="Type Arbeidsforhold"
           data={arbeidsforhold.type}
@@ -87,11 +102,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           data={arbeidsforhold.sistBekreftet}
           date={true}
         />
-        <CheckAndPrintBox
-          title="Siste stillingsendring"
-          data={arbeidsforhold.sisteStillingsendring}
-          date={true}
-        />
+
         <CheckAndPrintBox
           title="Endret stillingsprosent"
           data={arbeidsforhold.sisteLoennsendring}

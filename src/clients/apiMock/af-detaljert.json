@@ -3,22 +3,17 @@
   "arbeidsforholdId": "konvertert_af709505-128e-45dc-a241-7e14180f787d",
   "arbeidsgiver": {
     "orgnr": "972165050",
-    "orgnavn": "Capgemini Norge AS",
+    "orgnavn": "Generisk Firmanavn AS Oslo",
     "type": "Organisasjon"
   },
   "opplysningspliktig": {
     "orgnr": "972165050",
+    "orgnavn": "Generisk Firmanavn AS",
     "type": "Organisasjon"
   },
   "type": "Ordinært",
   "ansettelsesperiode": {
-    "periode": {
-      "periodeFra": "1988-10-03",
-      "periodeTil": "1989-05-31"
-    },
-    "bruksperiode": {
-      "periodeFra": "2014-12-13T13:59:11.893"
-    }
+    "periodeFra": "1988-10-03"
   },
   "antallTimerForTimeloennet": [
     {
@@ -46,14 +41,21 @@
       "rapporteringsperiode": "2016-02"
     }
   ],
+  "antallTimerPrUke": 37.5,
+  "arbeidstidsordning": "ikkeSkift",
+  "beregnetAntallTimerPrUke": 40,
+  "gyldighetsperiode": {
+    "periodeFra": "1988-10-01"
+  },
+  "sisteLoennsendring": "2016-12-16",
+  "sisteStillingsendring": "1988-10-03",
+  "stillingsprosent": "100%",
+  "yrke": "Klovn",
   "arbeidsavtaler": [
     {
       "antallTimerPrUke": 37.5,
       "arbeidstidsordning": "ikkeSkift",
       "beregnetAntallTimerPrUke": 40,
-      "bruksperiode": {
-        "periodeFra": "2016-12-13T13:59:11.893"
-      },
       "gyldighetsperiode": {
         "periodeFra": "1988-10-01"
       },
@@ -66,10 +68,6 @@
       "antallTimerPrUke": 37.5,
       "arbeidstidsordning": "ikkeSkift",
       "beregnetAntallTimerPrUke": 40,
-      "bruksperiode": {
-        "periodeFra": "2014-12-13T13:59:11.893",
-        "periodeTil": "2016-12-13T13:59:11.893"
-      },
       "gyldighetsperiode": {
         "periodeFra": "1988-10-01"
       },

@@ -1,5 +1,5 @@
 import React, { useState, SyntheticEvent } from "react";
-import { Undertittel } from "nav-frontend-typografi";
+import { Undertittel, Normaltekst } from "nav-frontend-typografi";
 import { AFDetaljertData, AFDetaljertProps } from "./index";
 import { EtikettSuksess } from "nav-frontend-etiketter";
 import { AlertStripeInfo } from "nav-frontend-alertstriper";
@@ -11,14 +11,14 @@ import Utenlandsopphold from "./tabs/Utenlandsopphold";
 import { sortDateString } from "../../utils/date";
 import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
 import CheckAndPrintBox from "../../components/check-and-print-box/CheckAndPrintBox";
+import CheckDateAndPrint from "../../components/check-date-and-print/CheckDateAndPrint";
+import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold } = props;
   const { arbeidsavtaler, permisjonPermitteringer } = arbeidsforhold;
   const { antallTimerForTimeloennet, utenlandsopphold } = arbeidsforhold;
-  const [visTab, settVisTab] = useState("Historikk");
 
-  // Arbeidsavtaler
   const sorterteArbeidsavtaler = arbeidsavtaler.sort((left, right) =>
     left.gyldighetsperiode && right.gyldighetsperiode
       ? sortDateString(
@@ -28,20 +28,20 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       : 0
   );
 
-  // Tabs
   const tabs = [] as { label: string }[];
-  if (arbeidsavtaler && arbeidsavtaler.length > 0) {
-    tabs.push({ label: "Historikk" });
+  if (antallTimerForTimeloennet && antallTimerForTimeloennet.length > 0) {
+    tabs.push({ label: "Timer for timelønnet" });
   }
   if (permisjonPermitteringer && permisjonPermitteringer.length > 0) {
     tabs.push({ label: "Permisjon/Permittering" });
   }
-  if (antallTimerForTimeloennet && antallTimerForTimeloennet.length > 0) {
-    tabs.push({ label: "Timer for timelønnet" });
-  }
   if (utenlandsopphold && utenlandsopphold.length > 0) {
-    tabs.push({ label: "Utenlandsopphold" });
+    tabs.push({ label: "Arbeid i utlandet" });
   }
+  if (arbeidsavtaler && arbeidsavtaler.length > 0) {
+    tabs.push({ label: "Historikk" });
+  }
+  const [visTab, settVisTab] = useState(tabs[0].label);
 
   return (
     <div className={`af-detaljert__container`}>
@@ -49,34 +49,62 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
         <div className="af-detaljert__kolonne">
           <div className="af-detaljert__arbeidsgiver">
             <Undertittel>{arbeidsforhold.arbeidsgiver.orgnavn}</Undertittel>
-          </div>
-          <CheckPeriodAndPrint data={arbeidsforhold.ansettelsesPeriode} />
-        </div>
-        {arbeidsforhold.ansettelsesPeriode &&
-          !arbeidsforhold.ansettelsesPeriode.periodeTil && (
-            <div className="af-detaljert__kolonne af-detaljert__status">
-              <EtikettSuksess>Nåværende jobb</EtikettSuksess>
+            <div className="af-detaljert__orgnr">
+              <Normaltekst>({arbeidsforhold.arbeidsgiver.orgnr})</Normaltekst>
             </div>
-          )}
+          </div>
+        </div>
+        <div className="af-detaljert__kolonne af-detaljert__periode">
+          {arbeidsforhold.ansettelsesperiode &&
+            !arbeidsforhold.ansettelsesperiode.periodeTil && (
+              <div className="af-detaljert__status">
+                <EtikettSuksess>Nåværende jobb</EtikettSuksess>
+              </div>
+            )}
+          <div className="af-detaljert__periode-content">
+            <Normaltekst>
+              <CheckPeriodAndPrint data={arbeidsforhold.ansettelsesperiode} />
+            </Normaltekst>
+          </div>
+        </div>
       </div>
       <hr />
       <div className="af-detaljert__innhold">
         <CheckAndPrintBox
-          title="Organisasjonsnummer"
-          data={arbeidsforhold.arbeidsgiver.orgnr}
-        />
-        <CheckAndPrintBox title="Yrke" data={arbeidsforhold.yrke} />
+          title="Hovedenhet"
+          data={arbeidsforhold.opplysningspliktig.orgnavn}
+        >
+          <CheckAndPrint
+            data={arbeidsforhold.opplysningspliktig.orgnr}
+            format="(%s)"
+          />
+        </CheckAndPrintBox>
         <CheckAndPrintBox
           title="Stillingsprosent"
           data={arbeidsforhold.stillingsprosent}
+        >
+          <CheckDateAndPrint
+            data={arbeidsforhold.sisteStillingsendring}
+            format="(Endret stillingsprosent %s)"
+          />
+        </CheckAndPrintBox>
+        <CheckAndPrintBox title="Yrke" data={arbeidsforhold.yrke} />
+        <CheckAndPrintBox
+          title="Type arbeidsforhold"
+          data={arbeidsforhold.type}
         />
         <CheckAndPrintBox
-          title="Type Arbeidsforhold"
-          data={arbeidsforhold.type}
+          title="Arbeidsforhold ID"
+          data={arbeidsforhold.navArbeidsforholdId}
         />
         <CheckAndPrintBox
           title="Arbeidstidsordning"
           data={arbeidsforhold.arbeidstidsordning}
+        />
+        <CheckAndPrintBox
+          title="Siste lønnsendring"
+          data={arbeidsforhold.sisteLoennsendring}
+          date={true}
         />
         <CheckAndPrintBox
           title="Timer i full stilling"
@@ -85,16 +113,6 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
         <CheckAndPrintBox
           title="Sist bekreftet av arbeidsgiver"
           data={arbeidsforhold.sistBekreftet}
-          date={true}
-        />
-        <CheckAndPrintBox
-          title="Siste stillingsendring"
-          data={arbeidsforhold.sisteStillingsendring}
-          date={true}
-        />
-        <CheckAndPrintBox
-          title="Endret stillingsprosent"
-          data={arbeidsforhold.sisteLoennsendring}
           date={true}
         />
       </div>
@@ -109,14 +127,14 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       </div>
       {(() => {
         switch (visTab) {
-          case "Historikk":
-            return <Historikk arbeidsavtaler={sorterteArbeidsavtaler} />;
-          case "Permisjon/Permittering":
-            return <Permisjon permisjoner={permisjonPermitteringer} />;
           case "Timer for timelønnet":
             return <Timer timer={antallTimerForTimeloennet} />;
+          case "Permisjon/Permittering":
+            return <Permisjon permisjoner={permisjonPermitteringer} />;
           case "Utenlandsopphold":
             return <Utenlandsopphold utenlandsopphold={utenlandsopphold} />;
+          case "Historikk":
+            return <Historikk arbeidsavtaler={sorterteArbeidsavtaler} />;
           default:
             return null;
         }

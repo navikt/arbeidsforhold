@@ -13,13 +13,7 @@
   },
   "type": "Ordinært",
   "ansettelsesperiode": {
-    "periode": {
-      "periodeFra": "1988-10-03",
-      "periodeTil": "1989-05-31"
-    },
-    "bruksperiode": {
-      "periodeFra": "2014-12-13T13:59:11.893"
-    }
+    "periodeFra": "1988-10-03"
   },
   "antallTimerForTimeloennet": [
     {

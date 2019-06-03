@@ -47,7 +47,7 @@ export interface AFArbeidsgiver {
 }
 
 export interface AFUtvidet extends AFArbeidsavtaler {
-  ansettelsesPeriode?: AFPeriode;
+  ansettelsesperiode?: AFPeriode;
   antallTimerForTimeloennet: AFTimerForTimelonnet[];
   arbeidsavtaler: AFArbeidsavtaler[];
   arbeidsforholdId: string;

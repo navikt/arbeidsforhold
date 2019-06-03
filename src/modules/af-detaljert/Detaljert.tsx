@@ -55,14 +55,20 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
               <Normaltekst>({arbeidsforhold.arbeidsgiver.orgnr})</Normaltekst>
             </div>
           </div>
-          <CheckPeriodAndPrint data={arbeidsforhold.ansettelsesPeriode} />
         </div>
-        {arbeidsforhold.ansettelsesPeriode &&
-          !arbeidsforhold.ansettelsesPeriode.periodeTil && (
-            <div className="af-detaljert__kolonne af-detaljert__status">
-              <EtikettSuksess>Nåværende jobb</EtikettSuksess>
-            </div>
-          )}
+        <div className="af-detaljert__kolonne af-detaljert__periode">
+          {arbeidsforhold.ansettelsesperiode &&
+            !arbeidsforhold.ansettelsesperiode.periodeTil && (
+              <div className="af-detaljert__status">
+                <EtikettSuksess>Nåværende jobb</EtikettSuksess>
+              </div>
+            )}
+          <div className="af-detaljert__periode-content">
+            <Normaltekst>
+              <CheckPeriodAndPrint data={arbeidsforhold.ansettelsesperiode} />
+            </Normaltekst>
+          </div>
+        </div>
       </div>
       <hr />
       <div className="af-detaljert__innhold">
@@ -98,18 +104,17 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           data={arbeidsforhold.arbeidstidsordning}
         />
         <CheckAndPrintBox
+          title="Siste lønnsendring"
+          data={arbeidsforhold.sisteLoennsendring}
+          date={true}
+        />
+        <CheckAndPrintBox
           title="Timer i full stilling"
           data={arbeidsforhold.antallTimerPrUke}
         />
         <CheckAndPrintBox
           title="Sist bekreftet av arbeidsgiver"
           data={arbeidsforhold.sistBekreftet}
-          date={true}
-        />
-
-        <CheckAndPrintBox
-          title="Endret stillingsprosent"
-          data={arbeidsforhold.sisteLoennsendring}
           date={true}
         />
       </div>

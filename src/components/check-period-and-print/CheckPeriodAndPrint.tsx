@@ -10,12 +10,12 @@ interface Props {
 
 const CheckPeriodAndPrint = (props: Props) =>
   props.data ? (
-    <>
+    <span>
       <CheckDateAndPrint data={props.data.periodeFra} />
       {` - `}
       {props.twoLines && <br />}
       <CheckDateAndPrint data={props.data.periodeTil} />
-    </>
+    </span>
   ) : (
     <NoData />
   );

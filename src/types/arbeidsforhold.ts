@@ -22,7 +22,6 @@ export interface AFPermisjonPermittering {
   permisjonPermitteringId: string;
   prosent?: number;
   type: string;
-  f;
 }
 
 export interface AFTimerForTimelonnet {

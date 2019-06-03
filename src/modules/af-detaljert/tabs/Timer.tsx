@@ -45,13 +45,13 @@ const Timer = (props: Props) => {
       <thead>
         <tr className="af-liste__rad">
           <td className="af-liste__kolonne">
-            <Element>Antall timer</Element>
+            <Element>Periode</Element>
           </td>
           <td className="af-liste__kolonne">
             <Element>Rapporteringsperiode</Element>
           </td>
           <td className="af-liste__kolonne">
-            <Element>Periode</Element>
+            <Element>Antall timer</Element>
           </td>
         </tr>
       </thead>

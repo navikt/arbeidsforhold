@@ -18,9 +18,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold } = props;
   const { arbeidsavtaler, permisjonPermitteringer } = arbeidsforhold;
   const { antallTimerForTimeloennet, utenlandsopphold } = arbeidsforhold;
-  const [visTab, settVisTab] = useState("Historikk");
 
-  // Arbeidsavtaler
   const sorterteArbeidsavtaler = arbeidsavtaler.sort((left, right) =>
     left.gyldighetsperiode && right.gyldighetsperiode
       ? sortDateString(
@@ -30,20 +28,20 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       : 0
   );
 
-  // Tabs
   const tabs = [] as { label: string }[];
-  if (arbeidsavtaler && arbeidsavtaler.length > 0) {
-    tabs.push({ label: "Historikk" });
+  if (antallTimerForTimeloennet && antallTimerForTimeloennet.length > 0) {
+    tabs.push({ label: "Timer for timelønnet" });
   }
   if (permisjonPermitteringer && permisjonPermitteringer.length > 0) {
     tabs.push({ label: "Permisjon/Permittering" });
   }
-  if (antallTimerForTimeloennet && antallTimerForTimeloennet.length > 0) {
-    tabs.push({ label: "Timer for timelønnet" });
-  }
   if (utenlandsopphold && utenlandsopphold.length > 0) {
-    tabs.push({ label: "Utenlandsopphold" });
+    tabs.push({ label: "Arbeid i utlandet" });
   }
+  if (arbeidsavtaler && arbeidsavtaler.length > 0) {
+    tabs.push({ label: "Historikk" });
+  }
+  const [visTab, settVisTab] = useState(tabs[0].label);
 
   return (
     <div className={`af-detaljert__container`}>
@@ -129,14 +127,14 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       </div>
       {(() => {
         switch (visTab) {
-          case "Historikk":
-            return <Historikk arbeidsavtaler={sorterteArbeidsavtaler} />;
-          case "Permisjon/Permittering":
-            return <Permisjon permisjoner={permisjonPermitteringer} />;
           case "Timer for timelønnet":
             return <Timer timer={antallTimerForTimeloennet} />;
+          case "Permisjon/Permittering":
+            return <Permisjon permisjoner={permisjonPermitteringer} />;
           case "Utenlandsopphold":
             return <Utenlandsopphold utenlandsopphold={utenlandsopphold} />;
+          case "Historikk":
+            return <Historikk arbeidsavtaler={sorterteArbeidsavtaler} />;
           default:
             return null;
         }

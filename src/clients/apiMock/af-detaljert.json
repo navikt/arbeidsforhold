@@ -3,12 +3,12 @@
   "arbeidsforholdId": "konvertert_af709505-128e-45dc-a241-7e14180f787d",
   "arbeidsgiver": {
     "orgnr": "972165050",
-    "orgnavn": "Generisk Firmanavn AS",
+    "orgnavn": "Generisk Firmanavn AS Oslo",
     "type": "Organisasjon"
   },
   "opplysningspliktig": {
     "orgnr": "972165050",
-    "orgnavn": "Capgemini Norge AS",
+    "orgnavn": "Generisk Firmanavn AS",
     "type": "Organisasjon"
   },
   "type": "Ordinært",

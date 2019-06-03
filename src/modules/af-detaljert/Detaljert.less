@@ -1,7 +1,7 @@
 .af-detaljert {
   &__header {
     display: flex;
-    padding: 0 0 1rem 0;
+    padding: 0 0 0.25rem 0;
   }
   &__kolonne {
     width: 50%;
@@ -16,8 +16,6 @@
   }
   &__status {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
   }
   &__arbeidsgiver {
     padding: 0.5rem 0;
@@ -27,5 +25,16 @@
     &-innhold {
       margin: 2rem 1rem;
     }
+  }
+  &__orgnr {
+    padding: 0.25rem 0;
+  }
+  &__periode {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  &__periode-content {
+    padding-left: 0.5rem;
   }
 }

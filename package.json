@@ -1,9 +1,9 @@
 {
   "name": "@navikt/arbeidsforhold",
   "author": "NAVIKT",
-  "version": "1.0.45",
+  "version": "1.0.47",
   "description": "React modul som viser brukerens arbeidsforhold",
-  "homepage": "https://www-q0.nav.no/person/arbeidsforhold",
+  "homepage": "/person/arbeidsforhold",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",

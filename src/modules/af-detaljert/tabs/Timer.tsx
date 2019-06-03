@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { AFTimerForTimelonnet } from "../../../types/arbeidsforhold";
 import { Element } from "nav-frontend-typografi";
-import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
 import { sortDateString } from "../../../utils/date";
 import moment from "moment";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
+import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
 
 interface Props {
   timer: AFTimerForTimelonnet[];
@@ -25,7 +25,7 @@ const Timer = (props: Props) => {
     };
   } = {};
 
-  props.timer.map((timerObjekt, i) => {
+  props.timer.map(timerObjekt => {
     const year = moment(timerObjekt.periode!.periodeFra).year();
 
     if (!initState[year]) {
@@ -82,17 +82,19 @@ const Timer = (props: Props) => {
                 {value.ekspandert &&
                   value.timerObjekt.map((time, i) => (
                     <tr className="af-liste__rad" key={`${i}`}>
-                      <td className="af-liste__kolonne">
-                        <CheckAndPrint data={time.antallTimer} />
+                      <td className="af-liste__kolonne af-liste__month">
+                        {time.periode && (
+                          <CheckDateAndPrint
+                            data={time.periode.periodeFra}
+                            dateFormat="MMMM"
+                          />
+                        )}
                       </td>
                       <td className="af-liste__kolonne">
                         <CheckAndPrint data={time.rapporteringsperiode} />
-                      </td>
+                      </td>{" "}
                       <td className="af-liste__kolonne">
-                        <CheckPeriodAndPrint
-                          data={time.periode}
-                          twoLines={true}
-                        />
+                        <CheckAndPrint data={time.antallTimer} />
                       </td>
                     </tr>
                   ))}

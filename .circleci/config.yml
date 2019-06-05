@@ -92,10 +92,6 @@ jobs:
           command: |
             npm publish
 
-  deploy-til-dev-manuelt:
-    steps:
-      - deploy-til-npm
-
 commands:
   sett-miljovariabler:
     steps:
@@ -123,6 +119,9 @@ workflows:
             branches:
               only:
                 - master
+      - deploy-til-dev:
+          requires:
+            - deploy-til-dev-manuelt
       - deploy-til-dev-manuelt:
           type: approval
           requires:

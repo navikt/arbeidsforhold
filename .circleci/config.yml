@@ -92,6 +92,10 @@ jobs:
           command: |
             npm publish
 
+  deploy-til-dev-manuelt:
+    steps:
+      - deploy-til-npm
+
 commands:
   sett-miljovariabler:
     steps:

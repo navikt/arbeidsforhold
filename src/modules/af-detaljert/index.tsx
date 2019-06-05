@@ -43,7 +43,7 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
           })
         );
     }
-  }, [state]);
+  }, [props.navArbeidsforholdId]);
 
   switch (state.status) {
     case "LOADING":

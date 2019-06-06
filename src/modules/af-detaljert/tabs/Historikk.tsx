@@ -29,8 +29,6 @@ const Historikk = (props: Props) => {
     }))
   );
 
-  console.log(data);
-
   return (
     <table className="af-detaljert__tabs-innhold af-liste__table">
       <thead>

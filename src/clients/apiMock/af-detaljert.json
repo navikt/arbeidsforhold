@@ -59,8 +59,8 @@
       "arbeidstidsordning": "Skift",
       "beregnetAntallTimerPrUke": 40,
       "gyldighetsperiode": {
-        "periodeFra": "2017-06-01",
-        "periodeTil": "2017-03-01"
+        "periodeFra": "2017-03-01",
+        "periodeTil": "2017-06-01"
       },
       "sisteLoennsendring": "2016-04-16",
       "sisteStillingsendring": "1988-10-03",

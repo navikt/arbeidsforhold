@@ -72,10 +72,10 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       <div className="af-detaljert__innhold">
         <CheckAndPrintBox
           title="Hovedenhet"
-          data={arbeidsforhold.opplysningspliktig.orgnavn}
+          data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnavn}
         >
           <CheckAndPrint
-            data={arbeidsforhold.opplysningspliktig.orgnr}
+            data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnr}
             format="(%s)"
           />
         </CheckAndPrintBox>

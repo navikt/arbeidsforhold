@@ -6,6 +6,7 @@ import { sortDateString } from "../../../utils/date";
 import moment from "moment";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
+import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 
 interface Props {
   timer: AFTimerForTimelonnet[];
@@ -21,23 +22,20 @@ const Timer = (props: Props) => {
   const initState: {
     [key: string]: {
       timerObjekt: AFTimerForTimelonnet[];
-      antallTimer: number;
       ekspandert: boolean;
     };
   } = {};
 
   props.timer.map(timerObjekt => {
-    const year = moment(timerObjekt.periode!.periodeFra).year();
+    const year = moment(timerObjekt.rapporteringsperiode).year();
 
     if (!initState[year]) {
       initState[year] = {
         timerObjekt: [timerObjekt],
-        antallTimer: timerObjekt.antallTimer || 0,
         ekspandert: false
       };
     } else {
       initState[year].timerObjekt.unshift(timerObjekt);
-      initState[year].antallTimer += timerObjekt.antallTimer || 0;
     }
   });
 
@@ -47,11 +45,11 @@ const Timer = (props: Props) => {
     <table className="af-detaljert__tabs-innhold af-liste__table">
       <thead>
         <tr className="af-liste__rad">
-          <td className="af-liste__kolonne">
-            <Element>Periode</Element>
+          <td className="af-liste__kolonne af-liste__rapporteringsperiode">
+            <Element>Rapporteringsperiode</Element>
           </td>
           <td className="af-liste__kolonne">
-            <Element>Rapporteringsperiode</Element>
+            <Element>Periode</Element>
           </td>
           <td className="af-liste__kolonne">
             <Element>Antall timer</Element>
@@ -81,7 +79,7 @@ const Timer = (props: Props) => {
                   >
                     {year} {value.ekspandert ? <OppChevron /> : <NedChevron />}
                   </td>
-                  <td>{!value.ekspandert && value.antallTimer}</td>
+                  <td />
                 </tr>
                 {value.ekspandert &&
                   value.timerObjekt.map((time, i) => (
@@ -89,27 +87,19 @@ const Timer = (props: Props) => {
                       <td className="af-liste__kolonne af-liste__month">
                         {time.periode && (
                           <CheckDateAndPrint
-                            data={time.periode.periodeFra}
+                            data={time.rapporteringsperiode}
                             dateFormat="MMMM"
                           />
                         )}
                       </td>
                       <td className="af-liste__kolonne">
-                        <CheckAndPrint data={time.rapporteringsperiode} />
+                        <CheckPeriodAndPrint data={time.periode} />
                       </td>{" "}
                       <td className="af-liste__kolonne">
                         <CheckAndPrint data={time.antallTimer} />
                       </td>
                     </tr>
                   ))}
-                {value.ekspandert && (
-                  <tr className="af-liste__rad">
-                    <td className="af-liste__kolonne" colSpan={2}>
-                      Sum
-                    </td>
-                    <td className="af-liste__kolonne">{value.antallTimer}</td>
-                  </tr>
-                )}
               </React.Fragment>
             );
           })}

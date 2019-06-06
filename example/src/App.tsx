@@ -4,6 +4,7 @@ import {
   ListeMedArbeidsforhold,
   DetaljertArbeidsforhold
 } from "@navikt/arbeidsforhold";
+import { AlertStripeInfo } from "nav-frontend-alertstriper";
 
 const App = () => {
   const { hostname } = window.location;
@@ -26,10 +27,18 @@ const App = () => {
           />
         </div>
         <div className="example__section">
-          <DetaljertArbeidsforhold
-            miljo={miljo}
-            navArbeidsforholdId={valgtArbeidsforholdId}
-          />
+          {valgtArbeidsforholdId ? (
+            <DetaljertArbeidsforhold
+              miljo={miljo}
+              navArbeidsforholdId={valgtArbeidsforholdId}
+            />
+          ) : (
+            <AlertStripeInfo>
+              Velg arbeidsforhold for å vise detaljene 😊
+              <br />
+              Denne informasjonsboksen er kun en del av eksempelet.
+            </AlertStripeInfo>
+          )}
         </div>
       </div>
     </div>

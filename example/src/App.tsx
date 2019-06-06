@@ -34,7 +34,10 @@ const App = () => {
             />
           ) : (
             <AlertStripeInfo>
-              Velg arbeidsforhold for å vise detaljene 😊
+              Velg arbeidsforhold for å vise detaljene
+              <span role="img" aria-label="Smiley">
+                😊
+              </span>
               <br />
               Denne informasjonsboksen er kun en del av eksempelet.
             </AlertStripeInfo>

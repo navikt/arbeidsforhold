@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { AFUtenlandsopphold } from "../../../types/arbeidsforhold";
 import { Element } from "nav-frontend-typografi";
 import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
@@ -61,7 +61,7 @@ const Utenlandsopphold = (props: Props) => {
           .map(year => {
             const value = data[year];
             return (
-              <React.Fragment key={year}>
+              <Fragment key={year}>
                 <tr className="af-liste__rad" key={year}>
                   <td
                     className="af-liste__kolonne af-liste__ekspander"
@@ -99,7 +99,7 @@ const Utenlandsopphold = (props: Props) => {
                       </td>
                     </tr>
                   ))}
-              </React.Fragment>
+              </Fragment>
             );
           })}
       </tbody>

@@ -6,6 +6,7 @@ import { parse } from "../../utils/text";
 interface Props {
   data?: string | number;
   format?: string;
+  dateFormat?: string;
 }
 
 const CheckDateAndPrint = (props: Props) => {
@@ -13,7 +14,7 @@ const CheckDateAndPrint = (props: Props) => {
     return <NoData />;
   }
 
-  const date = moment(props.data).format("DD.MM.YYYY");
+  const date = moment(props.data).format(props.dateFormat || "DD.MM.YYYY");
   return <span>{props.format ? parse(props.format, date) : date}</span>;
 };
 export default CheckDateAndPrint;

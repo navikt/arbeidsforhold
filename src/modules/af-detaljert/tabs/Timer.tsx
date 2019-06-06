@@ -49,7 +49,7 @@ const Timer = (props: Props) => {
             <Element>Rapporteringsperiode</Element>
           </td>
           <td className="af-liste__kolonne">
-            <Element>Periode</Element>
+            <Element>Opptjeningsperiode</Element>
           </td>
           <td className="af-liste__kolonne">
             <Element>Antall timer</Element>

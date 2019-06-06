@@ -10,6 +10,7 @@ import Environment from "../../utils/environment";
 import Miljo from "../../types/miljo";
 
 type State =
+  | { status: "READY" }
   | { status: "LOADING" }
   | { status: "RESULT"; arbeidsforhold: AFUtvidet }
   | { status: "ERROR"; error: HTTPError };
@@ -24,7 +25,7 @@ export interface AFDetaljertData {
 }
 
 const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
-  const [state, setState] = useState({ status: "LOADING" } as State);
+  const [state, setState] = useState({ status: "READY" } as State);
   Environment.settEnv(props.miljo as Miljo);
 
   useEffect(() => {
@@ -46,11 +47,9 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
     }
   }, [props.navArbeidsforholdId]);
 
-  if (!props.navArbeidsforholdId) {
-    return null;
-  }
-
   switch (state.status) {
+    case "READY":
+      return null;
     case "LOADING":
       return <Spinner />;
     case "RESULT":

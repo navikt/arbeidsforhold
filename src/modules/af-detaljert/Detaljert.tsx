@@ -111,6 +111,15 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           data={arbeidsforhold.antallTimerPrUke}
         />
         <CheckAndPrintBox
+          title="Skipsregister"
+          data={arbeidsforhold.skipsregister}
+        />
+        <CheckAndPrintBox title="Skipstype" data={arbeidsforhold.skipstype} />
+        <CheckAndPrintBox
+          title="Fartsområde"
+          data={arbeidsforhold.fartsomraade}
+        />
+        <CheckAndPrintBox
           title="Sist bekreftet av arbeidsgiver"
           data={arbeidsforhold.sistBekreftet}
           date={true}

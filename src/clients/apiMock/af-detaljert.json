@@ -1,17 +1,4 @@
 {
-  "navArbeidsforholdId": 7597029,
-  "arbeidsforholdId": "konvertert_af709505-128e-45dc-a241-7e14180f787d",
-  "arbeidsgiver": {
-    "orgnr": "972165050",
-    "orgnavn": "Generisk Firmanavn AS Oslo",
-    "type": "Organisasjon"
-  },
-  "opplysningspliktigarbeidsgiver": {
-    "orgnr": "972165050",
-    "orgnavn": "Generisk Firmanavn AS",
-    "type": "Organisasjon"
-  },
-  "type": "Ordinært",
   "ansettelsesperiode": {
     "periodeFra": "1988-10-03"
   },
@@ -66,16 +53,19 @@
     }
   ],
   "antallTimerPrUke": 37.5,
-  "arbeidstidsordning": "ikkeSkift",
-  "beregnetAntallTimerPrUke": 40,
-  "gyldighetsperiode": {
-    "periodeFra": "1988-10-01"
-  },
-  "sisteLoennsendring": "2016-12-16",
-  "sisteStillingsendring": "1988-10-03",
-  "stillingsprosent": "100%",
-  "yrke": "Klovn",
   "arbeidsavtaler": [
+    {
+      "antallTimerPrUke": 37.5,
+      "arbeidstidsordning": "Skift",
+      "beregnetAntallTimerPrUke": 40,
+      "gyldighetsperiode": {
+        "periodeFra": "1988-10-01"
+      },
+      "sisteLoennsendring": "2016-04-16",
+      "sisteStillingsendring": "1988-10-03",
+      "stillingsprosent": "100%",
+      "yrke": "Klovn"
+    },
     {
       "antallTimerPrUke": 37.5,
       "arbeidstidsordning": "ikkeSkift",
@@ -87,20 +77,26 @@
       "sisteStillingsendring": "1988-10-03",
       "stillingsprosent": "100%",
       "yrke": "Klovn"
-    },
-    {
-      "antallTimerPrUke": 37.5,
-      "arbeidstidsordning": "ikkeSkift",
-      "beregnetAntallTimerPrUke": 40,
-      "gyldighetsperiode": {
-        "periodeFra": "1988-10-01"
-      },
-      "sisteLoennsendring": "2016-04-16",
-      "sisteStillingsendring": "1988-10-03",
-      "stillingsprosent": "100%",
-      "yrke": "Klovn"
     }
   ],
+  "arbeidsforholdId": "konvertert_af709505-128e-45dc-a241-7e14180f787d",
+  "arbeidsgiver": {
+    "orgnavn": "Generisk Firmanavn AS Oslo",
+    "orgnr": "972165050",
+    "type": "Organisasjon"
+  },
+  "arbeidstidsordning": "Skift",
+  "beregnetAntallTimerPrUke": 40,
+  "fartsomrade": "Utenriks",
+  "gyldighetsperiode": {
+    "periodeFra": "1988-10-01"
+  },
+  "navArbeidsforholdId": 7597029,
+  "opplysningspliktigarbeidsgiver": {
+    "orgnavn": "Generisk Firmanavn AS",
+    "orgnr": "972165050",
+    "type": "Organisasjon"
+  },
   "permisjonPermitteringer": [
     {
       "periode": {
@@ -109,7 +105,7 @@
       },
       "permisjonPermitteringId": "123-xyz",
       "prosent": 50.5,
-      "type": "permisjonMedForeldrepenger"
+      "type": "Permisjon med foreldrepenger"
     },
     {
       "periode": {
@@ -118,9 +114,16 @@
       },
       "permisjonPermitteringId": "164-xyz",
       "prosent": 36.4,
-      "type": "velferdspermisjon"
+      "type": "Velferdspermisjon"
     }
   ],
+  "skipstype": "Annet",
+  "skipsregister": "Norsk internasjonal skipreise",
+  "sistBekreftet": "2016-12-13T13:59:11.893",
+  "sisteLoennsendring": "2016-12-16",
+  "sisteStillingsendring": "1988-10-03",
+  "stillingsprosent": "100%",
+  "type": "Ordinært",
   "utenlandsopphold": [
     {
       "landkode": "JPN",
@@ -139,5 +142,5 @@
       "rapporteringsperiode": "2017-12"
     }
   ],
-  "sistBekreftet": "2016-12-13T13:59:11.893"
+  "yrke": "Klovn"
 }

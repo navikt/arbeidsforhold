@@ -57,11 +57,14 @@ export interface AFUtvidet extends AFArbeidsavtaler {
     aktoerId: number;
     offentligIdent: number;
   };
+  fartsomraade?: string;
   innrapportertEtterAOrdningen: boolean;
   navArbeidsforholdId: number;
   opplysningspliktigarbeidsgiver: AFArbeidsgiver;
   permisjonPermitteringer: AFPermisjonPermittering[];
   registrert?: string;
+  skipsregister?: string;
+  skipstype?: string;
   sistBekreftet?: string;
   type?: string;
   utenlandsopphold: AFUtenlandsopphold[];

@@ -94,7 +94,7 @@ const Timer = (props: Props) => {
                       </td>
                       <td className="af-liste__kolonne">
                         <CheckPeriodAndPrint data={time.periode} />
-                      </td>{" "}
+                      </td>
                       <td className="af-liste__kolonne">
                         <CheckAndPrint data={time.antallTimer} />
                       </td>

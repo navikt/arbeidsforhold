@@ -64,19 +64,23 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           title="Hovedenhet"
           data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnavn}
         >
-          <CheckAndPrint
-            data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnr}
-            format="(%s)"
-          />
+          <Normaltekst>
+            <CheckAndPrint
+              data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnr}
+              format="(%s)"
+            />
+          </Normaltekst>
         </CheckAndPrintBox>
         <CheckAndPrintBox
           title="Stillingsprosent"
           data={arbeidsforhold.stillingsprosent}
         >
-          <CheckDateAndPrint
-            data={arbeidsforhold.sisteStillingsendring}
-            format="(Endret stillingsprosent %s)"
-          />
+          <Normaltekst>
+            <CheckDateAndPrint
+              data={arbeidsforhold.sisteStillingsendring}
+              format="(Endret stillingsprosent %s)"
+            />
+          </Normaltekst>
         </CheckAndPrintBox>
         <CheckAndPrintBox title="Yrke" data={arbeidsforhold.yrke} />
         <CheckAndPrintBox

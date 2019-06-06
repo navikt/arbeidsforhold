@@ -68,7 +68,7 @@
     },
     {
       "antallTimerPrUke": 37.5,
-      "arbeidstidsordning": "ikkeSkift",
+      "arbeidstidsordning": "Skift",
       "beregnetAntallTimerPrUke": 40,
       "gyldighetsperiode": {
         "periodeFra": "1988-10-01"

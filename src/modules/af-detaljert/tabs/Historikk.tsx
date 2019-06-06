@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import { AFArbeidsavtaler } from "../../../types/arbeidsforhold";
-import { Element } from "nav-frontend-typografi";
+import { Element, Normaltekst } from "nav-frontend-typografi";
 import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
 import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
@@ -84,32 +84,33 @@ const Historikk = (props: Props) => {
               </tr>
               {ekspandert && (
                 <tr className="af-liste__rad">
-                  <td
-                    className="af-liste__kolonne af-detaljert__innhold"
-                    colSpan={3}
-                  >
-                    <CheckAndPrintBox
-                      title="Arbeidsavtale"
-                      data={arbeidsavtale.stillingsprosent}
-                    >
-                      <CheckDateAndPrint
-                        data={arbeidsavtale.sisteStillingsendring}
-                        format="(Endret stillingsprosent %s)"
+                  <td className="af-liste__kolonne" colSpan={3}>
+                    <div className="af-detaljert__innhold">
+                      <CheckAndPrintBox
+                        title="Arbeidsavtale"
+                        data={arbeidsavtale.stillingsprosent}
+                      >
+                        <Normaltekst>
+                          <CheckDateAndPrint
+                            data={arbeidsavtale.sisteStillingsendring}
+                            format="(Endret stillingsprosent %s)"
+                          />
+                        </Normaltekst>
+                      </CheckAndPrintBox>
+                      <CheckAndPrintBox
+                        title="Arbeidstidsordning"
+                        data={arbeidsavtale.arbeidstidsordning}
                       />
-                    </CheckAndPrintBox>
-                    <CheckAndPrintBox
-                      title="Arbeidstidsordning"
-                      data={arbeidsavtale.arbeidstidsordning}
-                    />
-                    <CheckAndPrintBox
-                      title="Siste lønnsendring"
-                      data={arbeidsavtale.sisteLoennsendring}
-                      date={true}
-                    />
-                    <CheckAndPrintBox
-                      title="Timer i full stilling"
-                      data={arbeidsavtale.antallTimerPrUke}
-                    />
+                      <CheckAndPrintBox
+                        title="Siste lønnsendring"
+                        data={arbeidsavtale.sisteLoennsendring}
+                        date={true}
+                      />
+                      <CheckAndPrintBox
+                        title="Timer i full stilling"
+                        data={arbeidsavtale.antallTimerPrUke}
+                      />
+                    </div>
                   </td>
                 </tr>
               )}

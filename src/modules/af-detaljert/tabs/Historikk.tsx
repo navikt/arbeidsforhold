@@ -13,14 +13,23 @@ interface Props {
 }
 
 const Historikk = (props: Props) => {
-  props.arbeidsavtaler.sort((left, right) =>
-    left.gyldighetsperiode && right.gyldighetsperiode
-      ? sortDateString(
-          left.gyldighetsperiode.periodeFra,
-          right.gyldighetsperiode.periodeFra
-        )
-      : 0
-  );
+  props.arbeidsavtaler
+    .sort((left, right) =>
+      left.gyldighetsperiode && right.gyldighetsperiode
+        ? sortDateString(
+            left.gyldighetsperiode.periodeFra,
+            right.gyldighetsperiode.periodeFra
+          )
+        : 0
+    )
+    .sort((left, right) =>
+      left.gyldighetsperiode && right.gyldighetsperiode
+        ? sortDateString(
+            right.gyldighetsperiode.periodeTil,
+            left.gyldighetsperiode.periodeTil
+          )
+        : 0
+    );
 
   const [data, setData] = useState(
     props.arbeidsavtaler.map(arbeidsavtale => ({

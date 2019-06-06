@@ -28,20 +28,27 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
   Environment.settEnv(props.miljo as Miljo);
 
   useEffect(() => {
-    hentDetaljertArbeidsforhold(props.navArbeidsforholdId)
-      .then(arbeidsforhold =>
-        setState({
-          status: "RESULT",
-          arbeidsforhold: arbeidsforhold as AFUtvidet
-        })
-      )
-      .catch((error: HTTPError) =>
-        setState({
-          status: "ERROR",
-          error
-        })
-      );
+    if (props.navArbeidsforholdId) {
+      setState({ status: "LOADING" });
+      hentDetaljertArbeidsforhold(props.navArbeidsforholdId)
+        .then(arbeidsforhold =>
+          setState({
+            status: "RESULT",
+            arbeidsforhold: arbeidsforhold as AFUtvidet
+          })
+        )
+        .catch((error: HTTPError) =>
+          setState({
+            status: "ERROR",
+            error
+          })
+        );
+    }
   }, [props.navArbeidsforholdId]);
+
+  if (!props.navArbeidsforholdId) {
+    return null;
+  }
 
   switch (state.status) {
     case "LOADING":

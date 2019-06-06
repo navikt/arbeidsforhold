@@ -140,7 +140,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
             return <Timer timer={antallTimerForTimeloennet} />;
           case "Permisjon/Permittering":
             return <Permisjon permisjoner={permisjonPermitteringer} />;
-          case "Utenlandsopphold":
+          case "Arbeid i utlandet":
             return <Utenlandsopphold utenlandsopphold={utenlandsopphold} />;
           case "Historikk":
             return <Historikk arbeidsavtaler={sorterteArbeidsavtaler} />;

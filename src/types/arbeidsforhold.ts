@@ -31,6 +31,7 @@ export interface AFTimerForTimelonnet {
 }
 
 export interface AFUtenlandsopphold {
+  land: string;
   landkode: string;
   periode: AFPeriode;
   rapporteringsperiode: string;

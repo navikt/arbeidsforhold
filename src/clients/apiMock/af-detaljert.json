@@ -126,14 +126,16 @@
   "type": "Ordinært",
   "utenlandsopphold": [
     {
+      "land": "Japan",
       "landkode": "JPN",
       "periode": {
         "periodeFra": "2014-07-01",
         "periodeTil": "2015-12-31"
       },
-      "rapporteringsperiode": "2017-12"
+      "rapporteringsperiode": "2016-01"
     },
     {
+      "landkode": "Spania",
       "landkode": "SPN",
       "periode": {
         "periodeFra": "2015-08-02",

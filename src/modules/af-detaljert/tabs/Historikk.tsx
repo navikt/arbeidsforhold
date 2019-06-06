@@ -52,10 +52,7 @@ const Historikk = (props: Props) => {
                   <CheckAndPrint data={arbeidsavtale.yrke} />
                 </td>
                 <td className="af-liste__kolonne">
-                  <CheckPeriodAndPrint
-                    data={arbeidsavtale.gyldighetsperiode}
-                    twoLines={true}
-                  />
+                  <CheckPeriodAndPrint data={arbeidsavtale.gyldighetsperiode} />
                 </td>
                 <td
                   className="af-liste__kolonne af-liste__ekspander"

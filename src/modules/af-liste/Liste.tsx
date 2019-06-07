@@ -15,14 +15,14 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
   const sorterteArbeidsforhold = arbeidsforhold
     .sort((a, b) =>
       sortDateString(
-        b.ansettelsesPeriode.periodeFra,
-        a.ansettelsesPeriode.periodeFra
+        b.ansettelsesperiode.periodeFra,
+        a.ansettelsesperiode.periodeFra
       )
     )
     .sort((a, b) =>
       sortDateString(
-        b.ansettelsesPeriode.periodeTil,
-        a.ansettelsesPeriode.periodeTil
+        b.ansettelsesperiode.periodeTil,
+        a.ansettelsesperiode.periodeTil
       )
     );
 
@@ -54,7 +54,7 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
                 </div>
                 <div className="af-liste__tekst">
                   <Undertekst>
-                    <CheckPeriodAndPrint data={foretak.ansettelsesPeriode} />
+                    <CheckPeriodAndPrint data={foretak.ansettelsesperiode} />
                   </Undertekst>
                 </div>
               </div>

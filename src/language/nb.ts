@@ -11,7 +11,7 @@ export default {
   hvisfeil: `Hvis noe er feil med et arbeidsforhold må du kontakte arbeidsgiveren det gjelder, slik at de kan rette det opp.`,
   land: "Land",
   lonnsendring: "Lønnsendring",
-  lukke: "Lukke",
+  lukke: "Lukk",
   organisasjonsnummer: "Organisasjonsnummer",
   opptjeningsperiode: "Opptjeningsperiode",
   navaerendejobb: "Nåværende jobb",

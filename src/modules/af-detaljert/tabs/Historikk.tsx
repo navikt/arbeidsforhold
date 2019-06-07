@@ -58,6 +58,16 @@ const Historikk = (props: Props) => {
       <tbody>
         {data.map((innslag, counter) => {
           const { arbeidsavtale, ekspandert } = innslag;
+
+          const onClick = () =>
+            setData(
+              data.map((values, i) =>
+                i === counter
+                  ? { ...values, ekspandert: !data[i].ekspandert }
+                  : values
+              )
+            );
+
           return (
             <Fragment key={counter}>
               <tr className="af-liste__rad" key={counter}>
@@ -69,15 +79,7 @@ const Historikk = (props: Props) => {
                 </td>
                 <td
                   className="af-liste__kolonne af-liste__ekspander"
-                  onClick={() =>
-                    setData(
-                      data.map((values, i) =>
-                        i === counter
-                          ? { ...values, ekspandert: !data[i].ekspandert }
-                          : values
-                      )
-                    )
-                  }
+                  onClick={onClick}
                 >
                   {!ekspandert ? (
                     <span>
@@ -117,7 +119,7 @@ const Historikk = (props: Props) => {
                         date={true}
                       />
                       <CheckAndPrintBox
-                        title={sprak[locale].timerifullstilling}
+                        title={sprak[locale].timerperuke}
                         data={arbeidsavtale.antallTimerPrUke}
                       />
                     </div>

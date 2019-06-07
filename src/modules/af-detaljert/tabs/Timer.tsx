@@ -65,21 +65,23 @@ const Timer = (props: Props) => {
           .reverse()
           .map(year => {
             const value = data[year];
+
+            const onClick = () =>
+              setData({
+                ...data,
+                [year]: {
+                  ...data[year],
+                  ekspandert: !data[year].ekspandert
+                }
+              });
+
             return (
               <Fragment key={year}>
                 <tr className="af-liste__rad" key={year}>
                   <td
                     className="af-liste__kolonne af-liste__ekspander"
                     colSpan={2}
-                    onClick={() =>
-                      setData({
-                        ...data,
-                        [year]: {
-                          ...data[year],
-                          ekspandert: !data[year].ekspandert
-                        }
-                      })
-                    }
+                    onClick={onClick}
                   >
                     {year} {value.ekspandert ? <OppChevron /> : <NedChevron />}
                   </td>

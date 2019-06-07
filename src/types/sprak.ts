@@ -2,6 +2,7 @@ export interface Sprak {
   [key: string]: {
     antalltimer: string;
     apne: string;
+    arbeidsavtale: string;
     arbeidsforholdid: string;
     arbeidstidsordning: string;
     endretstillingsprosent: string;
@@ -13,6 +14,7 @@ export interface Sprak {
     lonnsendring: string;
     lukke: string;
     organisasjonsnummer: string;
+    opptjeningsperiode: string;
     navaerendejobb: string;
     periode: string;
     prosent: string;

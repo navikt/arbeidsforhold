@@ -1,6 +1,7 @@
 export default {
   antalltimer: "Antall timer",
   apne: "Åpne",
+  arbeidsavtale: "Arbeidsavtale",
   arbeidsforholdid: "Arbeidsforhold ID",
   arbeidstidsordning: "Arbeidstidsordning",
   endretstillingsprosent: "Endret stillingsprosent",
@@ -12,6 +13,7 @@ export default {
   lonnsendring: "Lønnsendring",
   lukke: "Lukke",
   organisasjonsnummer: "Organisasjonsnummer",
+  opptjeningsperiode: "Opptjeningsperiode",
   navaerendejobb: "Nåværende jobb",
   periode: "Periode",
   prosent: " Prosent",

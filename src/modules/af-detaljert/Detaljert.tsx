@@ -142,13 +142,25 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       {(() => {
         switch (visTab) {
           case sprak[locale].tabs.timerfortimelonnet:
-            return <Timer timer={antallTimerForTimeloennet} />;
+            return <Timer timer={antallTimerForTimeloennet} locale={locale} />;
           case sprak[locale].tabs.permisjonpermittering:
-            return <Permisjon permisjoner={permisjonPermitteringer} />;
+            return (
+              <Permisjon
+                permisjoner={permisjonPermitteringer}
+                locale={locale}
+              />
+            );
           case sprak[locale].tabs.arbeidiutlandet:
-            return <Utenlandsopphold utenlandsopphold={utenlandsopphold} />;
+            return (
+              <Utenlandsopphold
+                utenlandsopphold={utenlandsopphold}
+                locale={locale}
+              />
+            );
           case sprak[locale].tabs.historikk:
-            return <Historikk arbeidsavtaler={arbeidsavtaler} />;
+            return (
+              <Historikk arbeidsavtaler={arbeidsavtaler} locale={locale} />
+            );
           default:
             return null;
         }

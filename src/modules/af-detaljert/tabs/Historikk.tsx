@@ -68,7 +68,7 @@ const Historikk = (props: Props) => {
         return (
           <Fragment key={counter}>
             <div className="af-detaljert__flex-rad" key={counter}>
-              <div className="af-detaljert__flex-kolonne">
+              <div className="af-detaljert__flex-kolonne af-detaljert__heading">
                 <CheckAndPrint data={arbeidsavtale.yrke} />
               </div>
               <div className="af-detaljert__flex-kolonne">

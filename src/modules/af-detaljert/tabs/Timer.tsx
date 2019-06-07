@@ -86,7 +86,7 @@ const Timer = (props: Props) => {
               {value.ekspandert &&
                 value.timerObjekt.map((time, i) => (
                   <div className="af-detaljert__flex-rad" key={`${i}`}>
-                    <div className="af-detaljert__flex-kolonne af-liste__month">
+                    <div className="af-detaljert__flex-kolonne af-liste__month af-detaljert__heading">
                       {time.periode && (
                         <CheckDateAndPrint
                           data={time.rapporteringsperiode}

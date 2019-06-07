@@ -29,7 +29,9 @@ const Permisjon = (props: Props) => {
           className="af-detaljert__flex-rad"
           key={`${permisjon.permisjonPermitteringId}-${i}`}
         >
-          <div className="af-detaljert__flex-kolonne">{permisjon.type}</div>
+          <div className="af-detaljert__flex-kolonne af-detaljert__heading">
+            {permisjon.type}
+          </div>
           <div className="af-detaljert__flex-kolonne">
             <CheckPeriodAndPrint data={permisjon.periode} />
           </div>

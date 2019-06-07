@@ -8,7 +8,6 @@ import Historikk from "./tabs/Historikk";
 import Permisjon from "./tabs/Permisjon";
 import Timer from "./tabs/Timer";
 import Utenlandsopphold from "./tabs/Utenlandsopphold";
-import { sortDateString } from "../../utils/date";
 import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
 import CheckAndPrintBox from "../../components/check-and-print-box/CheckAndPrintBox";
 import CheckDateAndPrint from "../../components/check-date-and-print/CheckDateAndPrint";
@@ -19,15 +18,6 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, locale } = props;
   const { arbeidsavtaler, permisjonPermitteringer } = arbeidsforhold;
   const { antallTimerForTimeloennet, utenlandsopphold } = arbeidsforhold;
-
-  const sorterteArbeidsavtaler = arbeidsavtaler.sort((left, right) =>
-    left.gyldighetsperiode && right.gyldighetsperiode
-      ? sortDateString(
-          left.gyldighetsperiode.periodeFra,
-          right.gyldighetsperiode.periodeFra
-        )
-      : 0
-  );
 
   const tabs = [] as { label: string }[];
   if (antallTimerForTimeloennet && antallTimerForTimeloennet.length > 0) {
@@ -51,7 +41,9 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           <div className="af-detaljert__arbeidsgiver">
             <Undertittel>{arbeidsforhold.arbeidsgiver.orgnavn}</Undertittel>
             <div className="af-detaljert__orgnr">
-              <Normaltekst>({arbeidsforhold.arbeidsgiver.orgnr})</Normaltekst>
+              <Normaltekst>
+                Organisasjonsnummer {arbeidsforhold.arbeidsgiver.orgnr}
+              </Normaltekst>
             </div>
           </div>
         </div>
@@ -75,19 +67,23 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           title={sprak[locale].hovedenhet}
           data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnavn}
         >
-          <CheckAndPrint
-            data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnr}
-            format="(%s)"
-          />
+          <Normaltekst>
+            <CheckAndPrint
+              data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnr}
+              format="Organisasjonsnummer %s"
+            />
+          </Normaltekst>
         </CheckAndPrintBox>
         <CheckAndPrintBox
           title={sprak[locale].stillingsprosent}
           data={arbeidsforhold.stillingsprosent}
         >
-          <CheckDateAndPrint
-            data={arbeidsforhold.sisteStillingsendring}
-            format={`(${sprak[locale].endretstillingsprosent} %s)`}
-          />
+          <Normaltekst>
+            <CheckDateAndPrint
+              data={arbeidsforhold.sisteStillingsendring}
+              format={`(${sprak[locale].endretstillingsprosent} %s)`}
+            />
+          </Normaltekst>
         </CheckAndPrintBox>
         <CheckAndPrintBox
           title={sprak[locale].yrke}
@@ -150,7 +146,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           case sprak[locale].tabs.arbeidiutlandet:
             return <Utenlandsopphold utenlandsopphold={utenlandsopphold} />;
           case sprak[locale].tabs.historikk:
-            return <Historikk arbeidsavtaler={sorterteArbeidsavtaler} />;
+            return <Historikk arbeidsavtaler={arbeidsavtaler} />;
           default:
             return null;
         }

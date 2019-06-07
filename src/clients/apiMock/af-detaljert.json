@@ -59,7 +59,8 @@
       "arbeidstidsordning": "Skift",
       "beregnetAntallTimerPrUke": 40,
       "gyldighetsperiode": {
-        "periodeFra": "1988-10-01"
+        "periodeFra": "2017-03-01",
+        "periodeTil": "2017-06-01"
       },
       "sisteLoennsendring": "2016-04-16",
       "sisteStillingsendring": "1988-10-03",
@@ -68,10 +69,10 @@
     },
     {
       "antallTimerPrUke": 37.5,
-      "arbeidstidsordning": "ikkeSkift",
+      "arbeidstidsordning": "Skift",
       "beregnetAntallTimerPrUke": 40,
       "gyldighetsperiode": {
-        "periodeFra": "1988-10-01"
+        "periodeFra": "2017-06-01"
       },
       "sisteLoennsendring": "2016-12-16",
       "sisteStillingsendring": "1988-10-03",
@@ -126,14 +127,16 @@
   "type": "Ordinært",
   "utenlandsopphold": [
     {
+      "land": "Japan",
       "landkode": "JPN",
       "periode": {
         "periodeFra": "2014-07-01",
         "periodeTil": "2015-12-31"
       },
-      "rapporteringsperiode": "2017-12"
+      "rapporteringsperiode": "2016-01"
     },
     {
+      "land": "Spania",
       "landkode": "SPN",
       "periode": {
         "periodeFra": "2015-08-02",

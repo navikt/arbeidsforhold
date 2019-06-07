@@ -37,7 +37,7 @@ const ListeMedArbeidsforhold = (props: AFListeProps) => {
   useEffect(() => {
     Environment.settEnv(props.miljo as Miljo);
     moment.locale(locale);
-  }, []);
+  }, [locale]);
 
   useEffect(() => {
     if (state.status === "LOADING") {

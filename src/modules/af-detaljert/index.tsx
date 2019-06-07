@@ -34,7 +34,7 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
   useEffect(() => {
     Environment.settEnv(props.miljo as Miljo);
     moment.locale(locale);
-  }, []);
+  }, [locale]);
 
   useEffect(() => {
     if (props.navArbeidsforholdId) {

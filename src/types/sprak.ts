@@ -34,7 +34,7 @@ export interface Sprak {
     timerperuke: string;
     type: string;
     typearbeidsforhold: string;
-    visfaerearbeidsforhold: string;
+    visfaerrearbeidsforhold: string;
     visflerearbeidsforhold: string;
     yrke: string;
   };

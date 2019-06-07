@@ -5,6 +5,7 @@ import { AFListeProps, AFListeData } from "./index";
 import { sortDateString } from "../../utils/date";
 import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
+import sprak from "../../language/provider";
 
 const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
   const { arbeidsforhold, onClick } = props;
@@ -64,11 +65,11 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
         <div className="af-liste__vis-flere" onClick={toggleVisAlle}>
           {visAlle ? (
             <span>
-              Vis færre arbeidsforhold <OppChevron />
+              {sprak[props.locale].visfaerrearbeidsforhold} <OppChevron />
             </span>
           ) : (
             <span>
-              Vis flere arbeidsforhold <NedChevron />
+              {sprak[props.locale].visflerearbeidsforhold} <NedChevron />
             </span>
           )}
         </div>

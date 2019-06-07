@@ -33,7 +33,7 @@ export default {
   timerperuke: "Timer/uke",
   type: "Type",
   typearbeidsforhold: "Type arbeidsforhold",
-  visfaerearbeidsforhold: "Vis færre arbeidsforhold",
+  visfaerrearbeidsforhold: "Vis færre arbeidsforhold",
   visflerearbeidsforhold: "Vis flere arbeidsforhold",
   yrke: "Yrke"
 };

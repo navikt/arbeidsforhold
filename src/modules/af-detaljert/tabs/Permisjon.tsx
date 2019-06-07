@@ -7,11 +7,6 @@ interface Props {
   permisjoner: AFPermisjonPermittering[];
 }
 
-const typer = {
-  velferdspermisjon: "Velferdspermisjon",
-  permisjonMedForeldrepenger: "Permisjon med foreldrepenger"
-};
-
 const Permisjon = (props: Props) => (
   <table className="af-detaljert__tabs-innhold af-liste__table">
     <thead>
@@ -20,10 +15,10 @@ const Permisjon = (props: Props) => (
           <Element>Type</Element>
         </td>
         <td className="af-liste__kolonne">
-          <Element>Prosent</Element>
+          <Element>Periode</Element>
         </td>
         <td className="af-liste__kolonne">
-          <Element>Periode</Element>
+          <Element>Prosent</Element>
         </td>
       </tr>
     </thead>
@@ -33,11 +28,11 @@ const Permisjon = (props: Props) => (
           className="af-liste__rad"
           key={`${permisjon.permisjonPermitteringId}-${i}`}
         >
-          <td className="af-liste__kolonne">{typer[permisjon.type]}</td>
-          <td className="af-liste__kolonne">{permisjon.prosent}</td>
+          <td className="af-liste__kolonne">{permisjon.type}</td>
           <td className="af-liste__kolonne">
-            <CheckPeriodAndPrint data={permisjon.periode} twoLines={true} />
+            <CheckPeriodAndPrint data={permisjon.periode} />
           </td>
+          <td className="af-liste__kolonne">{permisjon.prosent}</td>
         </tr>
       ))}
     </tbody>

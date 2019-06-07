@@ -42,14 +42,17 @@
   }
   &__tabs {
     margin: 1rem 0;
-    &-innhold {
-      margin: 2rem 1rem;
-    }
     @media @desktop, @tablet {
       display: block;
+      &-innhold {
+        margin: 2rem 1rem;
+      }
     }
     @media @mobile {
       display: none;
+      &-innhold {
+        margin: 2rem 0rem;
+      }
     }
   }
   &__select {
@@ -73,5 +76,29 @@
   }
   &__hr {
     margin: 1rem 0;
+  }
+  &__flex-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  &__flex-rad {
+    border-bottom: 1px solid #979797;
+    display: flex;
+    padding: 0.25rem 0;
+    @media @desktop, @tablet {
+      flex-direction: row;
+    }
+    @media @mobile {
+      flex-direction: column;
+    }
+  }
+  &__flex-kolonne {
+    padding: 0.25rem 0;
+    flex-basis: 100%;
+  }
+  &__head {
+    @media @mobile {
+      display: none;
+    }
   }
 }

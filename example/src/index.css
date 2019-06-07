@@ -24,7 +24,7 @@ body {
 }
 
 .example__sprak {
-  padding-left: 15px;
+  padding: 0 10px;
   cursor: pointer;
 }
 

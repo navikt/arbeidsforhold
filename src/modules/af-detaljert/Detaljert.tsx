@@ -42,7 +42,9 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
             <Undertittel>{arbeidsforhold.arbeidsgiver.orgnavn}</Undertittel>
             <div className="af-detaljert__orgnr">
               <Normaltekst>
-                Organisasjonsnummer {arbeidsforhold.arbeidsgiver.orgnr}
+                {`${sprak[locale].organisasjonsnummer} ${
+                  arbeidsforhold.arbeidsgiver.orgnr
+                }`}
               </Normaltekst>
             </div>
           </div>
@@ -70,7 +72,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           <Normaltekst>
             <CheckAndPrint
               data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnr}
-              format="Organisasjonsnummer %s"
+              format={`${sprak[locale].organisasjonsnummer} %s`}
             />
           </Normaltekst>
         </CheckAndPrintBox>

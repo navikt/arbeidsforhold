@@ -12,6 +12,7 @@ export interface Sprak {
     land: string;
     lonnsendring: string;
     lukke: string;
+    organisasjonsnummer: string;
     navaerendejobb: string;
     periode: string;
     prosent: string;

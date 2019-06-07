@@ -11,6 +11,7 @@ export default {
   land: "Land",
   lonnsendring: "Lønnsendring",
   lukke: "Lukke",
+  organisasjonsnummer: "Organisasjonsnummer",
   navaerendejobb: "Nåværende jobb",
   periode: "Periode",
   prosent: " Prosent",

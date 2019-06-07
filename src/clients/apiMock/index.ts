@@ -1,4 +1,5 @@
 import fetchMock from "fetch-mock";
+import afListe from "./af-liste.json";
 import afDetaljert from "./af-detaljert.json";
 import Environment from "../../utils/environment";
 
@@ -11,7 +12,7 @@ const delay = (min: number, max: number) => {
 export const setUpMock = async () => {
   fetchMock.get(
     `${Environment.apiUrl}/arbeidsforhold`,
-    delay(250, 1250).then(() => 500)
+    delay(250, 1250).then(() => afListe)
   );
   fetchMock.get(
     `begin:${Environment.apiUrl}/arbeidsforholdinnslag`,

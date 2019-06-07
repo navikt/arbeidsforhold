@@ -4,7 +4,8 @@ import {
   ListeMedArbeidsforhold,
   DetaljertArbeidsforhold
 } from "@navikt/arbeidsforhold";
-import { AlertStripeInfo } from "nav-frontend-alertstriper";
+import InfoBoks from "./components/InfoBoks";
+import SprakVelger from "./components/SprakVelger";
 
 const App = () => {
   const { hostname } = window.location;
@@ -22,23 +23,11 @@ const App = () => {
   return (
     <div className="example__app">
       <div className="example__content">
-        <div className="example__sprak-velger">
-          {locales.map((locale, i) =>
-            valgtLocale === locale ? (
-              <span key={i} className="example__sprak">
-                <b>{locale}</b>
-              </span>
-            ) : (
-              <span
-                key={i}
-                className="example__sprak"
-                onClick={() => settValgtLocale(locale as "nb" | "en")}
-              >
-                {locale}
-              </span>
-            )
-          )}
-        </div>
+        <SprakVelger
+          locales={locales}
+          valgtLocale={valgtLocale}
+          settValgtLocale={settValgtLocale}
+        />
         <div className="example__section">
           <ListeMedArbeidsforhold
             locale={valgtLocale}
@@ -54,14 +43,7 @@ const App = () => {
               navArbeidsforholdId={valgtArbeidsforholdId}
             />
           ) : (
-            <AlertStripeInfo>
-              Velg arbeidsforhold for å vise detaljene
-              <span role="img" aria-label="Smiley">
-                😊
-              </span>
-              <br />
-              Denne informasjonsboksen er kun en del av eksempelet.
-            </AlertStripeInfo>
+            <InfoBoks />
           )}
         </div>
       </div>

@@ -18,7 +18,7 @@ type State =
   | { status: "ERROR"; error: HTTPError };
 
 export interface AFDetaljertProps {
-  locale: "nb";
+  locale: "nb" | "en";
   miljo: "LOCAL" | "DEV" | "PROD";
   navArbeidsforholdId: number;
 }

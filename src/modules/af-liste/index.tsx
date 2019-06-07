@@ -17,7 +17,7 @@ type State =
   | { status: "ERROR"; error: HTTPError };
 
 export interface AFListeProps {
-  locale: "nb";
+  locale: "nb" | "en";
   miljo: "LOCAL" | "DEV" | "PROD";
   onClick: (navArbeidsforholdId: number) => void;
 }

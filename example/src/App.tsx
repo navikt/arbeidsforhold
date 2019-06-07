@@ -8,22 +8,42 @@ import { AlertStripeInfo } from "nav-frontend-alertstriper";
 
 const App = () => {
   const { hostname } = window.location;
-  const locale = "nb";
   const miljo = (hostname.indexOf("localhost") > -1 ? "LOCAL" : "DEV") as Miljo;
+  const locales = ["nb", "en"];
 
   const [valgtArbeidsforholdId, settValgtArbeidsforholdId] = useState();
+  const [valgtLocale, settValgtLocale] = useState("nb" as "nb" | "en");
 
   const arbeidsforholdOnClick = (navArbeidsforholdId: number) => {
     console.log(`Clicked on ${navArbeidsforholdId}`);
     settValgtArbeidsforholdId(navArbeidsforholdId);
   };
 
+  console.log(valgtLocale);
+
   return (
     <div className="example__app">
       <div className="example__content">
+        <div className="example__sprak-velger">
+          {locales.map((locale, i) =>
+            valgtLocale === locale ? (
+              <span key={i} className="example__sprak">
+                <b>{locale}</b>
+              </span>
+            ) : (
+              <span
+                key={i}
+                className="example__sprak"
+                onClick={() => settValgtLocale(locale as "nb" | "en")}
+              >
+                {locale}
+              </span>
+            )
+          )}
+        </div>
         <div className="example__section">
           <ListeMedArbeidsforhold
-            locale={locale}
+            locale={valgtLocale}
             miljo={miljo}
             onClick={arbeidsforholdOnClick}
           />
@@ -31,7 +51,7 @@ const App = () => {
         <div className="example__section">
           {valgtArbeidsforholdId ? (
             <DetaljertArbeidsforhold
-              locale={locale}
+              locale={valgtLocale}
               miljo={miljo}
               navArbeidsforholdId={valgtArbeidsforholdId}
             />

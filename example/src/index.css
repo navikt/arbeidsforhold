@@ -22,3 +22,13 @@ body {
   margin: 2rem 0;
   background: white;
 }
+
+.example__sprak {
+  padding-left: 15px;
+  cursor: pointer;
+}
+
+.example__sprak-velger {
+  display: flex;
+  justify-content: center;
+}

@@ -28,6 +28,7 @@ onClick = (arbeidsforholdId: string) =>
 
 render = () => {
   return <ListeMedArbeidsforhold
+            locale={"nb" as "nb" | "en"}
             miljo={"DEV" as "LOCAL" | "DEV" | "PROD"}
             onClick={this.onClick} />;
 };
@@ -45,10 +46,12 @@ Eksempel
 
 ```js
 render = () => {
+  const locale = "nb" as "nb" | "en";
   const mijo = "DEV" as "LOCAL" | "DEV" | "PROD";
   const arbeidsforholdId = "konvertert_af709505-128e-45dc-a241-7e14180f787d";
 
   return <DetaljertArbeidsforhold
+            locale={locale}
             miljo={miljo}
             arbeidsforholdId={arbeidsforholdId} />;
 };

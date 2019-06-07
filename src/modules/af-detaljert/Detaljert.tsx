@@ -1,4 +1,4 @@
-import React, { useState, SyntheticEvent } from "react";
+import React, { useState, SyntheticEvent, ChangeEvent } from "react";
 import { Undertittel, Normaltekst } from "nav-frontend-typografi";
 import { AFDetaljertData, AFDetaljertProps } from "./index";
 import { EtikettSuksess } from "nav-frontend-etiketter";
@@ -13,6 +13,7 @@ import CheckAndPrintBox from "../../components/check-and-print-box/CheckAndPrint
 import CheckDateAndPrint from "../../components/check-date-and-print/CheckDateAndPrint";
 import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import sprak from "../../language/provider";
+import { Select } from "nav-frontend-skjema";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, locale } = props;
@@ -33,6 +34,8 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
     tabs.push({ label: sprak[locale].tabs.historikk });
   }
   const [visTab, settVisTab] = useState(tabs[0].label);
+  const selectOnClick = (event: ChangeEvent<HTMLSelectElement>) =>
+    settVisTab(event.currentTarget.value);
 
   return (
     <div className={`af-detaljert__container`}>
@@ -138,6 +141,16 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
             index: number
           ) => settVisTab(tabs[index].label)}
         />
+      </div>
+      <div className="af-detaljert__select">
+        <hr className="af-detaljert__hr" />
+        <Select label="" onChange={selectOnClick}>
+          {tabs.map(tab => (
+            <option key={tab.label} value={tab.label}>
+              {tab.label}
+            </option>
+          ))}
+        </Select>
       </div>
       {(() => {
         switch (visTab) {

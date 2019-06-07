@@ -45,6 +45,20 @@
     &-innhold {
       margin: 2rem 1rem;
     }
+    @media @desktop, @tablet {
+      display: block;
+    }
+    @media @mobile {
+      display: none;
+    }
+  }
+  &__select {
+    @media @desktop, @tablet {
+      display: none;
+    }
+    @media @mobile {
+      display: block;
+    }
   }
   &__orgnr {
     padding: 0.25rem 0;
@@ -56,5 +70,8 @@
   }
   &__periode-content {
     padding-left: 0.5rem;
+  }
+  &__hr {
+    margin: 1rem 0;
   }
 }

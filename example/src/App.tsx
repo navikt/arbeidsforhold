@@ -19,8 +19,6 @@ const App = () => {
     settValgtArbeidsforholdId(navArbeidsforholdId);
   };
 
-  console.log(valgtLocale);
-
   return (
     <div className="example__app">
       <div className="example__content">

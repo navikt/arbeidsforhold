@@ -8,6 +8,7 @@ import { AlertStripeInfo } from "nav-frontend-alertstriper";
 
 const App = () => {
   const { hostname } = window.location;
+  const locale = "nb";
   const miljo = (hostname.indexOf("localhost") > -1 ? "LOCAL" : "DEV") as Miljo;
 
   const [valgtArbeidsforholdId, settValgtArbeidsforholdId] = useState();
@@ -22,6 +23,7 @@ const App = () => {
       <div className="example__content">
         <div className="example__section">
           <ListeMedArbeidsforhold
+            locale={locale}
             miljo={miljo}
             onClick={arbeidsforholdOnClick}
           />
@@ -29,6 +31,7 @@ const App = () => {
         <div className="example__section">
           {valgtArbeidsforholdId ? (
             <DetaljertArbeidsforhold
+              locale={locale}
               miljo={miljo}
               navArbeidsforholdId={valgtArbeidsforholdId}
             />

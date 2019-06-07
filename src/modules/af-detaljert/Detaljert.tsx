@@ -13,9 +13,10 @@ import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPe
 import CheckAndPrintBox from "../../components/check-and-print-box/CheckAndPrintBox";
 import CheckDateAndPrint from "../../components/check-date-and-print/CheckDateAndPrint";
 import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
+import sprak from "../../language/provider";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
-  const { arbeidsforhold } = props;
+  const { arbeidsforhold, locale } = props;
   const { arbeidsavtaler, permisjonPermitteringer } = arbeidsforhold;
   const { antallTimerForTimeloennet, utenlandsopphold } = arbeidsforhold;
 
@@ -30,16 +31,16 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
 
   const tabs = [] as { label: string }[];
   if (antallTimerForTimeloennet && antallTimerForTimeloennet.length > 0) {
-    tabs.push({ label: "Timer for timelønnet" });
+    tabs.push({ label: sprak[locale].tabs.timerfortimelonnet });
   }
   if (permisjonPermitteringer && permisjonPermitteringer.length > 0) {
-    tabs.push({ label: "Permisjon/Permittering" });
+    tabs.push({ label: sprak[locale].tabs.permisjonpermittering });
   }
   if (utenlandsopphold && utenlandsopphold.length > 0) {
-    tabs.push({ label: "Arbeid i utlandet" });
+    tabs.push({ label: sprak[locale].tabs.arbeidiutlandet });
   }
   if (arbeidsavtaler && arbeidsavtaler.length > 0) {
-    tabs.push({ label: "Historikk" });
+    tabs.push({ label: sprak[locale].tabs.historikk });
   }
   const [visTab, settVisTab] = useState(tabs[0].label);
 
@@ -58,7 +59,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           {arbeidsforhold.ansettelsesperiode &&
             !arbeidsforhold.ansettelsesperiode.periodeTil && (
               <div className="af-detaljert__status">
-                <EtikettSuksess>Nåværende jobb</EtikettSuksess>
+                <EtikettSuksess>{sprak[locale].navaerendejobb}</EtikettSuksess>
               </div>
             )}
           <div className="af-detaljert__periode-content">
@@ -71,7 +72,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       <hr />
       <div className="af-detaljert__innhold">
         <CheckAndPrintBox
-          title="Hovedenhet"
+          title={sprak[locale].hovedenhet}
           data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnavn}
         >
           <CheckAndPrint
@@ -80,47 +81,53 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           />
         </CheckAndPrintBox>
         <CheckAndPrintBox
-          title="Stillingsprosent"
+          title={sprak[locale].stillingsprosent}
           data={arbeidsforhold.stillingsprosent}
         >
           <CheckDateAndPrint
             data={arbeidsforhold.sisteStillingsendring}
-            format="(Endret stillingsprosent %s)"
+            format={`(${sprak[locale].endretstillingsprosent} %s)`}
           />
         </CheckAndPrintBox>
-        <CheckAndPrintBox title="Yrke" data={arbeidsforhold.yrke} />
         <CheckAndPrintBox
-          title="Type arbeidsforhold"
+          title={sprak[locale].yrke}
+          data={arbeidsforhold.yrke}
+        />
+        <CheckAndPrintBox
+          title={sprak[locale].typearbeidsforhold}
           data={arbeidsforhold.type}
         />
         <CheckAndPrintBox
-          title="Arbeidsforhold ID"
+          title={sprak[locale].arbeidsforholdid}
           data={arbeidsforhold.navArbeidsforholdId}
         />
         <CheckAndPrintBox
-          title="Arbeidstidsordning"
+          title={sprak[locale].arbeidstidsordning}
           data={arbeidsforhold.arbeidstidsordning}
         />
         <CheckAndPrintBox
-          title="Siste lønnsendring"
+          title={sprak[locale].sistelonnsendring}
           data={arbeidsforhold.sisteLoennsendring}
           date={true}
         />
         <CheckAndPrintBox
-          title="Timer i full stilling"
+          title={sprak[locale].timerifullstilling}
           data={arbeidsforhold.antallTimerPrUke}
         />
         <CheckAndPrintBox
-          title="Skipsregister"
+          title={sprak[locale].skipsregister}
           data={arbeidsforhold.skipsregister}
         />
-        <CheckAndPrintBox title="Skipstype" data={arbeidsforhold.skipstype} />
         <CheckAndPrintBox
-          title="Fartsområde"
+          title={sprak[locale].skipstype}
+          data={arbeidsforhold.skipstype}
+        />
+        <CheckAndPrintBox
+          title={sprak[locale].fartsomraade}
           data={arbeidsforhold.fartsomraade}
         />
         <CheckAndPrintBox
-          title="Sist bekreftet av arbeidsgiver"
+          title={sprak[locale].sistbekreftet}
           data={arbeidsforhold.sistBekreftet}
           date={true}
         />
@@ -136,22 +143,19 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       </div>
       {(() => {
         switch (visTab) {
-          case "Timer for timelønnet":
+          case sprak[locale].tabs.timerfortimelonnet:
             return <Timer timer={antallTimerForTimeloennet} />;
-          case "Permisjon/Permittering":
+          case sprak[locale].tabs.permisjonpermittering:
             return <Permisjon permisjoner={permisjonPermitteringer} />;
-          case "Utenlandsopphold":
+          case sprak[locale].tabs.arbeidiutlandet:
             return <Utenlandsopphold utenlandsopphold={utenlandsopphold} />;
-          case "Historikk":
+          case sprak[locale].tabs.historikk:
             return <Historikk arbeidsavtaler={sorterteArbeidsavtaler} />;
           default:
             return null;
         }
       })()}
-      <AlertStripeInfo>
-        Hvis noe er feil med et arbeidsforhold må du kontakte arbeidsgiveren det
-        gjelder, slik at de kan rette det opp.
-      </AlertStripeInfo>
+      <AlertStripeInfo>{sprak[locale].hvisfeil}</AlertStripeInfo>
     </div>
   );
 };

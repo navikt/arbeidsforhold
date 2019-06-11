@@ -17,14 +17,14 @@ import { Select } from "nav-frontend-skjema";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, locale } = props;
-  const { arbeidsavtaler, permisjonPermitteringer } = arbeidsforhold;
+  const { arbeidsavtaler, permisjonPermittering } = arbeidsforhold;
   const { antallTimerForTimeloennet, utenlandsopphold } = arbeidsforhold;
 
   const tabs = [] as { label: string }[];
   if (antallTimerForTimeloennet && antallTimerForTimeloennet.length > 0) {
     tabs.push({ label: sprak[locale].tabs.timerfortimelonnet });
   }
-  if (permisjonPermitteringer && permisjonPermitteringer.length > 0) {
+  if (permisjonPermittering && permisjonPermittering.length > 0) {
     tabs.push({ label: sprak[locale].tabs.permisjonpermittering });
   }
   if (utenlandsopphold && utenlandsopphold.length > 0) {
@@ -159,7 +159,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           case sprak[locale].tabs.permisjonpermittering:
             return (
               <Permisjon
-                permisjoner={permisjonPermitteringer}
+                permisjoner={permisjonPermittering}
                 locale={locale}
               />
             );

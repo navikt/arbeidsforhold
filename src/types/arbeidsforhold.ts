@@ -62,7 +62,7 @@ export interface AFUtvidet extends AFArbeidsavtaler {
   innrapportertEtterAOrdningen: boolean;
   navArbeidsforholdId: number;
   opplysningspliktigarbeidsgiver: AFArbeidsgiver;
-  permisjonPermitteringer: AFPermisjonPermittering[];
+  permisjonPermittering: AFPermisjonPermittering[];
   registrert?: string;
   skipsregister?: string;
   skipstype?: string;

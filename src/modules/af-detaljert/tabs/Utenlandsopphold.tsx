@@ -83,24 +83,24 @@ const Utenlandsopphold = (props: Props) => {
                 <div />
               </div>
               {value.ekspandert &&
-                value.opphold.map((time, i) => (
-                  <div className="af-detaljert__flex-rad" key={`${i}`}>
-                    <div className="af-detaljert__flex-kolonne af-liste__month  af-detaljert__heading">
-                      {time.periode && (
-                        <CheckDateAndPrint
-                          data={time.rapporteringsperiode}
-                          dateFormat="MMMM"
-                        />
-                      )}
-                    </div>
-                    <div className="af-detaljert__flex-kolonne">
-                      <CheckPeriodAndPrint data={time.periode} />
-                    </div>
-                    <div className="af-detaljert__flex-kolonne">
-                      <CheckAndPrint data={time.land} />
-                    </div>
+              value.opphold.map((time, i) => (
+                <div className="af-detaljert__flex-rad" key={`${i}`}>
+                  <div className="af-detaljert__flex-kolonne af-liste__month  af-detaljert__heading">
+                    {time.periode && (
+                      <CheckDateAndPrint
+                        data={time.rapporteringsperiode}
+                        dateFormat="MMMM"
+                      />
+                    )}
                   </div>
-                ))}
+                  <div className="af-detaljert__flex-kolonne">
+                    <CheckPeriodAndPrint data={time.periode} />
+                  </div>
+                  <div className="af-detaljert__flex-kolonne">
+                    <CheckAndPrint data={time.land} />
+                  </div>
+                </div>
+              ))}
             </Fragment>
           );
         })}

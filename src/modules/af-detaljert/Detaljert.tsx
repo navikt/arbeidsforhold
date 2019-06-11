@@ -47,18 +47,18 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
               <Normaltekst>
                 {`${sprak[locale].organisasjonsnummer} ${
                   arbeidsforhold.arbeidsgiver.orgnr
-                }`}
+                  }`}
               </Normaltekst>
             </div>
           </div>
         </div>
         <div className="af-detaljert__kolonne af-detaljert__periode">
           {arbeidsforhold.ansettelsesperiode &&
-            !arbeidsforhold.ansettelsesperiode.periodeTil && (
-              <div className="af-detaljert__status">
-                <EtikettSuksess>{sprak[locale].navaerendejobb}</EtikettSuksess>
-              </div>
-            )}
+          !arbeidsforhold.ansettelsesperiode.periodeTil && (
+            <div className="af-detaljert__status">
+              <EtikettSuksess>{sprak[locale].navaerendejobb}</EtikettSuksess>
+            </div>
+          )}
           <div className="af-detaljert__periode-content">
             <Normaltekst>
               <CheckPeriodAndPrint data={arbeidsforhold.ansettelsesperiode} />

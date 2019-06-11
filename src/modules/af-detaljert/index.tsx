@@ -8,6 +8,8 @@ import Spinner from "../../components/spinner/Spinner";
 import DetaljerArbeidsforhold from "./Detaljert";
 import Environment from "../../utils/environment";
 import Miljo from "../../types/miljo";
+import moment from "moment";
+import "moment/locale/nb";
 
 type State =
   | { status: "READY" }
@@ -16,6 +18,7 @@ type State =
   | { status: "ERROR"; error: HTTPError };
 
 export interface AFDetaljertProps {
+  locale: "nb" | "en";
   miljo: "LOCAL" | "DEV" | "PROD";
   navArbeidsforholdId: number;
 }
@@ -25,8 +28,13 @@ export interface AFDetaljertData {
 }
 
 const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
+  const { locale } = props;
   const [state, setState] = useState({ status: "READY" } as State);
-  Environment.settEnv(props.miljo as Miljo);
+
+  useEffect(() => {
+    Environment.settEnv(props.miljo as Miljo);
+    moment.locale(locale);
+  }, [locale]);
 
   useEffect(() => {
     if (props.navArbeidsforholdId) {
@@ -60,7 +68,7 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
         />
       );
     case "ERROR":
-      return <Error error={state.error} />;
+      return <Error error={state.error} locale={locale} />;
   }
 };
 

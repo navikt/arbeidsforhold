@@ -1,7 +1,7 @@
 export interface AFSimpel {
   arbeidsforholdId: string;
   arbeidsgiver: AFArbeidsgiver;
-  ansettelsesPeriode: AFPeriode;
+  ansettelsesperiode: AFPeriode;
   navArbeidsforholdId: number;
   yrke: string;
 }

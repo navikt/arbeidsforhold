@@ -7,12 +7,16 @@ import moment from "moment";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
 import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
+import sprak from "../../../language/provider";
 
 interface Props {
   timer: AFTimerForTimelonnet[];
+  locale: string;
 }
 
 const Timer = (props: Props) => {
+  const { locale } = props;
+
   props.timer.sort((left, right) =>
     left.periode && right.periode
       ? sortDateString(left.periode.periodeFra, right.periode.periodeFra)
@@ -46,13 +50,13 @@ const Timer = (props: Props) => {
       <thead>
         <tr className="af-liste__rad">
           <td className="af-liste__kolonne af-liste__rapporteringsperiode">
-            <Element>Rapporteringsperiode</Element>
+            <Element>{sprak[locale].rapporteringsperiode}</Element>
           </td>
           <td className="af-liste__kolonne">
-            <Element>Opptjeningsperiode</Element>
+            <Element>{sprak[locale].opptjeningsperiode}</Element>
           </td>
           <td className="af-liste__kolonne">
-            <Element>Antall timer</Element>
+            <Element>{sprak[locale].antalltimer}</Element>
           </td>
         </tr>
       </thead>
@@ -61,21 +65,23 @@ const Timer = (props: Props) => {
           .reverse()
           .map(year => {
             const value = data[year];
+
+            const onClick = () =>
+              setData({
+                ...data,
+                [year]: {
+                  ...data[year],
+                  ekspandert: !data[year].ekspandert
+                }
+              });
+
             return (
               <Fragment key={year}>
                 <tr className="af-liste__rad" key={year}>
                   <td
                     className="af-liste__kolonne af-liste__ekspander"
                     colSpan={2}
-                    onClick={() =>
-                      setData({
-                        ...data,
-                        [year]: {
-                          ...data[year],
-                          ekspandert: !data[year].ekspandert
-                        }
-                      })
-                    }
+                    onClick={onClick}
                   >
                     {year} {value.ekspandert ? <OppChevron /> : <NedChevron />}
                   </td>

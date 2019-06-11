@@ -7,12 +7,16 @@ import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDat
 import { sortDateString } from "../../../utils/date";
 import CheckAndPrintBox from "../../../components/check-and-print-box/CheckAndPrintBox";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
+import sprak from "../../../language/provider";
 
 interface Props {
   arbeidsavtaler: AFArbeidsavtaler[];
+  locale: string;
 }
 
 const Historikk = (props: Props) => {
+  const { locale } = props;
+
   props.arbeidsavtaler
     .sort((left, right) =>
       left.gyldighetsperiode && right.gyldighetsperiode
@@ -43,10 +47,10 @@ const Historikk = (props: Props) => {
       <thead>
         <tr className="af-liste__rad">
           <td className="af-liste__kolonne">
-            <Element>Yrke</Element>
+            <Element>{sprak[locale].yrke}</Element>
           </td>
           <td className="af-liste__kolonne">
-            <Element>Periode</Element>
+            <Element>{sprak[locale].periode}</Element>
           </td>
           <td className="af-liste__kolonne" />
         </tr>
@@ -54,6 +58,16 @@ const Historikk = (props: Props) => {
       <tbody>
         {data.map((innslag, counter) => {
           const { arbeidsavtale, ekspandert } = innslag;
+
+          const onClick = () =>
+            setData(
+              data.map((values, i) =>
+                i === counter
+                  ? { ...values, ekspandert: !data[i].ekspandert }
+                  : values
+              )
+            );
+
           return (
             <Fragment key={counter}>
               <tr className="af-liste__rad" key={counter}>
@@ -65,23 +79,15 @@ const Historikk = (props: Props) => {
                 </td>
                 <td
                   className="af-liste__kolonne af-liste__ekspander"
-                  onClick={() =>
-                    setData(
-                      data.map((values, i) =>
-                        i === counter
-                          ? { ...values, ekspandert: !data[i].ekspandert }
-                          : values
-                      )
-                    )
-                  }
+                  onClick={onClick}
                 >
                   {!ekspandert ? (
                     <span>
-                      Åpne <NedChevron />
+                      {sprak[locale].apne} <NedChevron />
                     </span>
                   ) : (
                     <span>
-                      Lukk <OppChevron />
+                      {sprak[locale].lukke} <OppChevron />
                     </span>
                   )}
                 </td>
@@ -91,27 +97,29 @@ const Historikk = (props: Props) => {
                   <td className="af-liste__kolonne" colSpan={3}>
                     <div className="af-detaljert__innhold">
                       <CheckAndPrintBox
-                        title="Arbeidsavtale"
+                        title={sprak[locale].arbeidsavtale}
                         data={arbeidsavtale.stillingsprosent}
                       >
                         <Normaltekst>
                           <CheckDateAndPrint
                             data={arbeidsavtale.sisteStillingsendring}
-                            format="(Endret stillingsprosent %s)"
+                            format={`(${
+                              sprak[locale].endretstillingsprosent
+                            } %s)`}
                           />
                         </Normaltekst>
                       </CheckAndPrintBox>
                       <CheckAndPrintBox
-                        title="Arbeidstidsordning"
+                        title={sprak[locale].arbeidstidsordning}
                         data={arbeidsavtale.arbeidstidsordning}
                       />
                       <CheckAndPrintBox
-                        title="Siste lønnsendring"
+                        title={sprak[locale].sistelonnsendring}
                         data={arbeidsavtale.sisteLoennsendring}
                         date={true}
                       />
                       <CheckAndPrintBox
-                        title="Timer i full stilling"
+                        title={sprak[locale].timerperuke}
                         data={arbeidsavtale.antallTimerPrUke}
                       />
                     </div>

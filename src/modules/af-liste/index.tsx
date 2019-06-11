@@ -8,6 +8,8 @@ import Spinner from "../../components/spinner/Spinner";
 import Liste from "./Liste";
 import Environment from "../../utils/environment";
 import Miljo from "../../types/miljo";
+import moment from "moment";
+import "moment/locale/nb";
 
 type State =
   | { status: "LOADING" }
@@ -15,6 +17,7 @@ type State =
   | { status: "ERROR"; error: HTTPError };
 
 export interface AFListeProps {
+  locale: "nb" | "en";
   miljo: "LOCAL" | "DEV" | "PROD";
   onClick: (navArbeidsforholdId: number) => void;
 }
@@ -28,8 +31,13 @@ export interface AFListeData {
 let persistState: State = { status: "LOADING" };
 
 const ListeMedArbeidsforhold = (props: AFListeProps) => {
+  const { locale } = props;
   const [state, setState] = useState(persistState);
-  Environment.settEnv(props.miljo as Miljo);
+
+  useEffect(() => {
+    Environment.settEnv(props.miljo as Miljo);
+    moment.locale(locale);
+  }, [locale]);
 
   useEffect(() => {
     if (state.status === "LOADING") {
@@ -58,7 +66,7 @@ const ListeMedArbeidsforhold = (props: AFListeProps) => {
     case "RESULT":
       return <Liste arbeidsforhold={state.arbeidsforhold} {...props} />;
     case "ERROR":
-      return <Error error={state.error} />;
+      return <Error error={state.error} locale={props.locale} />;
   }
 };
 

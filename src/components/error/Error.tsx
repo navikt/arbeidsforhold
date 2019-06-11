@@ -1,5 +1,6 @@
 import React from "react";
 import AlertStripe from "nav-frontend-alertstriper";
+import { sprak } from "../../language/provider";
 
 export interface HTTPError {
   code: string;
@@ -8,14 +9,16 @@ export interface HTTPError {
 
 interface Props {
   error: HTTPError;
+  locale: string;
 }
 
 const Error = (props: Props) => {
   const { error } = props;
+
   return (
     <div className="error__container">
       <AlertStripe type="feil">
-        Oisann, noe gikk galt ved henting av data!
+        {sprak[props.locale].httperror}
         <br />
         {error && <span>{` ${error.code}: ${error.text}`}</span>}
       </AlertStripe>

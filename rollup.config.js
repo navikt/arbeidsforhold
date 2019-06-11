@@ -29,7 +29,7 @@ export default {
     }
   ],
   plugins: [
-    external(),
+    external({ includeDependencies: true }),
     postcss({
       use: [
         [

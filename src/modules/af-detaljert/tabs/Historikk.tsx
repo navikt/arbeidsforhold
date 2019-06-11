@@ -21,17 +21,17 @@ const Historikk = (props: Props) => {
     .sort((left, right) =>
       left.gyldighetsperiode && right.gyldighetsperiode
         ? sortDateString(
-            left.gyldighetsperiode.periodeFra,
-            right.gyldighetsperiode.periodeFra
-          )
+        left.gyldighetsperiode.periodeFra,
+        right.gyldighetsperiode.periodeFra
+        )
         : 0
     )
     .sort((left, right) =>
       left.gyldighetsperiode && right.gyldighetsperiode
         ? sortDateString(
-            right.gyldighetsperiode.periodeTil,
-            left.gyldighetsperiode.periodeTil
-          )
+        right.gyldighetsperiode.periodeTil,
+        left.gyldighetsperiode.periodeTil
+        )
         : 0
     );
 
@@ -43,94 +43,90 @@ const Historikk = (props: Props) => {
   );
 
   return (
-    <table className="af-detaljert__tabs-innhold af-liste__table">
-      <thead>
-        <tr className="af-liste__rad">
-          <td className="af-liste__kolonne">
-            <Element>{sprak[locale].yrke}</Element>
-          </td>
-          <td className="af-liste__kolonne">
-            <Element>{sprak[locale].periode}</Element>
-          </td>
-          <td className="af-liste__kolonne" />
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((innslag, counter) => {
-          const { arbeidsavtale, ekspandert } = innslag;
+    <div className="af-detaljert__tabs-innhold af-detaljert__flex-table">
+      <div className="af-detaljert__flex-rad af-detaljert__head">
+        <div className="af-detaljert__flex-kolonne">
+          <Element>{sprak[locale].yrke}</Element>
+        </div>
+        <div className="af-detaljert__flex-kolonne">
+          <Element>{sprak[locale].periode}</Element>
+        </div>
+        <div className="af-detaljert__flex-kolonne" />
+      </div>
+      {data.map((innslag, counter) => {
+        const { arbeidsavtale, ekspandert } = innslag;
 
-          const onClick = () =>
-            setData(
-              data.map((values, i) =>
-                i === counter
-                  ? { ...values, ekspandert: !data[i].ekspandert }
-                  : values
-              )
-            );
-
-          return (
-            <Fragment key={counter}>
-              <tr className="af-liste__rad" key={counter}>
-                <td className="af-liste__kolonne">
-                  <CheckAndPrint data={arbeidsavtale.yrke} />
-                </td>
-                <td className="af-liste__kolonne">
-                  <CheckPeriodAndPrint data={arbeidsavtale.gyldighetsperiode} />
-                </td>
-                <td
-                  className="af-liste__kolonne af-liste__ekspander"
-                  onClick={onClick}
-                >
-                  {!ekspandert ? (
-                    <span>
-                      {sprak[locale].apne} <NedChevron />
-                    </span>
-                  ) : (
-                    <span>
-                      {sprak[locale].lukke} <OppChevron />
-                    </span>
-                  )}
-                </td>
-              </tr>
-              {ekspandert && (
-                <tr className="af-liste__rad">
-                  <td className="af-liste__kolonne" colSpan={3}>
-                    <div className="af-detaljert__innhold">
-                      <CheckAndPrintBox
-                        title={sprak[locale].arbeidsavtale}
-                        data={arbeidsavtale.stillingsprosent}
-                      >
-                        <Normaltekst>
-                          <CheckDateAndPrint
-                            data={arbeidsavtale.sisteStillingsendring}
-                            format={`(${
-                              sprak[locale].endretstillingsprosent
-                            } %s)`}
-                          />
-                        </Normaltekst>
-                      </CheckAndPrintBox>
-                      <CheckAndPrintBox
-                        title={sprak[locale].arbeidstidsordning}
-                        data={arbeidsavtale.arbeidstidsordning}
-                      />
-                      <CheckAndPrintBox
-                        title={sprak[locale].sistelonnsendring}
-                        data={arbeidsavtale.sisteLoennsendring}
-                        date={true}
-                      />
-                      <CheckAndPrintBox
-                        title={sprak[locale].timerperuke}
-                        data={arbeidsavtale.antallTimerPrUke}
-                      />
-                    </div>
-                  </td>
-                </tr>
-              )}
-            </Fragment>
+        const onClick = () =>
+          setData(
+            data.map((values, i) =>
+              i === counter
+                ? { ...values, ekspandert: !data[i].ekspandert }
+                : values
+            )
           );
-        })}
-      </tbody>
-    </table>
+
+        return (
+          <Fragment key={counter}>
+            <div className="af-detaljert__flex-rad" key={counter}>
+              <div className="af-detaljert__flex-kolonne af-detaljert__heading">
+                <CheckAndPrint data={arbeidsavtale.yrke} />
+              </div>
+              <div className="af-detaljert__flex-kolonne">
+                <CheckPeriodAndPrint data={arbeidsavtale.gyldighetsperiode} />
+              </div>
+              <div
+                className="af-detaljert__flex-kolonne af-liste__ekspander"
+                onClick={onClick}
+              >
+                {!ekspandert ? (
+                  <span>
+                    {sprak[locale].apne} <NedChevron />
+                  </span>
+                ) : (
+                  <span>
+                    {sprak[locale].lukke} <OppChevron />
+                  </span>
+                )}
+              </div>
+            </div>
+            {ekspandert && (
+              <div className="af-detaljert__flex-rad">
+                <div className="af-detaljert__flex-kolonne">
+                  <div className="af-detaljert__innhold">
+                    <CheckAndPrintBox
+                      title={sprak[locale].arbeidsavtale}
+                      data={arbeidsavtale.stillingsprosent}
+                    >
+                      <Normaltekst>
+                        <CheckDateAndPrint
+                          data={arbeidsavtale.sisteStillingsendring}
+                          format={`(${
+                            sprak[locale].endretstillingsprosent
+                            } %s)`}
+                        />
+                      </Normaltekst>
+                    </CheckAndPrintBox>
+                    <CheckAndPrintBox
+                      title={sprak[locale].arbeidstidsordning}
+                      data={arbeidsavtale.arbeidstidsordning}
+                    />
+                    <CheckAndPrintBox
+                      title={sprak[locale].sistelonnsendring}
+                      data={arbeidsavtale.sisteLoennsendring}
+                      date={true}
+                    />
+                    <CheckAndPrintBox
+                      title={sprak[locale].timerperuke}
+                      data={arbeidsavtale.antallTimerPrUke}
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+          </Fragment>
+        );
+      })}
+    </div>
   );
 };
 

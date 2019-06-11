@@ -45,71 +45,66 @@ const Utenlandsopphold = (props: Props) => {
 
   const [data, setData] = useState(initState);
   return (
-    <table className="af-detaljert__tabs-innhold af-liste__table">
-      <thead>
-        <tr className="af-liste__rad">
-          <td className="af-liste__kolonne">
-            <Element>{sprak[locale].rapporteringsperiode}</Element>
-          </td>
-          <td className="af-liste__kolonne">
-            <Element>{sprak[locale].periode}</Element>
-          </td>
-          <td className="af-liste__kolonne">
-            <Element>{sprak[locale].land}</Element>
-          </td>
-        </tr>
-      </thead>
-      <tbody>
-        {Object.keys(data)
-          .reverse()
-          .map(year => {
-            const value = data[year];
+    <div className="af-detaljert__tabs-innhold af-detaljert__flex-table">
+      <div className="af-detaljert__flex-rad af-detaljert__head">
+        <div className="af-detaljert__flex-kolonne">
+          <Element>{sprak[locale].rapporteringsperiode}</Element>
+        </div>
+        <div className="af-detaljert__flex-kolonne">
+          <Element>{sprak[locale].periode}</Element>
+        </div>
+        <div className="af-detaljert__flex-kolonne">
+          <Element>{sprak[locale].land}</Element>
+        </div>
+      </div>
+      {Object.keys(data)
+        .reverse()
+        .map(year => {
+          const value = data[year];
 
-            const onClick = () =>
-              setData({
-                ...data,
-                [year]: {
-                  ...data[year],
-                  ekspandert: !data[year].ekspandert
-                }
-              });
+          const onClick = () =>
+            setData({
+              ...data,
+              [year]: {
+                ...data[year],
+                ekspandert: !data[year].ekspandert
+              }
+            });
 
-            return (
-              <Fragment key={year}>
-                <tr className="af-liste__rad" key={year}>
-                  <td
-                    className="af-liste__kolonne af-liste__ekspander"
-                    colSpan={2}
-                    onClick={onClick}
-                  >
-                    {year} {value.ekspandert ? <OppChevron /> : <NedChevron />}
-                  </td>
-                  <td />
-                </tr>
-                {value.ekspandert &&
-                  value.opphold.map((time, i) => (
-                    <tr className="af-liste__rad" key={`${i}`}>
-                      <td className="af-liste__kolonne af-liste__month">
-                        {time.periode && (
-                          <CheckDateAndPrint
-                            data={time.rapporteringsperiode}
-                            dateFormat="MMMM"
-                          />
-                        )}
-                      </td>
-                      <td className="af-liste__kolonne">
-                        <CheckPeriodAndPrint data={time.periode} />
-                      </td>
-                      <td className="af-liste__kolonne">
-                        <CheckAndPrint data={time.land} />
-                      </td>
-                    </tr>
-                  ))}
-              </Fragment>
-            );
-          })}
-      </tbody>
-    </table>
+          return (
+            <Fragment key={year}>
+              <div className="af-detaljert__flex-rad" key={year}>
+                <div
+                  className="af-detaljert__flex-kolonne af-liste__ekspander"
+                  onClick={onClick}
+                >
+                  {year} {value.ekspandert ? <OppChevron /> : <NedChevron />}
+                </div>
+                <div />
+              </div>
+              {value.ekspandert &&
+              value.opphold.map((time, i) => (
+                <div className="af-detaljert__flex-rad" key={`${i}`}>
+                  <div className="af-detaljert__flex-kolonne af-liste__month  af-detaljert__heading">
+                    {time.periode && (
+                      <CheckDateAndPrint
+                        data={time.rapporteringsperiode}
+                        dateFormat="MMMM"
+                      />
+                    )}
+                  </div>
+                  <div className="af-detaljert__flex-kolonne">
+                    <CheckPeriodAndPrint data={time.periode} />
+                  </div>
+                  <div className="af-detaljert__flex-kolonne">
+                    <CheckAndPrint data={time.land} />
+                  </div>
+                </div>
+              ))}
+            </Fragment>
+          );
+        })}
+    </div>
   );
 };
 

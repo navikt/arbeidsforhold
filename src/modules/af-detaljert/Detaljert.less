@@ -1,10 +1,23 @@
 .af-detaljert {
   &__header {
     display: flex;
-    padding: 0 0 0.25rem 0;
+    flex-wrap: wrap;
+    @media @desktop {
+      padding: 0 0 0.25rem 0;
+    }
+    @media @tablet {
+      padding: 0 0 0.5rem 0;
+    }
   }
   &__kolonne {
-    width: 50%;
+    @media @desktop {
+      width: 50%;
+      padding-right: 2rem;
+      box-sizing: border-box;
+    }
+    @media @tablet {
+      width: 100%;
+    }
   }
   &__innhold {
     display: flex;
@@ -12,7 +25,14 @@
   }
   &__boks {
     margin: 0.75rem 0;
-    width: 50%;
+    @media @desktop, @tablet {
+      width: 50%;
+      padding-right: 2rem;
+      box-sizing: border-box;
+    }
+    @media @mobile {
+      width: 100%;
+    }
   }
   &__status {
     display: flex;
@@ -22,8 +42,25 @@
   }
   &__tabs {
     margin: 1rem 0;
-    &-innhold {
-      margin: 2rem 1rem;
+    @media @desktop, @tablet {
+      display: block;
+      &-innhold {
+        margin: 2rem 1rem;
+      }
+    }
+    @media @mobile {
+      display: none;
+      &-innhold {
+        margin: 1rem 0rem;
+      }
+    }
+  }
+  &__select {
+    @media @desktop, @tablet {
+      display: none;
+    }
+    @media @mobile {
+      display: block;
     }
   }
   &__orgnr {
@@ -36,5 +73,40 @@
   }
   &__periode-content {
     padding-left: 0.5rem;
+  }
+  &__hr {
+    margin: 1rem 0;
+  }
+  &__flex-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  &__flex-rad {
+    border-bottom: 1px solid #979797;
+    display: flex;
+    padding: 0.25rem 0;
+    @media @desktop, @tablet {
+      flex-direction: row;
+    }
+    @media @mobile {
+      flex-direction: column;
+    }
+  }
+  &__flex-kolonne {
+    padding: 0.25rem 0;
+    flex-basis: 100%;
+  }
+  &__head {
+    @media @mobile {
+      display: none;
+    }
+  }
+  &__heading {
+    @media @mobile {
+      font-family: "Source Sans Pro", Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.375rem;
+      font-weight: 600;
+    }
   }
 }

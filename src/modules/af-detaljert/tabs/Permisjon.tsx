@@ -12,35 +12,33 @@ interface Props {
 const Permisjon = (props: Props) => {
   const { locale } = props;
   return (
-    <table className="af-detaljert__tabs-innhold af-liste__table">
-      <thead>
-        <tr className="af-liste__rad">
-          <td className="af-liste__kolonne">
-            <Element>{sprak[locale].type}</Element>
-          </td>
-          <td className="af-liste__kolonne">
-            <Element>{sprak[locale].periode}</Element>
-          </td>
-          <td className="af-liste__kolonne">
-            <Element>{sprak[locale].prosent}</Element>
-          </td>
-        </tr>
-      </thead>
-      <tbody>
-        {props.permisjoner.map((permisjon, i) => (
-          <tr
-            className="af-liste__rad"
-            key={`${permisjon.permisjonPermitteringId}-${i}`}
-          >
-            <td className="af-liste__kolonne">{permisjon.type}</td>
-            <td className="af-liste__kolonne">
-              <CheckPeriodAndPrint data={permisjon.periode} />
-            </td>
-            <td className="af-liste__kolonne">{permisjon.prosent}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div className="af-detaljert__tabs-innhold af-detaljert__flex-table">
+      <div className="af-detaljert__flex-rad af-detaljert__head">
+        <div className="af-detaljert__flex-kolonne">
+          <Element>{sprak[locale].type}</Element>
+        </div>
+        <div className="af-detaljert__flex-kolonne">
+          <Element>{sprak[locale].periode}</Element>
+        </div>
+        <div className="af-detaljert__flex-kolonne">
+          <Element>{sprak[locale].prosent}</Element>
+        </div>
+      </div>
+      {props.permisjoner.map((permisjon, i) => (
+        <div
+          className="af-detaljert__flex-rad"
+          key={`${permisjon.permisjonPermitteringId}-${i}`}
+        >
+          <div className="af-detaljert__flex-kolonne af-detaljert__heading">
+            {permisjon.type}
+          </div>
+          <div className="af-detaljert__flex-kolonne">
+            <CheckPeriodAndPrint data={permisjon.periode} />
+          </div>
+          <td className="af-detaljert__flex-kolonne">{permisjon.prosent}</td>
+        </div>
+      ))}
+    </div>
   );
 };
 

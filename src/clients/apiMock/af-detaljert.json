@@ -71,9 +71,12 @@
       "antallTimerPrUke": 37.5,
       "arbeidstidsordning": "Skift",
       "beregnetAntallTimerPrUke": 40,
+      "fartsomraade": "Utenriks",
       "gyldighetsperiode": {
         "periodeFra": "2017-07-01"
       },
+      "skipstype": "Annet",
+      "skipsregister": "Norsk internasjonal skipreise",
       "sisteLoennsendring": "2016-12-16",
       "sisteStillingsendring": "1988-10-03",
       "stillingsprosent": "100%",

@@ -10,10 +10,10 @@ import Timer from "./tabs/Timer";
 import Utenlandsopphold from "./tabs/Utenlandsopphold";
 import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
 import CheckAndPrintBox from "../../components/check-and-print-box/CheckAndPrintBox";
-import CheckDateAndPrint from "../../components/check-date-and-print/CheckDateAndPrint";
 import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import sprak from "../../language/provider";
 import { Select } from "nav-frontend-skjema";
+import ArbeidsavtaleFelter from "../../components/arbeidsavtale/Felter";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, locale } = props;
@@ -45,20 +45,18 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
             <Undertittel>{arbeidsforhold.arbeidsgiver.orgnavn}</Undertittel>
             <div className="af-detaljert__orgnr">
               <Normaltekst>
-                {`${sprak[locale].organisasjonsnummer} ${
-                  arbeidsforhold.arbeidsgiver.orgnr
-                  }`}
+                {`${sprak[locale].organisasjonsnummer} ${arbeidsforhold.arbeidsgiver.orgnr}`}
               </Normaltekst>
             </div>
           </div>
         </div>
         <div className="af-detaljert__kolonne af-detaljert__periode">
           {arbeidsforhold.ansettelsesperiode &&
-          !arbeidsforhold.ansettelsesperiode.periodeTil && (
-            <div className="af-detaljert__status">
-              <EtikettSuksess>{sprak[locale].navaerendejobb}</EtikettSuksess>
-            </div>
-          )}
+            !arbeidsforhold.ansettelsesperiode.periodeTil && (
+              <div className="af-detaljert__status">
+                <EtikettSuksess>{sprak[locale].navaerendejobb}</EtikettSuksess>
+              </div>
+            )}
           <div className="af-detaljert__periode-content">
             <Normaltekst>
               <CheckPeriodAndPrint data={arbeidsforhold.ansettelsesperiode} />
@@ -80,17 +78,6 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           </Normaltekst>
         </CheckAndPrintBox>
         <CheckAndPrintBox
-          title={sprak[locale].stillingsprosent}
-          data={arbeidsforhold.stillingsprosent}
-        >
-          <Normaltekst>
-            <CheckDateAndPrint
-              data={arbeidsforhold.sisteStillingsendring}
-              format={`(${sprak[locale].endretstillingsprosent} %s)`}
-            />
-          </Normaltekst>
-        </CheckAndPrintBox>
-        <CheckAndPrintBox
           title={sprak[locale].yrke}
           data={arbeidsforhold.yrke}
         />
@@ -102,31 +89,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           title={sprak[locale].arbeidsforholdid}
           data={arbeidsforhold.navArbeidsforholdId}
         />
-        <CheckAndPrintBox
-          title={sprak[locale].arbeidstidsordning}
-          data={arbeidsforhold.arbeidstidsordning}
-        />
-        <CheckAndPrintBox
-          title={sprak[locale].sistelonnsendring}
-          data={arbeidsforhold.sisteLoennsendring}
-          date={true}
-        />
-        <CheckAndPrintBox
-          title={sprak[locale].timerifullstilling}
-          data={arbeidsforhold.antallTimerPrUke}
-        />
-        <CheckAndPrintBox
-          title={sprak[locale].skipsregister}
-          data={arbeidsforhold.skipsregister}
-        />
-        <CheckAndPrintBox
-          title={sprak[locale].skipstype}
-          data={arbeidsforhold.skipstype}
-        />
-        <CheckAndPrintBox
-          title={sprak[locale].fartsomraade}
-          data={arbeidsforhold.fartsomraade}
-        />
+        <ArbeidsavtaleFelter locale={locale} data={arbeidsforhold} />
         <CheckAndPrintBox
           title={sprak[locale].sistbekreftet}
           data={arbeidsforhold.sistBekreftet}
@@ -158,10 +121,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
             return <Timer timer={antallTimerForTimeloennet} locale={locale} />;
           case sprak[locale].tabs.permisjonpermittering:
             return (
-              <Permisjon
-                permisjoner={permisjonPermittering}
-                locale={locale}
-              />
+              <Permisjon permisjoner={permisjonPermittering} locale={locale} />
             );
           case sprak[locale].tabs.arbeidiutlandet:
             return (

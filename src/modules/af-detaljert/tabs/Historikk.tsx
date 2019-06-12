@@ -1,13 +1,12 @@
 import React, { useState, Fragment } from "react";
 import { AFArbeidsavtaler } from "../../../types/arbeidsforhold";
-import { Element, Normaltekst } from "nav-frontend-typografi";
+import { Element } from "nav-frontend-typografi";
 import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
 import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
-import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
 import { sortPeriodeFraDesc, sortPeriodeTilDesc } from "../../../utils/date";
-import CheckAndPrintBox from "../../../components/check-and-print-box/CheckAndPrintBox";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import sprak from "../../../language/provider";
+import ArbeidsavtaleFelter from "../../../components/arbeidsavtale/Felter";
 
 interface Props {
   arbeidsavtaler: AFArbeidsavtaler[];
@@ -83,30 +82,7 @@ const Historikk = (props: Props) => {
               <div className="af-detaljert__flex-rad">
                 <div className="af-detaljert__flex-kolonne">
                   <div className="af-detaljert__innhold">
-                    <CheckAndPrintBox
-                      title={sprak[locale].arbeidsavtale}
-                      data={arbeidsavtale.stillingsprosent}
-                    >
-                      <Normaltekst>
-                        <CheckDateAndPrint
-                          data={arbeidsavtale.sisteStillingsendring}
-                          format={`(${sprak[locale].endretstillingsprosent} %s)`}
-                        />
-                      </Normaltekst>
-                    </CheckAndPrintBox>
-                    <CheckAndPrintBox
-                      title={sprak[locale].arbeidstidsordning}
-                      data={arbeidsavtale.arbeidstidsordning}
-                    />
-                    <CheckAndPrintBox
-                      title={sprak[locale].sistelonnsendring}
-                      data={arbeidsavtale.sisteLoennsendring}
-                      date={true}
-                    />
-                    <CheckAndPrintBox
-                      title={sprak[locale].timerperuke}
-                      data={arbeidsavtale.antallTimerPrUke}
-                    />
+                    <ArbeidsavtaleFelter locale={locale} data={arbeidsavtale} />
                   </div>
                 </div>
               </div>

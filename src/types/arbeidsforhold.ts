@@ -10,7 +10,10 @@ export interface AFArbeidsavtaler {
   antallTimerPrUke?: number;
   arbeidstidsordning?: string;
   beregnetAntallTimerPrUke?: number;
+  fartsomraade?: string;
   gyldighetsperiode?: AFPeriode;
+  skipsregister?: string;
+  skipstype?: string;
   sisteLoennsendring?: string;
   sisteStillingsendring?: string;
   stillingsprosent?: number;
@@ -58,14 +61,11 @@ export interface AFUtvidet extends AFArbeidsavtaler {
     aktoerId: number;
     offentligIdent: number;
   };
-  fartsomraade?: string;
   innrapportertEtterAOrdningen: boolean;
   navArbeidsforholdId: number;
   opplysningspliktigarbeidsgiver: AFArbeidsgiver;
   permisjonPermittering: AFPermisjonPermittering[];
   registrert?: string;
-  skipsregister?: string;
-  skipstype?: string;
   sistBekreftet?: string;
   type?: string;
   utenlandsopphold: AFUtenlandsopphold[];

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Normaltekst, Element, Undertekst } from "nav-frontend-typografi";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import { AFListeProps, AFListeData } from "./index";
-import { sortDateStringDesc } from "../../utils/date";
+import { sortPeriodeFraDesc, sortPeriodeTilDesc } from "../../utils/date";
 import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
 import sprak from "../../language/provider";
@@ -14,16 +14,10 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
 
   const sorterteArbeidsforhold = arbeidsforhold
     .sort((a, b) =>
-      sortDateStringDesc(
-        b.ansettelsesperiode.periodeFra,
-        a.ansettelsesperiode.periodeFra
-      )
+      sortPeriodeFraDesc(a.ansettelsesperiode, b.ansettelsesperiode)
     )
     .sort((a, b) =>
-      sortDateStringDesc(
-        b.ansettelsesperiode.periodeTil,
-        a.ansettelsesperiode.periodeTil
-      )
+      sortPeriodeTilDesc(a.ansettelsesperiode, b.ansettelsesperiode)
     );
 
   return (

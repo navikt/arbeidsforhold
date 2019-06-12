@@ -18,7 +18,7 @@ const Utenlandsopphold = (props: Props) => {
   const { locale } = props;
 
   props.utenlandsopphold.sort((left, right) =>
-    sortPeriodeFraDesc(right.periode, left.periode)
+    sortPeriodeFraDesc(left.periode, right.periode)
   );
 
   const initState: {
@@ -28,16 +28,16 @@ const Utenlandsopphold = (props: Props) => {
     };
   } = {};
 
-  props.utenlandsopphold.map(opphold => {
+  props.utenlandsopphold.map((opphold, i) => {
     const year = moment(opphold.periode.periodeFra).year();
 
     if (!initState[year]) {
       initState[year] = {
         opphold: [opphold],
-        ekspandert: false
+        ekspandert: !i ? true : false
       };
     } else {
-      initState[year].opphold.unshift(opphold);
+      initState[year].opphold.push(opphold);
     }
   });
 
@@ -82,12 +82,10 @@ const Utenlandsopphold = (props: Props) => {
                 value.opphold.map((time, i) => (
                   <div className="af-detaljert__flex-rad" key={`${i}`}>
                     <div className="af-detaljert__flex-kolonne af-liste__month  af-detaljert__heading">
-                      {time.periode && (
-                        <CheckDateAndPrint
-                          data={time.periode.periodeFra}
-                          dateFormat="MMMM"
-                        />
-                      )}
+                      <CheckDateAndPrint
+                        data={time.periode.periodeFra}
+                        dateFormat="MMMM"
+                      />
                     </div>
                     <div className="af-detaljert__flex-kolonne">
                       <CheckPeriodAndPrint data={time.periode} />

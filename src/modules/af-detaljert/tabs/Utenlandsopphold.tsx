@@ -29,7 +29,7 @@ const Utenlandsopphold = (props: Props) => {
   } = {};
 
   props.utenlandsopphold.map(opphold => {
-    const year = moment(opphold.rapporteringsperiode).year();
+    const year = moment(opphold.periode.periodeFra).year();
 
     if (!initState[year]) {
       initState[year] = {
@@ -46,11 +46,9 @@ const Utenlandsopphold = (props: Props) => {
     <div className="af-detaljert__tabs-innhold af-detaljert__flex-table">
       <div className="af-detaljert__flex-rad af-detaljert__head">
         <div className="af-detaljert__flex-kolonne">
-          <Element>{sprak[locale].rapporteringsperiode}</Element>
-        </div>
-        <div className="af-detaljert__flex-kolonne">
           <Element>{sprak[locale].periode}</Element>
         </div>
+        <div className="af-detaljert__flex-kolonne"></div>
         <div className="af-detaljert__flex-kolonne">
           <Element>{sprak[locale].land}</Element>
         </div>
@@ -86,7 +84,7 @@ const Utenlandsopphold = (props: Props) => {
                     <div className="af-detaljert__flex-kolonne af-liste__month  af-detaljert__heading">
                       {time.periode && (
                         <CheckDateAndPrint
-                          data={time.rapporteringsperiode}
+                          data={time.periode.periodeFra}
                           dateFormat="MMMM"
                         />
                       )}

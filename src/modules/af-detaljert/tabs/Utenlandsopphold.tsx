@@ -3,7 +3,7 @@ import { AFUtenlandsopphold } from "../../../types/arbeidsforhold";
 import { Element } from "nav-frontend-typografi";
 import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
-import { sortPeriod } from "../../../utils/date";
+import { sortPeriodeFraDesc } from "../../../utils/date";
 import moment from "moment";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
@@ -18,7 +18,7 @@ const Utenlandsopphold = (props: Props) => {
   const { locale } = props;
 
   props.utenlandsopphold.sort((left, right) =>
-    sortPeriod(left.periode, right.periode)
+    sortPeriodeFraDesc(left.periode, right.periode)
   );
 
   const initState: {

@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import { AFTimerForTimelonnet } from "../../../types/arbeidsforhold";
 import { Element } from "nav-frontend-typografi";
 import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
-import { sortPeriod } from "../../../utils/date";
+import { sortPeriodeFraDesc } from "../../../utils/date";
 import moment from "moment";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
@@ -17,7 +17,9 @@ interface Props {
 const Timer = (props: Props) => {
   const { locale } = props;
 
-  props.timer.sort((left, right) => sortPeriod(left.periode, right.periode));
+  props.timer.sort((left, right) =>
+    sortPeriodeFraDesc(left.periode, right.periode)
+  );
 
   const initState: {
     [key: string]: {

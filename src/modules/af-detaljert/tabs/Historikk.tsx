@@ -4,7 +4,7 @@ import { Element, Normaltekst } from "nav-frontend-typografi";
 import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
 import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
-import { sortDateString } from "../../../utils/date";
+import { sortPeriodeFraDesc, sortPeriodeTilDesc } from "../../../utils/date";
 import CheckAndPrintBox from "../../../components/check-and-print-box/CheckAndPrintBox";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import sprak from "../../../language/provider";
@@ -19,20 +19,10 @@ const Historikk = (props: Props) => {
 
   props.arbeidsavtaler
     .sort((left, right) =>
-      left.gyldighetsperiode && right.gyldighetsperiode
-        ? sortDateString(
-            left.gyldighetsperiode.periodeFra,
-            right.gyldighetsperiode.periodeFra
-          )
-        : 0
+      sortPeriodeFraDesc(left.gyldighetsperiode, right.gyldighetsperiode)
     )
     .sort((left, right) =>
-      left.gyldighetsperiode && right.gyldighetsperiode
-        ? sortDateString(
-            right.gyldighetsperiode.periodeTil,
-            left.gyldighetsperiode.periodeTil
-          )
-        : 0
+      sortPeriodeTilDesc(left.gyldighetsperiode, right.gyldighetsperiode)
     );
 
   const [data, setData] = useState(

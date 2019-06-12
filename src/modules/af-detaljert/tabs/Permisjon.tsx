@@ -35,7 +35,7 @@ const Permisjon = (props: Props) => {
           <div className="af-detaljert__flex-kolonne">
             <CheckPeriodAndPrint data={permisjon.periode} />
           </div>
-          <td className="af-detaljert__flex-kolonne">{permisjon.prosent}</td>
+          <div className="af-detaljert__flex-kolonne">{permisjon.prosent}</div>
         </div>
       ))}
     </div>

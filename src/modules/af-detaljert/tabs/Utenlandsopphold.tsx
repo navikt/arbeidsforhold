@@ -3,7 +3,7 @@ import { AFUtenlandsopphold } from "../../../types/arbeidsforhold";
 import { Element } from "nav-frontend-typografi";
 import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
-import { sortDateString } from "../../../utils/date";
+import { sortPeriod } from "../../../utils/date";
 import moment from "moment";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
@@ -18,9 +18,7 @@ const Utenlandsopphold = (props: Props) => {
   const { locale } = props;
 
   props.utenlandsopphold.sort((left, right) =>
-    left.periode && right.periode
-      ? sortDateString(left.periode.periodeFra, right.periode.periodeFra)
-      : 0
+    sortPeriod(left.periode, right.periode)
   );
 
   const initState: {
@@ -83,24 +81,24 @@ const Utenlandsopphold = (props: Props) => {
                 <div />
               </div>
               {value.ekspandert &&
-              value.opphold.map((time, i) => (
-                <div className="af-detaljert__flex-rad" key={`${i}`}>
-                  <div className="af-detaljert__flex-kolonne af-liste__month  af-detaljert__heading">
-                    {time.periode && (
-                      <CheckDateAndPrint
-                        data={time.rapporteringsperiode}
-                        dateFormat="MMMM"
-                      />
-                    )}
+                value.opphold.map((time, i) => (
+                  <div className="af-detaljert__flex-rad" key={`${i}`}>
+                    <div className="af-detaljert__flex-kolonne af-liste__month  af-detaljert__heading">
+                      {time.periode && (
+                        <CheckDateAndPrint
+                          data={time.rapporteringsperiode}
+                          dateFormat="MMMM"
+                        />
+                      )}
+                    </div>
+                    <div className="af-detaljert__flex-kolonne">
+                      <CheckPeriodAndPrint data={time.periode} />
+                    </div>
+                    <div className="af-detaljert__flex-kolonne">
+                      <CheckAndPrint data={time.land} />
+                    </div>
                   </div>
-                  <div className="af-detaljert__flex-kolonne">
-                    <CheckPeriodAndPrint data={time.periode} />
-                  </div>
-                  <div className="af-detaljert__flex-kolonne">
-                    <CheckAndPrint data={time.land} />
-                  </div>
-                </div>
-              ))}
+                ))}
             </Fragment>
           );
         })}

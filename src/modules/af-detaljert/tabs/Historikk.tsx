@@ -21,17 +21,17 @@ const Historikk = (props: Props) => {
     .sort((left, right) =>
       left.gyldighetsperiode && right.gyldighetsperiode
         ? sortDateString(
-        left.gyldighetsperiode.periodeFra,
-        right.gyldighetsperiode.periodeFra
-        )
+            left.gyldighetsperiode.periodeFra,
+            right.gyldighetsperiode.periodeFra
+          )
         : 0
     )
     .sort((left, right) =>
       left.gyldighetsperiode && right.gyldighetsperiode
         ? sortDateString(
-        right.gyldighetsperiode.periodeTil,
-        left.gyldighetsperiode.periodeTil
-        )
+            right.gyldighetsperiode.periodeTil,
+            left.gyldighetsperiode.periodeTil
+          )
         : 0
     );
 
@@ -100,9 +100,7 @@ const Historikk = (props: Props) => {
                       <Normaltekst>
                         <CheckDateAndPrint
                           data={arbeidsavtale.sisteStillingsendring}
-                          format={`(${
-                            sprak[locale].endretstillingsprosent
-                            } %s)`}
+                          format={`(${sprak[locale].endretstillingsprosent} %s)`}
                         />
                       </Normaltekst>
                     </CheckAndPrintBox>

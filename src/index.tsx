@@ -1,5 +1,3 @@
-import "@babel/polyfill";
-import "core-js";
 import "./index.less";
 
 import { setUpMock } from "./clients/apiMock";

@@ -1,5 +1,3 @@
-import "@babel/polyfill";
-import "core-js";
 import React, { useEffect, useState } from "react";
 import Error, { HTTPError } from "../../components/error/Error";
 import { AFUtvidet } from "../../types/arbeidsforhold";

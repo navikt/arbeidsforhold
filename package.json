@@ -1,7 +1,7 @@
 {
   "name": "@navikt/arbeidsforhold",
   "author": "NAVIKT",
-  "version": "1.0.64",
+  "version": "1.0.68",
   "description": "React modul som viser brukerens arbeidsforhold",
   "homepage": "/person/arbeidsforhold",
   "main": "dist/index.js",
@@ -36,12 +36,11 @@
     "node": ">=8",
     "npm": ">=5"
   },
-  "dependencies": {
-    "@babel/polyfill": "^7.4.4",
-    "core-js": "^2.5.7"
-  },
   "peerDependencies": {
+    "classnames": "^2.2.6",
     "moment": "^2.24.0",
+    "lodash.throttle": "^4.1.1",
+    "fetch-mock": "^7.3.3",
     "nav-frontend-alertstriper": "^3.0.2",
     "nav-frontend-alertstriper-style": "^2.0.2",
     "nav-frontend-chevron": "^1.0.9",

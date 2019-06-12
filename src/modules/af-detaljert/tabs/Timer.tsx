@@ -18,7 +18,7 @@ const Timer = (props: Props) => {
   const { locale } = props;
 
   props.timer.sort((left, right) =>
-    sortPeriodeFraDesc(left.periode, right.periode)
+    sortPeriodeFraDesc(right.periode, left.periode)
   );
 
   const initState: {

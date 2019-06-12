@@ -18,7 +18,7 @@ const Utenlandsopphold = (props: Props) => {
   const { locale } = props;
 
   props.utenlandsopphold.sort((left, right) =>
-    sortPeriodeFraDesc(left.periode, right.periode)
+    sortPeriodeFraDesc(right.periode, left.periode)
   );
 
   const initState: {

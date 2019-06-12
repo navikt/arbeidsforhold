@@ -15,6 +15,15 @@ const ArbeidsavtaleFelter = (props: Props) => {
   return (
     <>
       <CheckAndPrintBox
+        title={sprak[locale].arbeidstidsordning}
+        data={data.arbeidstidsordning}
+      />
+      <CheckAndPrintBox
+        title={sprak[locale].sistelonnsendring}
+        data={data.sisteLoennsendring}
+        date={true}
+      />
+      <CheckAndPrintBox
         title={sprak[locale].stillingsprosent}
         data={data.stillingsprosent}
       >
@@ -26,16 +35,7 @@ const ArbeidsavtaleFelter = (props: Props) => {
         </Normaltekst>
       </CheckAndPrintBox>
       <CheckAndPrintBox
-        title={sprak[locale].arbeidstidsordning}
-        data={data.arbeidstidsordning}
-      />
-      <CheckAndPrintBox
-        title={sprak[locale].sistelonnsendring}
-        data={data.sisteLoennsendring}
-        date={true}
-      />
-      <CheckAndPrintBox
-        title={sprak[locale].timerifullstilling}
+        title={sprak[locale].timerperuke}
         data={data.antallTimerPrUke}
       />
       <CheckAndPrintBox

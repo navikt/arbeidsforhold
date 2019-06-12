@@ -82,12 +82,10 @@ const Utenlandsopphold = (props: Props) => {
                 value.opphold.map((time, i) => (
                   <div className="af-detaljert__flex-rad" key={`${i}`}>
                     <div className="af-detaljert__flex-kolonne af-liste__month  af-detaljert__heading">
-                      {time.periode && (
-                        <CheckDateAndPrint
-                          data={time.periode.periodeFra}
-                          dateFormat="MMMM"
-                        />
-                      )}
+                      <CheckDateAndPrint
+                        data={time.periode.periodeFra}
+                        dateFormat="MMMM"
+                      />
                     </div>
                     <div className="af-detaljert__flex-kolonne">
                       <CheckPeriodAndPrint data={time.periode} />

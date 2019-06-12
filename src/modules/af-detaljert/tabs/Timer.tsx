@@ -18,7 +18,7 @@ const Timer = (props: Props) => {
   const { locale } = props;
 
   props.timer.sort((left, right) =>
-    sortPeriodeFraDesc(right.periode, left.periode)
+    sortPeriodeFraDesc(left.periode, right.periode)
   );
 
   const initState: {
@@ -28,16 +28,16 @@ const Timer = (props: Props) => {
     };
   } = {};
 
-  props.timer.map(timerObjekt => {
+  props.timer.map((timerObjekt, i) => {
     const year = moment(timerObjekt.rapporteringsperiode).year();
 
     if (!initState[year]) {
       initState[year] = {
         timerObjekt: [timerObjekt],
-        ekspandert: false
+        ekspandert: !i ? true : false
       };
     } else {
-      initState[year].timerObjekt.unshift(timerObjekt);
+      initState[year].timerObjekt.push(timerObjekt);
     }
   });
 

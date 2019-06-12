@@ -18,7 +18,7 @@ const Utenlandsopphold = (props: Props) => {
   const { locale } = props;
 
   props.utenlandsopphold.sort((left, right) =>
-    sortPeriodeFraDesc(right.periode, left.periode)
+    sortPeriodeFraDesc(left.periode, right.periode)
   );
 
   const initState: {
@@ -28,16 +28,16 @@ const Utenlandsopphold = (props: Props) => {
     };
   } = {};
 
-  props.utenlandsopphold.map(opphold => {
+  props.utenlandsopphold.map((opphold, i) => {
     const year = moment(opphold.periode.periodeFra).year();
 
     if (!initState[year]) {
       initState[year] = {
         opphold: [opphold],
-        ekspandert: false
+        ekspandert: !i ? true : false
       };
     } else {
-      initState[year].opphold.unshift(opphold);
+      initState[year].opphold.push(opphold);
     }
   });
 

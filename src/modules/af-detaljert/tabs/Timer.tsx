@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import { AFTimerForTimelonnet } from "../../../types/arbeidsforhold";
 import { Element } from "nav-frontend-typografi";
 import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
-import { sortDateString } from "../../../utils/date";
+import { sortPeriodeFraDesc } from "../../../utils/date";
 import moment from "moment";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
@@ -18,9 +18,7 @@ const Timer = (props: Props) => {
   const { locale } = props;
 
   props.timer.sort((left, right) =>
-    left.periode && right.periode
-      ? sortDateString(left.periode.periodeFra, right.periode.periodeFra)
-      : 0
+    sortPeriodeFraDesc(right.periode, left.periode)
   );
 
   const initState: {
@@ -84,24 +82,24 @@ const Timer = (props: Props) => {
                 <div />
               </div>
               {value.ekspandert &&
-              value.timerObjekt.map((time, i) => (
-                <div className="af-detaljert__flex-rad" key={`${i}`}>
-                  <div className="af-detaljert__flex-kolonne af-liste__month af-detaljert__heading">
-                    {time.periode && (
-                      <CheckDateAndPrint
-                        data={time.rapporteringsperiode}
-                        dateFormat="MMMM"
-                      />
-                    )}
+                value.timerObjekt.map((time, i) => (
+                  <div className="af-detaljert__flex-rad" key={`${i}`}>
+                    <div className="af-detaljert__flex-kolonne af-liste__month af-detaljert__heading">
+                      {time.periode && (
+                        <CheckDateAndPrint
+                          data={time.rapporteringsperiode}
+                          dateFormat="MMMM"
+                        />
+                      )}
+                    </div>
+                    <div className="af-detaljert__flex-kolonne">
+                      <CheckPeriodAndPrint data={time.periode} />
+                    </div>
+                    <div className="af-detaljert__flex-kolonne">
+                      <CheckAndPrint data={time.antallTimer} />
+                    </div>
                   </div>
-                  <div className="af-detaljert__flex-kolonne">
-                    <CheckPeriodAndPrint data={time.periode} />
-                  </div>
-                  <div className="af-detaljert__flex-kolonne">
-                    <CheckAndPrint data={time.antallTimer} />
-                  </div>
-                </div>
-              ))}
+                ))}
             </Fragment>
           );
         })}

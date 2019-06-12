@@ -3,7 +3,7 @@ import { AFUtenlandsopphold } from "../../../types/arbeidsforhold";
 import { Element } from "nav-frontend-typografi";
 import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
-import { sortDateString } from "../../../utils/date";
+import { sortPeriodeFraDesc } from "../../../utils/date";
 import moment from "moment";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
@@ -18,9 +18,7 @@ const Utenlandsopphold = (props: Props) => {
   const { locale } = props;
 
   props.utenlandsopphold.sort((left, right) =>
-    left.periode && right.periode
-      ? sortDateString(left.periode.periodeFra, right.periode.periodeFra)
-      : 0
+    sortPeriodeFraDesc(right.periode, left.periode)
   );
 
   const initState: {
@@ -31,7 +29,7 @@ const Utenlandsopphold = (props: Props) => {
   } = {};
 
   props.utenlandsopphold.map(opphold => {
-    const year = moment(opphold.rapporteringsperiode).year();
+    const year = moment(opphold.periode.periodeFra).year();
 
     if (!initState[year]) {
       initState[year] = {
@@ -48,11 +46,9 @@ const Utenlandsopphold = (props: Props) => {
     <div className="af-detaljert__tabs-innhold af-detaljert__flex-table">
       <div className="af-detaljert__flex-rad af-detaljert__head">
         <div className="af-detaljert__flex-kolonne">
-          <Element>{sprak[locale].rapporteringsperiode}</Element>
-        </div>
-        <div className="af-detaljert__flex-kolonne">
           <Element>{sprak[locale].periode}</Element>
         </div>
+        <div className="af-detaljert__flex-kolonne"></div>
         <div className="af-detaljert__flex-kolonne">
           <Element>{sprak[locale].land}</Element>
         </div>
@@ -83,24 +79,24 @@ const Utenlandsopphold = (props: Props) => {
                 <div />
               </div>
               {value.ekspandert &&
-              value.opphold.map((time, i) => (
-                <div className="af-detaljert__flex-rad" key={`${i}`}>
-                  <div className="af-detaljert__flex-kolonne af-liste__month  af-detaljert__heading">
-                    {time.periode && (
-                      <CheckDateAndPrint
-                        data={time.rapporteringsperiode}
-                        dateFormat="MMMM"
-                      />
-                    )}
+                value.opphold.map((time, i) => (
+                  <div className="af-detaljert__flex-rad" key={`${i}`}>
+                    <div className="af-detaljert__flex-kolonne af-liste__month  af-detaljert__heading">
+                      {time.periode && (
+                        <CheckDateAndPrint
+                          data={time.periode.periodeFra}
+                          dateFormat="MMMM"
+                        />
+                      )}
+                    </div>
+                    <div className="af-detaljert__flex-kolonne">
+                      <CheckPeriodAndPrint data={time.periode} />
+                    </div>
+                    <div className="af-detaljert__flex-kolonne">
+                      <CheckAndPrint data={time.land} />
+                    </div>
                   </div>
-                  <div className="af-detaljert__flex-kolonne">
-                    <CheckPeriodAndPrint data={time.periode} />
-                  </div>
-                  <div className="af-detaljert__flex-kolonne">
-                    <CheckAndPrint data={time.land} />
-                  </div>
-                </div>
-              ))}
+                ))}
             </Fragment>
           );
         })}

@@ -3,6 +3,7 @@ import { Element } from "nav-frontend-typografi";
 import { AFPermisjonPermittering } from "../../../types/arbeidsforhold";
 import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import sprak from "../../../language/provider";
+import { sortPeriodeFraDesc } from "../../../utils/date";
 
 interface Props {
   permisjoner: AFPermisjonPermittering[];
@@ -11,6 +12,11 @@ interface Props {
 
 const Permisjon = (props: Props) => {
   const { locale } = props;
+
+  props.permisjoner.sort((left, right) =>
+    sortPeriodeFraDesc(left.periode, right.periode)
+  );
+
   return (
     <div className="af-detaljert__tabs-innhold af-detaljert__flex-table">
       <div className="af-detaljert__flex-rad af-detaljert__head">

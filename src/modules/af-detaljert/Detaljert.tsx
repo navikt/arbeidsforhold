@@ -14,6 +14,7 @@ import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import sprak from "../../language/provider";
 import { Select } from "nav-frontend-skjema";
 import ArbeidsavtaleFelter from "../../components/arbeidsavtale/Felter";
+import { orgnr } from "../../utils/orgnr";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, locale } = props;
@@ -50,7 +51,9 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
             </Undertittel>
             <div className="af-detaljert__orgnr">
               <Normaltekst>
-                {`${sprak[locale].organisasjonsnummer} ${arbeidsforhold.arbeidsgiver.orgnr}`}
+                {`${sprak[locale].organisasjonsnummer} ${orgnr(
+                  arbeidsforhold.arbeidsgiver.orgnr
+                )}`}
               </Normaltekst>
             </div>
           </div>
@@ -78,7 +81,9 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           >
             <Normaltekst>
               <CheckAndPrint
-                data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnr}
+                data={orgnr(
+                  arbeidsforhold.opplysningspliktigarbeidsgiver.orgnr
+                )}
                 format={`${sprak[locale].organisasjonsnummer} %s`}
               />
             </Normaltekst>

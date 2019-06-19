@@ -5,6 +5,7 @@ import { hentListeMedArbeidsforhold } from "../../clients/apiClient";
 import Spinner from "../../components/spinner/Spinner";
 import Liste from "./Liste";
 import Environment from "../../utils/environment";
+import { Link } from "react-router-dom";
 import Miljo from "../../types/miljo";
 import moment from "moment";
 import "moment/locale/nb";
@@ -14,10 +15,28 @@ type State =
   | { status: "RESULT"; arbeidsforhold: AFSimpel[] }
   | { status: "ERROR"; error: HTTPError };
 
+export type AFListeOnClick =
+  | {
+      type: "INGEN_ON_CLICK";
+    }
+  | {
+      type: "LENKE";
+      href: string;
+    }
+  | {
+      type: "REACT_ROUTER_LENKE";
+      Component: typeof Link;
+      to: string;
+    }
+  | {
+      type: "KNAPP";
+      getId: (navArbeidsforholdId: number) => void;
+    };
+
 export interface AFListeProps {
   locale: "nb" | "en";
   miljo: "LOCAL" | "DEV" | "PROD";
-  onClick: (navArbeidsforholdId: number) => void;
+  onClick: AFListeOnClick;
 }
 
 export interface AFListeData {

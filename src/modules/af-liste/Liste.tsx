@@ -20,6 +20,9 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
       sortPeriodeTilDesc(a.ansettelsesperiode, b.ansettelsesperiode)
     );
 
+  const replaceId = (path: string, id: number) =>
+    path.replace("{id}", id.toString());
+
   return (
     <div className={`af-liste__container`}>
       <div className="af-liste__table">
@@ -32,14 +35,65 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
             >
               <div className="af-liste__flex-innhold">
                 <div className="af-liste__tekst">
-                  <div
-                    className={"lenke"}
-                    onClick={() => onClick(foretak.navArbeidsforholdId)}
-                  >
-                    <Element>
-                      <CheckAndPrint data={foretak.arbeidsgiver.orgnavn} />
-                    </Element>
-                  </div>
+                  {(() => {
+                    switch (onClick.type) {
+                      case "INGEN_ON_CLICK":
+                        return (
+                          <Element>
+                            <CheckAndPrint
+                              data={foretak.arbeidsgiver.orgnavn}
+                            />
+                          </Element>
+                        );
+                      case "LENKE":
+                        return (
+                          <Element>
+                            <a
+                              className="lenke"
+                              href={replaceId(
+                                onClick.href,
+                                foretak.navArbeidsforholdId
+                              )}
+                            >
+                              <CheckAndPrint
+                                data={foretak.arbeidsgiver.orgnavn}
+                              />
+                            </a>
+                          </Element>
+                        );
+                      case "REACT_ROUTER_LENKE":
+                        return (
+                          <Element>
+                            <onClick.Component
+                              className="lenke"
+                              to={replaceId(
+                                onClick.to,
+                                foretak.navArbeidsforholdId
+                              )}
+                            >
+                              <CheckAndPrint
+                                data={foretak.arbeidsgiver.orgnavn}
+                              />
+                            </onClick.Component>
+                          </Element>
+                        );
+                      case "KNAPP":
+                        return (
+                          <div
+                            className="lenke"
+                            onClick={() =>
+                              onClick.getId(foretak.navArbeidsforholdId)
+                            }
+                          >
+                            <Element>
+                              <CheckAndPrint
+                                data={foretak.arbeidsgiver.orgnavn}
+                              />
+                            </Element>
+                          </div>
+                        );
+                    }
+                  })()}
                 </div>
                 <div className="af-liste__tekst">
                   <Normaltekst>

@@ -33,7 +33,10 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   if (arbeidsavtaler && arbeidsavtaler.length > 0) {
     tabs.push({ label: sprak[locale].tabs.historikk });
   }
-  const [visTab, settVisTab] = useState(tabs[0].label);
+  const [visTab, settVisTab] = useState(
+    tabs.length > 0 ? tabs[0].label : "Ugyldig tab"
+  );
+
   const selectOnClick = (event: ChangeEvent<HTMLSelectElement>) =>
     settVisTab(event.currentTarget.value);
 
@@ -96,48 +99,57 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           date={true}
         />
       </div>
-      <div className="af-detaljert__tabs">
-        <Tabs
-          tabs={tabs}
-          onChange={(
-            _event: SyntheticEvent<EventTarget, Event>,
-            index: number
-          ) => settVisTab(tabs[index].label)}
-        />
-      </div>
-      <div className="af-detaljert__select">
-        <hr className="af-detaljert__hr" />
-        <Select label="" onChange={selectOnClick}>
-          {tabs.map(tab => (
-            <option key={tab.label} value={tab.label}>
-              {tab.label}
-            </option>
-          ))}
-        </Select>
-      </div>
-      {(() => {
-        switch (visTab) {
-          case sprak[locale].tabs.timerfortimelonnet:
-            return <Timer timer={antallTimerForTimeloennet} locale={locale} />;
-          case sprak[locale].tabs.permisjonpermittering:
-            return (
-              <Permisjon permisjoner={permisjonPermittering} locale={locale} />
-            );
-          case sprak[locale].tabs.arbeidiutlandet:
-            return (
-              <Utenlandsopphold
-                utenlandsopphold={utenlandsopphold}
-                locale={locale}
-              />
-            );
-          case sprak[locale].tabs.historikk:
-            return (
-              <Historikk arbeidsavtaler={arbeidsavtaler} locale={locale} />
-            );
-          default:
-            return null;
-        }
-      })()}
+      {tabs.length > 0 && (
+        <>
+          <div className="af-detaljert__tabs">
+            <Tabs
+              tabs={tabs}
+              onChange={(
+                _event: SyntheticEvent<EventTarget, Event>,
+                index: number
+              ) => settVisTab(tabs[index].label)}
+            />
+          </div>
+          <div className="af-detaljert__select">
+            <hr className="af-detaljert__hr" />
+            <Select label="" onChange={selectOnClick}>
+              {tabs.map(tab => (
+                <option key={tab.label} value={tab.label}>
+                  {tab.label}
+                </option>
+              ))}
+            </Select>
+          </div>
+          {(() => {
+            switch (visTab) {
+              case sprak[locale].tabs.timerfortimelonnet:
+                return (
+                  <Timer timer={antallTimerForTimeloennet} locale={locale} />
+                );
+              case sprak[locale].tabs.permisjonpermittering:
+                return (
+                  <Permisjon
+                    permisjoner={permisjonPermittering}
+                    locale={locale}
+                  />
+                );
+              case sprak[locale].tabs.arbeidiutlandet:
+                return (
+                  <Utenlandsopphold
+                    utenlandsopphold={utenlandsopphold}
+                    locale={locale}
+                  />
+                );
+              case sprak[locale].tabs.historikk:
+                return (
+                  <Historikk arbeidsavtaler={arbeidsavtaler} locale={locale} />
+                );
+              default:
+                return null;
+            }
+          })()}
+        </>
+      )}
       <AlertStripeInfo>{sprak[locale].hvisfeil}</AlertStripeInfo>
     </div>
   );

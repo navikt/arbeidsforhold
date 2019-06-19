@@ -18,10 +18,10 @@ import ArbeidsavtaleFelter from "../../components/arbeidsavtale/Felter";
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, locale } = props;
   const { arbeidsavtaler, permisjonPermittering } = arbeidsforhold;
-  const { antallTimerForTimeloennet, utenlandsopphold } = arbeidsforhold;
+  const { antallTimerForTimelonnet, utenlandsopphold } = arbeidsforhold;
 
   const tabs = [] as { label: string }[];
-  if (antallTimerForTimeloennet && antallTimerForTimeloennet.length > 0) {
+  if (antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0) {
     tabs.push({ label: sprak[locale].tabs.timerfortimelonnet });
   }
   if (permisjonPermittering && permisjonPermittering.length > 0) {
@@ -45,7 +45,9 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       <div className="af-detaljert__header">
         <div className="af-detaljert__kolonne">
           <div className="af-detaljert__arbeidsgiver">
-            <Undertittel>{arbeidsforhold.arbeidsgiver.orgnavn}</Undertittel>
+            <Undertittel>
+              <CheckAndPrint data={arbeidsforhold.arbeidsgiver.orgnavn} />
+            </Undertittel>
             <div className="af-detaljert__orgnr">
               <Normaltekst>
                 {`${sprak[locale].organisasjonsnummer} ${arbeidsforhold.arbeidsgiver.orgnr}`}
@@ -69,17 +71,19 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       </div>
       <hr />
       <div className="af-detaljert__innhold">
-        <CheckAndPrintBox
-          title={sprak[locale].hovedenhet}
-          data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnavn}
-        >
-          <Normaltekst>
-            <CheckAndPrint
-              data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnr}
-              format={`${sprak[locale].organisasjonsnummer} %s`}
-            />
-          </Normaltekst>
-        </CheckAndPrintBox>
+        {arbeidsforhold.opplysningspliktigarbeidsgiver && (
+          <CheckAndPrintBox
+            title={sprak[locale].hovedenhet}
+            data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnavn}
+          >
+            <Normaltekst>
+              <CheckAndPrint
+                data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnr}
+                format={`${sprak[locale].organisasjonsnummer} %s`}
+              />
+            </Normaltekst>
+          </CheckAndPrintBox>
+        )}
         <CheckAndPrintBox
           title={sprak[locale].yrke}
           data={arbeidsforhold.yrke}
@@ -124,7 +128,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
             switch (visTab) {
               case sprak[locale].tabs.timerfortimelonnet:
                 return (
-                  <Timer timer={antallTimerForTimeloennet} locale={locale} />
+                  <Timer timer={antallTimerForTimelonnet} locale={locale} />
                 );
               case sprak[locale].tabs.permisjonpermittering:
                 return (

@@ -24,30 +24,34 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
   return (
     <div className={`af-liste__container`}>
       <div className="af-liste__table">
-        {sorterteArbeidsforhold
-          .slice(0, visAlle ? arbeidsforhold.length : 5)
-          .map((foretak, counter) => (
-            <div
-              className="af-liste__flex-rad"
-              key={`${foretak.arbeidsforholdId}-${counter}`}
-            >
-              <div className="af-liste__flex-innhold">
-                <div className="af-liste__tekst">
-                  <ListeTittel foretak={foretak} onClick={onClick} />
-                </div>
-                <div className="af-liste__tekst">
-                  <Normaltekst>
-                    <CheckAndPrint data={foretak.yrke} />
-                  </Normaltekst>
-                </div>
-                <div className="af-liste__tekst">
-                  <Undertekst>
-                    <CheckPeriodAndPrint data={foretak.ansettelsesperiode} />
-                  </Undertekst>
+        {sorterteArbeidsforhold.length > 1 ? (
+          sorterteArbeidsforhold
+            .slice(0, visAlle ? arbeidsforhold.length : 5)
+            .map((foretak, counter) => (
+              <div
+                className="af-liste__flex-rad"
+                key={`${foretak.arbeidsforholdId}-${counter}`}
+              >
+                <div className="af-liste__flex-innhold">
+                  <div className="af-liste__tekst">
+                    <ListeTittel foretak={foretak} onClick={onClick} />
+                  </div>
+                  <div className="af-liste__tekst">
+                    <Normaltekst>
+                      <CheckAndPrint data={foretak.yrke} />
+                    </Normaltekst>
+                  </div>
+                  <div className="af-liste__tekst">
+                    <Undertekst>
+                      <CheckPeriodAndPrint data={foretak.ansettelsesperiode} />
+                    </Undertekst>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+        ) : (
+          <Normaltekst>{sprak[props.locale].ingenarbeidsforhold}</Normaltekst>
+        )}
       </div>
       {arbeidsforhold.length > 5 && (
         <div className="af-liste__vis-flere" onClick={toggleVisAlle}>

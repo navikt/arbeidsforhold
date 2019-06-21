@@ -9,6 +9,7 @@ export default {
   httperror: "Oisann, noe gikk galt ved henting av data!",
   hovedenhet: "Hovedenhet",
   hvisfeil: `Hvis noe er feil med et arbeidsforhold må du kontakte arbeidsgiveren det gjelder, slik at de kan rette det opp.`,
+  ingenarbeidsforhold: `Du har ingen registrerte arbeidsforhold.`,
   land: "Land",
   lonnsendring: "Lønnsendring",
   lukke: "Lukk",

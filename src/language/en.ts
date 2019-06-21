@@ -9,6 +9,7 @@ export default {
   httperror: "Wops, something went wrong when retrieving data!",
   hovedenhet: "Parent company",
   hvisfeil: `If something is wrong with the registered information, contact the employer in question so that they can correct it`,
+  ingenarbeidsforhold: `You have no registered employments.`,
   land: "Country",
   lonnsendring: "Salary changed",
   lukke: "Close",

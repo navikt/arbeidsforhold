@@ -10,6 +10,7 @@ export interface Sprak {
     httperror: string;
     hovedenhet: string;
     hvisfeil: string;
+    ingenarbeidsforhold: string;
     land: string;
     lonnsendring: string;
     lukke: string;

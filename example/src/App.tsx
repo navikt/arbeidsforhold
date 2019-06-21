@@ -6,6 +6,10 @@ import {
 } from "@navikt/arbeidsforhold";
 import InfoBoks from "./components/InfoBoks";
 import SprakVelger from "./components/SprakVelger";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { AFListeOnClick } from "../../src/modules/af-liste";
+import OnClickVelger from "./components/OnClickVelger";
 
 const App = () => {
   const { hostname } = window.location;
@@ -20,32 +24,59 @@ const App = () => {
     settValgtArbeidsforholdId(navArbeidsforholdId);
   };
 
+  const onClicks = [
+    {
+      type: "INGEN_ON_CLICK"
+    },
+    {
+      type: "LENKE",
+      href: "/arbeidsforhold/{id}"
+    },
+    {
+      type: "REACT_ROUTER_LENKE",
+      Component: Link,
+      to: "/arbeidsforhold/{id}"
+    },
+    {
+      type: "KNAPP",
+      getId: arbeidsforholdOnClick
+    }
+  ] as AFListeOnClick[];
+
+  const [valgtOnClick, settValgtOnClick] = useState(onClicks[0]);
   return (
     <div className="example__app">
       <div className="example__content">
-        <SprakVelger
-          locales={locales}
-          valgtLocale={valgtLocale}
-          settValgtLocale={settValgtLocale}
-        />
-        <div className="example__section">
-          <ListeMedArbeidsforhold
-            locale={valgtLocale}
-            miljo={miljo}
-            onClick={arbeidsforholdOnClick}
+        <Router>
+          <SprakVelger
+            locales={locales}
+            valgtLocale={valgtLocale}
+            settValgtLocale={settValgtLocale}
           />
-        </div>
-        <div className="example__section">
-          {valgtArbeidsforholdId ? (
-            <DetaljertArbeidsforhold
+          <OnClickVelger
+            onClicks={onClicks}
+            valgtOnClick={valgtOnClick}
+            settValgtOnClick={settValgtOnClick}
+          />
+          <div className="example__section">
+            <ListeMedArbeidsforhold
               locale={valgtLocale}
               miljo={miljo}
-              navArbeidsforholdId={valgtArbeidsforholdId}
+              onClick={valgtOnClick}
             />
-          ) : (
-            <InfoBoks />
-          )}
-        </div>
+          </div>
+          <div className="example__section">
+            {valgtArbeidsforholdId ? (
+              <DetaljertArbeidsforhold
+                locale={valgtLocale}
+                miljo={miljo}
+                navArbeidsforholdId={valgtArbeidsforholdId}
+              />
+            ) : (
+              <InfoBoks />
+            )}
+          </div>
+        </Router>
       </div>
     </div>
   );

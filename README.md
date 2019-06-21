@@ -23,16 +23,40 @@ import { ListeMedArbeidsforhold } from "@navikt/arbeidsforhold";
 Eksempel
 
 ```js
-onClick = (arbeidsforholdId: string) =>
-    console.log(arbeidsforholdId);
+  onClick = {
+    type: "KNAPP",
+    getId: (arbeidsforholdId: string) => console.log(arbeidsforholdId)
+  };
 
-render = () => {
   return <ListeMedArbeidsforhold
             locale={"nb" as "nb" | "en"}
             miljo={"DEV" as "LOCAL" | "DEV" | "PROD"}
             onClick={this.onClick} />;
-};
 ```
+
+Onclick støtter følgende variasjoner
+
+```js
+  | {
+      type: "INGEN_ON_CLICK";
+    }
+  | {
+      type: "LENKE";
+      href: string;
+    }
+  | {
+      type: "REACT_ROUTER_LENKE";
+      Component: typeof Link;
+      to: string;
+    }
+  | {
+      type: "KNAPP";
+      getId: (navArbeidsforholdId: number) => void;
+    };
+```
+
+Ved implementasjon av REACT_ROUTER_LENKE må {Link} importeres fra react-router-dom i rot-applikasjonen. <br>
+Se komplett eksempel under mappen <i>/example</i>
 
 #### Detaljert arbeidsforhold
 

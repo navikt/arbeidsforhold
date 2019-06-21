@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Normaltekst, Element, Undertekst } from "nav-frontend-typografi";
+import { Normaltekst, Undertekst } from "nav-frontend-typografi";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import { AFListeProps, AFListeData } from "./index";
 import { sortPeriodeFraDesc, sortPeriodeTilDesc } from "../../utils/date";
 import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
 import sprak from "../../language/provider";
+import { ListeTittel } from "./ListeTittel";
 
 const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
   const { arbeidsforhold, onClick } = props;
@@ -32,14 +33,7 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
             >
               <div className="af-liste__flex-innhold">
                 <div className="af-liste__tekst">
-                  <div
-                    className={"lenke"}
-                    onClick={() => onClick(foretak.navArbeidsforholdId)}
-                  >
-                    <Element>
-                      <CheckAndPrint data={foretak.arbeidsgiver.orgnavn} />
-                    </Element>
-                  </div>
+                  <ListeTittel foretak={foretak} onClick={onClick} />
                 </div>
                 <div className="af-liste__tekst">
                   <Normaltekst>

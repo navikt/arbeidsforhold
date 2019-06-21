@@ -28,7 +28,8 @@ body {
   cursor: pointer;
 }
 
-.example__sprak-velger {
+.example__velger {
   display: flex;
   justify-content: center;
+  margin: 0.5rem 0;
 }

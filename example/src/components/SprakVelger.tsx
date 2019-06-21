@@ -9,7 +9,7 @@ interface Props {
 const SprakVelger = (props: Props) => {
   const { locales, valgtLocale, settValgtLocale } = props;
   return (
-    <div className="example__sprak-velger">
+    <div className="example__velger">
       {locales.map((locale, i) =>
         valgtLocale === locale ? (
           <span key={i} className="example__sprak">

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Normaltekst, Element, Undertekst } from "nav-frontend-typografi";
+import { Normaltekst, Undertekst } from "nav-frontend-typografi";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import { AFListeProps, AFListeData } from "./index";
 import { sortPeriodeFraDesc, sortPeriodeTilDesc } from "../../utils/date";
 import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
 import sprak from "../../language/provider";
+import { ListeTittel } from "./ListeTittel";
 
 const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
   const { arbeidsforhold, onClick } = props;
@@ -20,9 +21,6 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
       sortPeriodeTilDesc(a.ansettelsesperiode, b.ansettelsesperiode)
     );
 
-  const replaceId = (path: string, id: number) =>
-    path.replace("{id}", id.toString());
-
   return (
     <div className={`af-liste__container`}>
       <div className="af-liste__table">
@@ -35,65 +33,7 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
             >
               <div className="af-liste__flex-innhold">
                 <div className="af-liste__tekst">
-                  {(() => {
-                    switch (onClick.type) {
-                      case "INGEN_ON_CLICK":
-                        return (
-                          <Element>
-                            <CheckAndPrint
-                              data={foretak.arbeidsgiver.orgnavn}
-                            />
-                          </Element>
-                        );
-                      case "LENKE":
-                        return (
-                          <Element>
-                            <a
-                              className="lenke"
-                              href={replaceId(
-                                onClick.href,
-                                foretak.navArbeidsforholdId
-                              )}
-                            >
-                              <CheckAndPrint
-                                data={foretak.arbeidsgiver.orgnavn}
-                              />
-                            </a>
-                          </Element>
-                        );
-                      case "REACT_ROUTER_LENKE":
-                        return (
-                          <Element>
-                            <onClick.Component
-                              className="lenke"
-                              to={replaceId(
-                                onClick.to,
-                                foretak.navArbeidsforholdId
-                              )}
-                            >
-                              <CheckAndPrint
-                                data={foretak.arbeidsgiver.orgnavn}
-                              />
-                            </onClick.Component>
-                          </Element>
-                        );
-                      case "KNAPP":
-                        return (
-                          <div
-                            className="lenke"
-                            onClick={() =>
-                              onClick.getId(foretak.navArbeidsforholdId)
-                            }
-                          >
-                            <Element>
-                              <CheckAndPrint
-                                data={foretak.arbeidsgiver.orgnavn}
-                              />
-                            </Element>
-                          </div>
-                        );
-                    }
-                  })()}
+                  <ListeTittel foretak={foretak} onClick={onClick} />
                 </div>
                 <div className="af-liste__tekst">
                   <Normaltekst>

@@ -45,10 +45,16 @@ export interface AFPeriode {
   periodeTil?: string;
 }
 
-export interface AFArbeidsgiver {
-  orgnr: string;
-  orgnavn: string;
-}
+export type AFArbeidsgiver =
+  | {
+      type: "Organisasjon";
+      orgnr: string;
+      orgnavn: string;
+    }
+  | {
+      type: "Person";
+      fnr: string;
+    };
 
 export interface AFUtvidet extends AFArbeidsavtaler {
   ansettelsesperiode?: AFPeriode;

@@ -50,7 +50,9 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
               </div>
             ))
         ) : (
-          <Normaltekst>{sprak[props.locale].ingenarbeidsforhold}</Normaltekst>
+          <div className="af-liste__flex-rad">
+            <Normaltekst>{sprak[props.locale].ingenarbeidsforhold}</Normaltekst>
+          </div>
         )}
       </div>
       {arbeidsforhold.length > 5 && (

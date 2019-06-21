@@ -1,7 +1,6 @@
 import React, { useState, SyntheticEvent, ChangeEvent } from "react";
 import { Undertittel, Normaltekst } from "nav-frontend-typografi";
 import { AFDetaljertData, AFDetaljertProps } from "./index";
-import { EtikettSuksess } from "nav-frontend-etiketter";
 import { AlertStripeInfo } from "nav-frontend-alertstriper";
 import Tabs from "nav-frontend-tabs";
 import Historikk from "./tabs/Historikk";
@@ -15,6 +14,7 @@ import sprak from "../../language/provider";
 import { Select } from "nav-frontend-skjema";
 import ArbeidsavtaleFelter from "../../components/arbeidsavtale/Felter";
 import { orgnr } from "../../utils/orgnr";
+import ArbeidsgiverTittel from "../../components/arbeidsgiver/ArbeidsgiverTittel";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, locale } = props;
@@ -47,24 +47,21 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
         <div className="af-detaljert__kolonne">
           <div className="af-detaljert__arbeidsgiver">
             <Undertittel>
-              <CheckAndPrint data={arbeidsforhold.arbeidsgiver.orgnavn} />
+              <ArbeidsgiverTittel arbeidsgiver={arbeidsforhold.arbeidsgiver} />
             </Undertittel>
-            <div className="af-detaljert__orgnr">
-              <Normaltekst>
-                {`${sprak[locale].organisasjonsnummer} ${orgnr(
-                  arbeidsforhold.arbeidsgiver.orgnr
-                )}`}
-              </Normaltekst>
-            </div>
+            {arbeidsforhold.arbeidsgiver.type === "Organisasjon" && (
+              <div className="af-detaljert__orgnr">
+                <Normaltekst>
+                  <CheckAndPrint
+                    data={orgnr(arbeidsforhold.arbeidsgiver.orgnr)}
+                    format={`${sprak[locale].organisasjonsnummer} %s`}
+                  />
+                </Normaltekst>
+              </div>
+            )}
           </div>
         </div>
         <div className="af-detaljert__kolonne af-detaljert__periode">
-          {arbeidsforhold.ansettelsesperiode &&
-            !arbeidsforhold.ansettelsesperiode.periodeTil && (
-              <div className="af-detaljert__status">
-                <EtikettSuksess>{sprak[locale].navaerendejobb}</EtikettSuksess>
-              </div>
-            )}
           <div className="af-detaljert__periode-content">
             <Normaltekst>
               <CheckPeriodAndPrint data={arbeidsforhold.ansettelsesperiode} />
@@ -74,7 +71,8 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       </div>
       <hr />
       <div className="af-detaljert__innhold">
-        {arbeidsforhold.opplysningspliktigarbeidsgiver && (
+        {arbeidsforhold.opplysningspliktigarbeidsgiver.type ===
+          "Organisasjon" && (
           <CheckAndPrintBox
             title={sprak[locale].hovedenhet}
             data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnavn}

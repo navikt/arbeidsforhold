@@ -26,7 +26,8 @@ const App = () => {
 
   const onClicks = [
     {
-      type: "INGEN_ON_CLICK"
+      type: "KNAPP",
+      getId: arbeidsforholdOnClick
     },
     {
       type: "LENKE",
@@ -38,8 +39,7 @@ const App = () => {
       to: "/arbeidsforhold/{id}"
     },
     {
-      type: "KNAPP",
-      getId: arbeidsforholdOnClick
+      type: "INGEN_ON_CLICK"
     }
   ] as AFListeOnClick[];
 

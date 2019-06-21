@@ -1,9 +1,8 @@
-import { Element } from "nav-frontend-typografi";
-
 import React from "react";
+import { Element } from "nav-frontend-typografi";
 import { AFListeOnClick } from "./index";
 import { AFSimpel } from "../../types/arbeidsforhold";
-import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
+import ArbeidsgiverTittel from "../../components/arbeidsgiver/ArbeidsgiverTittel";
 
 interface Props {
   foretak: AFSimpel;
@@ -18,32 +17,28 @@ export const ListeTittel = (props: Props) => {
 
   switch (onClick.type) {
     case "INGEN_ON_CLICK":
-      return (
-        <Element>
-          <CheckAndPrint data={foretak.arbeidsgiver.orgnavn} />
-        </Element>
-      );
+      return <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} />;
     case "LENKE":
       return (
-        <Element>
-          <a
-            className="lenke"
-            href={replaceId(onClick.href, foretak.navArbeidsforholdId)}
-          >
-            <CheckAndPrint data={foretak.arbeidsgiver.orgnavn} />
-          </a>
-        </Element>
+        <a
+          className="lenke"
+          href={replaceId(onClick.href, foretak.navArbeidsforholdId)}
+        >
+          <Element>
+            <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} />
+          </Element>
+        </a>
       );
     case "REACT_ROUTER_LENKE":
       return (
-        <Element>
-          <onClick.Component
-            className="lenke"
-            to={replaceId(onClick.to, foretak.navArbeidsforholdId)}
-          >
-            <CheckAndPrint data={foretak.arbeidsgiver.orgnavn} />
-          </onClick.Component>
-        </Element>
+        <onClick.Component
+          className="lenke"
+          to={replaceId(onClick.to, foretak.navArbeidsforholdId)}
+        >
+          <Element>
+            <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} />
+          </Element>
+        </onClick.Component>
       );
     case "KNAPP":
       return (
@@ -52,7 +47,7 @@ export const ListeTittel = (props: Props) => {
           onClick={() => onClick.getId(foretak.navArbeidsforholdId)}
         >
           <Element>
-            <CheckAndPrint data={foretak.arbeidsgiver.orgnavn} />
+            <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} />
           </Element>
         </div>
       );

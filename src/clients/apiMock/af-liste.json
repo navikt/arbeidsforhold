@@ -6,6 +6,7 @@
     },
     "arbeidsforholdId": "konvertert_af709505-128e-45dc-a241-7e14180f787d",
     "arbeidsgiver": {
+      "type": "Organisasjon",
       "orgnavn": "Capgemini Norge AS",
       "orgnr": "972165050"
     },
@@ -14,11 +15,11 @@
   },
   {
     "ansettelsesperiode": {
-      "periodeFra": "1989-08-29",
-      "periodeTil": "1990-07-02"
+      "periodeFra": "1997-06-30"
     },
     "arbeidsforholdId": "konvertert_fe82059e-303a-4d9d-a572-9b128ce5ffad",
     "arbeidsgiver": {
+      "type": "Organisasjon",
       "orgnavn": "Port Olga AS",
       "orgnr": "972165050"
     },
@@ -27,12 +28,13 @@
   },
   {
     "ansettelsesperiode": {
-      "periodeFra": "1997-06-30"
+      "periodeFra": "1989-08-29",
+      "periodeTil": "1990-07-02"
     },
     "arbeidsforholdId": "konvertert_6139b248-5bf7-4a54-9f02-30a8a2caf52d",
     "arbeidsgiver": {
-      "orgnavn": "Port Moniquefurt ORG",
-      "orgnr": "972165050"
+      "type": "Person",
+      "fnr": "12345678911"
     },
     "navArbeidsforholdId": "4",
     "yrke": "Lastebilsjåfør"
@@ -44,6 +46,7 @@
     },
     "arbeidsforholdId": "konvertert_7f9b5d0a-53c8-4acd-a6d0-6858fcbd3f1a",
     "arbeidsgiver": {
+      "type": "Organisasjon",
       "orgnavn": "Chasityview AS",
       "orgnr": "972165050"
     },
@@ -57,6 +60,7 @@
     },
     "arbeidsforholdId": "konvertert_82678eca-dedf-479a-8ea1-77bdd551edab",
     "arbeidsgiver": {
+      "type": "Organisasjon",
       "orgnavn": "Trondheim Rørleggerservice AS",
       "orgnr": "972165050"
     },
@@ -70,6 +74,7 @@
     },
     "arbeidsforholdId": "konvertert_382a28a6-1c05-4b2f-b109-0a3c06c7ccb7",
     "arbeidsgiver": {
+      "type": "Organisasjon",
       "orgnavn": "Leuschkemouth AS",
       "orgnr": "972165050"
     },
@@ -83,6 +88,7 @@
     },
     "arbeidsforholdId": "konvertert_15a351cf-8f9d-4307-8020-760989c7a907",
     "arbeidsgiver": {
+      "type": "Organisasjon",
       "orgnavn": "Deloitte AS",
       "orgnr": "972165050"
     },
@@ -96,6 +102,7 @@
     },
     "arbeidsforholdId": "konvertert_3ddff5b2-4035-415f-9aba-552cd44bc54d",
     "arbeidsgiver": {
+      "type": "Organisasjon",
       "orgnavn": "Oslo Bygg AS",
       "orgnr": "972165050"
     },
@@ -109,6 +116,7 @@
     },
     "arbeidsforholdId": "1162-20100701-1",
     "arbeidsgiver": {
+      "type": "Organisasjon",
       "orgnavn": "Vinstra Karosseri AS",
       "orgnr": "972165050"
     },

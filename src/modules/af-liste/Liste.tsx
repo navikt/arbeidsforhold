@@ -24,7 +24,7 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
   return (
     <div className={`af-liste__container`}>
       <div className="af-liste__table">
-        {sorterteArbeidsforhold.length > 1 ? (
+        {sorterteArbeidsforhold.length > 0 ? (
           sorterteArbeidsforhold
             .slice(0, visAlle ? arbeidsforhold.length : 5)
             .map((foretak, counter) => (

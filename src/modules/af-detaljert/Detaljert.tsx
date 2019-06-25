@@ -97,7 +97,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
         />
         <CheckAndPrintBox
           title={sprak[locale].arbeidsforholdid}
-          data={arbeidsforhold.navArbeidsforholdId}
+          data={arbeidsforhold.eksternArbeidsforholdId}
         />
         <ArbeidsavtaleFelter locale={locale} data={arbeidsforhold} />
         <CheckAndPrintBox

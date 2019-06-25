@@ -60,13 +60,13 @@ export interface AFUtvidet extends AFArbeidsavtaler {
   ansettelsesperiode?: AFPeriode;
   antallTimerForTimelonnet: AFTimerForTimelonnet[];
   arbeidsavtaler: AFArbeidsavtaler[];
-  arbeidsforholdId: string;
   arbeidsgiver: AFArbeidsgiver;
   arbeidstaker?: {
     type: string;
     aktoerId: number;
     offentligIdent: number;
   };
+  eksternArbeidsforholdId: string;
   innrapportertEtterAOrdningen: boolean;
   navArbeidsforholdId: number;
   opplysningspliktigarbeidsgiver: AFArbeidsgiver;

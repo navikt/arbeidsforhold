@@ -109,7 +109,6 @@
       "yrke": "Klovn"
     }
   ],
-  "arbeidsforholdId": "konvertert_af709505-128e-45dc-a241-7e14180f787d",
   "arbeidsgiver": {
     "orgnavn": "Generisk Firmanavn AS Oslo",
     "orgnr": "972165050",
@@ -121,6 +120,7 @@
   "gyldighetsperiode": {
     "periodeFra": "1988-10-01"
   },
+  "eksternArbeidsforholdId": "1162-20100701-1",
   "navArbeidsforholdId": 7597029,
   "opplysningspliktigarbeidsgiver": {
     "orgnavn": "Generisk Firmanavn AS",

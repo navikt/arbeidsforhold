@@ -1,5 +1,4 @@
 import React from "react";
-import { Element } from "nav-frontend-typografi";
 import { AFListeOnClick } from "./index";
 import { AFSimpel } from "../../types/arbeidsforhold";
 import ArbeidsgiverTittel from "../../components/arbeidsgiver/ArbeidsgiverTittel";
@@ -24,9 +23,7 @@ export const ListeTittel = (props: Props) => {
           className="lenke"
           href={replaceId(onClick.href, foretak.navArbeidsforholdId)}
         >
-          <Element>
-            <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} />
-          </Element>
+          <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} />
         </a>
       );
     case "REACT_ROUTER_LENKE":
@@ -35,21 +32,17 @@ export const ListeTittel = (props: Props) => {
           className="lenke"
           to={replaceId(onClick.to, foretak.navArbeidsforholdId)}
         >
-          <Element>
-            <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} />
-          </Element>
+          <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} />
         </onClick.Component>
       );
     case "KNAPP":
       return (
-        <div
-          className="lenke"
+        <button
+          className="lenke af-liste__knapp"
           onClick={() => onClick.getId(foretak.navArbeidsforholdId)}
         >
-          <Element>
-            <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} />
-          </Element>
-        </div>
+          <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} />
+        </button>
       );
   }
 };

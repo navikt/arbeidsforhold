@@ -7,6 +7,7 @@ interface Props {
   data?: AFPeriode;
   twoLines?: boolean;
   format?: string;
+  maskineltAvsluttet?: string;
 }
 
 const CheckPeriodAndPrint = (props: Props) =>
@@ -21,6 +22,7 @@ const CheckPeriodAndPrint = (props: Props) =>
       <CheckDateAndPrint
         data={props.data.periodeTil}
         dateFormat={props.format}
+        maskineltAvsluttet={props.maskineltAvsluttet}
       />
     </span>
   ) : (

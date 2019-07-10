@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Normaltekst, Undertekst } from "nav-frontend-typografi";
+import { Normaltekst } from "nav-frontend-typografi";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import { AFListeProps, AFListeData } from "./index";
 import { sortPeriodeFraDesc, sortPeriodeTilDesc } from "../../utils/date";
@@ -15,10 +15,16 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
 
   const sorterteArbeidsforhold = arbeidsforhold
     .sort((a, b) =>
-      sortPeriodeFraDesc(a.ansettelsesperiode, b.ansettelsesperiode)
+      sortPeriodeFraDesc(
+        a.ansettelsesperiode.periode,
+        b.ansettelsesperiode.periode
+      )
     )
     .sort((a, b) =>
-      sortPeriodeTilDesc(a.ansettelsesperiode, b.ansettelsesperiode)
+      sortPeriodeTilDesc(
+        a.ansettelsesperiode.periode,
+        b.ansettelsesperiode.periode
+      )
     );
 
   return (
@@ -36,15 +42,20 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
                   <div className="af-liste__tekst">
                     <ListeTittel foretak={foretak} onClick={onClick} />
                   </div>
-                  <div className="af-liste__tekst">
-                    <Normaltekst>
-                      <CheckAndPrint data={foretak.yrke} />
-                    </Normaltekst>
+                  <div className="af-liste__tekst typo-normal">
+                    <CheckAndPrint data={foretak.yrke} />
                   </div>
-                  <div className="af-liste__tekst">
-                    <Undertekst>
-                      <CheckPeriodAndPrint data={foretak.ansettelsesperiode} />
-                    </Undertekst>
+                  <div className="af-liste__tekst typo-normal">
+                    <CheckPeriodAndPrint
+                      data={foretak.ansettelsesperiode.periode}
+                      maskineltAvsluttet={
+                        foretak.ansettelsesperiode.varselkode
+                          ? sprak[props.locale][
+                              foretak.ansettelsesperiode.varselkode
+                            ]
+                          : null
+                      }
+                    />
                   </div>
                 </div>
               </div>

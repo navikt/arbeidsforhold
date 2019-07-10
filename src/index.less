@@ -10,6 +10,7 @@
 @import "~nav-frontend-skjema-style";
 @import "~nav-frontend-spinner-style";
 @import "~nav-frontend-tabs-style";
+@import "~nav-frontend-hjelpetekst-style";
 
 @import "./components/spinner/Spinner.less";
 @import "./components/error/Error.less";
@@ -24,4 +25,15 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+}
+
+.sr-only { // Burde hentes fra nav-frontend-core
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }

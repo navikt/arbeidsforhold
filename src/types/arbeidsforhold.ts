@@ -1,7 +1,7 @@
 export interface AFSimpel {
   arbeidsforholdId: string;
   arbeidsgiver: AFArbeidsgiver;
-  ansettelsesperiode: AFPeriode;
+  ansettelsesperiode: AFAnsettelsesperiode;
   navArbeidsforholdId: number;
   yrke: string;
 }
@@ -45,6 +45,12 @@ export interface AFPeriode {
   periodeTil?: string;
 }
 
+export interface AFAnsettelsesperiode {
+  periode: AFPeriode;
+  varselkode?: string;
+}
+
+
 export type AFArbeidsgiver =
   | {
       type: "Organisasjon";
@@ -57,7 +63,7 @@ export type AFArbeidsgiver =
     };
 
 export interface AFUtvidet extends AFArbeidsavtaler {
-  ansettelsesperiode?: AFPeriode;
+  ansettelsesperiode?: AFAnsettelsesperiode;
   antallTimerForTimelonnet: AFTimerForTimelonnet[];
   arbeidsavtaler: AFArbeidsavtaler[];
   arbeidsgiver: AFArbeidsgiver;

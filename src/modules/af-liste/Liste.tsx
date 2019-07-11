@@ -49,9 +49,9 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
                     <CheckPeriodAndPrint
                       data={foretak.ansettelsesperiode.periode}
                       maskineltAvsluttet={
-                        foretak.ansettelsesperiode.varselkode
+                        foretak.ansettelsesperiode.varslingskode
                           ? sprak[props.locale][
-                              foretak.ansettelsesperiode.varselkode
+                              foretak.ansettelsesperiode.varslingskode
                             ]
                           : null
                       }

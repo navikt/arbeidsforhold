@@ -67,7 +67,11 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
         )}
       </div>
       {arbeidsforhold.length > 5 && (
-        <button className="af-liste__vis-flere lenke" onClick={toggleVisAlle}>
+        <button
+          className="af-liste__vis-flere lenke"
+          onClick={toggleVisAlle}
+          aria-expanded={visAlle}
+        >
           {visAlle ? (
             <Normaltekst>
               {sprak[props.locale].visfaerrearbeidsforhold} <OppChevron />

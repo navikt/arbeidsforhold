@@ -1,6 +1,9 @@
 {
   "ansettelsesperiode": {
-    "periodeFra": "1988-10-03"
+    "periode": {
+      "periodeFra": "1988-10-03"
+    },
+    "varselkode": "TEST"
   },
   "antallTimerForTimelonnet": [
     {

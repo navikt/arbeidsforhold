@@ -47,7 +47,7 @@ export interface AFPeriode {
 
 export interface AFAnsettelsesperiode {
   periode: AFPeriode;
-  varselkode?: string;
+  varslingskode?: string;
 }
 
 

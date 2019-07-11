@@ -42,8 +42,8 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
                   <div className="af-liste__tekst">
                     <ListeTittel foretak={foretak} onClick={onClick} />
                   </div>
-                  <div className="af-liste__tekst typo-normal">
-                    <CheckAndPrint data={foretak.yrke} />
+                  <div className="af-liste__tekst">
+                    <CheckAndPrint data={foretak.yrke} font="typo-normal" />
                   </div>
                   <div className="af-liste__tekst typo-normal">
                     <CheckPeriodAndPrint
@@ -67,17 +67,17 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
         )}
       </div>
       {arbeidsforhold.length > 5 && (
-        <div className="af-liste__vis-flere" onClick={toggleVisAlle}>
+        <button className="af-liste__vis-flere lenke" onClick={toggleVisAlle}>
           {visAlle ? (
-            <span>
+            <Normaltekst>
               {sprak[props.locale].visfaerrearbeidsforhold} <OppChevron />
-            </span>
+            </Normaltekst>
           ) : (
-            <span>
+            <Normaltekst>
               {sprak[props.locale].visflerearbeidsforhold} <NedChevron />
-            </span>
+            </Normaltekst>
           )}
-        </div>
+        </button>
       )}
     </div>
   );

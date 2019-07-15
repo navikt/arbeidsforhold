@@ -37,9 +37,14 @@ export default {
   visfaerrearbeidsforhold: "Vis færre arbeidsforhold",
   visflerearbeidsforhold: "Vis flere arbeidsforhold",
   yrke: "Yrke",
-  ERKONK: "Sluttdato satt av NAV. Arbeidsgiver har gått konkurs. Sluttdato er samme dato som konkursåpningsdato i Konkursregisteret.",
-  EROPPH: "Sluttdato satt av NAV. Arbeidsgiver er opphørt i Enhetsregisteret. Sluttdato er satt til datoen foretaket er opphørt.",
-  ERVIRK: "Sluttdato satt av NAV. Foretaket er overdratt til annen juridisk enhet. Sluttdatoen er satt til dato for overdragelse.",
-  IBARBG: "Sluttdato satt av NAV. Arbeidsforholdet har ikke blitt bekreftet. Sluttdato er siste dato i kalendermåneden som arbeidsforholdet er bekreftet.",
-  IBKAOR: "Sluttdato satt av NAV. Arbeidsforholdet er ikke bekreftet gjennom a-ordningen. Sluttdato er satt til 31.12.2014"
+  ERKONK:
+    "Sluttdato satt av NAV. Arbeidsgiver har gått konkurs. Sluttdato er samme dato som konkursåpningsdato i Konkursregisteret.",
+  EROPPH:
+    "Sluttdato satt av NAV. Arbeidsgiver er opphørt i Enhetsregisteret. Sluttdato er satt til datoen foretaket er opphørt.",
+  ERVIRK:
+    "Sluttdato satt av NAV. Foretaket er overdratt til annen juridisk enhet. Sluttdatoen er satt til dato for overdragelse.",
+  IBARBG:
+    "Sluttdato satt av NAV. Arbeidsforholdet har ikke blitt bekreftet. Sluttdato er siste dato i kalendermåneden som arbeidsforholdet er bekreftet.",
+  IBKAOR:
+    "Sluttdato satt av NAV. Arbeidsforholdet er ikke bekreftet gjennom a-ordningen. Sluttdato er satt til 31.12.2014"
 };

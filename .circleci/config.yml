@@ -4,30 +4,63 @@
 #
 version: 2.1
 jobs:
-  build:
+  build-react-app:
     docker:
       - image: circleci/node:11.7.0
 
     steps:
       - checkout
       - restore_cache:
+          name: Modul - Restore cache
           keys:
-            # when lock file changes, use increasingly general patterns to restore cache
             - node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
             - node-v1-{{ .Branch }}-
             - node-v1-
       - run:
-          name: Bygg React app
+          name: Modul - Installer npm pakker
           command: |
-            npm ci && npm run build
+            npm ci
       - save_cache:
+          name: Modul - Save cache
           paths:
-            - ~/usr/local/lib/node_modules # location depends on npm version
+            - ./node_modules
           key: node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run:
-          name: Tester
+          name: Modul - Bygg React app
+          command: |
+            npm run build
+      - run:
+          name: Modul - Tester
           command: |
             npm run test
+      - restore_cache:
+          name: Eksempel - Restore cache
+          keys:
+            - node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - node-v1-{{ .Branch }}-
+            - node-v1-
+      - run:
+          name: Eksempel - Installer npm pakker
+          command: |
+            cd example && npm ci
+      - save_cache:
+          name: Eksempel - Save cache
+          paths:
+            - ./example/node_modules
+          key: node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+      - run:
+          name: Eksempel - Bygg React app
+          command: |
+            cd example && npm run build
+      - run:
+          name: Eksempel - Tester
+          command: |
+            cd example && npm run test
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist/*
+            - example/build/*
 
   deploy-til-dev:
     docker:
@@ -37,6 +70,8 @@ jobs:
       - checkout
       - setup_remote_docker
       - sett-miljovariabler
+      - attach_workspace:
+          at: .
       - run:
           name: Bygger Docker image
           command: docker build -t "$DOCKER_IMAGE_VERSIONED" -t "$DOCKER_IMAGE_UNVERSIONED" .
@@ -86,7 +121,7 @@ jobs:
       - run:
           name: Installererer avhengigheter
           command: |
-            npm install
+            npm ci
       - run:
           name: Publiser pakke
           command: |
@@ -108,27 +143,34 @@ commands:
 workflows:
   bygg-og-deploy:
     jobs:
-      - build:
+      - build-react-app:
           filters:
             tags:
               only: /.*/
-      - deploy-til-dev:
+      - bekreft-deploy-til-dev:
+          type: approval
           requires:
-            - build
+            - build-react-app
           filters:
+            branches:
+              ignore: master
+      - deploy-til-dev:
+          name: manuell-deploy-til-dev
+          requires:
+            - bekreft-deploy-til-dev
+      - deploy-til-dev:
+          name: automatisk-deploy-til-dev
+          requires:
+            - build-react-app
+          filters:
+            tags:
+              only: /^v.*/
             branches:
               only:
                 - master
-      - deploy-til-dev:
-          requires:
-            - deploy-til-dev-manuelt
-      - deploy-til-dev-manuelt:
-          type: approval
-          requires:
-            - build
       - deploy-til-npm:
           requires:
-            - build
+            - automatisk-deploy-til-dev
           filters:
             tags:
               only: /^v.*/

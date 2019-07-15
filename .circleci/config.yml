@@ -121,7 +121,7 @@ jobs:
       - run:
           name: Installererer avhengigheter
           command: |
-            npm install
+            npm ci
       - run:
           name: Publiser pakke
           command: |

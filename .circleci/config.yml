@@ -125,7 +125,7 @@ workflows:
       - bekreft-deploy-til-dev:
           type: approval
           requires:
-            - build
+            - build-react-app
           filters:
             branches:
               ignore: master
@@ -136,7 +136,7 @@ workflows:
       - deploy-til-dev:
           name: automatisk-deploy-til-dev
           requires:
-            - build
+            - build-react-app
           filters:
             tags:
               only: /^v.*/

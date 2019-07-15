@@ -6,52 +6,22 @@ jobs:
 
     steps:
       - checkout
-      - restore_cache:
-          name: Modul - Restore cache
-          keys:
-            - af-npm-deps-modul-{{ .Branch }}-{{ checksum "package-lock.json" }}
-            - af-npm-deps-modul-{{ .Branch }}-
-            - af-npm-deps-modul-
       - run:
           name: Modul - Installer npm pakker
           command: |
-            npm install
-      - save_cache:
-          name: Modul - Save cache
-          paths:
-            - node_modules
-          key: af-npm-deps-modul-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            npm ci
       - run:
           name: Modul - Bygg React app
           command: |
             npm run build
       - run:
-          name: Modul - Tester
-          command: |
-            npm run test
-      - restore_cache:
-          name: Eksempel - Restore cache
-          keys:
-            - af-npm-deps-eksempel-{{ .Branch }}-{{ checksum "example/package-lock.json" }}
-            - af-npm-deps-eksempel-{{ .Branch }}-
-            - af-npm-deps-eksempel-
-      - run:
           name: Eksempel - Installer npm pakker
           command: |
-            cd example && npm install
-      - save_cache:
-          name: Eksempel - Save cache
-          paths:
-            - example/node_modules
-          key: af-npm-deps-eksempel-{{ .Branch }}-{{ checksum "example/package-lock.json" }}
+            cd example && npm ci
       - run:
           name: Eksempel - Bygg React app
           command: |
             cd example && npm run build
-      - run:
-          name: Eksempel - Tester
-          command: |
-            cd example && npm run test
       - persist_to_workspace:
           root: .
           paths:

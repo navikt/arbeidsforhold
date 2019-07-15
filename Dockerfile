@@ -1,18 +1,16 @@
-FROM node:11.7.0 as build
+FROM node:11-alpine as build
 
 # Kopier filer
-COPY . app/
-
-# Kompiler arbeidsforhold
-WORKDIR /app
-RUN npm install && npm run build
+COPY dist app/dist/
+COPY package.json app/package.json
+COPY example app/example/
 
 # Kompiler test-applikasjon
 WORKDIR /app/example
-RUN npm install && npm run build
+RUN npm ci && npm run build
 
 # Lag server
-FROM nginx
+FROM nginx-alpine
 
 # Kopier statiske filer
 COPY --from=build /app /app

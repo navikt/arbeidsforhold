@@ -19,7 +19,7 @@ export default {
   periode: "Periode",
   prosent: " Prosent",
   rapporteringsperiode: "Rapporteringsperiode",
-  sistbekreftet: "Sist bekreftet",
+  sistbekreftet: "Sist bekreftet av arbeidsgiver",
   sistelonnsendring: "Siste lønnsendring",
   skipsregister: "Skipsregister",
   skipstype: "Skipstype",
@@ -28,7 +28,7 @@ export default {
     arbeidiutlandet: "Arbeid i utlandet",
     historikk: "Historikk",
     permisjonpermittering: "Permisjon/Permittering",
-    timerfortimelonnet: "Timer for timeønnet"
+    timerfortimelonnet: "Timer for timelønnet"
   },
   timerifullstilling: "Timer i full stilling",
   timerperuke: "Timer/uke",

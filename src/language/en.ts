@@ -19,7 +19,7 @@ export default {
   periode: "Period",
   prosent: " Percentage",
   rapporteringsperiode: "Reported in period",
-  sistbekreftet: "Last confirmed",
+  sistbekreftet: "Last confirmed by employer",
   sistelonnsendring: "Last salary change",
   skipsregister: "Ship registry",
   skipstype: "Ship type",

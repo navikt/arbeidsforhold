@@ -15,7 +15,7 @@
     "docker-start": "docker run --name arbeidsforhold -p 8080:80 -t -d navikt/arbeidsforhold",
     "docker-ssh": "docker exec -it arbeidsforhold /bin/bash",
     "docker-stop": "docker stop arbeidsforhold",
-    "docker-rm": "docker rm arbeidsforhold",
+    "docker-rm": "docker rm arbeidsforhold"
   },
   "repository": {
     "type": "git",

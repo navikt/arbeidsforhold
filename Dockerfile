@@ -1,5 +1,5 @@
 # Lag server
-FROM nginx-alpine
+FROM nginx:alpine
 
 # Kopier statiske filer
 COPY ./example/build /var/www/person/arbeidsforhold

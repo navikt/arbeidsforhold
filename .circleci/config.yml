@@ -11,6 +11,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
+          name: Modul - Restore cache
           keys:
             - node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
             - node-v1-{{ .Branch }}-
@@ -20,6 +21,7 @@ jobs:
           command: |
             npm ci
       - save_cache:
+          name: Modul - Save cache
           paths:
             - ~/usr/local/lib/node_modules
           key: node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
@@ -31,11 +33,8 @@ jobs:
           name: Modul - Tester
           command: |
             npm run test
-      - run:
-          name: Modul -> Eksempel-applikasjon
-          command: |
-            cd example
       - restore_cache:
+          name: Eksempel - Restore cache
           keys:
             - node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
             - node-v1-{{ .Branch }}-
@@ -43,19 +42,20 @@ jobs:
       - run:
           name: Eksempel - Installer npm pakker
           command: |
-            npm ci
+            cd example && npm ci
       - save_cache:
+          name: Eksempel - Save cache
           paths:
             - ~/usr/local/lib/node_modules
           key: node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run:
           name: Eksempel - Bygg React app
           command: |
-            npm run build
+            cd example && npm run build
       - run:
           name: Eksempel - Tester
           command: |
-            npm run test
+            cd example && npm run test
       - persist_to_workspace:
           root: .
           paths:

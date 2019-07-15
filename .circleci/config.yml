@@ -15,7 +15,7 @@ jobs:
       - run:
           name: Modul - Installer npm pakker
           command: |
-            npm ci
+            npm install
       - save_cache:
           name: Modul - Save cache
           paths:
@@ -38,7 +38,7 @@ jobs:
       - run:
           name: Eksempel - Installer npm pakker
           command: |
-            cd example && npm ci
+            cd example && npm install
       - save_cache:
           name: Eksempel - Save cache
           paths:

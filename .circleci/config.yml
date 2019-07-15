@@ -36,7 +36,7 @@ jobs:
       - restore_cache:
           name: Eksempel - Restore cache
           keys:
-            - af-npm-deps-eksempel-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - af-npm-deps-eksempel-{{ .Branch }}-{{ checksum "example/package-lock.json" }}
             - af-npm-deps-eksempel-{{ .Branch }}-
             - af-npm-deps-eksempel-
       - run:

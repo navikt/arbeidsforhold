@@ -24,7 +24,7 @@ jobs:
           name: Modul - Save cache
           paths:
             - node_modules
-          key: af-node-modul-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: af-npm-deps-modul-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run:
           name: Modul - Bygg React app
           command: |
@@ -47,7 +47,7 @@ jobs:
           name: Eksempel - Save cache
           paths:
             - example/node_modules
-          key: af-node-eksempel-{{ .Branch }}-{{ checksum "example/package-lock.json" }}
+          key: af-npm-deps-eksempel-{{ .Branch }}-{{ checksum "example/package-lock.json" }}
       - run:
           name: Eksempel - Bygg React app
           command: |

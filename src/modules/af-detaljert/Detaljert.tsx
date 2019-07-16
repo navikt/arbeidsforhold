@@ -1,5 +1,5 @@
 import React, { useState, SyntheticEvent, ChangeEvent } from "react";
-import { Undertittel, Normaltekst } from "nav-frontend-typografi";
+import { Undertittel, Normaltekst, Element } from "nav-frontend-typografi";
 import { AFDetaljertData, AFDetaljertProps } from "./index";
 import { AlertStripeInfo } from "nav-frontend-alertstriper";
 import Tabs from "nav-frontend-tabs";
@@ -123,13 +123,17 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           </div>
           <div className="af-detaljert__select">
             <hr className="af-detaljert__hr" />
-            <Select label="" onChange={selectOnClick}>
-              {tabs.map(tab => (
-                <option key={tab.label} value={tab.label}>
-                  {tab.label}
-                </option>
-              ))}
-            </Select>
+            {tabs.length > 1 ? (
+              <Select label="" onChange={selectOnClick}>
+                {tabs.map(tab => (
+                  <option key={tab.label} value={tab.label}>
+                    {tab.label}
+                  </option>
+                ))}
+              </Select>
+            ) : (
+              <Element>{tabs[0].label}</Element>
+            )}
           </div>
           {(() => {
             switch (visTab) {

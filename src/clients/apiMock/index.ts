@@ -9,7 +9,7 @@ const delay = (min: number, max: number) => {
   });
 };
 
-export const setUpMock = async () => {
+export const setUpMock = () => {
   fetchMock.get(
     `${Environment.apiUrl}/arbeidsforhold`,
     delay(250, 1250).then(() => afListe)

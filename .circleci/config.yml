@@ -75,19 +75,14 @@ jobs:
 
     steps:
       - checkout
+      - attach_workspace:
+          at: .
       - run:
-          name: Versjon ${CIRCLE_TAG}
+          name: Lanserer ny versjon
           command: echo "Lanser versjon ${CIRCLE_TAG} til npmjs"
-      - run:
-          name: Endrer versjon i package.json
-          command: cat package.json | jq '.version = "${CIRCLE_TAG}"'
       - run:
           name: Autentiser med register
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
-      - run:
-          name: Installererer avhengigheter
-          command: |
-            npm ci
       - run:
           name: Publiser pakke
           command: |

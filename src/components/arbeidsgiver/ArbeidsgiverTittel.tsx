@@ -11,10 +11,10 @@ interface Props {
 const ArbeidsgiverTittel = (props: Props) => {
   switch (props.arbeidsgiver.type) {
     case "Person":
-      return <CheckAndPrint data={fnr(props.arbeidsgiver.fnr)} font="typo-element"/>;
+      return <CheckAndPrint data={fnr(props.arbeidsgiver.fnr)} />;
       break;
     case "Organisasjon":
-      return <CheckAndPrint data={props.arbeidsgiver.orgnavn} font="typo-element" />;
+      return <CheckAndPrint data={props.arbeidsgiver.orgnavn} />;
       break;
     default:
       return null;

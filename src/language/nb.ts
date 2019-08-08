@@ -1,5 +1,6 @@
 export default {
   antalltimer: "Antall timer",
+  ansettelsesperiode: "Ansettelsesperiode",
   apne: "Åpne",
   arbeidsavtale: "Arbeidsavtale",
   arbeidsforholdid: "Arbeidsforhold ID",

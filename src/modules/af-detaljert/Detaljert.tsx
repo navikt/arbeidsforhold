@@ -63,12 +63,19 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
         </div>
         {arbeidsforhold.ansettelsesperiode && (
           <div className="af-detaljert__kolonne af-detaljert__periode">
-            <div className="af-detaljert__periode-content">
-              <Normaltekst>
-                <CheckPeriodAndPrint
-                  data={arbeidsforhold.ansettelsesperiode.periode}
-                />
-              </Normaltekst>
+            <div className="af-detaljert__arbeidsgiver">
+              <Undertittel>
+                <span className="typo-element">
+                  {sprak[locale].ansettelsesperiode}
+                </span>
+              </Undertittel>
+              <div className="af-detaljert__orgnr">
+                <Normaltekst>
+                  <CheckPeriodAndPrint
+                    data={arbeidsforhold.ansettelsesperiode.periode}
+                  />
+                </Normaltekst>
+              </div>
             </div>
           </div>
         )}

@@ -1,6 +1,7 @@
 export interface Sprak {
   [key: string]: {
     antalltimer: string;
+    ansettelsesperiode: string;
     apne: string;
     arbeidsavtale: string;
     arbeidsforholdid: string;

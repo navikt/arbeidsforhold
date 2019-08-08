@@ -47,7 +47,10 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
         <div className="af-detaljert__kolonne">
           <div className="af-detaljert__arbeidsgiver">
             <Undertittel>
-              <ArbeidsgiverTittel arbeidsgiver={arbeidsforhold.arbeidsgiver} />
+              <ArbeidsgiverTittel
+                overskrift={true}
+                arbeidsgiver={arbeidsforhold.arbeidsgiver}
+              />
             </Undertittel>
             {arbeidsforhold.arbeidsgiver.type === "Organisasjon" && (
               <div className="af-detaljert__orgnr">

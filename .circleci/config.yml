@@ -48,7 +48,7 @@ jobs:
             docker push $IMAGE_NAME
       - deploy:
           til: dev-sbs
-          ingress1: https://$REPO_NAME.nais.oera-q.local/person/$REPO_NAME
+          ingress1: https://$REPO_NAME.nais.oera-q.local
           ingress2: https://www-q0.nav.no/person/$REPO_NAME
 
   deploy-til-npm:

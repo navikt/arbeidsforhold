@@ -3,7 +3,6 @@ import { Normaltekst } from "nav-frontend-typografi";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import { AFListeProps, AFListeData } from "./index";
 import { sortPeriodeFraDesc, sortPeriodeTilDesc } from "../../utils/date";
-import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
 import sprak from "../../language/provider";
 import { ListeTittel } from "./ListeTittel";
@@ -41,9 +40,6 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
                 <div className="af-liste__flex-innhold">
                   <div className="af-liste__tekst">
                     <ListeTittel foretak={foretak} onClick={onClick} />
-                  </div>
-                  <div className="af-liste__tekst">
-                    <CheckAndPrint data={foretak.yrke} font="typo-normal" />
                   </div>
                   <div className="af-liste__tekst typo-normal">
                     <CheckPeriodAndPrint

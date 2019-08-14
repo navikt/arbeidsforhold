@@ -10,7 +10,8 @@ export interface Sprak {
     fartsomraade: string;
     httperror: string;
     hovedenhet: string;
-    hvisfeil: string;
+    hvisfeil1: string;
+    hvisfeil2: string;
     ingenarbeidsforhold: string;
     land: string;
     lonnsendring: string;

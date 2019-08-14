@@ -175,7 +175,11 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           })()}
         </>
       )}
-      <AlertStripeInfo>{sprak[locale].hvisfeil}</AlertStripeInfo>
+      <AlertStripeInfo>
+        {sprak[locale].hvisfeil1}
+        <br />
+        {sprak[locale].hvisfeil2}
+      </AlertStripeInfo>
     </div>
   );
 };

@@ -9,7 +9,7 @@ export default {
   fartsomraade: "Fartsområde",
   httperror: "Oisann, noe gikk galt ved henting av data!",
   hovedenhet: "Hovedenhet",
-  hvisfeil: `Hvis noe er feil med et arbeidsforhold må du kontakte arbeidsgiveren det gjelder, slik at de kan rette det opp.`,
+  hvisfeil: `Oversikten viser alle arbeidsforhold rapportert etter 01.01.2015.<br/>Hvis det er feil i et arbeidsforhold, kan arbeidsgiveren endre gjennom a-meldingen.`,
   ingenarbeidsforhold: `Du har ingen registrerte arbeidsforhold.`,
   land: "Land",
   lonnsendring: "Lønnsendring",
@@ -39,13 +39,13 @@ export default {
   visflerearbeidsforhold: "Vis flere arbeidsforhold",
   yrke: "Yrke",
   ERKONK:
-    "Sluttdato satt av NAV. Arbeidsgiver har gått konkurs. Sluttdato er samme dato som konkursåpningsdato i Konkursregisteret.",
+    "Arbeidsgiveren har gått konkurs. NAV har satt samme sluttdato som konkursåpningsdato i Konkursregisteret.",
   EROPPH:
-    "Sluttdato satt av NAV. Arbeidsgiver er opphørt i Enhetsregisteret. Sluttdato er satt til datoen foretaket er opphørt.",
+    "Foretaket er opphørt i Enhetsregisteret. NAV har satt samme sluttdato som datoen foretaket opphørte i Enhetsregisteret.",
   ERVIRK:
-    "Sluttdato satt av NAV. Foretaket er overdratt til annen juridisk enhet. Sluttdatoen er satt til dato for overdragelse.",
+    "Foretaket er overdratt til en annen juridisk enhet. NAV har satt  samme sluttdato som datoen da foretaket ble overdratt i Enhetsregisteret.",
   IBARBG:
-    "Sluttdato satt av NAV. Arbeidsforholdet har ikke blitt bekreftet. Sluttdato er siste dato i kalendermåneden som arbeidsforholdet er bekreftet.",
+    "Arbeidsgiveren har ikke bekreftet arbeidsforholdet. NAV har derfor satt sluttdato til siste dato i den kalendermåneden arbeidsgiveren din sist bekreftet arbeidsforholdet.",
   IBKAOR:
     "Sluttdato satt av NAV. Arbeidsforholdet er ikke bekreftet gjennom a-ordningen. Sluttdato er satt til 31.12.2014"
 };

@@ -175,7 +175,9 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           })()}
         </>
       )}
-      <AlertStripeInfo>{sprak[locale].hvisfeil}</AlertStripeInfo>
+      <AlertStripeInfo>
+        <div dangerouslySetInnerHTML={{ __html: sprak[locale].hvisfeil }} />
+      </AlertStripeInfo>
     </div>
   );
 };

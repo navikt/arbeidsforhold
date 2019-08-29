@@ -17,7 +17,7 @@ type State =
 
 export interface AFDetaljertProps {
   locale: "nb" | "en";
-  miljo: "LOCAL" | "DEV" | "PROD";
+  miljo: "LOCAL" | "Q0" | "Q1" | "PROD";
   navArbeidsforholdId: number;
 }
 

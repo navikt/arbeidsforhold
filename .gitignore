@@ -21,3 +21,5 @@ yarn-error.log*
 # IntelliJ
 .idea
 
+# Example css
+example/public/styles.css

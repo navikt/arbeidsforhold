@@ -9,7 +9,9 @@
   "jsnext:main": "dist/index.es.js",
   "scripts": {
     "build": "rollup -c",
-    "start": "rollup -c -w",
+    "start": "npm-run-all --parallel start:*",
+    "start:module": "rollup -c -w",
+    "start:example": "cd example && npm start",
     "test": "exit 0",
     "docker-build": "docker build . -t navikt/arbeidsforhold",
     "docker-start": "docker run --name arbeidsforhold -p 8080:80 -t -d navikt/arbeidsforhold",

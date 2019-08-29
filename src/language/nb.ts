@@ -9,7 +9,7 @@ export default {
   fartsomraade: "Fartsområde",
   httperror: "Oisann, noe gikk galt ved henting av data!",
   hovedenhet: "Hovedenhet",
-  hvisfeil1: `Oversikten viser alle arbeidsforhold rapportert etter 01.01.2015.`,
+  hvisfeil1: `Oversikten viser arbeidsforholdene slik det er rapportert av arbeidsgiver.`,
   hvisfeil2: `Hvis det er feil i et arbeidsforhold, kan arbeidsgiveren endre gjennom a-meldingen.`,
   ingenarbeidsforhold: `Du har ingen registrerte arbeidsforhold.`,
   land: "Land",

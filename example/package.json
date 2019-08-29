@@ -10,11 +10,11 @@
   "private": true,
   "scripts": {
     "start": "npm-run-all start:*",
-    "start:less": "less-watch-compiler src public styles.less",
+    "start:less": "less-watch-compiler",
     "start:react": "react-scripts start",
     "build": "npm-run-all build:*",
+    "build:css": "less-watch-compiler --run-once",
     "build:react": "react-scripts build",
-    "build:less": "less-watch-compiler src public styles.less --run-once",
     "eject": "react-scripts eject",
     "test": "exit 0"
   },

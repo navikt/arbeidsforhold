@@ -10,11 +10,13 @@
   "private": true,
   "scripts": {
     "start": "npm-run-all start:*",
-    "start:less": "less-watch-compiler src public styles.less --run-once true",
+    "start:less": "less-watch-compiler src public styles.less",
     "start:react": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "exit 0",
-    "eject": "react-scripts eject"
+    "build": "npm-run-all build:*",
+    "build:react": "react-scripts build",
+    "build:less": "less-watch-compiler src public styles.less --run-once",
+    "eject": "react-scripts eject",
+    "test": "exit 0"
   },
   "dependencies": {
     "@navikt/arbeidsforhold": "file:..",

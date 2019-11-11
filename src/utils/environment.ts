@@ -14,12 +14,9 @@ class Environment {
         Environment.logoutUrl = `https://loginservice-q.nav.no/slo`;
         break;
       case "Q0":
-        Environment.apiUrl = `https://www-q0.nav.no/person/arbeidsforhold-api`;
-        Environment.loginUrl = `https://loginservice-q.nav.no/login`;
-        Environment.logoutUrl = `https://loginservice-q.nav.no/slo`;
-        break;
       case "Q1":
-        Environment.apiUrl = `https://www-q1.nav.no/person/arbeidsforhold-api`;
+      case "Q6":
+        Environment.apiUrl = `https://www-${miljo.toLowerCase()}}.nav.no/person/arbeidsforhold-api`;
         Environment.loginUrl = `https://loginservice-q.nav.no/login`;
         Environment.logoutUrl = `https://loginservice-q.nav.no/slo`;
         break;

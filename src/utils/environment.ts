@@ -15,6 +15,7 @@ class Environment {
         break;
       case "Q0":
       case "Q1":
+      case "Q2":
       case "Q6":
         Environment.apiUrl = `https://www-${miljo.toLowerCase()}.nav.no/person/arbeidsforhold-api`;
         Environment.loginUrl = `https://loginservice-q.nav.no/login`;

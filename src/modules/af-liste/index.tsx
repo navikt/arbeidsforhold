@@ -35,7 +35,7 @@ export type AFListeOnClick =
 
 export interface AFListeProps {
   locale: "nb" | "en";
-  miljo: "LOCAL" | "Q0" | "Q1" | "Q6" | "PROD";
+  miljo: "LOCAL" | "Q6" | "Q2" | "Q1" | "Q0" | "PROD";
   onClick: AFListeOnClick;
 }
 

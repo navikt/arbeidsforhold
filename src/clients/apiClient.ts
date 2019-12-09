@@ -52,13 +52,16 @@ export const hentListeMedArbeidsforhold = () =>
 
 // Henter fødselsnummer fra token
 export const hentDetaljertArbeidsforholdArbeidstaker = (id: number) =>
-  hentJsonOgSjekkAuth(`${Environment.apiUrl}/arbeidsforholdinnslag/${id}`);
+  hentJsonOgSjekkAuth(
+    `${Environment.apiUrl}/arbeidsforholdinnslag/arbeidstaker/${id}`
+  );
 
 // Bruker tokenet til arbeidsgiver
 export const hentDetaljertArbeidsforholdArbeidsgiver = (
   fnr: number,
   id: number
 ) =>
-  hentJsonOgSjekkAuth(`${Environment.apiUrl}/arbeidsforholdinnslag/${id}`, {
-    "Fnr-Arbeidstaker": fnr
-  });
+  hentJsonOgSjekkAuth(
+    `${Environment.apiUrl}/arbeidsforholdinnslag/arbeidsgiver/${id}`,
+    { "Fnr-Arbeidstaker": fnr }
+  );

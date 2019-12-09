@@ -14,13 +14,13 @@ interface Props {
 
 const Error = (props: Props) => {
   const { error } = props;
-
   return (
     <div className="error__container">
       <AlertStripe type="feil">
         {sprak[props.locale].httperror}
         <br />
-        {error && <span>{` ${error.code}: ${error.text}`}</span>}
+        {error.code && <span>{`${error.code}: `}</span>}
+        {error.text && <span>{`${error.text}`}</span>}
       </AlertStripe>
     </div>
   );

@@ -47,5 +47,15 @@ const hentJsonOgSjekkAuth = (url: string) =>
 export const hentListeMedArbeidsforhold = () =>
   hentJsonOgSjekkAuth(`${Environment.apiUrl}/arbeidsforhold`);
 
-export const hentDetaljertArbeidsforhold = (id: number) =>
+// Henter fødselsnummer fra token
+export const hentDetaljertArbeidsforholdArbeidstaker = (id: number) =>
   hentJsonOgSjekkAuth(`${Environment.apiUrl}/arbeidsforholdinnslag/${id}`);
+
+// Bruker tokenet til arbeidsgiver
+export const hentDetaljertArbeidsforholdArbeidsgiver = (
+  fnr: number,
+  id: number
+) =>
+  hentJsonOgSjekkAuth(
+    `${Environment.apiUrl}/arbeidsforholdinnslag/${fnr}/${id}`
+  );

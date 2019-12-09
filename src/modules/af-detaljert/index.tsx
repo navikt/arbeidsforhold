@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Error, { HTTPError } from "../../components/error/Error";
-import { AFUtvidet } from "../../types/arbeidsforhold";
-import { hentDetaljertArbeidsforhold } from "../../clients/apiClient";
-import Spinner from "../../components/spinner/Spinner";
+import Error, { HTTPError } from "components/error/Error";
+import { AFUtvidet } from "types/arbeidsforhold";
+import { hentDetaljertArbeidsforholdArbeidstaker } from "clients/apiClient";
+import { hentDetaljertArbeidsforholdArbeidsgiver } from "clients/apiClient";
+import Spinner from "components/spinner/Spinner";
 import DetaljerArbeidsforhold from "./Detaljert";
-import Environment from "../../utils/environment";
-import Miljo from "../../types/miljo";
+import Environment from "utils/environment";
+import Miljo from "types/miljo";
 import moment from "moment";
 import "moment/locale/nb";
 
@@ -15,11 +16,20 @@ type State =
   | { status: "RESULT"; arbeidsforhold: AFUtvidet }
   | { status: "ERROR"; error: HTTPError };
 
-export interface AFDetaljertProps {
-  locale: "nb" | "en";
-  miljo: "LOCAL" | "Q6" | "Q2" | "Q1" | "Q0" | "PROD";
-  navArbeidsforholdId: number;
-}
+export type AFDetaljertProps =
+  | {
+      rolle: "ARBEIDSTAKER";
+      locale: "nb" | "en";
+      miljo: "LOCAL" | "Q6" | "Q2" | "Q1" | "Q0" | "PROD";
+      navArbeidsforholdId: number;
+    }
+  | {
+      rolle: "ARBEIDSGIVER";
+      locale: "nb" | "en";
+      miljo: "LOCAL" | "Q6" | "Q2" | "Q1" | "Q0" | "PROD";
+      navArbeidsforholdId: number;
+      fnrArbeidstaker: number;
+    };
 
 export interface AFDetaljertData {
   arbeidsforhold: AFUtvidet;
@@ -37,19 +47,43 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
   useEffect(() => {
     if (props.navArbeidsforholdId) {
       setState({ status: "LOADING" });
-      hentDetaljertArbeidsforhold(props.navArbeidsforholdId)
-        .then(arbeidsforhold =>
-          setState({
-            status: "RESULT",
-            arbeidsforhold: arbeidsforhold as AFUtvidet
-          })
+
+      // Arbeidstakere
+      if (props.rolle === "ARBEIDSTAKER") {
+        hentDetaljertArbeidsforholdArbeidstaker(props.navArbeidsforholdId)
+          .then(arbeidsforhold =>
+            setState({
+              status: "RESULT",
+              arbeidsforhold: arbeidsforhold as AFUtvidet
+            })
+          )
+          .catch((error: HTTPError) =>
+            setState({
+              status: "ERROR",
+              error
+            })
+          );
+      }
+
+      // Arbeidsgivere
+      if (props.rolle === "ARBEIDSGIVER") {
+        hentDetaljertArbeidsforholdArbeidsgiver(
+          props.fnrArbeidstaker,
+          props.navArbeidsforholdId
         )
-        .catch((error: HTTPError) =>
-          setState({
-            status: "ERROR",
-            error
-          })
-        );
+          .then(arbeidsforhold =>
+            setState({
+              status: "RESULT",
+              arbeidsforhold: arbeidsforhold as AFUtvidet
+            })
+          )
+          .catch((error: HTTPError) =>
+            setState({
+              status: "ERROR",
+              error
+            })
+          );
+      }
     }
   }, [props.navArbeidsforholdId]);
 

@@ -30,11 +30,14 @@ const sjekkForFeil = (
         text: response.statusText
       }));
 
-const hentJsonOgSjekkAuth = (url: string) =>
+const hentJsonOgSjekkAuth = (url: string, headers?: object) =>
   new Promise((resolve, reject) =>
     fetch(url, {
       method: "GET",
-      headers: { "Content-Type": "application/json;charset=UTF-8" },
+      headers: {
+        "Content-Type": "application/json;charset=UTF-8",
+        ...headers
+      },
       credentials: "include"
     })
       .then(sjekkAuth)
@@ -56,6 +59,6 @@ export const hentDetaljertArbeidsforholdArbeidsgiver = (
   fnr: number,
   id: number
 ) =>
-  hentJsonOgSjekkAuth(
-    `${Environment.apiUrl}/arbeidsforholdinnslag/${fnr}/${id}`
-  );
+  hentJsonOgSjekkAuth(`${Environment.apiUrl}/arbeidsforholdinnslag/${id}`, {
+    "Fnr-Arbeidstaker": fnr
+  });

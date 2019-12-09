@@ -68,6 +68,7 @@ const App = () => {
           <div className="example__section">
             {valgtArbeidsforholdId ? (
               <DetaljertArbeidsforhold
+                rolle={"ARBEIDSTAKER"}
                 locale={valgtLocale}
                 miljo={miljo}
                 navArbeidsforholdId={valgtArbeidsforholdId}

@@ -14,7 +14,7 @@ interface Props {
 
 const Error = (props: Props) => {
   const { error } = props;
-  return (
+  return error ? (
     <div className="error__container">
       <AlertStripe type="feil">
         {sprak[props.locale].httperror}
@@ -23,7 +23,7 @@ const Error = (props: Props) => {
         {error.text && <span>{`${error.text}`}</span>}
       </AlertStripe>
     </div>
-  );
+  ) : null;
 };
 
 export default Error;

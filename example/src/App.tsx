@@ -10,6 +10,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { AFListeOnClick } from "../../src/modules/af-liste";
 import OnClickVelger from "./components/OnClickVelger";
+import { Normaltekst } from "nav-frontend-typografi";
 
 const App = () => {
   const { hostname } = window.location;
@@ -48,6 +49,9 @@ const App = () => {
     <div className="example__app">
       <div className="example__content">
         <Router>
+          <div className={"example__header"}>
+            <h2>Arbeidstakere</h2>
+          </div>
           <SprakVelger
             locales={locales}
             valgtLocale={valgtLocale}
@@ -76,6 +80,22 @@ const App = () => {
             ) : (
               <InfoBoks />
             )}
+          </div>
+          <div className={"example__header"}>
+            <h2>Arbeidsgivere</h2>
+            <Normaltekst>
+              Logg inn med 16120101181. <br />
+              Viser arbeidsforhold 47720602 for arbeidstaker 27127424204
+            </Normaltekst>
+          </div>
+          <div className="example__section">
+            <DetaljertArbeidsforhold
+              rolle={"ARBEIDSGIVER"}
+              fnrArbeidstaker={27127424204}
+              locale={valgtLocale}
+              miljo={miljo}
+              navArbeidsforholdId={47720602}
+            />
           </div>
         </Router>
       </div>

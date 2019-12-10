@@ -63,5 +63,5 @@ export const hentDetaljertArbeidsforholdArbeidsgiver = (
 ) =>
   hentJsonOgSjekkAuth(
     `${Environment.apiUrl}/arbeidsforholdinnslag/arbeidsgiver/${id}`,
-    { "Fnr-Arbeidstaker": fnr }
+    { "Fnr-Arbeidstaker": `${fnr}` }
   );

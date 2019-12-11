@@ -22,6 +22,7 @@ export type AFDetaljertProps =
       locale: "nb" | "en";
       miljo: "LOCAL" | "Q6" | "Q2" | "Q1" | "Q0" | "PROD";
       navArbeidsforholdId: number;
+      customApiUrl?: string;
     }
   | {
       rolle: "ARBEIDSGIVER";
@@ -29,6 +30,7 @@ export type AFDetaljertProps =
       miljo: "LOCAL" | "Q6" | "Q2" | "Q1" | "Q0" | "PROD";
       navArbeidsforholdId: number;
       fnrArbeidstaker: number;
+      customApiUrl?: string;
     };
 
 export interface AFDetaljertData {
@@ -50,7 +52,10 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
 
       // Arbeidstakere
       if (props.rolle === "ARBEIDSTAKER") {
-        hentDetaljertArbeidsforholdArbeidstaker(props.navArbeidsforholdId)
+        hentDetaljertArbeidsforholdArbeidstaker(
+          props.navArbeidsforholdId,
+          props.customApiUrl
+        )
           .then(arbeidsforhold =>
             setState({
               status: "RESULT",
@@ -69,7 +74,8 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
       if (props.rolle === "ARBEIDSGIVER") {
         hentDetaljertArbeidsforholdArbeidsgiver(
           props.fnrArbeidstaker,
-          props.navArbeidsforholdId
+          props.navArbeidsforholdId,
+          props.customApiUrl
         )
           .then(arbeidsforhold =>
             setState({

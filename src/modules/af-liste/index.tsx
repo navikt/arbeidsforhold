@@ -37,6 +37,7 @@ export interface AFListeProps {
   locale: "nb" | "en";
   miljo: "LOCAL" | "Q6" | "Q2" | "Q1" | "Q0" | "PROD";
   onClick: AFListeOnClick;
+  customApiUrl?: string;
 }
 
 export interface AFListeData {
@@ -58,7 +59,7 @@ const ListeMedArbeidsforhold = (props: AFListeProps) => {
 
   useEffect(() => {
     if (state.status === "LOADING") {
-      hentListeMedArbeidsforhold()
+      hentListeMedArbeidsforhold(props.customApiUrl)
         .then(arbeidsforhold =>
           setState({
             status: "RESULT",

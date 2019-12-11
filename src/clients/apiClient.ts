@@ -47,21 +47,28 @@ const hentJsonOgSjekkAuth = (url: string, headers?: object) =>
       .catch(reject)
   );
 
-export const hentListeMedArbeidsforhold = () =>
-  hentJsonOgSjekkAuth(`${Environment.apiUrl}/arbeidsforhold`);
+export const hentListeMedArbeidsforhold = (customApiUrl?: string) => {
+  const defaultApiUrl = `${Environment.apiUrl}/arbeidsforhold`;
+  return hentJsonOgSjekkAuth(customApiUrl || defaultApiUrl);
+};
 
 // Henter fødselsnummer fra token
-export const hentDetaljertArbeidsforholdArbeidstaker = (id: number) =>
-  hentJsonOgSjekkAuth(
-    `${Environment.apiUrl}/arbeidsforholdinnslag/arbeidstaker/${id}`
-  );
+export const hentDetaljertArbeidsforholdArbeidstaker = (
+  id: number,
+  customApiUrl?: string
+) => {
+  const defaultApiUrl = `${Environment.apiUrl}/arbeidsforholdinnslag/arbeidstaker/${id}`;
+  return hentJsonOgSjekkAuth(customApiUrl || defaultApiUrl);
+};
 
 // Bruker tokenet til arbeidsgiver
 export const hentDetaljertArbeidsforholdArbeidsgiver = (
   fnr: number,
-  id: number
-) =>
-  hentJsonOgSjekkAuth(
-    `${Environment.apiUrl}/arbeidsforholdinnslag/arbeidsgiver/${id}`,
-    { "Fnr-Arbeidstaker": `${fnr}` }
-  );
+  id: number,
+  customApiUrl?: string
+) => {
+  const defaultApiUrl = `${Environment.apiUrl}/arbeidsforholdinnslag/arbeidsgiver/${id}`;
+  return hentJsonOgSjekkAuth(customApiUrl || defaultApiUrl, {
+    "Fnr-Arbeidstaker": `${fnr}`
+  });
+};

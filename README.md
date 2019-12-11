@@ -70,18 +70,22 @@ Eksempel
 
 ```js
 render = () => {
+  const id = "82421242";
   const locale = "nb" as "nb" | "en";
-  const mijo = "DEV" as "LOCAL" | "DEV" | "PROD";
-  const arbeidsforholdId = "konvertert_af709505-128e-45dc-a241-7e14180f787d";
+  const miljo = "DEV" as "LOCAL" | "DEV" | "PROD";
+  const rolle = "ARBEIDSTAKER" as "ARBEIDSTAKER" | "ARBEIDSGIVER"
 
   return <DetaljertArbeidsforhold
+            navArbeidsforholdId={id}
             locale={locale}
             miljo={miljo}
-            arbeidsforholdId={arbeidsforholdId} />;
+            rolle={rolle} />;
 };
 ```
 
-Komponenten vil hente data fra arbeidsforhold-api basert på miljo-variabelen
+Komponenten vil hente data fra arbeidsforhold-api basert på miljo-variabelen, med mindre customApiUrl er satt.
+CustomApiUrl må inneholde {id} som erstattes av navArbeidsforholdId.
+Eksempel: "https://din-api-proxy.nav.no/arbeidsforhold/{id}"
 
 ## Videreutvikling / test
 

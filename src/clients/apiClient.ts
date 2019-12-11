@@ -57,8 +57,9 @@ export const hentDetaljertArbeidsforholdArbeidstaker = (
   id: number,
   customApiUrl?: string
 ) => {
-  const defaultApiUrl = `${Environment.apiUrl}/arbeidsforholdinnslag/arbeidstaker/${id}`;
-  return hentJsonOgSjekkAuth(customApiUrl || defaultApiUrl);
+  const defaultApiUrl = `${Environment.apiUrl}/arbeidsforholdinnslag/arbeidstaker/{id}`;
+  const apiUrl = (customApiUrl || defaultApiUrl).replace("{id}", id.toString());
+  return hentJsonOgSjekkAuth(apiUrl);
 };
 
 // Bruker tokenet til arbeidsgiver
@@ -67,8 +68,7 @@ export const hentDetaljertArbeidsforholdArbeidsgiver = (
   id: number,
   customApiUrl?: string
 ) => {
-  const defaultApiUrl = `${Environment.apiUrl}/arbeidsforholdinnslag/arbeidsgiver/${id}`;
-  return hentJsonOgSjekkAuth(customApiUrl || defaultApiUrl, {
-    "Fnr-Arbeidstaker": `${fnr}`
-  });
+  const defaultApiUrl = `${Environment.apiUrl}/arbeidsforholdinnslag/arbeidsgiver/{id}`;
+  const apiUrl = (customApiUrl || defaultApiUrl).replace("{id}", id.toString());
+  return hentJsonOgSjekkAuth(apiUrl, { "Fnr-Arbeidstaker": `${fnr}` });
 };

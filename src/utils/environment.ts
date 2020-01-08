@@ -9,7 +9,7 @@ class Environment {
     switch (miljo) {
       default:
       case "LOCAL":
-        Environment.apiUrl = `http://localhost:8080/person/arbeidsforhold-api`;
+        Environment.apiUrl = `http://localhost:8096/person/arbeidsforhold-api`;
         Environment.loginUrl = `https://loginservice-q.nav.no/login`;
         Environment.logoutUrl = `https://loginservice-q.nav.no/slo`;
         break;

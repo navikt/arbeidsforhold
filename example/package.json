@@ -9,7 +9,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "npm-run-all start:*",
+    "start": "npm-run-all -p start:*",
     "start:less": "less-watch-compiler",
     "start:react": "react-scripts start",
     "build": "npm-run-all build:*",

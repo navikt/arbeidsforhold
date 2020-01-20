@@ -2,11 +2,7 @@ version: "3.7"
 services:
   oidc-provider:
     container_name: oidc-provider
-    networks:
-      docker-internal:
-        aliases:
-          - oidc-provider.docker-internal
-    image: "docker.pkg.github.com/navikt/stub-oidc-provider/stub-oidc-provider:latest"
+    image: "navikt/stub-oidc-provider:local"
     ports:
       - "9000:9000"
     environment:
@@ -16,10 +12,6 @@ services:
 
   oidc-provider-gui:
     container_name: oidc-provider-gui
-    networks:
-      docker-internal:
-        aliases:
-          - oidc-provider-gui.docker-internal
     image: "navikt/pb-oidc-provider-gui:latest"
     ports:
       - "5000:5000"
@@ -31,28 +23,20 @@ services:
 
   mocks:
     container_name: mocks
-    networks:
-      docker-internal:
-        aliases:
-          - mocks.docker-internal
-    image: "navikt/pb-nav-mocked:test"
+    image: "navikt/pb-nav-mocked:local"
     ports:
       - "8095:8080"
     environment:
-      CORS_ALLOWED_ORIGINS: "localhost:3000"
+      CORS_ALLOWED_ORIGINS: "arbeidsforhold-api:8080"
       OIDC_ISSUER: "https://localhost:9000"
       OIDC_ACCEPTED_AUDIENCE: "stubOidcClient"
-      OIDC_JWKS_URI: "http://oidc-provider.docker-internal:9000/certs"
+      OIDC_JWKS_URI: "http://oidc-provider:9000/certs"
     depends_on:
       - oidc-provider
 
   arbeidsforhold-api:
     container_name: arbeidsforhold-api
-    networks:
-      docker-internal:
-        aliases:
-          - arbeidsforhold-api.docker-internal
-    image: "navikt/arbeidsforhold-api:test"
+    image: "navikt/arbeidsforhold-api:local"
     ports:
       - "8096:8080"
     environment:
@@ -60,27 +44,24 @@ services:
       contextName: "arbeidsforhold-api"
       AAD_B2C_ISSUER: "https://localhost:9000"
       AAD_B2C_CLIENTID_USERNAME: "stubOidcClient"
-      AAD_B2C_DISCOVERY_URL: "http://oidc-provider.docker-internal:9000/.well-known/openid-configuration"
-      KODEVERK_REST_API_URL: "https://localhost:8085"
-      ARBEIDSFORHOLD_API_KODEVERK_REST_API_APIKEY_USERNAME: ""
-      ARBEIDSFORHOLD_API_KODEVERK_REST_API_APIKEY_PASSWORD: ""
-      EREG_API_URL: "https://localhost:8085"
-      ARBEIDSFORHOLD_API_EREG_API_APIKEY_USERNAME: ""
-      ARBEIDSFORHOLD_API_EREG_API_APIKEY_PASSWORD: ""
-      SECURITY_TOKEN_SERVICE_TOKEN_URL: "https://localhost:8085"
-      ARBEIDSFORHOLD_API_SECURITY_TOKEN_SERVICE_TOKEN_APIKEY_USERNAME: ""
-      ARBEIDSFORHOLD_API_SECURITY_TOKEN_SERVICE_TOKEN_APIKEY_PASSWORD: ""
-      AAREG_API_URL: "https://localhost:8085"
-      ARBEIDSFORHOLD_API_AAREG_API_APIKEY_USERNAME: ""
-      ARBEIDSFORHOLD_API_AAREG_API_APIKEY_PASSWORD: ""
-      SRVARBEIDSFORHOLD_API_USERNAME: ""
-      SRVARBEIDSFORHOLD_API_PASSWORD: ""
+      AAD_B2C_DISCOVERY_URL: "http://oidc-provider:9000/.well-known/openid-configuration"
+      KODEVERK_REST_API_URL: "http://mocks:8080/kodeverk/api/"
+      ARBEIDSFORHOLD_API_KODEVERK_REST_API_APIKEY_USERNAME: "x-nav-apiKey"
+      ARBEIDSFORHOLD_API_KODEVERK_REST_API_APIKEY_PASSWORD: "dummy-token"
+      EREG_API_URL: "http://mocks:8080/ereg/api/"
+      ARBEIDSFORHOLD_API_EREG_API_APIKEY_USERNAME: "x-nav-apiKey"
+      ARBEIDSFORHOLD_API_EREG_API_APIKEY_PASSWORD: "dummy-token"
+      SECURITY_TOKEN_SERVICE_TOKEN_URL: "http://mocks:8080/security-token-service/rest/v1/sts/token/"
+      ARBEIDSFORHOLD_API_SECURITY_TOKEN_SERVICE_TOKEN_APIKEY_USERNAME: "x-nav-apiKey"
+      ARBEIDSFORHOLD_API_SECURITY_TOKEN_SERVICE_TOKEN_APIKEY_PASSWORD: "dummy-token"
+      AAREG_API_URL: "http://mocks:8080/aareg-services/api/"
+      ARBEIDSFORHOLD_API_AAREG_API_APIKEY_USERNAME: "x-nav-apiKey"
+      ARBEIDSFORHOLD_API_AAREG_API_APIKEY_PASSWORD: "dummy-token"
+      SRVARBEIDSFORHOLD_API_USERNAME: "srvarbeidsforhold-"
+      SRVARBEIDSFORHOLD_API_PASSWORD: "dummy-password"
     depends_on:
       - oidc-provider
       - mocks
 
 volumes:
   event-cache-data:
-
-networks:
-  docker-internal:

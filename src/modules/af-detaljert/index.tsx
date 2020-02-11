@@ -29,7 +29,7 @@ export type AFDetaljertProps =
       locale: "nb" | "en";
       miljo: "LOCAL" | "Q6" | "Q2" | "Q1" | "Q0" | "PROD";
       navArbeidsforholdId: number;
-      fnrArbeidstaker: number;
+      fnrArbeidstaker: string;
       customApiUrl?: string;
     };
 

@@ -64,7 +64,7 @@ export const hentDetaljertArbeidsforholdArbeidstaker = (
 
 // Bruker tokenet til arbeidsgiver
 export const hentDetaljertArbeidsforholdArbeidsgiver = (
-  fnr: number,
+  fnr: string,
   id: number,
   customApiUrl?: string
 ) => {

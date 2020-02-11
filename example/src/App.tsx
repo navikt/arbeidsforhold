@@ -91,7 +91,7 @@ const App = () => {
           <div className="example__section">
             <DetaljertArbeidsforhold
               rolle={"ARBEIDSGIVER"}
-              fnrArbeidstaker={27127424204}
+              fnrArbeidstaker={`${27127424204}`}
               locale={valgtLocale}
               miljo={miljo}
               navArbeidsforholdId={47720602}

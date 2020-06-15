@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Miljo from "../../src/types/miljo";
 import {
   ListeMedArbeidsforhold,
-  DetaljertArbeidsforhold
+  DetaljertArbeidsforhold,
 } from "@navikt/arbeidsforhold";
 import InfoBoks from "./components/InfoBoks";
 import SprakVelger from "./components/SprakVelger";
@@ -17,7 +17,7 @@ const App = () => {
   const miljo = (hostname.indexOf("localhost") > -1 ? "LOCAL" : "Q0") as Miljo;
   const locales = ["nb", "en"];
 
-  const [valgtArbeidsforholdId, settValgtArbeidsforholdId] = useState();
+  const [valgtArbeidsforholdId, settValgtArbeidsforholdId] = useState<number>();
   const [valgtLocale, settValgtLocale] = useState("nb" as "nb" | "en");
 
   const arbeidsforholdOnClick = (navArbeidsforholdId: number) => {
@@ -28,20 +28,20 @@ const App = () => {
   const onClicks = [
     {
       type: "KNAPP",
-      getId: arbeidsforholdOnClick
+      getId: arbeidsforholdOnClick,
     },
     {
       type: "LENKE",
-      href: "/arbeidsforhold/{id}"
+      href: "/arbeidsforhold/{id}",
     },
     {
       type: "REACT_ROUTER_LENKE",
       Component: Link,
-      to: "/arbeidsforhold/{id}"
+      to: "/arbeidsforhold/{id}",
     },
     {
-      type: "INGEN_ON_CLICK"
-    }
+      type: "INGEN_ON_CLICK",
+    },
   ] as AFListeOnClick[];
 
   const [valgtOnClick, settValgtOnClick] = useState(onClicks[0]);

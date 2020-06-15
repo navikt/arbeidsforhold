@@ -7,6 +7,8 @@ import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
 import sprak from "../../language/provider";
 import { ListeTittel } from "./ListeTittel";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import ListePDF from "./ListePDF";
 
 const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
   const { arbeidsforhold, onClick } = props;
@@ -83,6 +85,15 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
           )}
         </button>
       )}
+      <div className="af-liste__print-button">
+        <PDFDownloadLink
+          document={<ListePDF />}
+          fileName="arbeidsforhold.pdf"
+          className={"lenke"}
+        >
+          {({ loading }) => (loading ? null : "Print")}
+        </PDFDownloadLink>
+      </div>
     </div>
   );
 };

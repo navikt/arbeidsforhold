@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import Miljo from "../../src/types/miljo";
-import {
-  ListeMedArbeidsforhold,
-  DetaljertArbeidsforhold,
-} from "@navikt/arbeidsforhold";
+import { DetaljertArbeidsforhold } from "@navikt/arbeidsforhold";
+import { ListeMedArbeidsforhold } from "@navikt/arbeidsforhold";
 import InfoBoks from "./components/InfoBoks";
 import SprakVelger from "./components/SprakVelger";
 import { BrowserRouter as Router } from "react-router-dom";

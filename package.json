@@ -36,6 +36,7 @@
   },
   "peerDependencies": {
     "@navikt/fnrvalidator": "^1.1.2",
+    "@react-pdf/renderer": "^2.0.0-beta.6",
     "classnames": "^2.2.6",
     "moment": "^2.26.0",
     "lodash.throttle": "^4.1.1",
@@ -72,6 +73,8 @@
     "@babel/plugin-proposal-class-properties": "^7.10.1",
     "@babel/preset-typescript": "^7.10.1",
     "@navikt/fnrvalidator": "^1.1.2",
+    "@react-pdf/renderer": "^2.0.0-beta.6",
+    "@rollup/plugin-image": "^2.0.5",
     "@svgr/rollup": "^5.4.0",
     "@types/jest": "^26.0.0",
     "@types/react": "^16.9.36",

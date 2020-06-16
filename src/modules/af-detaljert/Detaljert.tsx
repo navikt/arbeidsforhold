@@ -186,7 +186,9 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       <div className="af-detaljert__print-button">
         <Normaltekst>
           <PDFDownloadLink
-            document={<DetaljertPDF arbeidsforhold={arbeidsforhold} />}
+            document={
+              <DetaljertPDF arbeidsforhold={arbeidsforhold} locale={locale} />
+            }
             fileName="arbeidsforhold.pdf"
             className={"lenke"}
           >

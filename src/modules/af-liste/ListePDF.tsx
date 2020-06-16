@@ -8,13 +8,15 @@ import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPe
 import Regular from "../../assets/fonts/ODelI1aHBYDBqgeIAH2zlNRl0pGnog23EMYRrBmUzJQ.ttf";
 import Italic from "../../assets/fonts/M2Jd71oPJhLKp0zdtTvoMwRX4TIfMQQEXLu74GftruE.ttf";
 import Bold from "../../assets/fonts/toadOcfmlt9b38dHJxOBGPgXsetDviZcdR5OzC1KPcw.ttf";
+import sprak from "../../language/provider";
 
 interface Props {
   arbeidsforhold: AFSimpel[];
+  locale: "nb" | "en";
 }
 
 // Create Document Component
-const ListePDF = ({ arbeidsforhold }: Props) => {
+const ListePDF = ({ arbeidsforhold, locale }: Props) => {
   Font.register({
     family: "SourceSansPro",
     fonts: [
@@ -104,7 +106,9 @@ const ListePDF = ({ arbeidsforhold }: Props) => {
           <View
             style={[styles.section, styles.threeColumns, styles.headerColumn]}
           >
-            <Text style={styles.title}>Arbeidsforhold</Text>
+            <Text style={styles.title}>
+              title={sprak[locale].arbeidsforhold}
+            </Text>
             <View style={styles.headerColumn}>
               <Text style={styles.name}>Kari Normann</Text>
               <Text style={styles.fnr}>01019011111</Text>
@@ -141,11 +145,8 @@ const ListePDF = ({ arbeidsforhold }: Props) => {
           ))}
         </View>
         <View style={styles.listeFooter}>
-          <Text>
-            Hvis noe er feil med et arbeidsforhold må du kontakte arbeidsgiveren
-            det gjelder,
-          </Text>
-          <Text>slik at de kan rette det opp.</Text>
+          <Text>{sprak[locale].hvisfeil1}</Text>
+          <Text>{sprak[locale].hvisfeil2}</Text>
         </View>
       </Page>
     </Document>

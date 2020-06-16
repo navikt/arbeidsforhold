@@ -3,7 +3,8 @@ export default {
   ansettelsesperiode: "Ansettelsesperiode",
   apne: "Open",
   arbeidsavtale: "Employment",
-  arbeidsforholdid: "Emplyment ID",
+  arbeidsforhold: "Employment",
+  arbeidsforholdid: "Employment ID",
   arbeidstidsordning: "Working scheme",
   endretstillingsprosent: "Changed position percentage",
   fartsomraade: "Area",
@@ -30,7 +31,7 @@ export default {
     arbeidiutlandet: "Work abroad",
     historikk: "History",
     permisjonpermittering: "Leave/Layoff",
-    timerfortimelonnet: "Working hours"
+    timerfortimelonnet: "Working hours",
   },
   timerifullstilling: "Hours in full position",
   timerperuke: "Hours/week",
@@ -48,5 +49,5 @@ export default {
   IBARBG:
     "Sluttdato satt av NAV. Arbeidsforholdet har ikke blitt bekreftet. Sluttdato er siste dato i kalendermåneden som arbeidsforholdet er bekreftet.",
   IBKAOR:
-    "Sluttdato satt av NAV. Arbeidsforholdet er ikke bekreftet gjennom a-ordningen. Sluttdato er satt til 31.12.2014"
+    "Sluttdato satt av NAV. Arbeidsforholdet er ikke bekreftet gjennom a-ordningen. Sluttdato er satt til 31.12.2014",
 };

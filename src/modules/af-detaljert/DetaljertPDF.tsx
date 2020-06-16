@@ -7,13 +7,18 @@ import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPe
 import Regular from "../../assets/fonts/ODelI1aHBYDBqgeIAH2zlNRl0pGnog23EMYRrBmUzJQ.ttf";
 import Italic from "../../assets/fonts/M2Jd71oPJhLKp0zdtTvoMwRX4TIfMQQEXLu74GftruE.ttf";
 import Bold from "../../assets/fonts/toadOcfmlt9b38dHJxOBGPgXsetDviZcdR5OzC1KPcw.ttf";
+import PDFCheckAndPrintBox from "../../components/pdf-check-and-print-box/PDFCheckAndPrintBox";
+import sprak from "../../language/provider";
+import { orgnr } from "../../utils/orgnr";
+import PDFCheckAndPrint from "../../components/pdf-check-and-print/PDFCheckAndPrint";
 
 interface Props {
   arbeidsforhold: AFUtvidet;
+  locale: "nb" | "en";
 }
 
 // Create Document Component
-const ListePDF = ({ arbeidsforhold }: Props) => {
+const ListePDF = ({ arbeidsforhold, locale }: Props) => {
   Font.register({
     family: "SourceSansPro",
     fonts: [
@@ -76,19 +81,29 @@ const ListePDF = ({ arbeidsforhold }: Props) => {
     },
     detaljerRow: {
       display: "flex",
-      paddingVertical: 10,
+      paddingVertical: 5,
       flexDirection: "row",
     },
-    detaljerTitle: {
+    detaljerIntroRow: {
+      display: "flex",
+      paddingVertical: 5,
+      flexDirection: "row",
+      alignItems: "flex-end",
+    },
+    detaljerOrgName: {
       fontSize: 14,
       fontWeight: "bold",
       textTransform: "uppercase",
     },
-    detaljerTitleContainer: {
+    detaljerOrgNameContainer: {
       display: "flex",
       flexDirection: "column",
     },
-    detaljerSubtitle: {
+    detaljerInfoTitle: {
+      fontWeight: "bold",
+      fontSize: 12,
+    },
+    detaljerInfoSubtitle: {
       paddingTop: 2.5,
       fontSize: 12,
     },
@@ -126,44 +141,73 @@ const ListePDF = ({ arbeidsforhold }: Props) => {
             />
           </View>
         </View>
-        <View style={[styles.detaljer, styles.detaljerRow]}>
+        <View style={[styles.detaljer, styles.detaljerIntroRow]}>
           <View style={[styles.section, styles.twoColumns]}>
             {arbeidsforhold.arbeidsgiver.type === "Organisasjon" ? (
-              <View style={styles.detaljerTitleContainer}>
+              <View style={styles.detaljerOrgNameContainer}>
                 <View>
-                  <Text style={styles.detaljerTitle}>
+                  <Text style={styles.detaljerOrgName}>
                     {arbeidsforhold.arbeidsgiver.orgnavn}
                   </Text>
                 </View>
                 <View>
-                  <Text style={styles.detaljerSubtitle}>
+                  <Text style={styles.detaljerInfoSubtitle}>
                     Organisasjonsnummer {arbeidsforhold.arbeidsgiver.orgnr}
                   </Text>
                 </View>
               </View>
             ) : (
-              <Text style={styles.detaljerSubtitle}>
+              <Text style={styles.detaljerInfoSubtitle}>
                 {arbeidsforhold.arbeidsgiver.fnr}
               </Text>
             )}
           </View>
           <View style={[styles.section, styles.twoColumns]}>
-            <Text style={styles.detaljerSubtitle}>{arbeidsforhold.yrke}</Text>
             {arbeidsforhold.ansettelsesperiode && (
-              <Text style={styles.detaljerSubtitle}>
-                <CheckPeriodAndPrint
-                  data={arbeidsforhold.ansettelsesperiode.periode}
-                />
-              </Text>
+              <View style={styles.twoColumns}>
+                <Text style={styles.detaljerInfoTitle}>Ansettelsesperiode</Text>
+                <Text style={styles.detaljerInfoSubtitle}>
+                  <CheckPeriodAndPrint
+                    data={arbeidsforhold.ansettelsesperiode.periode}
+                  />
+                </Text>
+              </View>
             )}
           </View>
         </View>
+        <View style={styles.detaljerRow}>
+          {arbeidsforhold.opplysningspliktigarbeidsgiver.type ===
+            "Organisasjon" && (
+            <PDFCheckAndPrintBox
+              title={sprak[locale].hovedenhet}
+              data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnavn}
+            >
+              <PDFCheckAndPrint
+                data={orgnr(
+                  arbeidsforhold.opplysningspliktigarbeidsgiver.orgnr
+                )}
+                format={`${sprak[locale].organisasjonsnummer} %s`}
+              />
+            </PDFCheckAndPrintBox>
+          )}
+          <PDFCheckAndPrintBox
+            title={sprak[locale].yrke}
+            data={arbeidsforhold.yrke}
+          />
+        </View>
+        <View style={styles.detaljerRow}>
+          <PDFCheckAndPrintBox
+            title={sprak[locale].yrke}
+            data={arbeidsforhold.yrke}
+          />
+          <PDFCheckAndPrintBox
+            title={sprak[locale].yrke}
+            data={arbeidsforhold.yrke}
+          />
+        </View>
         <View style={styles.detaljerFooter} fixed={true}>
-          <Text>
-            Hvis noe er feil med et arbeidsforhold må du kontakte arbeidsgiveren
-            det gjelder,
-          </Text>
-          <Text>slik at de kan rette det opp.</Text>
+          <Text>{sprak[locale].hvisfeil1}</Text>
+          <Text>{sprak[locale].hvisfeil2}</Text>
         </View>
       </Page>
     </Document>

@@ -4,6 +4,7 @@ export interface Sprak {
     ansettelsesperiode: string;
     apne: string;
     arbeidsavtale: string;
+    arbeidsforhold: string;
     arbeidsforholdid: string;
     arbeidstidsordning: string;
     endretstillingsprosent: string;

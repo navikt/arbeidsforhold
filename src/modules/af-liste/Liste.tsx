@@ -15,6 +15,7 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
   const { arbeidsforhold, onClick } = props;
   const [visAlle, settVisAlle] = useState(false);
   const toggleVisAlle = () => settVisAlle(!visAlle);
+  const locale = props.locale;
 
   const sorterteArbeidsforhold = arbeidsforhold
     .sort((a, b) =>
@@ -90,7 +91,9 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
         <div className="af-liste__print-button">
           <Normaltekst>
             <PDFDownloadLink
-              document={<ListePDF arbeidsforhold={arbeidsforhold} />}
+              document={
+                <ListePDF arbeidsforhold={arbeidsforhold} locale={locale} />
+              }
               fileName="arbeidsforhold.pdf"
               className={"lenke"}
             >

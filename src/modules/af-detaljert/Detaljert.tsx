@@ -15,6 +15,7 @@ import { Select } from "nav-frontend-skjema";
 import ArbeidsavtaleFelter from "../../components/arbeidsavtale/Felter";
 import { orgnr } from "../../utils/orgnr";
 import ArbeidsgiverTittel from "../../components/arbeidsgiver/ArbeidsgiverTittel";
+import PrinterIcon from "../../assets/icons/printer";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import DetaljertPDF from "./DetaljertPDF";
 
@@ -183,13 +184,22 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
         {sprak[locale].hvisfeil2}
       </AlertStripeInfo>
       <div className="af-detaljert__print-button">
-        <PDFDownloadLink
-          document={<DetaljertPDF arbeidsforhold={arbeidsforhold} />}
-          fileName="arbeidsforhold.pdf"
-          className={"lenke"}
-        >
-          {({ loading }) => (loading ? null : "Print")}
-        </PDFDownloadLink>
+        <Normaltekst>
+          <PDFDownloadLink
+            document={<DetaljertPDF arbeidsforhold={arbeidsforhold} />}
+            fileName="arbeidsforhold.pdf"
+            className={"lenke"}
+          >
+            {({ loading }) =>
+              loading ? null : (
+                <>
+                  <PrinterIcon />
+                  <span>Skriv ut</span>
+                </>
+              )
+            }
+          </PDFDownloadLink>
+        </Normaltekst>
       </div>
     </div>
   );

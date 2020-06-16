@@ -9,6 +9,7 @@ import sprak from "../../language/provider";
 import { ListeTittel } from "./ListeTittel";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import ListePDF from "./ListePDF";
+import PrinterIcon from "../../assets/icons/printer";
 
 const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
   const { arbeidsforhold, onClick } = props;
@@ -87,13 +88,22 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
       )}
       {arbeidsforhold.length > 0 && (
         <div className="af-liste__print-button">
-          <PDFDownloadLink
-            document={<ListePDF arbeidsforhold={arbeidsforhold} />}
-            fileName="arbeidsforhold.pdf"
-            className={"lenke"}
-          >
-            {({ loading }) => (loading ? null : "Print")}
-          </PDFDownloadLink>
+          <Normaltekst>
+            <PDFDownloadLink
+              document={<ListePDF arbeidsforhold={arbeidsforhold} />}
+              fileName="arbeidsforhold.pdf"
+              className={"lenke"}
+            >
+              {({ loading }) =>
+                loading ? null : (
+                  <>
+                    <PrinterIcon />
+                    <span>Skriv ut</span>
+                  </>
+                )
+              }
+            </PDFDownloadLink>
+          </Normaltekst>
         </div>
       )}
     </div>

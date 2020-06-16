@@ -41,7 +41,10 @@ export default {
         ],
       ],
     }),
-    url(),
+    url({
+      include: ["**/*.woff", "**/*.woff2"],
+      limit: Infinity,
+    }),
     svgr(),
     image(),
     resolve({

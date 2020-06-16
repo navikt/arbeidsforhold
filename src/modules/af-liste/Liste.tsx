@@ -87,7 +87,7 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
       )}
       <div className="af-liste__print-button">
         <PDFDownloadLink
-          document={<ListePDF />}
+          document={<ListePDF arbeidsforhold={sorterteArbeidsforhold} />}
           fileName="arbeidsforhold.pdf"
           className={"lenke"}
         >

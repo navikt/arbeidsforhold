@@ -11,29 +11,22 @@ import Bold from "../../assets/fonts/toadOcfmlt9b38dHJxOBGPgXsetDviZcdR5OzC1KPcw
 
 interface Props {
   arbeidsforhold: AFSimpel[];
-  miljo: "LOCAL" | "Q6" | "Q2" | "Q1" | "Q0" | "PROD";
 }
 
 // Create Document Component
-const ListePDF = ({ arbeidsforhold, miljo }: Props) => {
-  const useNavFonts = miljo === "LOCAL" || miljo === "PROD";
-
-  if (useNavFonts) {
-    Font.register({
-      family: "SourceSansPro",
-      fonts: [
-        { src: Regular },
-        { src: Italic, fontStyle: "italic" },
-        { src: Bold, fontWeight: 700 },
-      ],
-    });
-  }
+const ListePDF = ({ arbeidsforhold }: Props) => {
+  Font.register({
+    family: "SourceSansPro",
+    fonts: [
+      { src: Regular },
+      { src: Italic, fontStyle: "italic" },
+      { src: Bold, fontWeight: 700 },
+    ],
+  });
 
   const styles = StyleSheet.create({
     page: {
-      ...(useNavFonts && {
-        fontFamily: "SourceSansPro",
-      }),
+      fontFamily: "SourceSansPro",
       display: "flex",
       paddingHorizontal: 40,
       paddingVertical: 40,

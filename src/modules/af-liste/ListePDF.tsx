@@ -127,8 +127,8 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
           </View>
         </View>
         <View style={styles.liste}>
-          {arbeidsforhold.map((foretak) => (
-            <View style={styles.listeRow}>
+          {arbeidsforhold.map((foretak, i) => (
+            <View key={i} style={styles.listeRow}>
               <Text style={styles.listeTitle}>
                 <ArbeidsgiverTittel
                   arbeidsgiver={foretak.arbeidsgiver}

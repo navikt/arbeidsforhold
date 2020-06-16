@@ -42,7 +42,7 @@ export default {
       ],
     }),
     url({
-      include: ["**/*.woff", "**/*.woff2"],
+      include: ["**/*.ttf"],
       limit: Infinity,
     }),
     svgr(),

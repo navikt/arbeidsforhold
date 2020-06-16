@@ -22,7 +22,7 @@ declare module "*.png" {
   export default value;
 }
 
-declare module "*.tff" {
+declare module "*.ttf" {
   const value: any;
   export default value;
 }

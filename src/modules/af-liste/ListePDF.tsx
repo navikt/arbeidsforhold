@@ -1,7 +1,7 @@
 import React from "react";
 import { Font, View, Document, StyleSheet } from "@react-pdf/renderer";
 import { Page, Text, Image } from "@react-pdf/renderer";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/icons/logo.png";
 import { AFSimpel } from "../../types/arbeidsforhold";
 import ArbeidsgiverTittel from "../../components/arbeidsgiver/ArbeidsgiverTittel";
 import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";

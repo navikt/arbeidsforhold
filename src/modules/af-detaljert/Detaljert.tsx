@@ -15,6 +15,8 @@ import { Select } from "nav-frontend-skjema";
 import ArbeidsavtaleFelter from "../../components/arbeidsavtale/Felter";
 import { orgnr } from "../../utils/orgnr";
 import ArbeidsgiverTittel from "../../components/arbeidsgiver/ArbeidsgiverTittel";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import DetaljertPDF from "./DetaljertPDF";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, locale } = props;
@@ -135,7 +137,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
             <hr className="af-detaljert__hr" />
             {tabs.length > 1 ? (
               <Select label="" onChange={selectOnClick}>
-                {tabs.map(tab => (
+                {tabs.map((tab) => (
                   <option key={tab.label} value={tab.label}>
                     {tab.label}
                   </option>
@@ -180,6 +182,15 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
         <br />
         {sprak[locale].hvisfeil2}
       </AlertStripeInfo>
+      <div className="af-detaljert__print-button">
+        <PDFDownloadLink
+          document={<DetaljertPDF arbeidsforhold={arbeidsforhold} />}
+          fileName="arbeidsforhold.pdf"
+          className={"lenke"}
+        >
+          {({ loading }) => (loading ? null : "Print")}
+        </PDFDownloadLink>
+      </div>
     </div>
   );
 };

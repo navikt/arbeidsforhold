@@ -85,15 +85,17 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
           )}
         </button>
       )}
-      <div className="af-liste__print-button">
-        <PDFDownloadLink
-          document={<ListePDF arbeidsforhold={arbeidsforhold} />}
-          fileName="arbeidsforhold.pdf"
-          className={"lenke"}
-        >
-          {({ loading }) => (loading ? null : "Print")}
-        </PDFDownloadLink>
-      </div>
+      {arbeidsforhold.length > 0 && (
+        <div className="af-liste__print-button">
+          <PDFDownloadLink
+            document={<ListePDF arbeidsforhold={arbeidsforhold} />}
+            fileName="arbeidsforhold.pdf"
+            className={"lenke"}
+          >
+            {({ loading }) => (loading ? null : "Print")}
+          </PDFDownloadLink>
+        </div>
+      )}
     </div>
   );
 };

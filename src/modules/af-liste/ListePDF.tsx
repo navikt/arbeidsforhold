@@ -1,14 +1,32 @@
 import React from "react";
-import { View, Document, StyleSheet } from "@react-pdf/renderer";
+import { Font, View, Document, StyleSheet } from "@react-pdf/renderer";
 import { Page, Text, Image } from "@react-pdf/renderer";
 import logo from "../../assets/logo.png";
 import { AFSimpel } from "../../types/arbeidsforhold";
 import ArbeidsgiverTittel from "../../components/arbeidsgiver/ArbeidsgiverTittel";
 import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
 
+Font.register({
+  family: "SourceSansPro",
+  fonts: [
+    {
+      src: `http://fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlNRl0pGnog23EMYRrBmUzJQ.ttf`,
+    },
+    {
+      src: `http://fonts.gstatic.com/s/sourcesanspro/v9/M2Jd71oPJhLKp0zdtTvoMwRX4TIfMQQEXLu74GftruE.ttf`,
+      fontStyle: "italic",
+    },
+    {
+      src: `http://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGPgXsetDviZcdR5OzC1KPcw.ttf`,
+      fontWeight: 700,
+    },
+  ],
+});
+
 // Create styles
 const styles = StyleSheet.create({
   page: {
+    fontFamily: "SourceSansPro",
     display: "flex",
     paddingHorizontal: 40,
     paddingVertical: 40,
@@ -38,9 +56,15 @@ const styles = StyleSheet.create({
     width: 75,
   },
   title: {
+    fontSize: 16,
     fontWeight: "bold",
   },
-  subtitle: {
+  name: {
+    fontWeight: "bold",
+    fontSize: 14,
+  },
+  fnr: {
+    fontWeight: "normal",
     fontSize: 14,
   },
   pageNumber: {
@@ -56,12 +80,12 @@ const styles = StyleSheet.create({
     borderTop: "1px solid black",
   },
   listeTitle: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: "bold",
     textTransform: "uppercase",
   },
   listeSubtitle: {
-    paddingTop: 5,
+    paddingTop: 2.5,
     fontSize: 12,
   },
   listeFooter: {
@@ -78,7 +102,7 @@ interface Props {
 const ListePDF = ({ arbeidsforhold }: Props) => (
   <Document>
     <Page size="A4" style={styles.page}>
-      <View style={styles.header}>
+      <View style={styles.header} fixed={true}>
         <View style={[styles.section, styles.threeColumns]}>
           <Image style={styles.image} src={logo} />
         </View>
@@ -87,8 +111,8 @@ const ListePDF = ({ arbeidsforhold }: Props) => (
         >
           <Text style={styles.title}>Arbeidsforhold</Text>
           <View style={styles.headerColumn}>
-            <Text style={styles.subtitle}>Kari Normann</Text>
-            <Text style={styles.subtitle}>01019011111</Text>
+            <Text style={styles.name}>Kari Normann</Text>
+            <Text style={styles.fnr}>01019011111</Text>
           </View>
         </View>
         <View
@@ -98,7 +122,7 @@ const ListePDF = ({ arbeidsforhold }: Props) => (
             fixed
             style={styles.pageNumber}
             render={({ pageNumber, totalPages }) =>
-              `${pageNumber} / ${totalPages}`
+              `Side ${pageNumber} / ${totalPages}`
             }
           />
         </View>

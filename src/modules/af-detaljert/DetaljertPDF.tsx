@@ -11,6 +11,7 @@ import PDFCheckAndPrintBox from "../../components/pdf-check-and-print-box/PDFChe
 import sprak from "../../language/provider";
 import { orgnr } from "../../utils/orgnr";
 import PDFCheckAndPrint from "../../components/pdf-check-and-print/PDFCheckAndPrint";
+import { Normaltekst } from "nav-frontend-typografi";
 
 interface Props {
   arbeidsforhold: AFUtvidet;
@@ -79,9 +80,10 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
     detaljer: {
       marginTop: 20,
     },
-    detaljerRow: {
+    detaljerGrid: {
       display: "flex",
       paddingVertical: 5,
+      flexWrap: "wrap",
       flexDirection: "row",
     },
     detaljerIntroRow: {
@@ -175,7 +177,7 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
             )}
           </View>
         </View>
-        <View style={styles.detaljerRow}>
+        <View style={styles.detaljerGrid}>
           {arbeidsforhold.opplysningspliktigarbeidsgiver.type ===
             "Organisasjon" && (
             <PDFCheckAndPrintBox
@@ -194,15 +196,54 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
             title={sprak[locale].yrke}
             data={arbeidsforhold.yrke}
           />
-        </View>
-        <View style={styles.detaljerRow}>
           <PDFCheckAndPrintBox
-            title={sprak[locale].yrke}
-            data={arbeidsforhold.yrke}
+            title={sprak[locale].typearbeidsforhold}
+            data={arbeidsforhold.type}
           />
           <PDFCheckAndPrintBox
-            title={sprak[locale].yrke}
-            data={arbeidsforhold.yrke}
+            title={sprak[locale].arbeidsforholdid}
+            data={arbeidsforhold.eksternArbeidsforholdId}
+          />
+          <PDFCheckAndPrintBox
+            title={sprak[locale].arbeidstidsordning}
+            data={arbeidsforhold.arbeidstidsordning}
+          />
+          <PDFCheckAndPrintBox
+            title={sprak[locale].sistelonnsendring}
+            data={arbeidsforhold.sisteLoennsendring}
+            date={true}
+          />
+          <PDFCheckAndPrintBox
+            title={sprak[locale].stillingsprosent}
+            data={arbeidsforhold.stillingsprosent}
+          >
+            <Normaltekst>
+              <PDFCheckAndPrint
+                data={arbeidsforhold.sisteStillingsendring}
+                format={`(${sprak[locale].endretstillingsprosent} %s)`}
+              />
+            </Normaltekst>
+          </PDFCheckAndPrintBox>
+          <PDFCheckAndPrintBox
+            title={sprak[locale].timerperuke}
+            data={arbeidsforhold.antallTimerPrUke}
+          />
+          <PDFCheckAndPrintBox
+            title={sprak[locale].skipsregister}
+            data={arbeidsforhold.skipsregister}
+          />
+          <PDFCheckAndPrintBox
+            title={sprak[locale].skipstype}
+            data={arbeidsforhold.skipstype}
+          />
+          <PDFCheckAndPrintBox
+            title={sprak[locale].fartsomraade}
+            data={arbeidsforhold.fartsomraade}
+          />
+          <PDFCheckAndPrintBox
+            title={sprak[locale].sistbekreftet}
+            data={arbeidsforhold.sistBekreftet}
+            date={true}
           />
         </View>
         <View style={styles.detaljerFooter} fixed={true}>

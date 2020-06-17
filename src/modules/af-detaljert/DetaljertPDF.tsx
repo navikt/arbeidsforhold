@@ -15,6 +15,7 @@ import PermisjonPDF from "./tabs/PermisjonPDF";
 import CheckDateAndPrint from "../../components/check-date-and-print/CheckDateAndPrint";
 import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import UtenlandsoppholdPDF from "./tabs/UtenlandsoppholdPDF";
+import HistorikkPDF from "./tabs/HistorikkPDF";
 
 interface Props {
   arbeidsforhold: AFUtvidet;
@@ -105,7 +106,7 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
             )}
           </View>
         </View>
-        <View style={pdfStyles.grid}>
+        <View style={{ ...pdfStyles.grid, height: 600 }}>
           {arbeidsforhold.opplysningspliktigarbeidsgiver.type ===
             "Organisasjon" && (
             <PDFCheckAndPrintBox
@@ -198,13 +199,15 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
           </View>
         )}
         {arbeidsavtaler && arbeidsavtaler.length > 0 && (
-          <View style={pdfStyles.section}>
-            <Text style={pdfStyles.h2}>Historikk</Text>
+          <View style={{ paddingVertical: 10 }}>
+            <View style={{ paddingHorizontal: 10 }}>
+              <Text style={pdfStyles.h2}>Historikk</Text>
+            </View>
+            <HistorikkPDF arbeidsavtaler={arbeidsavtaler} locale={locale} />
           </View>
         )}
         <View style={pdfStyles.footer} fixed={true}>
-          <Text>{sprak[locale].hvisfeil1}</Text>
-          <Text>{sprak[locale].hvisfeil2}</Text>
+          <Text>{`Arbeids- og velferdsetaten:  utskrift fra 17.05.2020`}</Text>
         </View>
       </Page>
     </Document>
@@ -216,7 +219,7 @@ export const pdfStyles = StyleSheet.create({
     fontFamily: "SourceSansPro",
     display: "flex",
     paddingTop: 40,
-    paddingBottom: 120,
+    paddingBottom: 100,
     paddingHorizontal: 40,
   },
   header: {
@@ -224,7 +227,7 @@ export const pdfStyles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingBottom: 40,
+    paddingBottom: 30,
   },
   headerColumn: {
     display: "flex",
@@ -271,7 +274,6 @@ export const pdfStyles = StyleSheet.create({
   },
   grid: {
     display: "flex",
-    height: "85%",
     flexWrap: "wrap",
     flexDirection: "row",
   },

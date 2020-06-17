@@ -20,6 +20,9 @@ interface Props {
 
 // Create Document Component
 const ListePDF = ({ arbeidsforhold, locale }: Props) => {
+  const { arbeidsavtaler, permisjonPermittering } = arbeidsforhold;
+  const { antallTimerForTimelonnet, utenlandsopphold } = arbeidsforhold;
+
   Font.register({
     family: "SourceSansPro",
     fonts: [
@@ -113,6 +116,7 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
       paddingTop: 10,
       fontSize: 10,
     },
+    detaljerTable: {},
   });
 
   return (
@@ -246,6 +250,26 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
             date={true}
           />
         </View>
+        {antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0 && (
+          <View style={styles.detaljerTable}>
+            <Text>antallTimerForTimelonnet</Text>
+          </View>
+        )}
+        {permisjonPermittering && permisjonPermittering.length > 0 && (
+          <View style={styles.detaljerTable}>
+            <Text>permisjonPermittering</Text>
+          </View>
+        )}
+        {utenlandsopphold && utenlandsopphold.length > 0 && (
+          <View style={styles.detaljerTable}>
+            <Text>utenlandsopphold</Text>
+          </View>
+        )}
+        {arbeidsavtaler && arbeidsavtaler.length > 0 && (
+          <View style={styles.detaljerTable}>
+            <Text>arbeidsavtaler</Text>
+          </View>
+        )}
         <View style={styles.detaljerFooter} fixed={true}>
           <Text>{sprak[locale].hvisfeil1}</Text>
           <Text>{sprak[locale].hvisfeil2}</Text>

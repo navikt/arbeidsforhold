@@ -106,9 +106,7 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
           <View
             style={[styles.section, styles.threeColumns, styles.headerColumn]}
           >
-            <Text style={styles.title}>
-              title={sprak[locale].arbeidsforhold}
-            </Text>
+            <Text style={styles.title}>{sprak[locale].arbeidsforhold}</Text>
             <View style={styles.headerColumn}>
               <Text style={styles.name}>Kari Normann</Text>
               <Text style={styles.fnr}>01019011111</Text>

@@ -1,13 +1,13 @@
 import React from "react";
 import { AFTimerForTimelonnet } from "../../../types/arbeidsforhold";
-import { Element } from "nav-frontend-typografi";
 import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
 import { sortPeriodeFraDesc } from "../../../utils/date";
 import moment from "moment";
 import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
 import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import sprak from "../../../language/provider";
-import { StyleSheet, Text, View } from "@react-pdf/renderer";
+import { Text, View } from "@react-pdf/renderer";
+import { pdfStyles } from "../DetaljertPDF";
 
 interface Props {
   timer: AFTimerForTimelonnet[];
@@ -39,50 +39,23 @@ const TimerPDF = (props: Props) => {
     }
   });
 
-  const styles = StyleSheet.create({
-    flexTable: {
-      paddingVertical: 20,
-      width: "100%",
-    },
-    flexSection: {
-      paddingTop: 12,
-    },
-    flexRow: {
-      flexDirection: "row",
-    },
-    flexColumn: {
-      paddingVertical: 2,
-      width: "33%",
-    },
-    title: {
-      fontWeight: "bold",
-      fontSize: 12,
-    },
-    subtitle: {
-      paddingTop: 2.5,
-      fontSize: 12,
-    },
-  });
-
   return (
-    <View style={styles.flexTable}>
-      <View style={styles.flexRow}>
-        <View style={styles.flexColumn}>
-          <Element>
-            <Text style={styles.title}>
-              {sprak[locale].rapporteringsperiode}
-            </Text>
-          </Element>
+    <View style={pdfStyles.flexTable}>
+      <View style={pdfStyles.flexRow}>
+        <View style={pdfStyles.flexColumn}>
+          <Text style={pdfStyles.elementTitle}>
+            {sprak[locale].rapporteringsperiode}
+          </Text>
         </View>
-        <View style={styles.flexColumn}>
-          <Element>
-            <Text style={styles.title}>{sprak[locale].opptjeningsperiode}</Text>
-          </Element>
+        <View style={pdfStyles.flexColumn}>
+          <Text style={pdfStyles.elementTitle}>
+            {sprak[locale].opptjeningsperiode}
+          </Text>
         </View>
-        <View style={styles.flexColumn}>
-          <Element>
-            <Text style={styles.title}>{sprak[locale].antalltimer}</Text>
-          </Element>
+        <View style={pdfStyles.flexColumn}>
+          <Text style={pdfStyles.elementTitle}>
+            {sprak[locale].antalltimer}
+          </Text>
         </View>
       </View>
       {Object.keys(data)
@@ -90,18 +63,18 @@ const TimerPDF = (props: Props) => {
         .map((year) => {
           const value = data[year];
           return (
-            <View key={year} style={styles.flexSection}>
-              <View key={year} style={styles.flexRow}>
-                <View style={styles.flexColumn}>
-                  <Text style={styles.title}>{year}</Text>
+            <View key={year} style={pdfStyles.flexSection}>
+              <View key={year} style={pdfStyles.flexRow}>
+                <View style={pdfStyles.flexColumn}>
+                  <Text style={pdfStyles.elementTitle}>{year}</Text>
                 </View>
-                <View style={styles.flexColumn} />
-                <View style={styles.flexColumn} />
+                <View style={pdfStyles.flexColumn} />
+                <View style={pdfStyles.flexColumn} />
               </View>
               {value.timerObjekt.map((time, i) => (
-                <View key={`${i}`} style={styles.flexRow}>
-                  <View style={styles.flexColumn}>
-                    <Text style={styles.subtitle}>
+                <View key={`${i}`} style={pdfStyles.flexRow}>
+                  <View style={pdfStyles.flexColumn}>
+                    <Text style={pdfStyles.elementSubtitle}>
                       {time.periode && (
                         <CheckDateAndPrint
                           data={time.rapporteringsperiode}
@@ -110,13 +83,13 @@ const TimerPDF = (props: Props) => {
                       )}
                     </Text>
                   </View>
-                  <View style={styles.flexColumn}>
-                    <Text style={styles.subtitle}>
+                  <View style={pdfStyles.flexColumn}>
+                    <Text style={pdfStyles.elementSubtitle}>
                       <CheckPeriodAndPrint data={time.periode} />
                     </Text>
                   </View>
-                  <View style={styles.flexColumn}>
-                    <Text style={styles.subtitle}>
+                  <View style={pdfStyles.flexColumn}>
+                    <Text style={pdfStyles.elementSubtitle}>
                       <CheckAndPrint data={time.antallTimer} />
                     </Text>
                   </View>

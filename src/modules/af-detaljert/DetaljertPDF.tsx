@@ -10,9 +10,11 @@ import Bold from "../../assets/fonts/toadOcfmlt9b38dHJxOBGPgXsetDviZcdR5OzC1KPcw
 import PDFCheckAndPrintBox from "../../components/pdf-check-and-print-box/PDFCheckAndPrintBox";
 import sprak from "../../language/provider";
 import { orgnr } from "../../utils/orgnr";
-import PDFCheckAndPrint from "../../components/pdf-check-and-print/PDFCheckAndPrint";
 import TimerPDF from "./tabs/TimerPDF";
 import PermisjonPDF from "./tabs/PermisjonPDF";
+import CheckDateAndPrint from "../../components/check-date-and-print/CheckDateAndPrint";
+import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
+import UtenlandsoppholdPDF from "./tabs/UtenlandsoppholdPDF";
 
 interface Props {
   arbeidsforhold: AFUtvidet;
@@ -69,7 +71,7 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
             />
           </View>
         </View>
-        <View style={[pdfStyles.detaljer, pdfStyles.introRow]}>
+        <View style={pdfStyles.introRow}>
           <View style={[pdfStyles.section, pdfStyles.twoColumns]}>
             {arbeidsforhold.arbeidsgiver.type === "Organisasjon" ? (
               <View style={pdfStyles.h2Container}>
@@ -110,12 +112,14 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
               title={sprak[locale].hovedenhet}
               data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnavn}
             >
-              <PDFCheckAndPrint
-                data={orgnr(
-                  arbeidsforhold.opplysningspliktigarbeidsgiver.orgnr
-                )}
-                format={`${sprak[locale].organisasjonsnummer} %s`}
-              />
+              <Text style={pdfStyles.elementSubtitle}>
+                <CheckAndPrint
+                  data={orgnr(
+                    arbeidsforhold.opplysningspliktigarbeidsgiver.orgnr
+                  )}
+                  format={`${sprak[locale].organisasjonsnummer} %s`}
+                />
+              </Text>
             </PDFCheckAndPrintBox>
           )}
           <PDFCheckAndPrintBox
@@ -143,10 +147,12 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
             title={sprak[locale].stillingsprosent}
             data={arbeidsforhold.stillingsprosent}
           >
-            <PDFCheckAndPrint
-              data={arbeidsforhold.sisteStillingsendring}
-              format={`(${sprak[locale].endretstillingsprosent} %s)`}
-            />
+            <Text style={pdfStyles.elementSubtitle}>
+              <CheckDateAndPrint
+                data={arbeidsforhold.sisteStillingsendring}
+                format={`(${sprak[locale].endretstillingsprosent} %s)`}
+              />
+            </Text>
           </PDFCheckAndPrintBox>
           <PDFCheckAndPrintBox
             title={sprak[locale].timerperuke}
@@ -185,6 +191,10 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
         {utenlandsopphold && utenlandsopphold.length > 0 && (
           <View style={pdfStyles.section}>
             <Text style={pdfStyles.h2}>Arbeid i utlandet</Text>
+            <UtenlandsoppholdPDF
+              utenlandsopphold={utenlandsopphold}
+              locale={locale}
+            />
           </View>
         )}
         {arbeidsavtaler && arbeidsavtaler.length > 0 && (
@@ -205,21 +215,22 @@ export const pdfStyles = StyleSheet.create({
   page: {
     fontFamily: "SourceSansPro",
     display: "flex",
+    paddingTop: 40,
+    paddingBottom: 120,
     paddingHorizontal: 40,
-    paddingVertical: 40,
   },
   header: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    paddingBottom: 40,
   },
   headerColumn: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 10,
   },
   section: {
     padding: 10,
@@ -258,15 +269,11 @@ export const pdfStyles = StyleSheet.create({
   pageNumber: {
     fontSize: 12,
   },
-  detaljer: {
-    marginTop: 20,
-  },
   grid: {
     display: "flex",
-    paddingVertical: 5,
+    height: "85%",
     flexWrap: "wrap",
     flexDirection: "row",
-    height: "80%",
   },
   introRow: {
     display: "flex",
@@ -301,6 +308,7 @@ export const pdfStyles = StyleSheet.create({
   },
   flexColumn: {
     paddingVertical: 2,
+    paddingRight: 10,
     width: "33%",
   },
 });

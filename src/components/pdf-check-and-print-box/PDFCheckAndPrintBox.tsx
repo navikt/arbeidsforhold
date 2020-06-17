@@ -1,7 +1,7 @@
 import React from "react";
 import CheckDateAndPrint from "../check-date-and-print/CheckDateAndPrint";
 import CheckAndPrint from "../check-and-print/CheckAndPrint";
-import { Text, View } from "@react-pdf/renderer";
+import { StyleSheet, Text, View } from "@react-pdf/renderer";
 
 interface Props {
   title: string;
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const PDFCheckAndPrintBox = (props: Props) => {
-  const styles = {
+  const styles = StyleSheet.create({
     column: {
       padding: 10,
       width: "50%",
@@ -25,7 +25,7 @@ const PDFCheckAndPrintBox = (props: Props) => {
       paddingTop: 2.5,
       fontSize: 12,
     },
-  };
+  });
   return props.data ? (
     <View style={styles.column}>
       <Text style={styles.title}>{props.title}</Text>

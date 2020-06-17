@@ -12,6 +12,7 @@ import sprak from "../../language/provider";
 import { orgnr } from "../../utils/orgnr";
 import PDFCheckAndPrint from "../../components/pdf-check-and-print/PDFCheckAndPrint";
 import { Normaltekst } from "nav-frontend-typografi";
+import TimerPDF from "./tabs/TimerPDF";
 
 interface Props {
   arbeidsforhold: AFUtvidet;
@@ -88,6 +89,7 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
       paddingVertical: 5,
       flexWrap: "wrap",
       flexDirection: "row",
+      height: "80%",
     },
     detaljerIntroRow: {
       display: "flex",
@@ -116,7 +118,9 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
       paddingTop: 10,
       fontSize: 10,
     },
-    detaljerTable: {},
+    detaljerTable: {
+      height: "80%",
+    },
   });
 
   return (
@@ -252,7 +256,8 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
         </View>
         {antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0 && (
           <View style={styles.detaljerTable}>
-            <Text>antallTimerForTimelonnet</Text>
+            <Text style={styles.detaljerOrgName}>Timer for timelønnet</Text>
+            <TimerPDF timer={antallTimerForTimelonnet} locale={locale} />
           </View>
         )}
         {permisjonPermittering && permisjonPermittering.length > 0 && (

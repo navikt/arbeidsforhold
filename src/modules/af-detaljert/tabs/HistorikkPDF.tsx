@@ -23,13 +23,19 @@ const HistorikkPDF = ({ arbeidsavtaler, locale }: Props) => {
     );
 
   return (
-    <View style={pdfStyles.flexTable} wrap={true}>
+    <View style={pdfStyles.flexTable}>
       {arbeidsavtaler.map((arbeidsavtale, i) => {
         return (
           <View
             key={i}
-            wrap={true}
-            style={{ ...pdfStyles.grid, borderBottom: "1px solid black" }}
+            wrap={false}
+            style={{
+              ...pdfStyles.grid,
+              ...(!i && {
+                borderTop: "1px solid black",
+              }),
+              borderBottom: "1px solid black",
+            }}
           >
             <PDFCheckAndPrintBox
               title={sprak[locale].yrke}

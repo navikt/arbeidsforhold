@@ -130,7 +130,7 @@ const ListePDF = (props: Props) => {
                 period={true}
               />
             </View>
-            <View style={{ ...pdfStyles.flexGrid, height: 600 }}>
+            <View style={{ ...pdfStyles.flexGrid, height: 575 }}>
               {arbeidsforhold.opplysningspliktigarbeidsgiver.type ===
                 "Organisasjon" && (
                 <PDFCheckAndPrintBox
@@ -203,6 +203,10 @@ const ListePDF = (props: Props) => {
             </View>
           </>
         )}
+        <View style={pdfStyles.footer} fixed={true}>
+          <Text>{sprak[locale].pdfFooter1}</Text>
+          <Text>{sprak[locale].pdfFooter2}</Text>
+        </View>
         {printTimerTimelonnet && (
           <>
             {antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0 && (
@@ -251,10 +255,6 @@ const ListePDF = (props: Props) => {
             )}
           </>
         )}
-        <View style={pdfStyles.footer} fixed={true}>
-          <Text>{sprak[locale].pdfFooter1}</Text>
-          <Text>{sprak[locale].pdfFooter2}</Text>
-        </View>
       </Page>
     </Document>
   );

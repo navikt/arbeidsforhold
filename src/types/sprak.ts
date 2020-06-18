@@ -41,5 +41,7 @@ export interface Sprak {
     visfaerrearbeidsforhold: string;
     visflerearbeidsforhold: string;
     yrke: string;
+    pdfFooter1: string;
+    pdfFooter2: string;
   };
 }

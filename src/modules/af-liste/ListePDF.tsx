@@ -30,25 +30,29 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
     page: {
       fontFamily: "SourceSansPro",
       display: "flex",
+      paddingTop: 40,
+      paddingBottom: 100,
       paddingHorizontal: 40,
-      paddingVertical: 40,
     },
     header: {
       display: "flex",
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
+      paddingBottom: 30,
     },
     headerColumn: {
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      paddingTop: 10,
     },
     section: {
       padding: 10,
       flexGrow: 1,
+    },
+    twoColumns: {
+      width: "50%",
     },
     threeColumns: {
       width: "33%",
@@ -62,6 +66,7 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
       fontWeight: "bold",
     },
     name: {
+      paddingTop: 10,
       fontWeight: "bold",
       fontSize: 14,
     },
@@ -73,13 +78,17 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
       fontSize: 12,
     },
     liste: {
-      marginTop: 20,
+      marginHorizontal: 10,
       borderTop: "1px solid black",
-      borderBottom: "1px solid black",
+      borderBottom: "1px solid #979797",
     },
     listeRow: {
       paddingVertical: 10,
-      borderTop: "1px solid black",
+      borderTop: "1px solid #979797",
+    },
+    listRowFooter: {
+      display: "flex",
+      flexDirection: "row",
     },
     listeTitle: {
       fontSize: 14,
@@ -90,7 +99,10 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
       paddingTop: 2.5,
       fontSize: 12,
     },
-    listeFooter: {
+    footer: {
+      position: "absolute",
+      bottom: 50,
+      left: 50,
       paddingTop: 10,
       fontSize: 10,
     },
@@ -126,25 +138,31 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
         </View>
         <View style={styles.liste}>
           {arbeidsforhold.map((foretak, i) => (
-            <View key={i} style={styles.listeRow}>
-              <Text style={styles.listeTitle}>
-                <ArbeidsgiverTittel
-                  arbeidsgiver={foretak.arbeidsgiver}
-                  overskrift={true}
-                />
-              </Text>
-              <Text style={styles.listeSubtitle}>{foretak.yrke}</Text>
-              <Text style={styles.listeSubtitle}>
-                <CheckPeriodAndPrint
-                  data={foretak.ansettelsesperiode.periode}
-                />
-              </Text>
+            <View key={i} style={styles.listeRow} wrap={false}>
+              <View>
+                <Text style={styles.listeTitle}>
+                  <ArbeidsgiverTittel
+                    arbeidsgiver={foretak.arbeidsgiver}
+                    overskrift={true}
+                  />
+                </Text>
+              </View>
+              <View style={[styles.twoColumns, styles.listRowFooter]}>
+                <Text style={styles.listeSubtitle}>{foretak.yrke}</Text>
+
+                <Text style={styles.listeSubtitle}> {` // `}</Text>
+                <Text style={styles.listeSubtitle}>
+                  <CheckPeriodAndPrint
+                    data={foretak.ansettelsesperiode.periode}
+                  />
+                </Text>
+              </View>
             </View>
           ))}
         </View>
-        <View style={styles.listeFooter}>
-          <Text>{sprak[locale].hvisfeil1}</Text>
-          <Text>{sprak[locale].hvisfeil2}</Text>
+        <View style={styles.footer} fixed={true}>
+          <Text>{sprak[locale].pdfFooter1}</Text>
+          <Text>{sprak[locale].pdfFooter2}</Text>
         </View>
       </Page>
     </Document>

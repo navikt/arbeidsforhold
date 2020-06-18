@@ -63,8 +63,8 @@ const UtenlandsoppholdPDF = (props: Props) => {
         .map((year) => {
           const value = data[year];
           return (
-            <View key={year} style={pdfStyles.flexSection}>
-              <View key={year} style={pdfStyles.flexRow}>
+            <View key={year} style={pdfStyles.flexSection} wrap={false}>
+              <View style={pdfStyles.flexRow}>
                 <View style={pdfStyles.flexColumn}>
                   <Text style={pdfStyles.elementTitle}>{year}</Text>
                 </View>

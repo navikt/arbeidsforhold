@@ -40,6 +40,8 @@ export default {
   visfaerrearbeidsforhold: "Show fewer",
   visflerearbeidsforhold: "Show more",
   yrke: "Profession",
+  pdfFooter1: `Oversikten viser arbeidsforholdene slik det er rapportert til Arbeidsgiver- og arbeidstakerregisteret`,
+  pdfFooter2: `Arbeids- og velferdsetaten // Utskrift fra 17.05.2020`,
   ERKONK:
     "Sluttdato satt av NAV. Arbeidsgiver har gått konkurs. Sluttdato er samme dato som konkursåpningsdato i Konkursregisteret.",
   EROPPH:

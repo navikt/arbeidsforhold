@@ -32,7 +32,7 @@ const PermisjonPDF = (props: Props) => {
         </View>
       </View>
       {props.permisjoner.map((permisjon, i) => (
-        <View key={`${i}`} style={pdfStyles.flexRow}>
+        <View key={`${i}`} style={pdfStyles.flexRow} wrap={false}>
           <View style={pdfStyles.flexColumn}>
             <Text style={pdfStyles.elementSubtitle}>{permisjon.type}</Text>
           </View>

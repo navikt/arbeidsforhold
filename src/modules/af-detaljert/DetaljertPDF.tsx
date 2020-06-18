@@ -207,7 +207,8 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
           </View>
         )}
         <View style={pdfStyles.footer} fixed={true}>
-          <Text>{`Arbeids- og velferdsetaten:  utskrift fra 17.05.2020`}</Text>
+          <Text>{sprak[locale].pdfFooter1}</Text>
+          <Text>{sprak[locale].pdfFooter2}</Text>
         </View>
       </Page>
     </Document>

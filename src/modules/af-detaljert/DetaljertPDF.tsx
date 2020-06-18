@@ -18,12 +18,24 @@ import HistorikkPDF from "./tabs/HistorikkPDF";
 import { pdfStyles } from "../common/pdf-styles";
 
 interface Props {
-  arbeidsforhold: AFUtvidet;
   locale: "nb" | "en";
+  arbeidsforhold: AFUtvidet;
+  printGenerellOversikt: boolean;
+  printTimerTimelonnet: boolean;
+  printPermisjon: boolean;
+  printUtenlandsopphold: boolean;
+  printHistorikk: boolean;
 }
 
 // Create Document Component
-const ListePDF = ({ arbeidsforhold, locale }: Props) => {
+const ListePDF = (props: Props) => {
+  const locale = props.locale;
+  const arbeidsforhold = props.arbeidsforhold;
+  const printGenerellOversikt = props.printGenerellOversikt;
+  const printTimerTimelonnet = props.printTimerTimelonnet;
+  const printPermisjon = props.printPermisjon;
+  const printUtenlandsopphold = props.printUtenlandsopphold;
+  const printHistorikk = props.printHistorikk;
   const { arbeidsavtaler, permisjonPermittering } = arbeidsforhold;
   const { antallTimerForTimelonnet, utenlandsopphold } = arbeidsforhold;
 
@@ -89,132 +101,155 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
             />
           </View>
         </View>
-        <View style={styles.introRow}>
-          <View style={[pdfStyles.section, pdfStyles.twoColumns]}>
-            {arbeidsforhold.arbeidsgiver.type === "Organisasjon" ? (
-              <View style={styles.h2Container}>
-                <View>
-                  <Text style={pdfStyles.h2}>
-                    {arbeidsforhold.arbeidsgiver.orgnavn}
-                  </Text>
-                </View>
-                <View>
+        {printGenerellOversikt && (
+          <>
+            <View style={styles.introRow}>
+              <View style={[pdfStyles.section, pdfStyles.twoColumns]}>
+                {arbeidsforhold.arbeidsgiver.type === "Organisasjon" ? (
+                  <View style={styles.h2Container}>
+                    <View>
+                      <Text style={pdfStyles.h2}>
+                        {arbeidsforhold.arbeidsgiver.orgnavn}
+                      </Text>
+                    </View>
+                    <View>
+                      <Text style={pdfStyles.normaltekst}>
+                        Organisasjonsnummer {arbeidsforhold.arbeidsgiver.orgnr}
+                      </Text>
+                    </View>
+                  </View>
+                ) : (
                   <Text style={pdfStyles.normaltekst}>
-                    Organisasjonsnummer {arbeidsforhold.arbeidsgiver.orgnr}
+                    {arbeidsforhold.arbeidsgiver.fnr}
                   </Text>
-                </View>
+                )}
               </View>
-            ) : (
-              <Text style={pdfStyles.normaltekst}>
-                {arbeidsforhold.arbeidsgiver.fnr}
-              </Text>
-            )}
-          </View>
-          <PDFCheckAndPrintBox
-            title={"Ansettelsesperiode"}
-            data={arbeidsforhold.ansettelsesperiode?.periode}
-            period={true}
-          />
-        </View>
-        <View style={{ ...pdfStyles.flexGrid, height: 600 }}>
-          {arbeidsforhold.opplysningspliktigarbeidsgiver.type ===
-            "Organisasjon" && (
-            <PDFCheckAndPrintBox
-              title={sprak[locale].hovedenhet}
-              data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnavn}
-            >
-              <Text style={pdfStyles.normaltekst}>
-                <CheckAndPrint
-                  data={orgnr(
-                    arbeidsforhold.opplysningspliktigarbeidsgiver.orgnr
-                  )}
-                  format={`${sprak[locale].organisasjonsnummer} %s`}
-                />
-              </Text>
-            </PDFCheckAndPrintBox>
-          )}
-          <PDFCheckAndPrintBox
-            title={sprak[locale].yrke}
-            data={arbeidsforhold.yrke}
-          />
-          <PDFCheckAndPrintBox
-            title={sprak[locale].typearbeidsforhold}
-            data={arbeidsforhold.type}
-          />
-          <PDFCheckAndPrintBox
-            title={sprak[locale].arbeidsforholdid}
-            data={arbeidsforhold.eksternArbeidsforholdId}
-          />
-          <PDFCheckAndPrintBox
-            title={sprak[locale].arbeidstidsordning}
-            data={arbeidsforhold.arbeidstidsordning}
-          />
-          <PDFCheckAndPrintBox
-            title={sprak[locale].sistelonnsendring}
-            data={arbeidsforhold.sisteLoennsendring}
-            date={true}
-          />
-          <PDFCheckAndPrintBox
-            title={sprak[locale].stillingsprosent}
-            data={arbeidsforhold.stillingsprosent}
-          >
-            <Text style={pdfStyles.normaltekst}>
-              <CheckDateAndPrint
-                data={arbeidsforhold.sisteStillingsendring}
-                format={`(${sprak[locale].endretstillingsprosent} %s)`}
+              <PDFCheckAndPrintBox
+                title={"Ansettelsesperiode"}
+                data={arbeidsforhold.ansettelsesperiode?.periode}
+                period={true}
               />
-            </Text>
-          </PDFCheckAndPrintBox>
-          <PDFCheckAndPrintBox
-            title={sprak[locale].timerperuke}
-            data={arbeidsforhold.antallTimerPrUke}
-          />
-          <PDFCheckAndPrintBox
-            title={sprak[locale].skipsregister}
-            data={arbeidsforhold.skipsregister}
-          />
-          <PDFCheckAndPrintBox
-            title={sprak[locale].skipstype}
-            data={arbeidsforhold.skipstype}
-          />
-          <PDFCheckAndPrintBox
-            title={sprak[locale].fartsomraade}
-            data={arbeidsforhold.fartsomraade}
-          />
-          <PDFCheckAndPrintBox
-            title={sprak[locale].sistbekreftet}
-            data={arbeidsforhold.sistBekreftet}
-            date={true}
-          />
-        </View>
-        {antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0 && (
-          <View style={pdfStyles.section}>
-            <Text style={pdfStyles.h2}>Timer for timelønnet</Text>
-            <TimerPDF timer={antallTimerForTimelonnet} locale={locale} />
-          </View>
-        )}
-        {permisjonPermittering && permisjonPermittering.length > 0 && (
-          <View style={pdfStyles.section}>
-            <Text style={pdfStyles.h2}>Permisjon/Permittering</Text>
-            <PermisjonPDF permisjoner={permisjonPermittering} locale={locale} />
-          </View>
-        )}
-        {utenlandsopphold && utenlandsopphold.length > 0 && (
-          <View style={pdfStyles.section}>
-            <Text style={pdfStyles.h2}>Arbeid i utlandet</Text>
-            <UtenlandsoppholdPDF
-              utenlandsopphold={utenlandsopphold}
-              locale={locale}
-            />
-          </View>
-        )}
-        {arbeidsavtaler && arbeidsavtaler.length > 0 && (
-          <View style={{ paddingVertical: 10 }}>
-            <View style={{ paddingHorizontal: 10 }}>
-              <Text style={pdfStyles.h2}>Historikk</Text>
             </View>
-            <HistorikkPDF arbeidsavtaler={arbeidsavtaler} locale={locale} />
-          </View>
+            <View style={{ ...pdfStyles.flexGrid, height: 600 }}>
+              {arbeidsforhold.opplysningspliktigarbeidsgiver.type ===
+                "Organisasjon" && (
+                <PDFCheckAndPrintBox
+                  title={sprak[locale].hovedenhet}
+                  data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnavn}
+                >
+                  <Text style={pdfStyles.normaltekst}>
+                    <CheckAndPrint
+                      data={orgnr(
+                        arbeidsforhold.opplysningspliktigarbeidsgiver.orgnr
+                      )}
+                      format={`${sprak[locale].organisasjonsnummer} %s`}
+                    />
+                  </Text>
+                </PDFCheckAndPrintBox>
+              )}
+              <PDFCheckAndPrintBox
+                title={sprak[locale].yrke}
+                data={arbeidsforhold.yrke}
+              />
+              <PDFCheckAndPrintBox
+                title={sprak[locale].typearbeidsforhold}
+                data={arbeidsforhold.type}
+              />
+              <PDFCheckAndPrintBox
+                title={sprak[locale].arbeidsforholdid}
+                data={arbeidsforhold.eksternArbeidsforholdId}
+              />
+              <PDFCheckAndPrintBox
+                title={sprak[locale].arbeidstidsordning}
+                data={arbeidsforhold.arbeidstidsordning}
+              />
+              <PDFCheckAndPrintBox
+                title={sprak[locale].sistelonnsendring}
+                data={arbeidsforhold.sisteLoennsendring}
+                date={true}
+              />
+              <PDFCheckAndPrintBox
+                title={sprak[locale].stillingsprosent}
+                data={arbeidsforhold.stillingsprosent}
+              >
+                <Text style={pdfStyles.normaltekst}>
+                  <CheckDateAndPrint
+                    data={arbeidsforhold.sisteStillingsendring}
+                    format={`(${sprak[locale].endretstillingsprosent} %s)`}
+                  />
+                </Text>
+              </PDFCheckAndPrintBox>
+              <PDFCheckAndPrintBox
+                title={sprak[locale].timerperuke}
+                data={arbeidsforhold.antallTimerPrUke}
+              />
+              <PDFCheckAndPrintBox
+                title={sprak[locale].skipsregister}
+                data={arbeidsforhold.skipsregister}
+              />
+              <PDFCheckAndPrintBox
+                title={sprak[locale].skipstype}
+                data={arbeidsforhold.skipstype}
+              />
+              <PDFCheckAndPrintBox
+                title={sprak[locale].fartsomraade}
+                data={arbeidsforhold.fartsomraade}
+              />
+              <PDFCheckAndPrintBox
+                title={sprak[locale].sistbekreftet}
+                data={arbeidsforhold.sistBekreftet}
+                date={true}
+              />
+            </View>
+          </>
+        )}
+        {printTimerTimelonnet && (
+          <>
+            {antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0 && (
+              <View style={pdfStyles.section}>
+                <Text style={pdfStyles.h2}>Timer for timelønnet</Text>
+                <TimerPDF timer={antallTimerForTimelonnet} locale={locale} />
+              </View>
+            )}
+          </>
+        )}
+        {printPermisjon && (
+          <>
+            {permisjonPermittering && permisjonPermittering.length > 0 && (
+              <View style={pdfStyles.section}>
+                <Text style={pdfStyles.h2}>Permisjon/Permittering</Text>
+                <PermisjonPDF
+                  permisjoner={permisjonPermittering}
+                  locale={locale}
+                />
+              </View>
+            )}
+          </>
+        )}
+        {printUtenlandsopphold && (
+          <>
+            {utenlandsopphold && utenlandsopphold.length > 0 && (
+              <View style={pdfStyles.section}>
+                <Text style={pdfStyles.h2}>Arbeid i utlandet</Text>
+                <UtenlandsoppholdPDF
+                  utenlandsopphold={utenlandsopphold}
+                  locale={locale}
+                />
+              </View>
+            )}
+          </>
+        )}
+        {printHistorikk && (
+          <>
+            {arbeidsavtaler && arbeidsavtaler.length > 0 && (
+              <View style={{ paddingVertical: 10 }}>
+                <View style={{ paddingHorizontal: 10 }}>
+                  <Text style={pdfStyles.h2}>Historikk</Text>
+                </View>
+                <HistorikkPDF arbeidsavtaler={arbeidsavtaler} locale={locale} />
+              </View>
+            )}
+          </>
         )}
         <View style={pdfStyles.footer} fixed={true}>
           <Text>{sprak[locale].pdfFooter1}</Text>

@@ -9,9 +9,6 @@ import { Link } from "react-router-dom";
 import { AFListeOnClick } from "../../src/modules/af-liste";
 import OnClickVelger from "./components/OnClickVelger";
 import { Normaltekst } from "nav-frontend-typografi";
-import Modal from "nav-frontend-modal";
-
-Modal.setAppElement("#root");
 
 const App = () => {
   const { hostname } = window.location;

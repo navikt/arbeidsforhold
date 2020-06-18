@@ -17,6 +17,7 @@ import { orgnr } from "../../utils/orgnr";
 import ArbeidsgiverTittel from "../../components/arbeidsgiver/ArbeidsgiverTittel";
 import PrinterIcon from "../../assets/icons/printer";
 import { PDFDownloadLink } from "@react-pdf/renderer";
+import { CheckboxGruppe, Checkbox } from "nav-frontend-skjema";
 import DetaljertPDF from "./DetaljertPDF";
 import ModalWrapper from "nav-frontend-modal";
 
@@ -40,6 +41,21 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   }
 
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [printGenerellOversikt, settPrintGenerellOversikt] = useState<boolean>(
+    antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0
+  );
+  const [printTimerTimelonnet, settPrintTimerTimelonnet] = useState<boolean>(
+    antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0
+  );
+  const [printPermisjon, settPrintPermisjon] = useState<boolean>(
+    permisjonPermittering && permisjonPermittering.length > 0
+  );
+  const [printUtenlandsopphold, settPrintUtenlandsopphold] = useState<boolean>(
+    utenlandsopphold && utenlandsopphold.length > 0
+  );
+  const [printHistorikk, settPrintHistorikk] = useState<boolean>(
+    arbeidsavtaler && arbeidsavtaler.length > 0
+  );
   const [visTab, settVisTab] = useState(
     tabs.length > 0 ? tabs[0].label : "Ugyldig tab"
   );
@@ -186,7 +202,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
         <br />
         {sprak[locale].hvisfeil2}
       </AlertStripeInfo>
-      <div className="af-detaljert__print-button">
+      <div className="af-detaljert__print-button-oversikt">
         <Normaltekst>
           <a className={"lenke"} onClick={() => setOpenModal(true)}>
             <PrinterIcon />
@@ -198,24 +214,69 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       <ModalWrapper
         isOpen={openModal}
         onRequestClose={() => setOpenModal(false)}
+        contentLabel="Utskriftsvalg"
         closeButton={true}
-        contentLabel="Min modalrute"
       >
         <div style={{ padding: "2rem 2.5rem" }}>
-          <div className="af-detaljert__print-button">
+          <CheckboxGruppe
+            legend="Utskriftsvalg"
+            className={"af-detaljert__checkboxes"}
+          >
+            <Checkbox
+              label={"Generelle opplysninger"}
+              className={"af-detaljert__checkbox"}
+              checked={printGenerellOversikt}
+              onChange={() => settPrintGenerellOversikt(!printGenerellOversikt)}
+            />
+          </CheckboxGruppe>
+          <CheckboxGruppe
+            legend="Velg hvilke tilleggsopplysninger du vil skrive ut"
+            className={"af-detaljert__checkboxes"}
+          >
+            <Checkbox
+              label={"Timer for timelønnet"}
+              className={"af-detaljert__checkbox"}
+              checked={printTimerTimelonnet}
+              onChange={() => settPrintTimerTimelonnet(!printTimerTimelonnet)}
+            />
+            <Checkbox
+              label={"Permisjon / permittering"}
+              className={"af-detaljert__checkbox"}
+              checked={printPermisjon}
+              onChange={() => settPrintPermisjon(!printPermisjon)}
+            />
+            <Checkbox
+              label={"Arbeid i utlandet"}
+              className={"af-detaljert__checkbox"}
+              checked={printUtenlandsopphold}
+              onChange={() => settPrintUtenlandsopphold(!printUtenlandsopphold)}
+            />
+            <Checkbox
+              label={"Historikk"}
+              className={"af-detaljert__checkbox"}
+              checked={printHistorikk}
+              onChange={() => settPrintHistorikk(!printHistorikk)}
+            />
+          </CheckboxGruppe>
+          <div className="af-detaljert__print-button-modal">
             <Normaltekst>
               <PDFDownloadLink
                 document={
                   <DetaljertPDF
-                    arbeidsforhold={arbeidsforhold}
                     locale={locale}
+                    arbeidsforhold={arbeidsforhold}
+                    printGenerellOversikt={printGenerellOversikt}
+                    printTimerTimelonnet={printTimerTimelonnet}
+                    printPermisjon={printPermisjon}
+                    printUtenlandsopphold={printUtenlandsopphold}
+                    printHistorikk={printHistorikk}
                   />
                 }
                 fileName="arbeidsforhold.pdf"
                 className={"lenke"}
               >
                 {({ loading }) =>
-                  loading ? null : (
+                  !loading && (
                     <>
                       <PrinterIcon />
                       <span>Skriv ut</span>

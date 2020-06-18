@@ -42,7 +42,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
 
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [printGenerellOversikt, settPrintGenerellOversikt] = useState<boolean>(
-    antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0
+    true
   );
   const [printTimerTimelonnet, settPrintTimerTimelonnet] = useState<boolean>(
     antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0

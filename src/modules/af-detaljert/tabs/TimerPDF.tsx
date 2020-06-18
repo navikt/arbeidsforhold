@@ -7,7 +7,7 @@ import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDat
 import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import sprak from "../../../language/provider";
 import { Text, View } from "@react-pdf/renderer";
-import { pdfStyles } from "../DetaljertPDF";
+import { pdfStyles } from "../../common/pdf-styles";
 
 interface Props {
   timer: AFTimerForTimelonnet[];
@@ -43,19 +43,13 @@ const TimerPDF = (props: Props) => {
     <View style={pdfStyles.flexTable}>
       <View style={pdfStyles.flexRow}>
         <View style={pdfStyles.flexColumn}>
-          <Text style={pdfStyles.elementTitle}>
-            {sprak[locale].rapporteringsperiode}
-          </Text>
+          <Text style={pdfStyles.h3}>{sprak[locale].rapporteringsperiode}</Text>
         </View>
         <View style={pdfStyles.flexColumn}>
-          <Text style={pdfStyles.elementTitle}>
-            {sprak[locale].opptjeningsperiode}
-          </Text>
+          <Text style={pdfStyles.h3}>{sprak[locale].opptjeningsperiode}</Text>
         </View>
         <View style={pdfStyles.flexColumn}>
-          <Text style={pdfStyles.elementTitle}>
-            {sprak[locale].antalltimer}
-          </Text>
+          <Text style={pdfStyles.h3}>{sprak[locale].antalltimer}</Text>
         </View>
       </View>
       {Object.keys(data)
@@ -66,7 +60,7 @@ const TimerPDF = (props: Props) => {
             <View key={year} style={pdfStyles.flexSection} wrap={false}>
               <View style={pdfStyles.flexRow}>
                 <View style={pdfStyles.flexColumn}>
-                  <Text style={pdfStyles.elementTitle}>{year}</Text>
+                  <Text style={pdfStyles.h3}>{year}</Text>
                 </View>
                 <View style={pdfStyles.flexColumn} />
                 <View style={pdfStyles.flexColumn} />
@@ -74,7 +68,7 @@ const TimerPDF = (props: Props) => {
               {value.timerObjekt.map((time, i) => (
                 <View key={`${i}`} style={pdfStyles.flexRow}>
                   <View style={pdfStyles.flexColumn}>
-                    <Text style={pdfStyles.elementSubtitle}>
+                    <Text style={pdfStyles.normaltekst}>
                       {time.periode && (
                         <CheckDateAndPrint
                           data={time.rapporteringsperiode}
@@ -84,12 +78,12 @@ const TimerPDF = (props: Props) => {
                     </Text>
                   </View>
                   <View style={pdfStyles.flexColumn}>
-                    <Text style={pdfStyles.elementSubtitle}>
+                    <Text style={pdfStyles.normaltekst}>
                       <CheckPeriodAndPrint data={time.periode} />
                     </Text>
                   </View>
                   <View style={pdfStyles.flexColumn}>
-                    <Text style={pdfStyles.elementSubtitle}>
+                    <Text style={pdfStyles.normaltekst}>
                       <CheckAndPrint data={time.antallTimer} />
                     </Text>
                   </View>

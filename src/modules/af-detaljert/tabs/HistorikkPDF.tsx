@@ -3,10 +3,10 @@ import { AFArbeidsavtaler } from "../../../types/arbeidsforhold";
 import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import { sortPeriodeFraDesc, sortPeriodeTilDesc } from "../../../utils/date";
 import { Text, View } from "@react-pdf/renderer";
-import { pdfStyles } from "../DetaljertPDF";
 import PDFCheckAndPrintBox from "../../../components/pdf-check-and-print-box/PDFCheckAndPrintBox";
 import sprak from "../../../language/provider";
 import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
+import { pdfStyles } from "../../common/pdf-styles";
 
 interface Props {
   arbeidsavtaler: AFArbeidsavtaler[];
@@ -30,7 +30,7 @@ const HistorikkPDF = ({ arbeidsavtaler, locale }: Props) => {
             key={i}
             wrap={false}
             style={{
-              ...pdfStyles.grid,
+              ...pdfStyles.flexGrid,
               ...(!i && {
                 borderTop: "1px solid black",
               }),
@@ -44,10 +44,8 @@ const HistorikkPDF = ({ arbeidsavtaler, locale }: Props) => {
 
             {arbeidsavtale.gyldighetsperiode && (
               <View style={[pdfStyles.section, pdfStyles.twoColumns]}>
-                <Text style={pdfStyles.elementTitle}>
-                  {sprak[locale].periode}
-                </Text>
-                <Text style={pdfStyles.elementSubtitle}>
+                <Text style={pdfStyles.h3}>{sprak[locale].periode}</Text>
+                <Text style={pdfStyles.normaltekst}>
                   <CheckPeriodAndPrint data={arbeidsavtale.gyldighetsperiode} />
                 </Text>
               </View>
@@ -66,7 +64,7 @@ const HistorikkPDF = ({ arbeidsavtaler, locale }: Props) => {
               title={sprak[locale].stillingsprosent}
               data={arbeidsavtale.stillingsprosent}
             >
-              <Text style={pdfStyles.elementSubtitle}>
+              <Text style={pdfStyles.normaltekst}>
                 <CheckDateAndPrint
                   data={arbeidsavtale.sisteStillingsendring}
                   format={`(${sprak[locale].endretstillingsprosent} %s)`}

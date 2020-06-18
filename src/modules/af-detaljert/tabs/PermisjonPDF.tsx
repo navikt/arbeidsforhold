@@ -4,7 +4,7 @@ import { sortPeriodeFraDesc } from "../../../utils/date";
 import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import sprak from "../../../language/provider";
 import { Text, View } from "@react-pdf/renderer";
-import { pdfStyles } from "../DetaljertPDF";
+import { pdfStyles } from "../../common/pdf-styles";
 
 interface Props {
   permisjoner: AFPermisjonPermittering[];
@@ -22,27 +22,27 @@ const PermisjonPDF = (props: Props) => {
     <View style={pdfStyles.flexTable}>
       <View style={pdfStyles.flexRow}>
         <View style={pdfStyles.flexColumn}>
-          <Text style={pdfStyles.elementTitle}>{sprak[locale].type}</Text>
+          <Text style={pdfStyles.h3}>{sprak[locale].type}</Text>
         </View>
         <View style={pdfStyles.flexColumn}>
-          <Text style={pdfStyles.elementTitle}>{sprak[locale].periode}</Text>
+          <Text style={pdfStyles.h3}>{sprak[locale].periode}</Text>
         </View>
         <View style={pdfStyles.flexColumn}>
-          <Text style={pdfStyles.elementTitle}>{sprak[locale].prosent}</Text>
+          <Text style={pdfStyles.h3}>{sprak[locale].prosent}</Text>
         </View>
       </View>
       {props.permisjoner.map((permisjon, i) => (
         <View key={`${i}`} style={pdfStyles.flexRow} wrap={false}>
           <View style={pdfStyles.flexColumn}>
-            <Text style={pdfStyles.elementSubtitle}>{permisjon.type}</Text>
+            <Text style={pdfStyles.normaltekst}>{permisjon.type}</Text>
           </View>
           <View style={pdfStyles.flexColumn}>
-            <Text style={pdfStyles.elementSubtitle}>
+            <Text style={pdfStyles.normaltekst}>
               <CheckPeriodAndPrint data={permisjon.periode} />
             </Text>
           </View>
           <View style={pdfStyles.flexColumn}>
-            <Text style={pdfStyles.elementSubtitle}>{permisjon.prosent}</Text>
+            <Text style={pdfStyles.normaltekst}>{permisjon.prosent}</Text>
           </View>
         </View>
       ))}

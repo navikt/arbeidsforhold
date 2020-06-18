@@ -16,6 +16,7 @@ import CheckDateAndPrint from "../../components/check-date-and-print/CheckDateAn
 import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import UtenlandsoppholdPDF from "./tabs/UtenlandsoppholdPDF";
 import HistorikkPDF from "./tabs/HistorikkPDF";
+import { pdfStyles } from "../common/pdf-styles";
 
 interface Props {
   arbeidsforhold: AFUtvidet;
@@ -36,12 +37,29 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
     ],
   });
 
+  const styles = StyleSheet.create({
+    image: {
+      padding: 10,
+      width: 75,
+    },
+    h2Container: {
+      display: "flex",
+      flexDirection: "column",
+    },
+    introRow: {
+      display: "flex",
+      paddingVertical: 5,
+      flexDirection: "row",
+      alignItems: "flex-end",
+    },
+  });
+
   return (
     <Document>
       <Page size="A4" style={pdfStyles.page}>
         <View style={pdfStyles.header} fixed={true}>
           <View style={[pdfStyles.section, pdfStyles.threeColumns]}>
-            <Image style={pdfStyles.image} src={logo} />
+            <Image style={styles.image} src={logo} />
           </View>
           <View
             style={[
@@ -72,23 +90,23 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
             />
           </View>
         </View>
-        <View style={pdfStyles.introRow}>
+        <View style={styles.introRow}>
           <View style={[pdfStyles.section, pdfStyles.twoColumns]}>
             {arbeidsforhold.arbeidsgiver.type === "Organisasjon" ? (
-              <View style={pdfStyles.h2Container}>
+              <View style={styles.h2Container}>
                 <View>
                   <Text style={pdfStyles.h2}>
                     {arbeidsforhold.arbeidsgiver.orgnavn}
                   </Text>
                 </View>
                 <View>
-                  <Text style={pdfStyles.elementSubtitle}>
+                  <Text style={pdfStyles.normaltekst}>
                     Organisasjonsnummer {arbeidsforhold.arbeidsgiver.orgnr}
                   </Text>
                 </View>
               </View>
             ) : (
-              <Text style={pdfStyles.elementSubtitle}>
+              <Text style={pdfStyles.normaltekst}>
                 {arbeidsforhold.arbeidsgiver.fnr}
               </Text>
             )}
@@ -96,8 +114,8 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
           <View style={[pdfStyles.section, pdfStyles.twoColumns]}>
             {arbeidsforhold.ansettelsesperiode && (
               <View style={pdfStyles.twoColumns}>
-                <Text style={pdfStyles.elementTitle}>Ansettelsesperiode</Text>
-                <Text style={pdfStyles.elementSubtitle}>
+                <Text style={pdfStyles.h3}>Ansettelsesperiode</Text>
+                <Text style={pdfStyles.normaltekst}>
                   <CheckPeriodAndPrint
                     data={arbeidsforhold.ansettelsesperiode.periode}
                   />
@@ -106,14 +124,14 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
             )}
           </View>
         </View>
-        <View style={{ ...pdfStyles.grid, height: 600 }}>
+        <View style={{ ...pdfStyles.flexGrid, height: 600 }}>
           {arbeidsforhold.opplysningspliktigarbeidsgiver.type ===
             "Organisasjon" && (
             <PDFCheckAndPrintBox
               title={sprak[locale].hovedenhet}
               data={arbeidsforhold.opplysningspliktigarbeidsgiver.orgnavn}
             >
-              <Text style={pdfStyles.elementSubtitle}>
+              <Text style={pdfStyles.normaltekst}>
                 <CheckAndPrint
                   data={orgnr(
                     arbeidsforhold.opplysningspliktigarbeidsgiver.orgnr
@@ -148,7 +166,7 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
             title={sprak[locale].stillingsprosent}
             data={arbeidsforhold.stillingsprosent}
           >
-            <Text style={pdfStyles.elementSubtitle}>
+            <Text style={pdfStyles.normaltekst}>
               <CheckDateAndPrint
                 data={arbeidsforhold.sisteStillingsendring}
                 format={`(${sprak[locale].endretstillingsprosent} %s)`}
@@ -214,106 +232,5 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
     </Document>
   );
 };
-
-export const pdfStyles = StyleSheet.create({
-  page: {
-    fontFamily: "SourceSansPro",
-    display: "flex",
-    paddingTop: 40,
-    paddingBottom: 100,
-    paddingHorizontal: 40,
-  },
-  header: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingBottom: 30,
-  },
-  headerColumn: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  section: {
-    padding: 10,
-  },
-  twoColumns: {
-    width: "50%",
-  },
-  threeColumns: {
-    width: "33%",
-  },
-  image: {
-    padding: 10,
-    width: 75,
-  },
-  h1: {
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-  h2: {
-    fontSize: 14,
-    fontWeight: "bold",
-    textTransform: "uppercase",
-  },
-  h2Container: {
-    display: "flex",
-    flexDirection: "column",
-  },
-  name: {
-    fontWeight: "bold",
-    fontSize: 14,
-  },
-  fnr: {
-    fontWeight: "normal",
-    fontSize: 14,
-  },
-  pageNumber: {
-    fontSize: 12,
-  },
-  grid: {
-    display: "flex",
-    flexWrap: "wrap",
-    flexDirection: "row",
-  },
-  introRow: {
-    display: "flex",
-    paddingVertical: 5,
-    flexDirection: "row",
-    alignItems: "flex-end",
-  },
-  elementTitle: {
-    fontWeight: "bold",
-    fontSize: 12,
-  },
-  elementSubtitle: {
-    paddingTop: 2.5,
-    fontSize: 12,
-  },
-  footer: {
-    position: "absolute",
-    bottom: 50,
-    left: 50,
-    paddingTop: 10,
-    fontSize: 10,
-  },
-  flexTable: {
-    paddingVertical: 20,
-    width: "100%",
-  },
-  flexSection: {
-    paddingTop: 12,
-  },
-  flexRow: {
-    flexDirection: "row",
-  },
-  flexColumn: {
-    paddingVertical: 2,
-    paddingRight: 10,
-    width: "33%",
-  },
-});
 
 export default ListePDF;

@@ -3,7 +3,6 @@ import { Font, View, Document, StyleSheet } from "@react-pdf/renderer";
 import { Page, Text, Image } from "@react-pdf/renderer";
 import logo from "../../assets/icons/logo.png";
 import { AFUtvidet } from "../../types/arbeidsforhold";
-import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
 import Regular from "../../assets/fonts/ODelI1aHBYDBqgeIAH2zlNRl0pGnog23EMYRrBmUzJQ.ttf";
 import Italic from "../../assets/fonts/M2Jd71oPJhLKp0zdtTvoMwRX4TIfMQQEXLu74GftruE.ttf";
 import Bold from "../../assets/fonts/toadOcfmlt9b38dHJxOBGPgXsetDviZcdR5OzC1KPcw.ttf";
@@ -111,18 +110,11 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
               </Text>
             )}
           </View>
-          <View style={[pdfStyles.section, pdfStyles.twoColumns]}>
-            {arbeidsforhold.ansettelsesperiode && (
-              <View style={pdfStyles.twoColumns}>
-                <Text style={pdfStyles.h3}>Ansettelsesperiode</Text>
-                <Text style={pdfStyles.normaltekst}>
-                  <CheckPeriodAndPrint
-                    data={arbeidsforhold.ansettelsesperiode.periode}
-                  />
-                </Text>
-              </View>
-            )}
-          </View>
+          <PDFCheckAndPrintBox
+            title={"Ansettelsesperiode"}
+            data={arbeidsforhold.ansettelsesperiode?.periode}
+            period={true}
+          />
         </View>
         <View style={{ ...pdfStyles.flexGrid, height: 600 }}>
           {arbeidsforhold.opplysningspliktigarbeidsgiver.type ===

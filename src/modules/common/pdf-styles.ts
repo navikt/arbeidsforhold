@@ -23,6 +23,7 @@ export const pdfStyles = StyleSheet.create({
     alignItems: "center",
   },
   name: {
+    paddingTop: 10,
     fontWeight: "bold",
     fontSize: 12,
   },
@@ -71,7 +72,7 @@ export const pdfStyles = StyleSheet.create({
     flexDirection: "row",
   },
   flexTable: {
-    paddingVertical: 20,
+    paddingVertical: 10,
     width: "100%",
   },
   flexSection: {

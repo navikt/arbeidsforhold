@@ -1,38 +1,46 @@
 import React from "react";
 import CheckDateAndPrint from "../check-date-and-print/CheckDateAndPrint";
 import CheckAndPrint from "../check-and-print/CheckAndPrint";
-import { StyleSheet, Text, View } from "@react-pdf/renderer";
+import CheckPeriodAndPrint from "../check-period-and-print/CheckPeriodAndPrint";
+import { Text, View } from "@react-pdf/renderer";
+import { AFPeriode } from "../../types/arbeidsforhold";
+import { pdfStyles } from "../../modules/common/pdf-styles";
 
-interface Props {
+type Props = {
   title: string;
-  data?: string | number;
   children?: string | JSX.Element | JSX.Element[];
   format?: string;
-  date?: boolean;
-}
+  period?: boolean;
+} & (
+  | {
+      date?: undefined;
+      period?: undefined;
+      data?: string | number;
+    }
+  | {
+      date: true;
+      period?: undefined;
+      data?: string | number;
+    }
+  | {
+      date?: undefined;
+      period: true;
+      data?: AFPeriode;
+    }
+);
 
 const PDFCheckAndPrintBox = (props: Props) => {
-  const styles = StyleSheet.create({
-    column: {
-      padding: 10,
-      width: "50%",
-    },
-    title: {
-      fontWeight: 700,
-      fontSize: 12,
-    },
-    subtitle: {
-      paddingTop: 2.5,
-      fontSize: 12,
-    },
-  });
   return props.data ? (
-    <View style={styles.column}>
-      <Text style={styles.title}>{props.title}</Text>
-      <Text style={styles.subtitle}>
-        {props.date ? (
+    <View style={[pdfStyles.twoColumns, pdfStyles.section]}>
+      <Text style={pdfStyles.h3}>{props.title}</Text>
+      <Text style={pdfStyles.normaltekst}>
+        {props.date && (
           <CheckDateAndPrint data={props.data} format={props.format} />
-        ) : (
+        )}
+        {props.period && (
+          <CheckPeriodAndPrint data={props.data} format={props.format} />
+        )}
+        {!props.date && !props.period && (
           <CheckAndPrint data={props.data} format={props.format} />
         )}
       </Text>

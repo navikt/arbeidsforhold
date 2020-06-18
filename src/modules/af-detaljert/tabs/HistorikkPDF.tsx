@@ -1,6 +1,5 @@
 import React from "react";
 import { AFArbeidsavtaler } from "../../../types/arbeidsforhold";
-import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import { sortPeriodeFraDesc, sortPeriodeTilDesc } from "../../../utils/date";
 import { Text, View } from "@react-pdf/renderer";
 import PDFCheckAndPrintBox from "../../../components/pdf-check-and-print-box/PDFCheckAndPrintBox";
@@ -38,18 +37,15 @@ const HistorikkPDF = ({ arbeidsavtaler, locale }: Props) => {
             }}
           >
             <PDFCheckAndPrintBox
+              title={sprak[locale].periode}
+              period={true}
+              data={arbeidsavtale.gyldighetsperiode}
+            />
+
+            <PDFCheckAndPrintBox
               title={sprak[locale].yrke}
               data={arbeidsavtale.yrke}
             />
-
-            {arbeidsavtale.gyldighetsperiode && (
-              <View style={[pdfStyles.section, pdfStyles.twoColumns]}>
-                <Text style={pdfStyles.h3}>{sprak[locale].periode}</Text>
-                <Text style={pdfStyles.normaltekst}>
-                  <CheckPeriodAndPrint data={arbeidsavtale.gyldighetsperiode} />
-                </Text>
-              </View>
-            )}
 
             <PDFCheckAndPrintBox
               title={sprak[locale].arbeidstidsordning}

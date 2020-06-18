@@ -18,6 +18,7 @@ import ArbeidsgiverTittel from "../../components/arbeidsgiver/ArbeidsgiverTittel
 import PrinterIcon from "../../assets/icons/printer";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import DetaljertPDF from "./DetaljertPDF";
+import ModalWrapper from "nav-frontend-modal";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, locale } = props;
@@ -37,6 +38,8 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   if (arbeidsavtaler && arbeidsavtaler.length > 0) {
     tabs.push({ label: sprak[locale].tabs.historikk });
   }
+
+  const [openModal, setOpenModal] = useState<boolean>(false);
   const [visTab, settVisTab] = useState(
     tabs.length > 0 ? tabs[0].label : "Ugyldig tab"
   );
@@ -185,24 +188,42 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       </AlertStripeInfo>
       <div className="af-detaljert__print-button">
         <Normaltekst>
-          <PDFDownloadLink
-            document={
-              <DetaljertPDF arbeidsforhold={arbeidsforhold} locale={locale} />
-            }
-            fileName="arbeidsforhold.pdf"
-            className={"lenke"}
-          >
-            {({ loading }) =>
-              loading ? null : (
-                <>
-                  <PrinterIcon />
-                  <span>Skriv ut</span>
-                </>
-              )
-            }
-          </PDFDownloadLink>
+          <a className={"lenke"} onClick={() => setOpenModal(true)} />
         </Normaltekst>
       </div>
+
+      <ModalWrapper
+        isOpen={openModal}
+        onRequestClose={() => setOpenModal(false)}
+        closeButton={true}
+        contentLabel="Min modalrute"
+      >
+        <div style={{ padding: "2rem 2.5rem" }}>
+          <div className="af-detaljert__print-button">
+            <Normaltekst>
+              <PDFDownloadLink
+                document={
+                  <DetaljertPDF
+                    arbeidsforhold={arbeidsforhold}
+                    locale={locale}
+                  />
+                }
+                fileName="arbeidsforhold.pdf"
+                className={"lenke"}
+              >
+                {({ loading }) =>
+                  loading ? null : (
+                    <>
+                      <PrinterIcon />
+                      <span>Skriv ut</span>
+                    </>
+                  )
+                }
+              </PDFDownloadLink>
+            </Normaltekst>
+          </div>
+        </div>
+      </ModalWrapper>
     </div>
   );
 };

@@ -39,7 +39,7 @@ export interface AFDetaljertData {
 
 const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
   const { locale } = props;
-  const [state, setState] = useState({ status: "READY" } as State);
+  const [state, setState] = useState<State>({ status: "READY" });
 
   useEffect(() => {
     Environment.settEnv(props.miljo as Miljo);
@@ -56,16 +56,16 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
           props.navArbeidsforholdId,
           props.customApiUrl
         )
-          .then(arbeidsforhold =>
+          .then((arbeidsforhold) =>
             setState({
               status: "RESULT",
-              arbeidsforhold: arbeidsforhold as AFUtvidet
+              arbeidsforhold: arbeidsforhold as AFUtvidet,
             })
           )
           .catch((error: HTTPError) =>
             setState({
               status: "ERROR",
-              error
+              error,
             })
           );
       }
@@ -77,16 +77,16 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
           props.navArbeidsforholdId,
           props.customApiUrl
         )
-          .then(arbeidsforhold =>
+          .then((arbeidsforhold) =>
             setState({
               status: "RESULT",
-              arbeidsforhold: arbeidsforhold as AFUtvidet
+              arbeidsforhold: arbeidsforhold as AFUtvidet,
             })
           )
           .catch((error: HTTPError) =>
             setState({
               status: "ERROR",
-              error
+              error,
             })
           );
       }

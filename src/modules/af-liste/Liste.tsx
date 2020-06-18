@@ -13,7 +13,7 @@ import PrinterIcon from "../../assets/icons/printer";
 
 const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
   const { arbeidsforhold, onClick } = props;
-  const [visAlle, settVisAlle] = useState(false);
+  const [visAlle, settVisAlle] = useState<boolean>(false);
   const toggleVisAlle = () => settVisAlle(!visAlle);
   const locale = props.locale;
 

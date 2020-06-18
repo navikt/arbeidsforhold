@@ -67,7 +67,7 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
             <Text style={pdfStyles.h1}>{sprak[locale].arbeidsforhold}</Text>
             <View style={pdfStyles.headerColumn}>
               <Text style={pdfStyles.name}>Kari Normann</Text>
-              <Text style={pdfStyles.fnr}>01019011111</Text>
+              <Text style={pdfStyles.fnr}>010190 11111</Text>
             </View>
           </View>
           <View

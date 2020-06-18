@@ -233,30 +233,43 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
             legend="Velg hvilke tilleggsopplysninger du vil skrive ut"
             className={"af-detaljert__checkboxes"}
           >
-            <Checkbox
-              label={"Timer for timelønnet"}
-              className={"af-detaljert__checkbox"}
-              checked={printTimerTimelonnet}
-              onChange={() => settPrintTimerTimelonnet(!printTimerTimelonnet)}
-            />
-            <Checkbox
-              label={"Permisjon / permittering"}
-              className={"af-detaljert__checkbox"}
-              checked={printPermisjon}
-              onChange={() => settPrintPermisjon(!printPermisjon)}
-            />
-            <Checkbox
-              label={"Arbeid i utlandet"}
-              className={"af-detaljert__checkbox"}
-              checked={printUtenlandsopphold}
-              onChange={() => settPrintUtenlandsopphold(!printUtenlandsopphold)}
-            />
-            <Checkbox
-              label={"Historikk"}
-              className={"af-detaljert__checkbox"}
-              checked={printHistorikk}
-              onChange={() => settPrintHistorikk(!printHistorikk)}
-            />
+            {antallTimerForTimelonnet &&
+              antallTimerForTimelonnet.length > 0 && (
+                <Checkbox
+                  label={"Timer for timelønnet"}
+                  className={"af-detaljert__checkbox"}
+                  checked={printTimerTimelonnet}
+                  onChange={() =>
+                    settPrintTimerTimelonnet(!printTimerTimelonnet)
+                  }
+                />
+              )}
+            {permisjonPermittering && permisjonPermittering.length > 0 && (
+              <Checkbox
+                label={"Permisjon / permittering"}
+                className={"af-detaljert__checkbox"}
+                checked={printPermisjon}
+                onChange={() => settPrintPermisjon(!printPermisjon)}
+              />
+            )}
+            {utenlandsopphold && utenlandsopphold.length > 0 && (
+              <Checkbox
+                label={"Arbeid i utlandet"}
+                className={"af-detaljert__checkbox"}
+                checked={printUtenlandsopphold}
+                onChange={() =>
+                  settPrintUtenlandsopphold(!printUtenlandsopphold)
+                }
+              />
+            )}
+            {arbeidsavtaler && arbeidsavtaler.length > 0 && (
+              <Checkbox
+                label={"Historikk"}
+                className={"af-detaljert__checkbox"}
+                checked={printHistorikk}
+                onChange={() => settPrintHistorikk(!printHistorikk)}
+              />
+            )}
           </CheckboxGruppe>
           <div className="af-detaljert__print-button-modal">
             <Normaltekst>

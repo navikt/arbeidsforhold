@@ -21,6 +21,7 @@ import { CheckboxGruppe, Checkbox } from "nav-frontend-skjema";
 import DetaljertPDF from "./DetaljertPDF";
 import ModalWrapper from "nav-frontend-modal";
 import NavFrontendSpinner from "nav-frontend-spinner";
+import { AFUtvidet } from "../../types/arbeidsforhold";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, locale } = props;
@@ -205,6 +206,28 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
       </AlertStripeInfo>
       <div className="af-detaljert__print-button-oversikt">
         <Normaltekst>
+          {
+            // Show modal with checkboxes if user has relevant data
+            (antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0) ||
+            (permisjonPermittering && permisjonPermittering.length > 0) ||
+            (utenlandsopphold && utenlandsopphold.length > 0) ||
+            (arbeidsavtaler && arbeidsavtaler.length > 0) ? (
+              <a className={"lenke"} onClick={() => setOpenModal(true)}>
+                <PrinterIcon />
+                <span>Skriv ut</span>
+              </a>
+            ) : (
+              <DownloadPDFLink
+                locale={locale}
+                arbeidsforhold={arbeidsforhold}
+                printGenerellOversikt={printGenerellOversikt}
+                printTimerTimelonnet={printTimerTimelonnet}
+                printPermisjon={printPermisjon}
+                printUtenlandsopphold={printUtenlandsopphold}
+                printHistorikk={printHistorikk}
+              />
+            )
+          }
           <a className={"lenke"} onClick={() => setOpenModal(true)}>
             <PrinterIcon />
             <span>Skriv ut</span>
@@ -274,38 +297,70 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           </CheckboxGruppe>
           <div className="af-detaljert__print-button-modal">
             <Normaltekst>
-              <PDFDownloadLink
-                key={Math.random()}
-                document={
-                  <DetaljertPDF
-                    locale={locale}
-                    arbeidsforhold={arbeidsforhold}
-                    printGenerellOversikt={printGenerellOversikt}
-                    printTimerTimelonnet={printTimerTimelonnet}
-                    printPermisjon={printPermisjon}
-                    printUtenlandsopphold={printUtenlandsopphold}
-                    printHistorikk={printHistorikk}
-                  />
-                }
-                fileName="arbeidsforhold.pdf"
-                className={"lenke"}
-              >
-                {({ loading }) =>
-                  loading ? (
-                    <NavFrontendSpinner type={"XXS"} />
-                  ) : (
-                    <>
-                      <PrinterIcon />
-                      <span>Skriv ut</span>
-                    </>
-                  )
-                }
-              </PDFDownloadLink>
+              <DownloadPDFLink
+                locale={locale}
+                arbeidsforhold={arbeidsforhold}
+                printGenerellOversikt={printGenerellOversikt}
+                printTimerTimelonnet={printTimerTimelonnet}
+                printPermisjon={printPermisjon}
+                printUtenlandsopphold={printUtenlandsopphold}
+                printHistorikk={printHistorikk}
+              />
             </Normaltekst>
           </div>
         </div>
       </ModalWrapper>
     </div>
+  );
+};
+
+interface DownloadPDFLinkProps {
+  locale: "nb" | "en";
+  arbeidsforhold: AFUtvidet;
+  printGenerellOversikt: boolean;
+  printTimerTimelonnet: boolean;
+  printPermisjon: boolean;
+  printUtenlandsopphold: boolean;
+  printHistorikk: boolean;
+}
+
+const DownloadPDFLink = (props: DownloadPDFLinkProps) => {
+  const locale = props.locale;
+  const arbeidsforhold = props.arbeidsforhold;
+  const printGenerellOversikt = props.printGenerellOversikt;
+  const printTimerTimelonnet = props.printTimerTimelonnet;
+  const printPermisjon = props.printPermisjon;
+  const printUtenlandsopphold = props.printUtenlandsopphold;
+  const printHistorikk = props.printHistorikk;
+
+  return (
+    <PDFDownloadLink
+      key={Math.random()}
+      document={
+        <DetaljertPDF
+          locale={locale}
+          arbeidsforhold={arbeidsforhold}
+          printGenerellOversikt={printGenerellOversikt}
+          printTimerTimelonnet={printTimerTimelonnet}
+          printPermisjon={printPermisjon}
+          printUtenlandsopphold={printUtenlandsopphold}
+          printHistorikk={printHistorikk}
+        />
+      }
+      fileName="arbeidsforhold.pdf"
+      className={"lenke"}
+    >
+      {({ loading }) =>
+        loading ? (
+          <NavFrontendSpinner type={"XXS"} />
+        ) : (
+          <>
+            <PrinterIcon />
+            <span>Skriv ut</span>
+          </>
+        )
+      }
+    </PDFDownloadLink>
   );
 };
 

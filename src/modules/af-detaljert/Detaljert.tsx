@@ -228,10 +228,6 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
               />
             )
           }
-          <a className={"lenke"} onClick={() => setOpenModal(true)}>
-            <PrinterIcon />
-            <span>Skriv ut</span>
-          </a>
         </Normaltekst>
       </div>
 

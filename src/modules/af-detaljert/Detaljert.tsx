@@ -20,6 +20,7 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 import { CheckboxGruppe, Checkbox } from "nav-frontend-skjema";
 import DetaljertPDF from "./DetaljertPDF";
 import ModalWrapper from "nav-frontend-modal";
+import NavFrontendSpinner from "nav-frontend-spinner";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, locale } = props;
@@ -274,6 +275,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           <div className="af-detaljert__print-button-modal">
             <Normaltekst>
               <PDFDownloadLink
+                key={Math.random()}
                 document={
                   <DetaljertPDF
                     locale={locale}
@@ -289,7 +291,9 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
                 className={"lenke"}
               >
                 {({ loading }) =>
-                  !loading && (
+                  loading ? (
+                    <NavFrontendSpinner type={"XXS"} />
+                  ) : (
                     <>
                       <PrinterIcon />
                       <span>Skriv ut</span>

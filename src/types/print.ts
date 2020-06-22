@@ -1,6 +1,6 @@
 export type AFPrint =
   | {
-      printActivated: undefined;
+      printActivated?: false;
     }
   | {
       printActivated: true;

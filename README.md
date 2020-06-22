@@ -1,5 +1,11 @@
 # NAV Arbeidsforhold
 
+[![npm version](https://badge.fury.io/js/%40navikt%2Farbeidsforhold.svg)](https://badge.fury.io/js/%40navikt%2Farbeidsforhold) <br>
+![Deploy-to-npm](https://github.com/navikt/arbeidsforhold/workflows/Deploy-to-npm/badge.svg)
+![Deploy-to-q0](https://github.com/navikt/arbeidsforhold/workflows/Deploy-to-q0/badge.svg)
+![Deploy-to-q1](https://github.com/navikt/arbeidsforhold/workflows/Deploy-to-q1/badge.svg)
+![Deploy-to-q6](https://github.com/navikt/arbeidsforhold/workflows/Deploy-to-q6/badge.svg)
+
 React moduler / mikro-frontends som viser brukerens arbeidsforhold
 
 ## Installasjon

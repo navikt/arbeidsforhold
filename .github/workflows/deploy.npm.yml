@@ -2,7 +2,7 @@ name: Deploy-to-npm
 on:
   push:
     tags:
-      - "v*-prod"
+      - "v*"
       - "!v*-test"
       - "!v*-dev"
 jobs:

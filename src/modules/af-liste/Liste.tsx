@@ -7,11 +7,15 @@ import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
 import sprak from "../../language/provider";
 import { ListeTittel } from "./ListeTittel";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import ListePDF from "./ListePDF";
+import PrinterIcon from "../../assets/icons/printer";
 
 const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
   const { arbeidsforhold, onClick } = props;
-  const [visAlle, settVisAlle] = useState(false);
+  const [visAlle, settVisAlle] = useState<boolean>(false);
   const toggleVisAlle = () => settVisAlle(!visAlle);
+  const locale = props.locale;
 
   const sorterteArbeidsforhold = arbeidsforhold
     .sort((a, b) =>
@@ -82,6 +86,33 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
             </Normaltekst>
           )}
         </button>
+      )}
+      {props.printActivated && arbeidsforhold.length > 0 && (
+        <div className="af-liste__print-button">
+          <Normaltekst>
+            <PDFDownloadLink
+              document={
+                <ListePDF
+                  locale={locale}
+                  arbeidsforhold={arbeidsforhold}
+                  printName={props.printName}
+                  printSSO={props.printSSN}
+                />
+              }
+              fileName="arbeidsforhold.pdf"
+              className={"lenke"}
+            >
+              {({ loading }) =>
+                loading ? null : (
+                  <>
+                    <PrinterIcon />
+                    <span>Skriv ut</span>
+                  </>
+                )
+              }
+            </PDFDownloadLink>
+          </Normaltekst>
+        </div>
       )}
     </div>
   );

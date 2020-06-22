@@ -15,6 +15,13 @@ import { Select } from "nav-frontend-skjema";
 import ArbeidsavtaleFelter from "../../components/arbeidsavtale/Felter";
 import { orgnr } from "../../utils/orgnr";
 import ArbeidsgiverTittel from "../../components/arbeidsgiver/ArbeidsgiverTittel";
+import PrinterIcon from "../../assets/icons/printer";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import { CheckboxGruppe, Checkbox } from "nav-frontend-skjema";
+import DetaljertPDF from "./DetaljertPDF";
+import ModalWrapper from "nav-frontend-modal";
+import NavFrontendSpinner from "nav-frontend-spinner";
+import { AFUtvidet } from "../../types/arbeidsforhold";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, locale } = props;
@@ -34,6 +41,23 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   if (arbeidsavtaler && arbeidsavtaler.length > 0) {
     tabs.push({ label: sprak[locale].tabs.historikk });
   }
+
+  const [openModal, setOpenModal] = useState<boolean>(false);
+  const [printGenerellOversikt, settPrintGenerellOversikt] = useState<boolean>(
+    true
+  );
+  const [printTimerTimelonnet, settPrintTimerTimelonnet] = useState<boolean>(
+    antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0
+  );
+  const [printPermisjon, settPrintPermisjon] = useState<boolean>(
+    permisjonPermittering && permisjonPermittering.length > 0
+  );
+  const [printUtenlandsopphold, settPrintUtenlandsopphold] = useState<boolean>(
+    utenlandsopphold && utenlandsopphold.length > 0
+  );
+  const [printHistorikk, settPrintHistorikk] = useState<boolean>(
+    arbeidsavtaler && arbeidsavtaler.length > 0
+  );
   const [visTab, settVisTab] = useState(
     tabs.length > 0 ? tabs[0].label : "Ugyldig tab"
   );
@@ -135,7 +159,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
             <hr className="af-detaljert__hr" />
             {tabs.length > 1 ? (
               <Select label="" onChange={selectOnClick}>
-                {tabs.map(tab => (
+                {tabs.map((tab) => (
                   <option key={tab.label} value={tab.label}>
                     {tab.label}
                   </option>
@@ -180,8 +204,166 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
         <br />
         {sprak[locale].hvisfeil2}
       </AlertStripeInfo>
+
+      {props.printActivated && (
+        <div className="af-detaljert__print-button-oversikt">
+          <Normaltekst>
+            {
+              // Show modal with checkboxes if user has relevant data
+              (antallTimerForTimelonnet &&
+                antallTimerForTimelonnet.length > 0) ||
+              (permisjonPermittering && permisjonPermittering.length > 0) ||
+              (utenlandsopphold && utenlandsopphold.length > 0) ||
+              (arbeidsavtaler && arbeidsavtaler.length > 0) ? (
+                <a className={"lenke"} onClick={() => setOpenModal(true)}>
+                  <PrinterIcon />
+                  <span>Skriv ut</span>
+                </a>
+              ) : (
+                <DownloadPDFLink
+                  locale={locale}
+                  arbeidsforhold={arbeidsforhold}
+                  printGenerellOversikt={printGenerellOversikt}
+                  printTimerTimelonnet={printTimerTimelonnet}
+                  printPermisjon={printPermisjon}
+                  printUtenlandsopphold={printUtenlandsopphold}
+                  printHistorikk={printHistorikk}
+                  printName={props.printName}
+                  printSSO={props.printSSN}
+                />
+              )
+            }
+          </Normaltekst>
+        </div>
+      )}
+
+      {props.printActivated && (
+        <ModalWrapper
+          isOpen={openModal}
+          onRequestClose={() => setOpenModal(false)}
+          contentLabel="Utskriftsvalg"
+          closeButton={true}
+        >
+          <div style={{ padding: "2rem 2.5rem" }}>
+            <CheckboxGruppe
+              legend="Utskriftsvalg"
+              className={"af-detaljert__checkboxes"}
+            >
+              <Checkbox
+                label={"Generelle opplysninger"}
+                className={"af-detaljert__checkbox"}
+                checked={printGenerellOversikt}
+                onChange={() =>
+                  settPrintGenerellOversikt(!printGenerellOversikt)
+                }
+              />
+            </CheckboxGruppe>
+            <CheckboxGruppe
+              legend="Velg hvilke tilleggsopplysninger du vil skrive ut"
+              className={"af-detaljert__checkboxes"}
+            >
+              {antallTimerForTimelonnet &&
+                antallTimerForTimelonnet.length > 0 && (
+                  <Checkbox
+                    label={"Timer for timelønnet"}
+                    className={"af-detaljert__checkbox"}
+                    checked={printTimerTimelonnet}
+                    onChange={() =>
+                      settPrintTimerTimelonnet(!printTimerTimelonnet)
+                    }
+                  />
+                )}
+              {permisjonPermittering && permisjonPermittering.length > 0 && (
+                <Checkbox
+                  label={"Permisjon / permittering"}
+                  className={"af-detaljert__checkbox"}
+                  checked={printPermisjon}
+                  onChange={() => settPrintPermisjon(!printPermisjon)}
+                />
+              )}
+              {utenlandsopphold && utenlandsopphold.length > 0 && (
+                <Checkbox
+                  label={"Arbeid i utlandet"}
+                  className={"af-detaljert__checkbox"}
+                  checked={printUtenlandsopphold}
+                  onChange={() =>
+                    settPrintUtenlandsopphold(!printUtenlandsopphold)
+                  }
+                />
+              )}
+              {arbeidsavtaler && arbeidsavtaler.length > 0 && (
+                <Checkbox
+                  label={"Historikk"}
+                  className={"af-detaljert__checkbox"}
+                  checked={printHistorikk}
+                  onChange={() => settPrintHistorikk(!printHistorikk)}
+                />
+              )}
+            </CheckboxGruppe>
+            <div className="af-detaljert__print-button-modal">
+              <Normaltekst>
+                <DownloadPDFLink
+                  locale={locale}
+                  arbeidsforhold={arbeidsforhold}
+                  printGenerellOversikt={printGenerellOversikt}
+                  printTimerTimelonnet={printTimerTimelonnet}
+                  printPermisjon={printPermisjon}
+                  printUtenlandsopphold={printUtenlandsopphold}
+                  printHistorikk={printHistorikk}
+                  printName={props.printName}
+                  printSSO={props.printSSN}
+                />
+              </Normaltekst>
+            </div>
+          </div>
+        </ModalWrapper>
+      )}
     </div>
   );
 };
+
+interface DownloadPDFLinkProps {
+  locale: "nb" | "en";
+  arbeidsforhold: AFUtvidet;
+  printGenerellOversikt: boolean;
+  printTimerTimelonnet: boolean;
+  printPermisjon: boolean;
+  printUtenlandsopphold: boolean;
+  printHistorikk: boolean;
+  printName: string;
+  printSSO: string;
+}
+
+const DownloadPDFLink = (props: DownloadPDFLinkProps) => (
+  <PDFDownloadLink
+    key={Math.random()}
+    document={
+      <DetaljertPDF
+        locale={props.locale}
+        arbeidsforhold={props.arbeidsforhold}
+        printGenerellOversikt={props.printGenerellOversikt}
+        printTimerTimelonnet={props.printTimerTimelonnet}
+        printPermisjon={props.printPermisjon}
+        printUtenlandsopphold={props.printUtenlandsopphold}
+        printHistorikk={props.printHistorikk}
+        printName={props.printName}
+        printSSO={props.printSSO}
+      />
+    }
+    fileName="arbeidsforhold.pdf"
+    className={"lenke"}
+  >
+    {({ loading }) =>
+      loading ? (
+        <NavFrontendSpinner type={"XXS"} />
+      ) : (
+        <>
+          <PrinterIcon />
+          <span>Skriv ut</span>
+        </>
+      )
+    }
+  </PDFDownloadLink>
+);
 
 export default Arbeidsforhold;

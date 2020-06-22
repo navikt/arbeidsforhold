@@ -9,6 +9,7 @@ import Environment from "utils/environment";
 import Miljo from "types/miljo";
 import moment from "moment";
 import "moment/locale/nb";
+import { AFPrint } from "../../types/print";
 
 type State =
   | { status: "READY" }
@@ -16,22 +17,24 @@ type State =
   | { status: "RESULT"; arbeidsforhold: AFUtvidet }
   | { status: "ERROR"; error: HTTPError };
 
-export type AFDetaljertProps =
-  | {
-      rolle: "ARBEIDSTAKER";
-      locale: "nb" | "en";
-      miljo: "LOCAL" | "Q6" | "Q2" | "Q1" | "Q0" | "PROD";
-      navArbeidsforholdId: number;
-      customApiUrl?: string;
-    }
-  | {
-      rolle: "ARBEIDSGIVER";
-      locale: "nb" | "en";
-      miljo: "LOCAL" | "Q6" | "Q2" | "Q1" | "Q0" | "PROD";
-      navArbeidsforholdId: number;
-      fnrArbeidstaker: string;
-      customApiUrl?: string;
-    };
+export type AFDetaljertProps = AFPrint &
+  (
+    | {
+        rolle: "ARBEIDSTAKER";
+        locale: "nb" | "en";
+        miljo: "LOCAL" | "Q6" | "Q2" | "Q1" | "Q0" | "PROD";
+        navArbeidsforholdId: number;
+        customApiUrl?: string;
+      }
+    | {
+        rolle: "ARBEIDSGIVER";
+        locale: "nb" | "en";
+        miljo: "LOCAL" | "Q6" | "Q2" | "Q1" | "Q0" | "PROD";
+        navArbeidsforholdId: number;
+        fnrArbeidstaker: string;
+        customApiUrl?: string;
+      }
+  );
 
 export interface AFDetaljertData {
   arbeidsforhold: AFUtvidet;
@@ -39,7 +42,7 @@ export interface AFDetaljertData {
 
 const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
   const { locale } = props;
-  const [state, setState] = useState({ status: "READY" } as State);
+  const [state, setState] = useState<State>({ status: "READY" });
 
   useEffect(() => {
     Environment.settEnv(props.miljo as Miljo);
@@ -56,16 +59,16 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
           props.navArbeidsforholdId,
           props.customApiUrl
         )
-          .then(arbeidsforhold =>
+          .then((arbeidsforhold) =>
             setState({
               status: "RESULT",
-              arbeidsforhold: arbeidsforhold as AFUtvidet
+              arbeidsforhold: arbeidsforhold as AFUtvidet,
             })
           )
           .catch((error: HTTPError) =>
             setState({
               status: "ERROR",
-              error
+              error,
             })
           );
       }
@@ -77,16 +80,16 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
           props.navArbeidsforholdId,
           props.customApiUrl
         )
-          .then(arbeidsforhold =>
+          .then((arbeidsforhold) =>
             setState({
               status: "RESULT",
-              arbeidsforhold: arbeidsforhold as AFUtvidet
+              arbeidsforhold: arbeidsforhold as AFUtvidet,
             })
           )
           .catch((error: HTTPError) =>
             setState({
               status: "ERROR",
-              error
+              error,
             })
           );
       }

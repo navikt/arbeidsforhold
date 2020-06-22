@@ -3,7 +3,8 @@ export default {
   ansettelsesperiode: "Ansettelsesperiode",
   apne: "Open",
   arbeidsavtale: "Employment",
-  arbeidsforholdid: "Emplyment ID",
+  arbeidsforhold: "Employment",
+  arbeidsforholdid: "Employment ID",
   arbeidstidsordning: "Working scheme",
   endretstillingsprosent: "Changed position percentage",
   fartsomraade: "Area",
@@ -30,7 +31,7 @@ export default {
     arbeidiutlandet: "Work abroad",
     historikk: "History",
     permisjonpermittering: "Leave/Layoff",
-    timerfortimelonnet: "Working hours"
+    timerfortimelonnet: "Working hours",
   },
   timerifullstilling: "Hours in full position",
   timerperuke: "Hours/week",
@@ -39,6 +40,8 @@ export default {
   visfaerrearbeidsforhold: "Show fewer",
   visflerearbeidsforhold: "Show more",
   yrke: "Profession",
+  pdfFooter1: `Oversikten viser arbeidsforholdene slik det er rapportert til Arbeidsgiver- og arbeidstakerregisteret`,
+  pdfFooter2: `Arbeids- og velferdsetaten // Utskrift fra 17.05.2020`,
   ERKONK:
     "Sluttdato satt av NAV. Arbeidsgiver har gått konkurs. Sluttdato er samme dato som konkursåpningsdato i Konkursregisteret.",
   EROPPH:
@@ -48,5 +51,5 @@ export default {
   IBARBG:
     "Sluttdato satt av NAV. Arbeidsforholdet har ikke blitt bekreftet. Sluttdato er siste dato i kalendermåneden som arbeidsforholdet er bekreftet.",
   IBKAOR:
-    "Sluttdato satt av NAV. Arbeidsforholdet er ikke bekreftet gjennom a-ordningen. Sluttdato er satt til 31.12.2014"
+    "Sluttdato satt av NAV. Arbeidsforholdet er ikke bekreftet gjennom a-ordningen. Sluttdato er satt til 31.12.2014",
 };

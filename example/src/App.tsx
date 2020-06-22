@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import Miljo from "../../src/types/miljo";
-import {
-  ListeMedArbeidsforhold,
-  DetaljertArbeidsforhold,
-} from "@navikt/arbeidsforhold";
+import { DetaljertArbeidsforhold } from "@navikt/arbeidsforhold";
+import { ListeMedArbeidsforhold } from "@navikt/arbeidsforhold";
 import InfoBoks from "./components/InfoBoks";
 import SprakVelger from "./components/SprakVelger";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -16,6 +14,10 @@ const App = () => {
   const { hostname } = window.location;
   const miljo = (hostname.indexOf("localhost") > -1 ? "LOCAL" : "Q0") as Miljo;
   const locales = ["nb", "en"];
+
+  const printActivated = true;
+  const printName = "Ola Nordmann";
+  const printSSN = "12345678911";
 
   const [valgtArbeidsforholdId, settValgtArbeidsforholdId] = useState<number>();
   const [valgtLocale, settValgtLocale] = useState("nb" as "nb" | "en");
@@ -64,18 +66,24 @@ const App = () => {
           />
           <div className="example__section">
             <ListeMedArbeidsforhold
-              locale={valgtLocale}
               miljo={miljo}
+              locale={valgtLocale}
               onClick={valgtOnClick}
+              printActivated={printActivated}
+              printName={printName}
+              printSSN={printSSN}
             />
           </div>
           <div className="example__section">
             {valgtArbeidsforholdId ? (
               <DetaljertArbeidsforhold
                 rolle={"ARBEIDSTAKER"}
-                locale={valgtLocale}
                 miljo={miljo}
+                locale={valgtLocale}
                 navArbeidsforholdId={valgtArbeidsforholdId}
+                printActivated={printActivated}
+                printName={printName}
+                printSSN={printSSN}
               />
             ) : (
               <InfoBoks />
@@ -91,10 +99,13 @@ const App = () => {
           <div className="example__section">
             <DetaljertArbeidsforhold
               rolle={"ARBEIDSGIVER"}
-              fnrArbeidstaker={`${27127424204}`}
-              locale={valgtLocale}
               miljo={miljo}
+              locale={valgtLocale}
+              fnrArbeidstaker={`${27127424204}`}
               navArbeidsforholdId={47720602}
+              printActivated={printActivated}
+              printName={printName}
+              printSSN={printSSN}
             />
           </div>
         </Router>

@@ -4,6 +4,7 @@ export interface Sprak {
     ansettelsesperiode: string;
     apne: string;
     arbeidsavtale: string;
+    arbeidsforhold: string;
     arbeidsforholdid: string;
     arbeidstidsordning: string;
     endretstillingsprosent: string;
@@ -40,5 +41,7 @@ export interface Sprak {
     visfaerrearbeidsforhold: string;
     visflerearbeidsforhold: string;
     yrke: string;
+    pdfFooter1: string;
+    pdfFooter2: string;
   };
 }

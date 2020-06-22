@@ -7,6 +7,7 @@ import external from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
 import resolve from "rollup-plugin-node-resolve";
 import json from "rollup-plugin-json";
+import image from "@rollup/plugin-image";
 import url from "rollup-plugin-url";
 
 import svgr from "@svgr/rollup";
@@ -19,14 +20,14 @@ export default {
       file: pkg.main,
       format: "cjs",
       exports: "named",
-      sourcemap: true
+      sourcemap: true,
     },
     {
       file: pkg.module,
       format: "es",
       exports: "named",
-      sourcemap: true
-    }
+      sourcemap: true,
+    },
   ],
   plugins: [
     external(),
@@ -35,26 +36,30 @@ export default {
         [
           "less",
           {
-            plugins: [new npmImport({ prefix: "~" })]
-          }
-        ]
-      ]
+            plugins: [new npmImport({ prefix: "~" })],
+          },
+        ],
+      ],
     }),
-    url(),
+    url({
+      include: ["**/*.ttf"],
+      limit: Infinity,
+    }),
     svgr(),
+    image(),
     resolve({
       browser: true,
-      modulesOnly: true
+      modulesOnly: true,
     }),
     typescript({
-      objectHashIgnoreUnknownHack: true
+      objectHashIgnoreUnknownHack: true,
     }),
     commonjs(),
     json(),
     babel({
-      extensions: [".js", ".jsx", ".ts", ".tsx"]
+      extensions: [".js", ".jsx", ".ts", ".tsx"],
     }),
     // Resolve source maps to the original source
-    sourceMaps()
-  ]
+    sourceMaps(),
+  ],
 };

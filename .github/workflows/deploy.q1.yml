@@ -37,6 +37,9 @@ jobs:
         run: |
           cat > .nais/vars.yaml <<EOF
           namespace: q1
+          ingresses:
+            - https://arbeidsforhold.nais.oera-q.no
+            - https://www-q1.nav.no/person/arbeidsforhold
           image: $IMAGE_REGISTRY/$IMAGE_NAME
           version: $IMAGE_VERSION
           EOF
@@ -44,5 +47,5 @@ jobs:
         env:
           CLUSTER: dev-sbs
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          RESOURCE: .nais/dev-sbs/q1.yaml
+          RESOURCE: .nais/config.yaml
           VARS: .nais/vars.yaml

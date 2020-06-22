@@ -15,6 +15,10 @@ const App = () => {
   const miljo = (hostname.indexOf("localhost") > -1 ? "LOCAL" : "Q0") as Miljo;
   const locales = ["nb", "en"];
 
+  const printActivated = true;
+  const printName = "Ola Nordmann";
+  const printSSN = "12345678911";
+
   const [valgtArbeidsforholdId, settValgtArbeidsforholdId] = useState<number>();
   const [valgtLocale, settValgtLocale] = useState("nb" as "nb" | "en");
 
@@ -62,18 +66,24 @@ const App = () => {
           />
           <div className="example__section">
             <ListeMedArbeidsforhold
-              locale={valgtLocale}
               miljo={miljo}
+              locale={valgtLocale}
               onClick={valgtOnClick}
+              printActivated={printActivated}
+              printName={printName}
+              printSSN={printSSN}
             />
           </div>
           <div className="example__section">
             {valgtArbeidsforholdId ? (
               <DetaljertArbeidsforhold
                 rolle={"ARBEIDSTAKER"}
-                locale={valgtLocale}
                 miljo={miljo}
+                locale={valgtLocale}
                 navArbeidsforholdId={valgtArbeidsforholdId}
+                printActivated={printActivated}
+                printName={printName}
+                printSSN={printSSN}
               />
             ) : (
               <InfoBoks />
@@ -89,10 +99,13 @@ const App = () => {
           <div className="example__section">
             <DetaljertArbeidsforhold
               rolle={"ARBEIDSGIVER"}
-              fnrArbeidstaker={`${27127424204}`}
-              locale={valgtLocale}
               miljo={miljo}
+              locale={valgtLocale}
+              fnrArbeidstaker={`${27127424204}`}
               navArbeidsforholdId={47720602}
+              printActivated={printActivated}
+              printName={printName}
+              printSSN={printSSN}
             />
           </div>
         </Router>

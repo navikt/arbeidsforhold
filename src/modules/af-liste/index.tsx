@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import Miljo from "../../types/miljo";
 import moment from "moment";
 import "moment/locale/nb";
+import { AFPrint } from "../../types/print";
 
 type State =
   | { status: "LOADING" }
@@ -33,12 +34,12 @@ export type AFListeOnClick =
       getId: (navArbeidsforholdId: number) => void;
     };
 
-export interface AFListeProps {
+export type AFListeProps = AFPrint & {
   locale: "nb" | "en";
   miljo: "LOCAL" | "Q6" | "Q2" | "Q1" | "Q0" | "PROD";
   onClick: AFListeOnClick;
   customApiUrl?: string;
-}
+};
 
 export interface AFListeData {
   arbeidsforhold: AFSimpel[];
@@ -60,16 +61,16 @@ const ListeMedArbeidsforhold = (props: AFListeProps) => {
   useEffect(() => {
     if (state.status === "LOADING") {
       hentListeMedArbeidsforhold(props.customApiUrl)
-        .then(arbeidsforhold =>
+        .then((arbeidsforhold) =>
           setState({
             status: "RESULT",
-            arbeidsforhold: arbeidsforhold as AFSimpel[]
+            arbeidsforhold: arbeidsforhold as AFSimpel[],
           })
         )
         .catch((error: HTTPError) =>
           setState({
             status: "ERROR",
-            error: error
+            error: error,
           })
         );
     }

@@ -87,12 +87,17 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
           )}
         </button>
       )}
-      {arbeidsforhold.length > 0 && (
+      {props.printActivated && arbeidsforhold.length > 0 && (
         <div className="af-liste__print-button">
           <Normaltekst>
             <PDFDownloadLink
               document={
-                <ListePDF arbeidsforhold={arbeidsforhold} locale={locale} />
+                <ListePDF
+                  locale={locale}
+                  arbeidsforhold={arbeidsforhold}
+                  printName={props.printName}
+                  printSSO={props.printSSN}
+                />
               }
               fileName="arbeidsforhold.pdf"
               className={"lenke"}

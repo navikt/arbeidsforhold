@@ -25,6 +25,8 @@ interface Props {
   printPermisjon: boolean;
   printUtenlandsopphold: boolean;
   printHistorikk: boolean;
+  printName: string;
+  printSSO: string;
 }
 
 // Create Document Component
@@ -81,8 +83,10 @@ const ListePDF = (props: Props) => {
           >
             <Text style={pdfStyles.h1}>Arbeidsforhold</Text>
             <View style={pdfStyles.headerColumn}>
-              <Text style={pdfStyles.name}>Kari Normann</Text>
-              <Text style={pdfStyles.fnr}>010190 11111</Text>
+              <Text style={pdfStyles.name}>{props.printName}</Text>
+              <Text style={pdfStyles.fnr}>
+                {props.printSSO.replace(/.{5}$/, " $&")}
+              </Text>
             </View>
           </View>
           <View

@@ -12,12 +12,14 @@ import sprak from "../../language/provider";
 import { pdfStyles } from "../common/pdf-styles";
 
 interface Props {
-  arbeidsforhold: AFSimpel[];
   locale: "nb" | "en";
+  arbeidsforhold: AFSimpel[];
+  printName: string;
+  printSSO: string;
 }
 
 // Create Document Component
-const ListePDF = ({ arbeidsforhold, locale }: Props) => {
+const ListePDF = ({ arbeidsforhold, locale, printName, printSSO }: Props) => {
   Font.register({
     family: "SourceSansPro",
     fonts: [
@@ -66,8 +68,10 @@ const ListePDF = ({ arbeidsforhold, locale }: Props) => {
           >
             <Text style={pdfStyles.h1}>{sprak[locale].arbeidsforhold}</Text>
             <View style={pdfStyles.headerColumn}>
-              <Text style={pdfStyles.name}>Kari Normann</Text>
-              <Text style={pdfStyles.fnr}>010190 11111</Text>
+              <Text style={pdfStyles.name}>{printName}</Text>
+              <Text style={pdfStyles.fnr}>
+                {printSSO.replace(/.{5}$/, " $&")}
+              </Text>
             </View>
           </View>
           <View

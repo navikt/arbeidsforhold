@@ -1,0 +1,23 @@
+name: Deploy-to-prod
+on:
+  push:
+    tags:
+      - "v*-prod"
+      - "!v*-test"
+      - "!v*-dev"
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+      - run: npm publish

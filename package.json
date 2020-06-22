@@ -1,7 +1,7 @@
 {
   "name": "@navikt/arbeidsforhold",
   "author": "NAVIKT",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "React modul som viser brukerens arbeidsforhold",
   "homepage": "/person/arbeidsforhold",
   "main": "dist/index.js",

@@ -71,7 +71,6 @@ export const pdfStyles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    textAlign: "center",
   },
   name: {
     paddingTop: 10,

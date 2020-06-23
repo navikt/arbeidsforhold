@@ -118,7 +118,7 @@ Prosjektet støtter hot-reloading, endringer i komponentene vil føre til at tes
 
 ## Deployering
 
-Applikasjonen bygges automatisk til dev / https://www-q0.nav.no/person/arbeidsforhold ved merge til master. <br>
+Applikasjonen bygges til dev ved git tag på formatet `vX.X.X-test` (Q1 og Q6) eller `vX.X.X-dev` (Q6). <br>
 For å lansere applikasjonen til [npmjs](https://www.npmjs.com/package/@navikt/arbeidsforhold), benytt [npm version](https://docs.npmjs.com/cli/version) til å oppdatere package.json og lage en ny git-tag. Eks:
 
 ```

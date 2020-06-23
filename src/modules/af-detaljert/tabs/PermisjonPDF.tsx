@@ -19,16 +19,21 @@ const PermisjonPDF = (props: Props) => {
   );
 
   return (
-    <View style={pdfStyles.flexTable}>
-      <View style={pdfStyles.flexRow}>
-        <View style={pdfStyles.flexColumn}>
-          <Text style={pdfStyles.h3}>{sprak[locale].type}</Text>
+    <>
+      <View wrap={false}>
+        <View style={pdfStyles.tableTitle}>
+          <Text style={pdfStyles.h2}>Permisjon/Permittering</Text>
         </View>
-        <View style={pdfStyles.flexColumn}>
-          <Text style={pdfStyles.h3}>{sprak[locale].periode}</Text>
-        </View>
-        <View style={pdfStyles.flexColumn}>
-          <Text style={pdfStyles.h3}>{sprak[locale].prosent}</Text>
+        <View style={pdfStyles.flexRow}>
+          <View style={pdfStyles.flexColumn}>
+            <Text style={pdfStyles.h3}>{sprak[locale].type}</Text>
+          </View>
+          <View style={pdfStyles.flexColumn}>
+            <Text style={pdfStyles.h3}>{sprak[locale].periode}</Text>
+          </View>
+          <View style={pdfStyles.flexColumn}>
+            <Text style={pdfStyles.h3}>{sprak[locale].prosent}</Text>
+          </View>
         </View>
       </View>
       {props.permisjoner.map((permisjon, i) => (
@@ -46,7 +51,7 @@ const PermisjonPDF = (props: Props) => {
           </View>
         </View>
       ))}
-    </View>
+    </>
   );
 };
 

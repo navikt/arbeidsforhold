@@ -122,7 +122,7 @@ export const pdfStyles = StyleSheet.create({
     flexWrap: "wrap",
     flexDirection: "row",
   },
-  flexTable: {
+  tableTitle: {
     paddingVertical: 10,
     width: "100%",
   },

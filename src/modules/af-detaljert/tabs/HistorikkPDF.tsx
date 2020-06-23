@@ -22,12 +22,15 @@ const HistorikkPDF = ({ arbeidsavtaler, locale }: Props) => {
     );
 
   return (
-    <View style={pdfStyles.flexTable}>
-      {arbeidsavtaler.map((arbeidsavtale, i) => {
-        return (
+    <>
+      {arbeidsavtaler.map((arbeidsavtale, i) => (
+        <View key={i} wrap={false}>
+          {!i && (
+            <View style={{ ...pdfStyles.tableTitle, padding: 10 }}>
+              <Text style={pdfStyles.h2}>Historikk</Text>
+            </View>
+          )}
           <View
-            key={i}
-            wrap={false}
             style={{
               ...pdfStyles.flexGrid,
               ...(!i && {
@@ -84,9 +87,9 @@ const HistorikkPDF = ({ arbeidsavtaler, locale }: Props) => {
               data={arbeidsavtale.fartsomraade}
             />
           </View>
-        );
-      })}
-    </View>
+        </View>
+      ))}
+    </>
   );
 };
 

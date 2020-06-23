@@ -40,16 +40,23 @@ const TimerPDF = (props: Props) => {
   });
 
   return (
-    <View style={pdfStyles.flexTable}>
-      <View style={pdfStyles.flexRow}>
-        <View style={pdfStyles.flexColumn}>
-          <Text style={pdfStyles.h3}>{sprak[locale].rapporteringsperiode}</Text>
+    <>
+      <View wrap={false}>
+        <View style={pdfStyles.tableTitle}>
+          <Text style={pdfStyles.h2}>Timer for timelønnet</Text>
         </View>
-        <View style={pdfStyles.flexColumn}>
-          <Text style={pdfStyles.h3}>{sprak[locale].opptjeningsperiode}</Text>
-        </View>
-        <View style={pdfStyles.flexColumn}>
-          <Text style={pdfStyles.h3}>{sprak[locale].antalltimer}</Text>
+        <View style={pdfStyles.flexRow}>
+          <View style={pdfStyles.flexColumn}>
+            <Text style={pdfStyles.h3}>
+              {sprak[locale].rapporteringsperiode}
+            </Text>
+          </View>
+          <View style={pdfStyles.flexColumn}>
+            <Text style={pdfStyles.h3}>{sprak[locale].opptjeningsperiode}</Text>
+          </View>
+          <View style={pdfStyles.flexColumn}>
+            <Text style={pdfStyles.h3}>{sprak[locale].antalltimer}</Text>
+          </View>
         </View>
       </View>
       {Object.keys(data)
@@ -92,7 +99,7 @@ const TimerPDF = (props: Props) => {
             </View>
           );
         })}
-    </View>
+    </>
   );
 };
 

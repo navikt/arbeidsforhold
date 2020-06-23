@@ -67,7 +67,7 @@ const ListePDF = (props: Props) => {
       <Page size="A4" style={pdfStyles.page}>
         <PdfHeader printName={props.printName} printSSO={props.printSSO} />
         {printGenerellOversikt && (
-          <>
+          <View style={{ minHeight: 600 }}>
             <View style={styles.introRow}>
               <View style={[pdfStyles.section, pdfStyles.twoColumns]}>
                 {arbeidsforhold.arbeidsgiver.type === "Organisasjon" ? (
@@ -95,7 +95,7 @@ const ListePDF = (props: Props) => {
                 period={true}
               />
             </View>
-            <View style={{ ...pdfStyles.flexGrid, height: 575 }}>
+            <View style={{ ...pdfStyles.flexGrid }}>
               {arbeidsforhold.opplysningspliktigarbeidsgiver.type ===
                 "Organisasjon" && (
                 <PDFCheckAndPrintBox
@@ -166,14 +166,13 @@ const ListePDF = (props: Props) => {
                 date={true}
               />
             </View>
-          </>
+          </View>
         )}
         <PdfFooter locale={locale} />
         {printTimerTimelonnet && (
           <>
             {antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0 && (
               <View style={pdfStyles.section}>
-                <Text style={pdfStyles.h2}>Timer for timelønnet</Text>
                 <TimerPDF timer={antallTimerForTimelonnet} locale={locale} />
               </View>
             )}
@@ -183,7 +182,6 @@ const ListePDF = (props: Props) => {
           <>
             {permisjonPermittering && permisjonPermittering.length > 0 && (
               <View style={pdfStyles.section}>
-                <Text style={pdfStyles.h2}>Permisjon/Permittering</Text>
                 <PermisjonPDF
                   permisjoner={permisjonPermittering}
                   locale={locale}
@@ -196,7 +194,6 @@ const ListePDF = (props: Props) => {
           <>
             {utenlandsopphold && utenlandsopphold.length > 0 && (
               <View style={pdfStyles.section}>
-                <Text style={pdfStyles.h2}>Arbeid i utlandet</Text>
                 <UtenlandsoppholdPDF
                   utenlandsopphold={utenlandsopphold}
                   locale={locale}
@@ -208,12 +205,7 @@ const ListePDF = (props: Props) => {
         {printHistorikk && (
           <>
             {arbeidsavtaler && arbeidsavtaler.length > 0 && (
-              <View style={{ paddingVertical: 10 }}>
-                <View style={{ paddingHorizontal: 10 }}>
-                  <Text style={pdfStyles.h2}>Historikk</Text>
-                </View>
-                <HistorikkPDF arbeidsavtaler={arbeidsavtaler} locale={locale} />
-              </View>
+              <HistorikkPDF arbeidsavtaler={arbeidsavtaler} locale={locale} />
             )}
           </>
         )}

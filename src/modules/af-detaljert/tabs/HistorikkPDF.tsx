@@ -5,7 +5,7 @@ import { Text, View } from "@react-pdf/renderer";
 import PDFCheckAndPrintBox from "../../../components/pdf-check-and-print-box/PDFCheckAndPrintBox";
 import sprak from "../../../language/provider";
 import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
-import { pdfStyles } from "../../common/pdf-styles";
+import { pdfStyles } from "../../common/pdf";
 
 interface Props {
   arbeidsavtaler: AFArbeidsavtaler[];

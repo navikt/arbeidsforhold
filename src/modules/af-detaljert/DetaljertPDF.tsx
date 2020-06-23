@@ -1,7 +1,6 @@
 import React from "react";
 import { Font, View, Document, StyleSheet } from "@react-pdf/renderer";
-import { Page, Text, Image } from "@react-pdf/renderer";
-import logo from "../../assets/icons/logo.png";
+import { Page, Text } from "@react-pdf/renderer";
 import { AFUtvidet } from "../../types/arbeidsforhold";
 import Regular from "../../assets/fonts/ODelI1aHBYDBqgeIAH2zlNRl0pGnog23EMYRrBmUzJQ.ttf";
 import Italic from "../../assets/fonts/M2Jd71oPJhLKp0zdtTvoMwRX4TIfMQQEXLu74GftruE.ttf";
@@ -15,7 +14,7 @@ import CheckDateAndPrint from "../../components/check-date-and-print/CheckDateAn
 import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import UtenlandsoppholdPDF from "./tabs/UtenlandsoppholdPDF";
 import HistorikkPDF from "./tabs/HistorikkPDF";
-import { pdfStyles } from "../common/pdf-styles";
+import { PdfFooter, PdfHeader, pdfStyles } from "../common/pdf";
 
 interface Props {
   locale: "nb" | "en";
@@ -51,10 +50,6 @@ const ListePDF = (props: Props) => {
   });
 
   const styles = StyleSheet.create({
-    image: {
-      padding: 10,
-      width: 75,
-    },
     h2Container: {
       display: "flex",
       flexDirection: "column",
@@ -70,41 +65,7 @@ const ListePDF = (props: Props) => {
   return (
     <Document>
       <Page size="A4" style={pdfStyles.page}>
-        <View style={pdfStyles.header} fixed={true}>
-          <View style={[pdfStyles.section, pdfStyles.threeColumns]}>
-            <Image style={styles.image} src={logo} />
-          </View>
-          <View
-            style={[
-              pdfStyles.section,
-              pdfStyles.threeColumns,
-              pdfStyles.headerColumn,
-            ]}
-          >
-            <Text style={pdfStyles.h1}>Arbeidsforhold</Text>
-            <View style={pdfStyles.headerColumn}>
-              <Text style={pdfStyles.name}>{props.printName}</Text>
-              <Text style={pdfStyles.fnr}>
-                {props.printSSO.replace(/.{5}$/, " $&")}
-              </Text>
-            </View>
-          </View>
-          <View
-            style={[
-              pdfStyles.section,
-              pdfStyles.threeColumns,
-              pdfStyles.headerColumn,
-            ]}
-          >
-            <Text
-              fixed
-              style={pdfStyles.pageNumber}
-              render={({ pageNumber, totalPages }) =>
-                `Side ${pageNumber} / ${totalPages}`
-              }
-            />
-          </View>
-        </View>
+        <PdfHeader printName={props.printName} printSSO={props.printSSO} />
         {printGenerellOversikt && (
           <>
             <View style={styles.introRow}>
@@ -207,10 +168,7 @@ const ListePDF = (props: Props) => {
             </View>
           </>
         )}
-        <View style={pdfStyles.footer} fixed={true}>
-          <Text>{sprak[locale].pdfFooter1}</Text>
-          <Text>{sprak[locale].pdfFooter2}</Text>
-        </View>
+        <PdfFooter locale={locale} />
         {printTimerTimelonnet && (
           <>
             {antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0 && (

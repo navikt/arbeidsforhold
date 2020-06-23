@@ -7,7 +7,7 @@ import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDat
 import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import sprak from "../../../language/provider";
 import { Text, View } from "@react-pdf/renderer";
-import { pdfStyles } from "../../common/pdf-styles";
+import { pdfStyles } from "../../common/pdf";
 
 interface Props {
   utenlandsopphold: AFUtenlandsopphold[];

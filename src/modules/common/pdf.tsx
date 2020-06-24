@@ -2,6 +2,7 @@ import { Image, StyleSheet, Text, View } from "@react-pdf/renderer";
 import logo from "../../assets/icons/logo.png";
 import React from "react";
 import sprak from "../../language/provider";
+import moment from "moment";
 
 interface PdfHeaderProps {
   printName: string;
@@ -46,7 +47,7 @@ export const PdfHeader = (props: PdfHeaderProps) => {
 export const PdfFooter = ({ locale }: { locale: string }) => (
   <View style={pdfStyles.footer} fixed={true}>
     <Text>{sprak[locale].pdfFooter1}</Text>
-    <Text>{sprak[locale].pdfFooter2}</Text>
+    <Text>{sprak[locale].pdfFooter2(moment().format("DD.MM.YYYY"))}</Text>
   </View>
 );
 

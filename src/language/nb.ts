@@ -41,7 +41,8 @@ export default {
   visflerearbeidsforhold: "Vis flere arbeidsforhold",
   yrke: "Yrke",
   pdfFooter1: `Oversikten viser arbeidsforholdene slik de er rapportert til Arbeidsgiver- og arbeidstakerregisteret`,
-  pdfFooter2: `Arbeids- og velferdsetaten // Utskrift fra 17.05.2020`,
+  pdfFooter2: (date: string) =>
+    `Arbeids- og velferdsetaten // Utskrift fra ${date}`,
   ERKONK:
     "Arbeidsgiveren har gått konkurs. NAV har satt samme sluttdato som konkursåpningsdato i Konkursregisteret.",
   EROPPH:

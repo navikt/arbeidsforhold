@@ -42,6 +42,6 @@ export interface Sprak {
     visflerearbeidsforhold: string;
     yrke: string;
     pdfFooter1: string;
-    pdfFooter2: string;
+    pdfFooter2: (date: string) => string;
   };
 }

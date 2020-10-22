@@ -37,6 +37,7 @@ const ListePDF = (props: Props) => {
   const printPermisjon = props.printPermisjon;
   const printUtenlandsopphold = props.printUtenlandsopphold;
   const printHistorikk = props.printHistorikk;
+  const { printName, printSSO } = props;
   const { arbeidsavtaler, permisjonPermittering } = arbeidsforhold;
   const { antallTimerForTimelonnet, utenlandsopphold } = arbeidsforhold;
 
@@ -65,7 +66,7 @@ const ListePDF = (props: Props) => {
   return (
     <Document>
       <Page size="A4" style={pdfStyles.page}>
-        <PdfHeader printName={props.printName} printSSO={props.printSSO} />
+        <PdfHeader printName={printName} printSSO={printSSO} locale={locale} />
         {printGenerellOversikt && (
           <View style={{ minHeight: 600 }}>
             <View style={styles.introRow}>
@@ -90,7 +91,7 @@ const ListePDF = (props: Props) => {
                 )}
               </View>
               <PDFCheckAndPrintBox
-                title={"Ansettelsesperiode"}
+                title={sprak[locale].ansettelsesperiode}
                 data={arbeidsforhold.ansettelsesperiode?.periode}
                 period={true}
               />

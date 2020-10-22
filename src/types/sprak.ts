@@ -23,6 +23,7 @@ export interface Sprak {
     periode: string;
     prosent: string;
     rapporteringsperiode: string;
+    side: string;
     sistbekreftet: string;
     sistelonnsendring: string;
     skipsregister: string;

@@ -49,7 +49,7 @@ const ListePDF = ({ arbeidsforhold, locale, printName, printSSO }: Props) => {
   return (
     <Document>
       <Page size="A4" style={pdfStyles.page}>
-        <PdfHeader printName={printName} printSSO={printSSO} />
+        <PdfHeader printName={printName} printSSO={printSSO} locale={locale} />
         <View style={styles.liste}>
           {arbeidsforhold.map((foretak, i) => (
             <View key={i} style={styles.listeRow} wrap={false}>

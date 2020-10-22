@@ -7,6 +7,7 @@ import moment from "moment";
 interface PdfHeaderProps {
   printName: string;
   printSSO: string;
+  locale: string;
 }
 
 export const PdfHeader = (props: PdfHeaderProps) => {
@@ -23,7 +24,7 @@ export const PdfHeader = (props: PdfHeaderProps) => {
         <Image style={styles.image} src={logo} />
       </View>
       <View style={[pdfStyles.section, pdfStyles.center, { width: "60%" }]}>
-        <Text style={pdfStyles.h1}>Arbeidsforhold</Text>
+        <Text style={pdfStyles.h1}>{sprak[props.locale].arbeidsforhold}</Text>
         <View style={pdfStyles.center}>
           <Text style={pdfStyles.name}>{props.printName}</Text>
           <Text style={pdfStyles.fnr}>
@@ -36,7 +37,7 @@ export const PdfHeader = (props: PdfHeaderProps) => {
           fixed
           style={pdfStyles.pageNumber}
           render={({ pageNumber, totalPages }) =>
-            `Side ${pageNumber} / ${totalPages}`
+            `${sprak[props.locale].side} ${pageNumber} / ${totalPages}`
           }
         />
       </View>

@@ -22,6 +22,7 @@ export default {
   periode: "Periode",
   prosent: " Prosent",
   rapporteringsperiode: "Rapporteringsperiode",
+  side: "Side",
   sistbekreftet: "Sist bekreftet av arbeidsgiver",
   sistelonnsendring: "Siste lønnsendring",
   skipsregister: "Skipsregister",

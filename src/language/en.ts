@@ -1,6 +1,6 @@
 export default {
   antalltimer: "Number of hours",
-  ansettelsesperiode: "Ansettelsesperiode",
+  ansettelsesperiode: "Employment period",
   apne: "Open",
   arbeidsavtale: "Employment",
   arbeidsforhold: "Employment",
@@ -22,6 +22,7 @@ export default {
   periode: "Period",
   prosent: " Percentage",
   rapporteringsperiode: "Reported in period",
+  side: "Page",
   sistbekreftet: "Last confirmed by employer",
   sistelonnsendring: "Last salary change",
   skipsregister: "Ship registry",
@@ -40,17 +41,16 @@ export default {
   visfaerrearbeidsforhold: "Show fewer",
   visflerearbeidsforhold: "Show more",
   yrke: "Profession",
-  pdfFooter1: `Oversikten viser arbeidsforholdene slik det er rapportert til Arbeidsgiver- og arbeidstakerregisteret`,
-  pdfFooter2: (date: string) =>
-    `Arbeids- og velferdsetaten // Utskrift fra ${date}`,
+  pdfFooter1: `The data is reported by employers as reported to Arbeidsgiver- og arbeidstakerregisteret`,
+  pdfFooter2: (date: string) => `Arbeids- og velferdsetaten // Printed ${date}`,
   ERKONK:
-    "Sluttdato satt av NAV. Arbeidsgiver har gått konkurs. Sluttdato er samme dato som konkursåpningsdato i Konkursregisteret.",
+    "End date set by NAV. The employer has gone bankrupt. End date is the same date as the bankruptcy date reported to Konkursregisteret.",
   EROPPH:
-    "Sluttdato satt av NAV. Arbeidsgiver er opphørt i Enhetsregisteret. Sluttdato er satt til datoen foretaket er opphørt.",
+    "End date set by NAV. The employer has ceased to exist in Enhetsregisteret. The end date is set to the date the company ceased to exist.",
   ERVIRK:
-    "Sluttdato satt av NAV. Foretaket er overdratt til annen juridisk enhet. Sluttdatoen er satt til dato for overdragelse.",
+    "End date set by NAV. The company has been transferred to another legal entity. The end date is set to the date of transfer.",
   IBARBG:
-    "Sluttdato satt av NAV. Arbeidsforholdet har ikke blitt bekreftet. Sluttdato er siste dato i kalendermåneden som arbeidsforholdet er bekreftet.",
+    "End date set by NAV. The employment has not been confirmed. End date is the last date of the calendar month in which the employment is confirmed.",
   IBKAOR:
-    "Sluttdato satt av NAV. Arbeidsforholdet er ikke bekreftet gjennom a-ordningen. Sluttdato er satt til 31.12.2014",
+    "End date set by NAV. The employment has not been confirmed through A-ordningen. End date is set for 31.12.2014",
 };

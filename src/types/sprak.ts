@@ -37,8 +37,10 @@ export interface Sprak {
     };
     timerifullstilling: string;
     timerperuke: string;
+    tilleggsopplysninger: string;
     type: string;
     typearbeidsforhold: string;
+    utskriftsvalg: string;
     visfaerrearbeidsforhold: string;
     visflerearbeidsforhold: string;
     yrke: string;

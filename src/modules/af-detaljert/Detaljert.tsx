@@ -246,7 +246,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
         >
           <div style={{ padding: "2rem 2.5rem" }}>
             <CheckboxGruppe
-              legend="Utskriftsvalg"
+              legend={sprak[locale].utskriftsvalg}
               className={"af-detaljert__checkboxes"}
             >
               <Checkbox
@@ -259,13 +259,13 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
               />
             </CheckboxGruppe>
             <CheckboxGruppe
-              legend="Velg hvilke tilleggsopplysninger du vil skrive ut"
+              legend={sprak[locale].tilleggsopplysninger}
               className={"af-detaljert__checkboxes"}
             >
               {antallTimerForTimelonnet &&
                 antallTimerForTimelonnet.length > 0 && (
                   <Checkbox
-                    label={"Timer for timelønnet"}
+                    label={sprak[locale].tabs.timerfortimelonnet}
                     className={"af-detaljert__checkbox"}
                     checked={printTimerTimelonnet}
                     onChange={() =>
@@ -275,7 +275,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
                 )}
               {permisjonPermittering && permisjonPermittering.length > 0 && (
                 <Checkbox
-                  label={"Permisjon / permittering"}
+                  label={sprak[locale].tabs.permisjonpermittering}
                   className={"af-detaljert__checkbox"}
                   checked={printPermisjon}
                   onChange={() => settPrintPermisjon(!printPermisjon)}
@@ -283,7 +283,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
               )}
               {utenlandsopphold && utenlandsopphold.length > 0 && (
                 <Checkbox
-                  label={"Arbeid i utlandet"}
+                  label={sprak[locale].tabs.arbeidiutlandet}
                   className={"af-detaljert__checkbox"}
                   checked={printUtenlandsopphold}
                   onChange={() =>
@@ -293,7 +293,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
               )}
               {arbeidsavtaler && arbeidsavtaler.length > 0 && (
                 <Checkbox
-                  label={"Historikk"}
+                  label={sprak[locale].tabs.historikk}
                   className={"af-detaljert__checkbox"}
                   checked={printHistorikk}
                   onChange={() => settPrintHistorikk(!printHistorikk)}

@@ -10,6 +10,7 @@
   "scripts": {
     "build": "rollup -c",
     "start": "npm-run-all -p start:*",
+    "publish": "npm version patch && npm run build && npm publish",
     "start:module": "rollup -c -w",
     "start:example": "cd example && npm start",
     "test": "exit 0",

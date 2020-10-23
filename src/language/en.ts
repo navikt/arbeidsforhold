@@ -8,6 +8,7 @@ export default {
   arbeidstidsordning: "Working scheme",
   endretstillingsprosent: "Changed position percentage",
   fartsomraade: "Area",
+  generelleopplysninger: "General information",
   httperror: "Wops, something went wrong when retrieving data!",
   hovedenhet: "Parent company",
   hvisfeil1: `The overview displays employments reported after 01.01.2015.`,

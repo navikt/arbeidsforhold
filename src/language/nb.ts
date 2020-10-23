@@ -8,6 +8,7 @@ export default {
   arbeidstidsordning: "Arbeidstidsordning",
   endretstillingsprosent: "Endret stillingsprosent",
   fartsomraade: "Fartsområde",
+  generelleopplysninger: "Generelle opplysninger",
   httperror: "Oisann, noe gikk galt ved henting av data!",
   hovedenhet: "Hovedenhet",
   hvisfeil1: `Oversikten viser arbeidsforholdene slik det er rapportert av arbeidsgiver.`,

@@ -77,13 +77,15 @@ const Timer = (props: Props) => {
                   className="af-detaljert__flex-kolonne af-liste__ekspander"
                   onClick={onClick}
                 >
+                  <button>
                   {year} {value.ekspandert ? <OppChevron /> : <NedChevron />}
+                  </button>
                 </div>
                 <div />
               </div>
               {value.ekspandert &&
                 value.timerObjekt.map((time, i) => (
-                  <div className="af-detaljert__flex-rad" key={`${i}`}>
+                  <button className="af-detaljert__flex-rad af-detaljert__ekspander-knapp" key={`${i}`}>
                     <div className="af-detaljert__flex-kolonne af-liste__month af-detaljert__heading">
                       {time.periode && (
                         <CheckDateAndPrint
@@ -98,7 +100,7 @@ const Timer = (props: Props) => {
                     <div className="af-detaljert__flex-kolonne">
                       <CheckAndPrint data={time.antallTimer} />
                     </div>
-                  </div>
+                  </button>
                 ))}
             </Fragment>
           );

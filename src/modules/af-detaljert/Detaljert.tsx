@@ -357,10 +357,10 @@ const DownloadPDFLink = (props: DownloadPDFLinkProps) => (
       loading ? (
         <NavFrontendSpinner type={"XXS"} />
       ) : (
-        <>
+        <button className={"af-detaljert__print-ut-button"}>
           <PrinterIcon />
           <span>Skriv ut</span>
-        </>
+        </button>
       )
     }
   </PDFDownloadLink>

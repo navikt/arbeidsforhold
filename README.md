@@ -101,16 +101,10 @@ Eksempel: "https://din-api-proxy.nav.no/arbeidsforhold/{id}"
 git clone https://github.com/navikt/arbeidsforhold.git
 ```
 
-- Installer nødvendige pakker og start kompilering
+- Installer nødvendige pakker, start mock-container og start applikasjonen
 
 ```
-npm install && npm start
-```
-
-- Start test applikasjonen <br>
-
-```
-cd example && npm install && npm start
+npm install && docker-compose up -d && npm start
 ```
 
 Test-applikasjonen består av en simpel create-react-app som importerer og benytter pakkene <br>

@@ -83,7 +83,7 @@ const Timer = (props: Props) => {
               </button>
               {value.ekspandert &&
                 value.timerObjekt.map((time, i) => (
-                  <button className="af-detaljert__flex-rad af-detaljert__" key={`${i}`}>
+                  <div className="af-detaljert__flex-rad" key={`${i}`}>
                     <div className="af-detaljert__flex-kolonne af-liste__month af-detaljert__heading">
                       {time.periode && (
                         <CheckDateAndPrint
@@ -98,7 +98,7 @@ const Timer = (props: Props) => {
                     <div className="af-detaljert__flex-kolonne">
                       <CheckAndPrint data={time.antallTimer} />
                     </div>
-                  </button>
+                  </div>
                 ))}
             </Fragment>
           );

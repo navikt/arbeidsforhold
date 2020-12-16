@@ -1,0 +1,208 @@
+{
+  "ansettelsesperiode": {
+    "periode": {
+      "periodeFra": "1988-10-03"
+    },
+    "varslingskode": "TEST"
+  },
+  "antallTimerForTimelonnet": [
+    {
+      "antallTimer": 37.5,
+      "periode": {
+        "periodeFra": "2014-01-01",
+        "periodeTil": "2014-01-31"
+      },
+      "rapporteringsperiode": "2014-02"
+    },
+    {
+      "antallTimer": 37.5,
+      "periode": {
+        "periodeFra": "2014-02-01",
+        "periodeTil": "2014-02-28"
+      },
+      "rapporteringsperiode": "2014-03"
+    },
+    {
+      "antallTimer": 37.5,
+      "periode": {
+        "periodeFra": "2014-03-01",
+        "periodeTil": "2014-03-31"
+      },
+      "rapporteringsperiode": "2014-04"
+    },
+    {
+      "antallTimer": 37.5,
+      "periode": {
+        "periodeFra": "2015-04-01",
+        "periodeTil": "2015-04-30"
+      },
+      "rapporteringsperiode": "2015-05"
+    },
+    {
+      "antallTimer": 37.5,
+      "periode": {
+        "periodeFra": "2015-05-01",
+        "periodeTil": "2015-05-31"
+      },
+      "rapporteringsperiode": "2015-06"
+    },
+    {
+      "antallTimer": 37.5,
+      "periode": {
+        "periodeFra": "2016-01-01",
+        "periodeTil": "2016-01-31"
+      },
+      "rapporteringsperiode": "2016-02"
+    }
+  ],
+  "antallTimerPrUke": 37.5,
+  "arbeidsavtaler": [
+    {
+      "antallTimerPrUke": 37.5,
+      "arbeidstidsordning": "Skift",
+      "beregnetAntallTimerPrUke": 40,
+      "gyldighetsperiode": {
+        "periodeFra": "2017-03-01",
+        "periodeTil": "2017-06-01"
+      },
+      "sisteLoennsendring": "2016-04-16",
+      "sisteStillingsendring": "1988-10-03",
+      "stillingsprosent": "100%",
+      "yrke": "Klovn"
+    },
+    {
+      "antallTimerPrUke": 37.5,
+      "arbeidstidsordning": "Skift",
+      "beregnetAntallTimerPrUke": 40,
+      "fartsomraade": "Utenriks",
+      "gyldighetsperiode": {
+        "periodeFra": "2017-07-01"
+      },
+      "skipstype": "Annet",
+      "skipsregister": "Norsk internasjonal skipreise",
+      "sisteLoennsendring": "2016-12-16",
+      "sisteStillingsendring": "1988-10-03",
+      "stillingsprosent": "100%",
+      "yrke": "Klovn"
+    },
+    {
+      "antallTimerPrUke": 37.5,
+      "arbeidstidsordning": "Skift",
+      "beregnetAntallTimerPrUke": 40,
+      "gyldighetsperiode": {
+        "periodeFra": "2017-06-01",
+        "periodeTil": "2017-07-01"
+      },
+      "sisteLoennsendring": "2016-12-16",
+      "sisteStillingsendring": "1988-10-03",
+      "stillingsprosent": "100%",
+      "yrke": "Klovn"
+    },
+    {
+      "antallTimerPrUke": 37.5,
+      "arbeidstidsordning": "Skift",
+      "beregnetAntallTimerPrUke": 40,
+      "gyldighetsperiode": {
+        "periodeFra": "2017-02-01",
+        "periodeTil": "2017-03-01"
+      },
+      "sisteLoennsendring": "2016-12-16",
+      "sisteStillingsendring": "1988-10-03",
+      "stillingsprosent": "100%",
+      "yrke": "Klovn"
+    }
+  ],
+  "arbeidsgiver": {
+    "orgnavn": "Generisk Firmanavn AS Oslo",
+    "orgnr": "972165050",
+    "type": "Organisasjon"
+  },
+  "arbeidstidsordning": "Skift",
+  "beregnetAntallTimerPrUke": 40,
+  "fartsomraade": "Utenriks",
+  "gyldighetsperiode": {
+    "periodeFra": "1988-10-01"
+  },
+  "eksternArbeidsforholdId": "1162-20100701-1",
+  "navArbeidsforholdId": 7597029,
+  "opplysningspliktigarbeidsgiver": {
+    "orgnavn": "Generisk Firmanavn AS",
+    "orgnr": "972165050",
+    "type": "Organisasjon"
+  },
+  "permisjonPermittering": [
+    {
+      "periode": {
+        "periodeFra": "2014-07-01",
+        "periodeTil": "2015-12-31"
+      },
+      "permisjonPermitteringId": "123-xyz",
+      "prosent": 50.5,
+      "type": "Permisjon med foreldrepenger"
+    },
+    {
+      "periode": {
+        "periodeFra": "2015-01-03",
+        "periodeTil": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "Velferdspermisjon"
+    }
+  ],
+  "skipstype": "Annet",
+  "skipsregister": "Norsk internasjonal skipreise",
+  "sistBekreftet": "2016-12-13T13:59:11.893",
+  "sisteLoennsendring": "2016-12-16",
+  "sisteStillingsendring": "1988-10-03",
+  "stillingsprosent": "100%",
+  "type": "Ordinært",
+  "utenlandsopphold": [
+    {
+      "land": "Japan",
+      "landkode": "JPN",
+      "periode": {
+        "periodeFra": "2014-07-01",
+        "periodeTil": "2015-12-01"
+      },
+      "rapporteringsperiode": "2016-01"
+    },
+    {
+      "land": "Spania",
+      "landkode": "SPN",
+      "periode": {
+        "periodeFra": "2015-08-01",
+        "periodeTil": "2017-12-01"
+      },
+      "rapporteringsperiode": "2017-12"
+    },
+    {
+      "land": "Sverige",
+      "landkode": "SPN",
+      "periode": {
+        "periodeFra": "2011-04-01",
+        "periodeTil": "2011-11-01"
+      },
+      "rapporteringsperiode": "2017-12"
+    },
+    {
+      "land": "Portugal",
+      "landkode": "SPN",
+      "periode": {
+        "periodeFra": "2018-01-01",
+        "periodeTil": "2018-02-01"
+      },
+      "rapporteringsperiode": "2017-12"
+    },
+    {
+      "land": "Albania",
+      "landkode": "SPN",
+      "periode": {
+        "periodeFra": "2018-02-01",
+        "periodeTil": "2018-05-01"
+      },
+      "rapporteringsperiode": "2017-12"
+    }
+  ],
+  "yrke": "Klovn"
+}

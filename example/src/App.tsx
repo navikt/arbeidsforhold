@@ -103,7 +103,9 @@ const App = () => {
               locale={valgtLocale}
               fnrArbeidstaker={`${27127424204}`}
               navArbeidsforholdId={47720602}
-              printActivated={false}
+              printActivated={printActivated}
+              printName={printName}
+              printSSN={printSSN}
             />
           </div>
         </Router>

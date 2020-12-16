@@ -8,6 +8,7 @@ export default {
   arbeidstidsordning: "Working scheme",
   endretstillingsprosent: "Changed position percentage",
   fartsomraade: "Area",
+  generelleopplysninger: "General information",
   httperror: "Wops, something went wrong when retrieving data!",
   hovedenhet: "Parent company",
   hvisfeil1: `The overview displays employments reported after 01.01.2015.`,
@@ -43,7 +44,7 @@ export default {
   visfaerrearbeidsforhold: "Show fewer",
   visflerearbeidsforhold: "Show more",
   yrke: "Profession",
-  pdfFooter1: `The data is reported by employers as reported to Arbeidsgiver- og arbeidstakerregisteret`,
+  pdfFooter1: `The data is reported by employers to the State register of employers and employees`,
   pdfFooter2: (date: string) => `Arbeids- og velferdsetaten // Printed ${date}`,
   ERKONK:
     "End date set by NAV. The employer has gone bankrupt. End date is the same date as the bankruptcy date reported to Konkursregisteret.",

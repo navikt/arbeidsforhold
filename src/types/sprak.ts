@@ -9,6 +9,7 @@ export interface Sprak {
     arbeidstidsordning: string;
     endretstillingsprosent: string;
     fartsomraade: string;
+    generelleopplysninger: string;
     httperror: string;
     hovedenhet: string;
     hvisfeil1: string;

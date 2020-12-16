@@ -250,7 +250,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
               className={"af-detaljert__checkboxes"}
             >
               <Checkbox
-                label={"Generelle opplysninger"}
+                label={sprak[locale].generelleopplysninger}
                 className={"af-detaljert__checkbox"}
                 checked={printGenerellOversikt}
                 onChange={() =>

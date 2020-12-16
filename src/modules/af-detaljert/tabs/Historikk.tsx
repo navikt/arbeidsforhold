@@ -25,9 +25,9 @@ const Historikk = (props: Props) => {
     );
 
   const [data, setData] = useState(
-    props.arbeidsavtaler.map(arbeidsavtale => ({
+    props.arbeidsavtaler.map((arbeidsavtale) => ({
       arbeidsavtale: arbeidsavtale,
-      ekspandert: false
+      ekspandert: false,
     }))
   );
 
@@ -63,8 +63,8 @@ const Historikk = (props: Props) => {
               <div className="af-detaljert__flex-kolonne">
                 <CheckPeriodAndPrint data={arbeidsavtale.gyldighetsperiode} />
               </div>
-              <div
-                className="af-detaljert__flex-kolonne af-liste__ekspander"
+              <button
+                className="af-detaljert__flex-kolonne af-liste__ekspander lenke"
                 onClick={onClick}
               >
                 {!ekspandert ? (
@@ -76,7 +76,7 @@ const Historikk = (props: Props) => {
                     {sprak[locale].lukke} <OppChevron />
                   </span>
                 )}
-              </div>
+              </button>
             </div>
             {ekspandert && (
               <div className="af-detaljert__flex-rad">

@@ -34,7 +34,7 @@ const Utenlandsopphold = (props: Props) => {
     if (!initState[year]) {
       initState[year] = {
         opphold: [opphold],
-        ekspandert: !i ? true : false
+        ekspandert: !i ? true : false,
       };
     } else {
       initState[year].opphold.push(opphold);
@@ -55,7 +55,7 @@ const Utenlandsopphold = (props: Props) => {
       </div>
       {Object.keys(data)
         .reverse()
-        .map(year => {
+        .map((year) => {
           const value = data[year];
 
           const onClick = () =>
@@ -63,19 +63,19 @@ const Utenlandsopphold = (props: Props) => {
               ...data,
               [year]: {
                 ...data[year],
-                ekspandert: !data[year].ekspandert
-              }
+                ekspandert: !data[year].ekspandert,
+              },
             });
 
           return (
             <Fragment key={year}>
               <div className="af-detaljert__flex-rad" key={year}>
-                <div
-                  className="af-detaljert__flex-kolonne af-liste__ekspander"
+                <button
+                  className="af-detaljert__flex-kolonne af-liste__ekspander lenke"
                   onClick={onClick}
                 >
                   {year} {value.ekspandert ? <OppChevron /> : <NedChevron />}
-                </div>
+                </button>
                 <div />
               </div>
               {value.ekspandert &&

@@ -34,7 +34,7 @@ const Timer = (props: Props) => {
     if (!initState[year]) {
       initState[year] = {
         timerObjekt: [timerObjekt],
-        ekspandert: !i ? true : false
+        ekspandert: !i ? true : false,
       };
     } else {
       initState[year].timerObjekt.push(timerObjekt);
@@ -58,7 +58,7 @@ const Timer = (props: Props) => {
       </div>
       {Object.keys(data)
         .reverse()
-        .map(year => {
+        .map((year) => {
           const value = data[year];
 
           const onClick = () =>
@@ -66,19 +66,19 @@ const Timer = (props: Props) => {
               ...data,
               [year]: {
                 ...data[year],
-                ekspandert: !data[year].ekspandert
-              }
+                ekspandert: !data[year].ekspandert,
+              },
             });
 
           return (
             <Fragment key={year}>
               <div className="af-detaljert__flex-rad" key={year}>
-                <div
-                  className="af-detaljert__flex-kolonne af-liste__ekspander"
+                <button
+                  className="af-detaljert__flex-kolonne af-liste__ekspander lenke"
                   onClick={onClick}
                 >
                   {year} {value.ekspandert ? <OppChevron /> : <NedChevron />}
-                </div>
+                </button>
                 <div />
               </div>
               {value.ekspandert &&

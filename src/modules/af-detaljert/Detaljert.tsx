@@ -215,10 +215,13 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
               (permisjonPermittering && permisjonPermittering.length > 0) ||
               (utenlandsopphold && utenlandsopphold.length > 0) ||
               (arbeidsavtaler && arbeidsavtaler.length > 0) ? (
-                <a className={"lenke"} onClick={() => setOpenModal(true)}>
+                <button
+                  className={"lenke af-detaljert__print-button"}
+                  onClick={() => setOpenModal(true)}
+                >
                   <PrinterIcon />
                   <span>Skriv ut</span>
-                </a>
+                </button>
               ) : (
                 <DownloadPDFLink
                   locale={locale}

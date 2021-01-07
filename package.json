@@ -39,8 +39,8 @@
     "@navikt/fnrvalidator": "^1.1.2",
     "@react-pdf/renderer": "^2.0.0-beta.6",
     "classnames": "^2.2.6",
-    "moment": "^2.26.0",
     "lodash.throttle": "^4.1.1",
+    "moment": "^2.26.0",
     "nav-frontend-alertstriper": "^3.0.18",
     "nav-frontend-alertstriper-style": "^2.0.16",
     "nav-frontend-chevron": "^1.0.10",
@@ -142,6 +142,10 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "fetch-mock": "^9.11.0"
+    "docker-compose": "^0.23.5",
+    "fetch-mock": "^9.11.0",
+    "npm": "^6.14.10",
+    "start": "^5.1.0",
+    "up": "^1.0.2"
   }
 }

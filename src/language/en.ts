@@ -28,6 +28,7 @@ export default {
   sistelonnsendring: "Last salary change",
   skipsregister: "Ship registry",
   skipstype: "Ship type",
+  sluttaarsak: "Reason for employment termination",
   stillingsprosent: "Employment percent",
   tabs: {
     arbeidiutlandet: "Work abroad",

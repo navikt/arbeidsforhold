@@ -29,6 +29,7 @@ export interface Sprak {
     sistelonnsendring: string;
     skipsregister: string;
     skipstype: string;
+    sluttaarsak: string;
     stillingsprosent: string;
     tabs: {
       arbeidiutlandet: string;

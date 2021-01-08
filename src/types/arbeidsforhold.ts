@@ -48,6 +48,7 @@ export interface AFPeriode {
 export interface AFAnsettelsesperiode {
   periode: AFPeriode;
   varslingskode?: string;
+  sluttaarsak?: string;
 }
 
 

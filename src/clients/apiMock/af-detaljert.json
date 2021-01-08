@@ -3,7 +3,8 @@
     "periode": {
       "periodeFra": "1988-10-03"
     },
-    "varslingskode": "TEST"
+    "varslingskode": "TEST",
+    "sluttaarsak": "arbeidstakerHarSagtOppSelv"
   },
   "antallTimerForTimelonnet": [
     {

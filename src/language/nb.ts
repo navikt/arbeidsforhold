@@ -28,6 +28,7 @@ export default {
   sistelonnsendring: "Siste lønnsendring",
   skipsregister: "Skipsregister",
   skipstype: "Skipstype",
+  sluttaarsak: "Sluttårsak",
   stillingsprosent: "Stillingsprosent",
   tabs: {
     arbeidiutlandet: "Arbeid i utlandet",

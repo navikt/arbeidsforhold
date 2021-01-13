@@ -14,7 +14,7 @@ const App = () => {
   const locales = ["nb", "en"];
   const host = window.location.host;
   const subdomain = host.split(`.`)[0];
-  const miljo = (process.env.NODE_ENV !== `development`
+  const miljo = (!subdomain.startsWith("localhost")
     ? subdomain.split(`-`)[1]
     : "LOCAL") as Miljo;
 

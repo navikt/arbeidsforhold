@@ -1,5 +1,6 @@
 export default {
   antalltimer: "Number of hours",
+  ansettelsesform: "Form of employment",
   ansettelsesperiode: "Employment period",
   apne: "Open",
   arbeidsavtale: "Employment",

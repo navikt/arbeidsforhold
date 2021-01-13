@@ -1,5 +1,6 @@
 export default {
   antalltimer: "Antall timer",
+  ansettelsesform: "Ansettelsesform",
   ansettelsesperiode: "Ansettelsesperiode",
   apne: "Åpne",
   arbeidsavtale: "Arbeidsavtale",

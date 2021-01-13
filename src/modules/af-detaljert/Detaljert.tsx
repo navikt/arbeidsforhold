@@ -101,6 +101,10 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
                   <CheckPeriodAndPrint
                     data={arbeidsforhold.ansettelsesperiode.periode}
                   />
+                  <CheckAndPrintBox
+                      title={sprak[locale].sluttaarsak}
+                      data={arbeidsforhold.ansettelsesperiode?.sluttaarsak}
+                  />
                 </Normaltekst>
               </div>
             </div>
@@ -143,10 +147,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           data={arbeidsforhold.sistBekreftet}
           date={true}
         />
-        <CheckAndPrintBox
-            title={sprak[locale].sluttaarsak}
-            data={arbeidsforhold.ansettelsesperiode?.sluttaarsak}
-        />
+
       </div>
       {tabs.length > 0 && (
         <>

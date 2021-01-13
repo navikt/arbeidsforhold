@@ -7,6 +7,7 @@ export interface AFSimpel {
 }
 
 export interface AFArbeidsavtaler {
+  ansettelsesform?: string;
   antallTimerPrUke?: number;
   arbeidstidsordning?: string;
   beregnetAntallTimerPrUke?: number;

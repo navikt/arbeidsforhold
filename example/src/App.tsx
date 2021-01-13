@@ -11,9 +11,12 @@ import OnClickVelger from "./components/OnClickVelger";
 import { Normaltekst } from "nav-frontend-typografi";
 
 const App = () => {
-  const { hostname } = window.location;
-  const miljo = (hostname.indexOf("localhost") > -1 ? "LOCAL" : "Q0") as Miljo;
   const locales = ["nb", "en"];
+  const host = window.location.host;
+  const subdomain = host.split(`.`)[0];
+  const miljo = (process.env.NODE_ENV !== `development`
+    ? subdomain.split(`-`)[1]
+    : "LOCAL") as Miljo;
 
   const printActivated = true;
   const printName = "Ola Nordmann";

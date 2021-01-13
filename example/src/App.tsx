@@ -15,7 +15,7 @@ const App = () => {
   const host = window.location.host;
   const subdomain = host.split(`.`)[0];
   const miljo = (!subdomain.startsWith("localhost")
-    ? subdomain.split(`-`)[1]
+    ? subdomain.split(`-`)[1].toUpperCase()
     : "LOCAL") as Miljo;
 
   const printActivated = true;

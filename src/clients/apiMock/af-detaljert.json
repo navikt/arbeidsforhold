@@ -3,7 +3,8 @@
     "periode": {
       "periodeFra": "1988-10-03"
     },
-    "varslingskode": "TEST"
+    "varslingskode": "TEST",
+    "sluttaarsak": "Arbeidstaker har sagt opp selv"
   },
   "antallTimerForTimelonnet": [
     {
@@ -93,6 +94,7 @@
         "periodeFra": "2017-06-01",
         "periodeTil": "2017-07-01"
       },
+      "ansettelsesform": "fast",
       "sisteLoennsendring": "2016-12-16",
       "sisteStillingsendring": "1988-10-03",
       "stillingsprosent": "100%",
@@ -204,5 +206,6 @@
       "rapporteringsperiode": "2017-12"
     }
   ],
+  "ansettelsesform": "fast",
   "yrke": "Klovn"
 }

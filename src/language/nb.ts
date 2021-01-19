@@ -1,5 +1,6 @@
 export default {
   antalltimer: "Antall timer",
+  ansettelsesform: "Ansettelsesform",
   ansettelsesperiode: "Ansettelsesperiode",
   apne: "Åpne",
   arbeidsavtale: "Arbeidsavtale",
@@ -28,6 +29,7 @@ export default {
   sistelonnsendring: "Siste lønnsendring",
   skipsregister: "Skipsregister",
   skipstype: "Skipstype",
+  sluttaarsak: "Sluttårsak",
   stillingsprosent: "Stillingsprosent",
   tabs: {
     arbeidiutlandet: "Arbeid i utlandet",

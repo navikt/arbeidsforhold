@@ -18,6 +18,10 @@ const ArbeidsavtaleFelter = (props: Props) => {
         title={sprak[locale].arbeidstidsordning}
         data={data.arbeidstidsordning}
       />
+        <CheckAndPrintBox
+            title={sprak[locale].ansettelsesform}
+            data={data.ansettelsesform}
+        />
       <CheckAndPrintBox
         title={sprak[locale].sistelonnsendring}
         data={data.sisteLoennsendring}

@@ -94,7 +94,14 @@ const ListePDF = (props: Props) => {
                 title={sprak[locale].ansettelsesperiode}
                 data={arbeidsforhold.ansettelsesperiode?.periode}
                 period={true}
-              />
+              >
+              <Text style={pdfStyles.normaltekst}>
+                <CheckAndPrint
+                    data={arbeidsforhold.ansettelsesperiode?.sluttaarsak}
+                    format={`(${sprak[locale].sluttaarsak}: %s)`}
+                />
+              </Text>
+            </PDFCheckAndPrintBox>
             </View>
             <View style={{ ...pdfStyles.flexGrid }}>
               {arbeidsforhold.opplysningspliktigarbeidsgiver.type ===
@@ -128,6 +135,10 @@ const ListePDF = (props: Props) => {
               <PDFCheckAndPrintBox
                 title={sprak[locale].arbeidstidsordning}
                 data={arbeidsforhold.arbeidstidsordning}
+              />
+              <PDFCheckAndPrintBox
+                  title={sprak[locale].ansettelsesform}
+                  data={arbeidsforhold.ansettelsesform}
               />
               <PDFCheckAndPrintBox
                 title={sprak[locale].sistelonnsendring}

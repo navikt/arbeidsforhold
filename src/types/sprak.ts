@@ -1,6 +1,7 @@
 export interface Sprak {
   [key: string]: {
     antalltimer: string;
+    ansettelsesform: string,
     ansettelsesperiode: string;
     apne: string;
     arbeidsavtale: string;
@@ -29,6 +30,7 @@ export interface Sprak {
     sistelonnsendring: string;
     skipsregister: string;
     skipstype: string;
+    sluttaarsak: string;
     stillingsprosent: string;
     tabs: {
       arbeidiutlandet: string;

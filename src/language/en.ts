@@ -1,5 +1,6 @@
 export default {
   antalltimer: "Number of hours",
+  ansettelsesform: "Form of employment",
   ansettelsesperiode: "Employment period",
   apne: "Open",
   arbeidsavtale: "Employment",
@@ -28,6 +29,7 @@ export default {
   sistelonnsendring: "Last salary change",
   skipsregister: "Ship registry",
   skipstype: "Ship type",
+  sluttaarsak: "Reason for employment termination",
   stillingsprosent: "Employment percent",
   tabs: {
     arbeidiutlandet: "Work abroad",

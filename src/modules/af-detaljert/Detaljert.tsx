@@ -16,7 +16,7 @@ import ArbeidsavtaleFelter from "../../components/arbeidsavtale/Felter";
 import { orgnr } from "../../utils/orgnr";
 import ArbeidsgiverTittel from "../../components/arbeidsgiver/ArbeidsgiverTittel";
 import PrinterIcon from "../../assets/icons/printer";
-import { PDFDownloadLink } from "@react-pdf/renderer";
+import {PDFDownloadLink} from "@react-pdf/renderer";
 import { CheckboxGruppe, Checkbox } from "nav-frontend-skjema";
 import DetaljertPDF from "./DetaljertPDF";
 import ModalWrapper from "nav-frontend-modal";
@@ -101,6 +101,12 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
                   <CheckPeriodAndPrint
                     data={arbeidsforhold.ansettelsesperiode.periode}
                   />
+                  <Normaltekst>
+                    <CheckAndPrint
+                        data={arbeidsforhold.ansettelsesperiode?.sluttaarsak}
+                        format={`(${sprak[locale].sluttaarsak}: %s)`}
+                    />
+                  </Normaltekst>
                 </Normaltekst>
               </div>
             </div>
@@ -143,6 +149,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           data={arbeidsforhold.sistBekreftet}
           date={true}
         />
+
       </div>
       {tabs.length > 0 && (
         <>

@@ -7,6 +7,7 @@ export interface AFSimpel {
 }
 
 export interface AFArbeidsavtaler {
+  ansettelsesform?: string;
   antallTimerPrUke?: number;
   arbeidstidsordning?: string;
   beregnetAntallTimerPrUke?: number;
@@ -48,6 +49,7 @@ export interface AFPeriode {
 export interface AFAnsettelsesperiode {
   periode: AFPeriode;
   varslingskode?: string;
+  sluttaarsak?: string;
 }
 
 

@@ -113,16 +113,41 @@ Prosjektet støtter hot-reloading, endringer i komponentene vil føre til at tes
 ## Deployering
 
 Applikasjonen bygges til dev ved git tag på formatet `vX.X.X-test` (Q1 og Q6) eller `vX.X.X-dev` (Q6). <br>
-For å lansere applikasjonen til [npmjs](https://www.npmjs.com/package/@navikt/arbeidsforhold), benytt [npm version](https://docs.npmjs.com/cli/version) til å oppdatere package.json og lage en ny git-tag. Eks:
 
 ```
 npm version patch -m "Din melding"
 ```
 
-Push deretter den nye versjonen til Github, som vil plukkes opp av [CircleCI](https://circleci.com/gh/navikt/workflows/arbeidsforhold).
+Push deretter den nye versjonen til Github, som vil plukkes opp av [Github Actions](https://github.com/navikt/arbeidsforhold/actions).
 
 ```
 git push && git push --tags
+```
+
+## Release
+
+Logg på npmjs
+
+```
+npm login
+```
+
+Patch
+
+```
+npm run release-patch
+```
+
+Minor
+
+```
+npm run release-minor
+```
+
+Major
+
+```
+npm run release-major
 ```
 
 ## Logging

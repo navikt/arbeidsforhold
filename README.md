@@ -1,10 +1,8 @@
 # NAV Arbeidsforhold
 
-[![npm version](https://badge.fury.io/js/%40navikt%2Farbeidsforhold.svg)](https://badge.fury.io/js/%40navikt%2Farbeidsforhold) <br>
-![Deploy-to-npm](https://github.com/navikt/arbeidsforhold/workflows/Deploy-to-npm/badge.svg)
-![Deploy-to-q0](https://github.com/navikt/arbeidsforhold/workflows/Deploy-to-q0/badge.svg)
-![Deploy-to-q1](https://github.com/navikt/arbeidsforhold/workflows/Deploy-to-q1/badge.svg)
-![Deploy-to-q6](https://github.com/navikt/arbeidsforhold/workflows/Deploy-to-q6/badge.svg)
+[![npm version](https://badge.fury.io/js/%40navikt%2Farbeidsforhold.svg)](https://badge.fury.io/js/%40navikt%2Farbeidsforhold) |
+![Deploy-to-npm](https://github.com/navikt/arbeidsforhold/workflows/Deploy-to-npm/badge.svg) |
+![Deploy-to-dev](https://github.com/navikt/arbeidsforhold/workflows/Deploy-to-dev/badge.svg)
 
 React moduler / mikro-frontends som viser brukerens arbeidsforhold
 
@@ -112,7 +110,7 @@ Prosjektet støtter hot-reloading, endringer i komponentene vil føre til at tes
 
 ## Deployering
 
-Applikasjonen bygges til dev ved git tag på formatet `vX.X.X-test` (Q1 og Q6) eller `vX.X.X-dev` (Q6). <br>
+Applikasjonen bygges til dev ved git tag på formatet `vX.X.X-dev`. <br>
 
 ```
 npm version patch -m "Din melding"

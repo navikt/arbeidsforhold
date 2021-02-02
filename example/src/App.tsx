@@ -13,10 +13,8 @@ import { Normaltekst } from "nav-frontend-typografi";
 const App = () => {
   const locales = ["nb", "en"];
   const host = window.location.host;
-  const subdomain = host.split(`.`)[0];
-  const miljo = (!subdomain.startsWith("localhost")
-    ? subdomain.split(`-`)[1].toUpperCase()
-    : "LOCAL") as Miljo;
+  const isDev = host.split(`.`)[1] === "dev";
+  const miljo = (isDev ? "DEV" : "LOCAL") as Miljo;
 
   const printActivated = true;
   const printName = "Ola Nordmann";

@@ -22,14 +22,14 @@ export type AFDetaljertProps = AFPrint &
     | {
         rolle: "ARBEIDSTAKER";
         locale: "nb" | "en";
-        miljo: "LOCAL" | "Q6" | "Q2" | "Q1" | "Q0" | "PROD";
+        miljo: "LOCAL" | "DEV" | "PROD";
         navArbeidsforholdId: number;
         customApiUrl?: string;
       }
     | {
         rolle: "ARBEIDSGIVER";
         locale: "nb" | "en";
-        miljo: "LOCAL" | "Q6" | "Q2" | "Q1" | "Q0" | "PROD";
+        miljo: "LOCAL" | "DEV" | "PROD";
         navArbeidsforholdId: number;
         fnrArbeidstaker: string;
         customApiUrl?: string;

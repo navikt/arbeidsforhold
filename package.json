@@ -39,7 +39,7 @@
   },
   "peerDependencies": {
     "@navikt/fnrvalidator": "^1.1.2",
-    "@react-pdf/renderer": "^2.0.0-beta.6",
+    "@react-pdf/renderer": "^2.0.8",
     "classnames": "^2.2.6",
     "lodash.throttle": "^4.1.1",
     "moment": "^2.26.0",
@@ -79,7 +79,7 @@
     "@babel/plugin-proposal-class-properties": "^7.10.1",
     "@babel/preset-typescript": "^7.10.1",
     "@navikt/fnrvalidator": "^1.1.2",
-    "@react-pdf/renderer": "^2.0.0-beta.6",
+    "@react-pdf/renderer": "^2.0.8",
     "@rollup/plugin-image": "^2.0.5",
     "@svgr/rollup": "^5.4.0",
     "@types/fetch-mock": "^7.3.3",

@@ -40,8 +40,8 @@ const UtenlandsoppholdPDF = (props: Props) => {
   });
 
   return (
-    <>
-      <View wrap={false}>
+    <View wrap={false}>
+      <View>
         <View style={pdfStyles.tableTitle}>
           <Text style={pdfStyles.h2}>Arbeid i utlandet</Text>
         </View>
@@ -97,7 +97,7 @@ const UtenlandsoppholdPDF = (props: Props) => {
             </View>
           );
         })}
-    </>
+    </View>
   );
 };
 

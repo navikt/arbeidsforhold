@@ -40,8 +40,8 @@ const TimerPDF = (props: Props) => {
   });
 
   return (
-    <>
-      <View wrap={false}>
+    <View>
+      <View>
         <View style={pdfStyles.tableTitle}>
           <Text style={pdfStyles.h2}>Timer for timelønnet</Text>
         </View>
@@ -64,7 +64,7 @@ const TimerPDF = (props: Props) => {
         .map((year) => {
           const value = data[year];
           return (
-            <View key={year} style={pdfStyles.flexSection} wrap={false}>
+            <View key={year} style={pdfStyles.flexSection}>
               <View style={pdfStyles.flexRow}>
                 <View style={pdfStyles.flexColumn}>
                   <Text style={pdfStyles.h3}>{year}</Text>
@@ -99,7 +99,7 @@ const TimerPDF = (props: Props) => {
             </View>
           );
         })}
-    </>
+    </View>
   );
 };
 

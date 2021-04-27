@@ -12,7 +12,7 @@
     "start": "npm-run-all -p start:*",
     "preversion": "npm test && npm run build",
     "postversion": "git push && git push --tags",
-    "release-patch:beta": "npm version patch --preid=beta && npm publish --tag beta",
+    "release-patch:beta": "npm version prepatch --preid=beta && npm publish --tag beta",
     "release-patch:production": "npm version && npm publish",
     "start:module": "rollup -c -w",
     "start:example": "cd example && npm start",

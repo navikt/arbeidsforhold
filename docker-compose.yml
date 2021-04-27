@@ -2,7 +2,7 @@ version: "3.7"
 services:
   oidc-provider:
     container_name: oidc-provider
-    image: "navikt/stub-oidc-provider:local"
+    image: "docker.pkg.github.com/navikt/stub-oidc-provider/stub-oidc-provider:latest"
     ports:
       - "9000:9000"
     environment:
@@ -12,7 +12,7 @@ services:
 
   oidc-provider-gui:
     container_name: oidc-provider-gui
-    image: "navikt/pb-oidc-provider-gui:latest"
+    image: "docker.pkg.github.com/navikt/pb-oidc-provider-gui/pb-oidc-provider-gui:latest"
     ports:
       - "5000:5000"
     environment:
@@ -23,20 +23,21 @@ services:
 
   mocks:
     container_name: mocks
-    image: "navikt/pb-nav-mocked:local"
+    image: "docker.pkg.github.com/navikt/pb-nav-mocked/pb-nav-mocked:latest"
     ports:
       - "8095:8080"
     environment:
-      CORS_ALLOWED_ORIGINS: "arbeidsforhold-api:8080"
-      OIDC_ISSUER: "https://localhost:9000"
+      CORS_ALLOWED_ORIGINS: "*"
       OIDC_ACCEPTED_AUDIENCE: "stubOidcClient"
       OIDC_JWKS_URI: "http://oidc-provider:9000/certs"
+      KAFKA_BOOTSTRAP_SERVERS: "http://localhost:5121"
+      KAFKA_SCHEMAREGISTRY_SERVERS: "http://localhost:5121"
     depends_on:
       - oidc-provider
 
   arbeidsforhold-api:
     container_name: arbeidsforhold-api
-    image: "navikt/arbeidsforhold-api:local"
+    image: "navikt/arbeidsforhold-api:5ae21ce5-987b-4da2-8027-077c93564195-v1.0.17"
     ports:
       - "8096:8080"
     environment:

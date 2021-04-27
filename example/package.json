@@ -21,7 +21,7 @@
   "dependencies": {
     "@navikt/arbeidsforhold": "file:..",
     "@navikt/fnrvalidator": "^1.1.2",
-    "@react-pdf/renderer": "^2.0.0-beta.6",
+    "@react-pdf/renderer": "^2.0.8",
     "classnames": "^2.2.6",
     "core-js": "^3.6.5",
     "fetch-mock": "^9.10.1",

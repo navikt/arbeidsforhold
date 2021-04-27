@@ -8,52 +8,199 @@
   },
   "antallTimerForTimelonnet": [
     {
-      "antallTimer": 37.5,
-      "periode": {
-        "periodeFra": "2014-01-01",
-        "periodeTil": "2014-01-31"
-      },
-      "rapporteringsperiode": "2014-02"
+      "antallTimer": "7.25",
+      "periode": { "periodeFra": "2019-03-17", "periodeTil": "2019-03-17" },
+      "rapporteringsperiode": "2019-04"
     },
     {
-      "antallTimer": 37.5,
-      "periode": {
-        "periodeFra": "2014-02-01",
-        "periodeTil": "2014-02-28"
-      },
-      "rapporteringsperiode": "2014-03"
+      "antallTimer": "6.75",
+      "periode": { "periodeFra": "2019-03-16", "periodeTil": "2019-03-16" },
+      "rapporteringsperiode": "2019-04"
     },
     {
-      "antallTimer": 37.5,
-      "periode": {
-        "periodeFra": "2014-03-01",
-        "periodeTil": "2014-03-31"
-      },
-      "rapporteringsperiode": "2014-04"
+      "antallTimer": "6.0",
+      "periode": { "periodeFra": "2019-03-31", "periodeTil": "2019-03-31" },
+      "rapporteringsperiode": "2019-04"
     },
     {
-      "antallTimer": 37.5,
-      "periode": {
-        "periodeFra": "2015-04-01",
-        "periodeTil": "2015-04-30"
-      },
-      "rapporteringsperiode": "2015-05"
+      "antallTimer": "7.25",
+      "periode": { "periodeFra": "2019-03-15", "periodeTil": "2019-03-15" },
+      "rapporteringsperiode": "2019-04"
     },
     {
-      "antallTimer": 37.5,
-      "periode": {
-        "periodeFra": "2015-05-01",
-        "periodeTil": "2015-05-31"
-      },
-      "rapporteringsperiode": "2015-06"
+      "antallTimer": "6.0",
+      "periode": { "periodeFra": "2019-04-21", "periodeTil": "2019-04-21" },
+      "rapporteringsperiode": "2019-05"
     },
     {
-      "antallTimer": 37.5,
-      "periode": {
-        "periodeFra": "2016-01-01",
-        "periodeTil": "2016-01-31"
-      },
-      "rapporteringsperiode": "2016-02"
+      "antallTimer": "6.75",
+      "periode": { "periodeFra": "2019-04-28", "periodeTil": "2019-04-28" },
+      "rapporteringsperiode": "2019-05"
+    },
+    {
+      "antallTimer": "6.75",
+      "periode": { "periodeFra": "2019-04-14", "periodeTil": "2019-04-14" },
+      "rapporteringsperiode": "2019-05"
+    },
+    {
+      "antallTimer": "6.75",
+      "periode": { "periodeFra": "2019-04-27", "periodeTil": "2019-04-27" },
+      "rapporteringsperiode": "2019-05"
+    },
+    {
+      "antallTimer": "7.0",
+      "periode": { "periodeFra": "2019-04-22", "periodeTil": "2019-04-22" },
+      "rapporteringsperiode": "2019-05"
+    },
+    {
+      "antallTimer": "6.0",
+      "periode": { "periodeFra": "2019-04-13", "periodeTil": "2019-04-13" },
+      "rapporteringsperiode": "2019-05"
+    },
+    {
+      "antallTimer": "6.0",
+      "periode": { "periodeFra": "2019-05-30", "periodeTil": "2019-05-30" },
+      "rapporteringsperiode": "2019-06"
+    },
+    {
+      "antallTimer": "6.0",
+      "periode": { "periodeFra": "2019-06-20", "periodeTil": "2019-06-20" },
+      "rapporteringsperiode": "2019-07"
+    },
+    {
+      "antallTimer": "6.75",
+      "periode": { "periodeFra": "2019-06-09", "periodeTil": "2019-06-09" },
+      "rapporteringsperiode": "2019-07"
+    },
+    {
+      "antallTimer": "6.0",
+      "periode": { "periodeFra": "2019-06-08", "periodeTil": "2019-06-08" },
+      "rapporteringsperiode": "2019-07"
+    },
+    {
+      "antallTimer": "6.75",
+      "periode": { "periodeFra": "2019-06-23", "periodeTil": "2019-06-23" },
+      "rapporteringsperiode": "2019-07"
+    },
+    {
+      "antallTimer": "6.75",
+      "periode": { "periodeFra": "2019-06-22", "periodeTil": "2019-06-22" },
+      "rapporteringsperiode": "2019-07"
+    },
+    {
+      "antallTimer": "6.0",
+      "periode": { "periodeFra": "2019-06-21", "periodeTil": "2019-06-21" },
+      "rapporteringsperiode": "2019-07"
+    },
+    {
+      "antallTimer": "0.0",
+      "periode": { "periodeFra": "2019-05-30", "periodeTil": "2019-05-30" },
+      "rapporteringsperiode": "2019-07"
+    },
+    {
+      "antallTimer": "7.25",
+      "periode": { "periodeFra": "2019-07-20", "periodeTil": "2019-07-20" },
+      "rapporteringsperiode": "2019-08"
+    },
+    {
+      "antallTimer": "7.25",
+      "periode": { "periodeFra": "2019-07-27", "periodeTil": "2019-07-27" },
+      "rapporteringsperiode": "2019-08"
+    },
+    {
+      "antallTimer": "6.75",
+      "periode": { "periodeFra": "2019-07-18", "periodeTil": "2019-07-18" },
+      "rapporteringsperiode": "2019-08"
+    },
+    {
+      "antallTimer": "6.75",
+      "periode": { "periodeFra": "2019-07-15", "periodeTil": "2019-07-15" },
+      "rapporteringsperiode": "2019-08"
+    },
+    {
+      "antallTimer": "7.25",
+      "periode": { "periodeFra": "2019-07-24", "periodeTil": "2019-07-24" },
+      "rapporteringsperiode": "2019-08"
+    },
+    {
+      "antallTimer": "6.5",
+      "periode": { "periodeFra": "2019-07-17", "periodeTil": "2019-07-17" },
+      "rapporteringsperiode": "2019-08"
+    },
+    {
+      "antallTimer": "7.25",
+      "periode": { "periodeFra": "2019-07-26", "periodeTil": "2019-07-26" },
+      "rapporteringsperiode": "2019-08"
+    },
+    {
+      "antallTimer": "7.25",
+      "periode": { "periodeFra": "2019-07-23", "periodeTil": "2019-07-23" },
+      "rapporteringsperiode": "2019-08"
+    },
+    {
+      "antallTimer": "7.25",
+      "periode": { "periodeFra": "2019-07-25", "periodeTil": "2019-07-25" },
+      "rapporteringsperiode": "2019-08"
+    },
+    {
+      "antallTimer": "7.25",
+      "periode": { "periodeFra": "2019-07-31", "periodeTil": "2019-07-31" },
+      "rapporteringsperiode": "2019-08"
+    },
+    {
+      "antallTimer": "7.25",
+      "periode": { "periodeFra": "2019-07-30", "periodeTil": "2019-07-30" },
+      "rapporteringsperiode": "2019-08"
+    },
+    {
+      "antallTimer": "6.75",
+      "periode": { "periodeFra": "2019-07-21", "periodeTil": "2019-07-21" },
+      "rapporteringsperiode": "2019-08"
+    },
+    {
+      "antallTimer": "6.75",
+      "periode": { "periodeFra": "2019-07-28", "periodeTil": "2019-07-28" },
+      "rapporteringsperiode": "2019-08"
+    },
+    {
+      "antallTimer": "6.0",
+      "periode": { "periodeFra": "2019-08-31", "periodeTil": "2019-08-31" },
+      "rapporteringsperiode": "2019-09"
+    },
+    {
+      "antallTimer": "6.25",
+      "periode": { "periodeFra": "2019-08-09", "periodeTil": "2019-08-09" },
+      "rapporteringsperiode": "2019-09"
+    },
+    {
+      "antallTimer": "7.25",
+      "periode": { "periodeFra": "2019-08-10", "periodeTil": "2019-08-10" },
+      "rapporteringsperiode": "2019-09"
+    },
+    {
+      "antallTimer": "6.75",
+      "periode": { "periodeFra": "2019-08-24", "periodeTil": "2019-08-24" },
+      "rapporteringsperiode": "2019-09"
+    },
+    {
+      "antallTimer": "7.25",
+      "periode": { "periodeFra": "2019-08-01", "periodeTil": "2019-08-01" },
+      "rapporteringsperiode": "2019-09"
+    },
+    {
+      "antallTimer": "6.75",
+      "periode": { "periodeFra": "2019-08-14", "periodeTil": "2019-08-14" },
+      "rapporteringsperiode": "2019-09"
+    },
+    {
+      "antallTimer": "6.75",
+      "periode": { "periodeFra": "2019-08-11", "periodeTil": "2019-08-11" },
+      "rapporteringsperiode": "2019-09"
+    },
+    {
+      "antallTimer": "6.25",
+      "periode": { "periodeFra": "2019-08-02", "periodeTil": "2019-08-02" },
+      "rapporteringsperiode": "2019-09"
     }
   ],
   "antallTimerPrUke": 37.5,
@@ -150,6 +297,177 @@
       "permisjonPermitteringId": "164-xyz",
       "prosent": 36.4,
       "type": "Velferdspermisjon"
+    },
+    {
+      "periode": {
+        "periodeFra": "2015-01-03",
+        "periodeTil": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "Velferdspermisjon"
+    },
+    {
+      "periode": {
+        "periodeFra": "2015-01-03",
+        "periodeTil": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "Velferdspermisjon"
+    },
+    {
+      "periode": {
+        "periodeFra": "2015-01-03",
+        "periodeTil": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "Velferdspermisjon"
+    },
+    {
+      "periode": {
+        "periodeFra": "2015-01-03",
+        "periodeTil": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "Velferdspermisjon"
+    },
+    {
+      "periode": {
+        "periodeFra": "2015-01-03",
+        "periodeTil": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "Velferdspermisjon"
+    },
+    {
+      "periode": {
+        "periodeFra": "2015-01-03",
+        "periodeTil": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "Velferdspermisjon"
+    },
+    {
+      "periode": {
+        "periodeFra": "2015-01-03",
+        "periodeTil": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "Velferdspermisjon"
+    },
+    {
+      "periode": {
+        "periodeFra": "2015-01-03",
+        "periodeTil": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "Velferdspermisjon"
+    },
+    {
+      "periode": {
+        "periodeFra": "2015-01-03",
+        "periodeTil": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "Velferdspermisjon"
+    },
+    {
+      "periode": {
+        "periodeFra": "2015-01-03",
+        "periodeTil": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "Velferdspermisjon"
+    },
+    {
+      "periode": {
+        "periodeFra": "2015-01-03",
+        "periodeTil": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "Velferdspermisjon"
+    },
+    {
+      "periode": {
+        "periodeFra": "2015-01-03",
+        "periodeTil": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "Velferdspermisjon"
+    },
+    {
+      "periode": {
+        "periodeFra": "2015-01-03",
+        "periodeTil": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "Velferdspermisjon"
+    },
+    {
+      "periode": {
+        "periodeFra": "2015-01-03",
+        "periodeTil": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "Velferdspermisjon"
+    },
+    {
+      "periode": {
+        "periodeFra": "2015-01-03",
+        "periodeTil": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "Velferdspermisjon"
+    },
+    {
+      "periode": {
+        "periodeFra": "2015-01-03",
+        "periodeTil": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "Velferdspermisjon"
+    },
+    {
+      "periode": {
+        "periodeFra": "2015-01-03",
+        "periodeTil": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "Velferdspermisjon"
+    },
+    {
+      "periode": {
+        "periodeFra": "2015-01-03",
+        "periodeTil": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "Velferdspermisjon"
+    },
+    {
+      "periode": {
+        "periodeFra": "2015-01-03",
+        "periodeTil": "2016-03-26"
+      },
+      "permisjonPermitteringId": "164-xyz",
+      "prosent": 36.4,
+      "type": "Velferdspermisjon"
     }
   ],
   "skipstype": "Annet",
@@ -168,6 +486,114 @@
         "periodeTil": "2015-12-01"
       },
       "rapporteringsperiode": "2016-01"
+    },
+    {
+      "land": "Japan",
+      "landkode": "JPN",
+      "periode": {
+        "periodeFra": "2014-07-01",
+        "periodeTil": "2015-12-01"
+      },
+      "rapporteringsperiode": "2012-01"
+    },
+    {
+      "land": "Japan",
+      "landkode": "JPN",
+      "periode": {
+        "periodeFra": "2014-07-01",
+        "periodeTil": "2015-12-01"
+      },
+      "rapporteringsperiode": "2012-01"
+    },
+    {
+      "land": "Japan",
+      "landkode": "JPN",
+      "periode": {
+        "periodeFra": "2014-07-01",
+        "periodeTil": "2015-12-01"
+      },
+      "rapporteringsperiode": "2012-01"
+    },
+    {
+      "land": "Japan",
+      "landkode": "JPN",
+      "periode": {
+        "periodeFra": "2014-07-01",
+        "periodeTil": "2015-12-01"
+      },
+      "rapporteringsperiode": "2012-01"
+    },
+    {
+      "land": "Japan",
+      "landkode": "JPN",
+      "periode": {
+        "periodeFra": "2014-07-01",
+        "periodeTil": "2015-12-01"
+      },
+      "rapporteringsperiode": "2012-01"
+    },
+    {
+      "land": "Japan",
+      "landkode": "JPN",
+      "periode": {
+        "periodeFra": "2014-07-01",
+        "periodeTil": "2015-12-01"
+      },
+      "rapporteringsperiode": "2012-01"
+    },
+    {
+      "land": "Japan",
+      "landkode": "JPN",
+      "periode": {
+        "periodeFra": "2014-07-01",
+        "periodeTil": "2015-12-01"
+      },
+      "rapporteringsperiode": "2012-01"
+    },
+    {
+      "land": "Japan",
+      "landkode": "JPN",
+      "periode": {
+        "periodeFra": "2014-07-01",
+        "periodeTil": "2015-12-01"
+      },
+      "rapporteringsperiode": "2012-01"
+    },
+    {
+      "land": "Japan",
+      "landkode": "JPN",
+      "periode": {
+        "periodeFra": "2014-07-01",
+        "periodeTil": "2015-12-01"
+      },
+      "rapporteringsperiode": "2012-01"
+    },
+    {
+      "land": "Japan",
+      "landkode": "JPN",
+      "periode": {
+        "periodeFra": "2014-07-01",
+        "periodeTil": "2015-12-01"
+      },
+      "rapporteringsperiode": "2012-01"
+    },
+    {
+      "land": "Japan",
+      "landkode": "JPN",
+      "periode": {
+        "periodeFra": "2014-07-01",
+        "periodeTil": "2015-12-01"
+      },
+      "rapporteringsperiode": "2012-01"
+    },
+    {
+      "land": "Japan",
+      "landkode": "JPN",
+      "periode": {
+        "periodeFra": "2014-07-01",
+        "periodeTil": "2015-12-01"
+      },
+      "rapporteringsperiode": "2012-01"
     },
     {
       "land": "Spania",
@@ -193,6 +619,42 @@
       "periode": {
         "periodeFra": "2018-01-01",
         "periodeTil": "2018-02-01"
+      },
+      "rapporteringsperiode": "2017-12"
+    },
+    {
+      "land": "Albania",
+      "landkode": "SPN",
+      "periode": {
+        "periodeFra": "2018-02-01",
+        "periodeTil": "2018-05-01"
+      },
+      "rapporteringsperiode": "2017-12"
+    },
+    {
+      "land": "Albania",
+      "landkode": "SPN",
+      "periode": {
+        "periodeFra": "2018-02-01",
+        "periodeTil": "2018-05-01"
+      },
+      "rapporteringsperiode": "2017-12"
+    },
+    {
+      "land": "Albania",
+      "landkode": "SPN",
+      "periode": {
+        "periodeFra": "2018-02-01",
+        "periodeTil": "2018-05-01"
+      },
+      "rapporteringsperiode": "2017-12"
+    },
+    {
+      "land": "Albania",
+      "landkode": "SPN",
+      "periode": {
+        "periodeFra": "2018-02-01",
+        "periodeTil": "2018-05-01"
       },
       "rapporteringsperiode": "2017-12"
     },

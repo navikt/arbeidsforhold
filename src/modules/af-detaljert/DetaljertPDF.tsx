@@ -65,10 +65,14 @@ const ListePDF = (props: Props) => {
 
   return (
     <Document>
-      <Page size="A4" style={pdfStyles.page}>
-        <PdfHeader printName={printName} printSSO={printSSO} locale={locale} />
-        {printGenerellOversikt && (
-          <View style={{ minHeight: 600 }}>
+      {printGenerellOversikt && (
+        <Page size="A4" style={pdfStyles.page}>
+          <PdfHeader
+            printName={printName}
+            printSSO={printSSO}
+            locale={locale}
+          />
+          <View>
             <View style={styles.introRow}>
               <View style={[pdfStyles.section, pdfStyles.twoColumns]}>
                 {arbeidsforhold.arbeidsgiver.type === "Organisasjon" ? (
@@ -95,13 +99,13 @@ const ListePDF = (props: Props) => {
                 data={arbeidsforhold.ansettelsesperiode?.periode}
                 period={true}
               >
-              <Text style={pdfStyles.normaltekst}>
-                <CheckAndPrint
+                <Text style={pdfStyles.normaltekst}>
+                  <CheckAndPrint
                     data={arbeidsforhold.ansettelsesperiode?.sluttaarsak}
                     format={`(${sprak[locale].sluttaarsak}: %s)`}
-                />
-              </Text>
-            </PDFCheckAndPrintBox>
+                  />
+                </Text>
+              </PDFCheckAndPrintBox>
             </View>
             <View style={{ ...pdfStyles.flexGrid }}>
               {arbeidsforhold.opplysningspliktigarbeidsgiver.type ===
@@ -137,8 +141,8 @@ const ListePDF = (props: Props) => {
                 data={arbeidsforhold.arbeidstidsordning}
               />
               <PDFCheckAndPrintBox
-                  title={sprak[locale].ansettelsesform}
-                  data={arbeidsforhold.ansettelsesform}
+                title={sprak[locale].ansettelsesform}
+                data={arbeidsforhold.ansettelsesform}
               />
               <PDFCheckAndPrintBox
                 title={sprak[locale].sistelonnsendring}
@@ -179,8 +183,12 @@ const ListePDF = (props: Props) => {
               />
             </View>
           </View>
-        )}
-        <PdfFooter locale={locale} />
+          <PdfFooter locale={locale} />
+        </Page>
+      )}
+      <Page size="A4" style={pdfStyles.page}>
+        <PdfHeader printName={printName} printSSO={printSSO} locale={locale} />
+
         {printTimerTimelonnet && (
           <>
             {antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0 && (
@@ -221,6 +229,7 @@ const ListePDF = (props: Props) => {
             )}
           </>
         )}
+        <PdfFooter locale={locale} />
       </Page>
     </Document>
   );

@@ -1,10 +1,8 @@
 # NAV Arbeidsforhold
 
 [![npm version](https://badge.fury.io/js/%40navikt%2Farbeidsforhold.svg)](https://badge.fury.io/js/%40navikt%2Farbeidsforhold) |
-![Deploy-to-npm](https://github.com/navikt/arbeidsforhold/workflows/Deploy-to-npm/badge.svg) |
-![Deploy-to-dev](https://github.com/navikt/arbeidsforhold/workflows/Deploy-to-dev/badge.svg)
 
-React moduler / mikro-frontends som viser brukerens arbeidsforhold
+NPM-modul med React-komponenter som viser brukerens arbeidsforhold
 
 ## Installasjon
 
@@ -108,33 +106,9 @@ npm install && docker-compose up -d && npm start
 Test-applikasjonen består av en simpel create-react-app som importerer og benytter pakkene <br>
 Prosjektet støtter hot-reloading, endringer i komponentene vil føre til at test-applikasjonen oppdateres
 
-## Deployering
+## Publisering
 
-### Dev
-
-1. Besøk https://github.com/navikt/personopplysninger/actions
-2. Velg workflow `Deploy-to-web` og deretter `Run workflow`. Husk å velge hvilken branch du ønsker å deploye til dev.
-
-_eller_
-
-Benytt [Github CLI](https://cli.github.com/) for å deploye via kommandolinjen:
-
-`gh workflow run workflow_dispatch -b <navn_på_branch>`
-
-Push deretter den nye versjonen til Github, som vil plukkes opp av [Github Actions](https://github.com/navikt/arbeidsforhold/actions).
-
-### Prod
-
-Deploy til prod trigges når du tagger og pusher en ny versjon. Husk å skrive en kort beskrivelse slik at det er enkelt å sporte endringer historisk fra én versjon til en annen.
-
-1. Opprett PR og be om review fra en kollega.
-2. Merge godkjent PR inn i master.
-3. `npm version [minor | patch] -m "%s: Noen få ord om endringene som er gjort."`
-4. Gå til repoet og publiser en ny release _eller_ bruk kommandolinjen: `gh release create vx.x.x -t "Tittel på release"`
-
-#### Om semver
-
-`npm version patch` vil bumpe versjon fra feks v1.1.1 til v1.1.2. Diskuter med teamet om versjonen er en minor eller kun en patch. Hvis minor bruker du `npm version minor` istedet. Du kan lese mer på [semver.org](https://semver.org/)
+Publiseres til Github Packages med [Github Actions](https://github.com/navikt/arbeidsforhold/actions)
 
 ## Logging
 

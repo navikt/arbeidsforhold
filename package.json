@@ -3,25 +3,14 @@
   "author": "NAVIKT",
   "version": "1.4.2",
   "description": "React modul som viser brukerens arbeidsforhold",
-  "homepage": "/person/arbeidsforhold",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
   "scripts": {
     "build": "rollup -c",
     "start": "npm-run-all -p start:*",
-    "preversion": "npm test && npm run build",
-    "postversion": "git push && git push --tags",
-    "release-patch:beta": "npm version prepatch --preid=beta && npm publish --tag beta",
-    "release-patch:production": "npm version && npm publish",
     "start:module": "rollup -c -w",
-    "start:example": "cd example && npm start",
-    "test": "exit 0",
-    "docker-build": "docker build . -t navikt/arbeidsforhold",
-    "docker-start": "docker run --name arbeidsforhold -p 8080:80 -t -d navikt/arbeidsforhold",
-    "docker-ssh": "docker exec -it arbeidsforhold /bin/bash",
-    "docker-stop": "docker stop arbeidsforhold",
-    "docker-rm": "docker rm arbeidsforhold"
+    "start:example": "cd example && npm start"
   },
   "repository": {
     "type": "git",

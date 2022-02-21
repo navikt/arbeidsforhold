@@ -12,7 +12,7 @@ class Environment {
         Environment.loginUrl = `http://localhost:5000`;
         break;
       case "DEV":
-        Environment.apiUrl = `https://www.dev.nav.no/person/arbeidsforhold-api`;
+        Environment.apiUrl = `https://person.dev.nav.no/person/arbeidsforhold-api`;
         Environment.loginUrl = `https://loginservice.dev.nav.no`;
         break;
       case "PROD":

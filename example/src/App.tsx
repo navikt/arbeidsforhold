@@ -11,7 +11,7 @@ import OnClickVelger from "./components/OnClickVelger";
 import { Normaltekst } from "nav-frontend-typografi";
 
 const App = () => {
-  const locales = ["nb", "en"];
+  const locales = ["nb", "nn", "en"];
   const host = window.location.host;
   const isDev = host.split(`.`)[1] === "dev";
   const miljo = (isDev ? "DEV" : "LOCAL") as Miljo;
@@ -21,7 +21,7 @@ const App = () => {
   const printSSN = "12345678911";
 
   const [valgtArbeidsforholdId, settValgtArbeidsforholdId] = useState<number>();
-  const [valgtLocale, settValgtLocale] = useState("nb" as "nb" | "en");
+  const [valgtLocale, settValgtLocale] = useState("nb" as "nb" | "nn" | "en");
 
   const arbeidsforholdOnClick = (navArbeidsforholdId: number) => {
     console.log(`Clicked on ${navArbeidsforholdId}`);

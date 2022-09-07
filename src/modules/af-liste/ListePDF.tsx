@@ -10,7 +10,7 @@ import Bold from "../../assets/fonts/toadOcfmlt9b38dHJxOBGPgXsetDviZcdR5OzC1KPcw
 import { PdfFooter, PdfHeader, pdfStyles } from "../common/pdf";
 
 interface Props {
-  locale: "nb" | "en";
+  locale: "nb" | "nn" | "en";
   arbeidsforhold: AFSimpel[];
   printName: string;
   printSSO: string;

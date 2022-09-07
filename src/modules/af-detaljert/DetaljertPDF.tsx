@@ -17,7 +17,7 @@ import HistorikkPDF from "./tabs/HistorikkPDF";
 import { PdfFooter, PdfHeader, pdfStyles } from "../common/pdf";
 
 interface Props {
-  locale: "nb" | "en";
+  locale: "nb" | "en" | "nn";
   arbeidsforhold: AFUtvidet;
   printGenerellOversikt: boolean;
   printTimerTimelonnet: boolean;

@@ -332,7 +332,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
 };
 
 interface DownloadPDFLinkProps {
-  locale: "nb" | "en";
+  locale: "nb" | "nn" | "en";
   arbeidsforhold: AFUtvidet;
   printGenerellOversikt: boolean;
   printTimerTimelonnet: boolean;

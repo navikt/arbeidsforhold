@@ -35,7 +35,7 @@ export type AFListeOnClick =
     };
 
 export type AFListeProps = AFPrint & {
-  locale: "nb" | "en";
+  locale: "nb" | "nn" | "en";
   miljo: "LOCAL" | "DEV" | "PROD";
   onClick: AFListeOnClick;
   customApiUrl?: string;

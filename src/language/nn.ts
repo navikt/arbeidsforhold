@@ -12,11 +12,11 @@ export default {
   generelleopplysninger: "Generelle opplysningar",
   httperror: "Oi, noko gjekk galt ved henting av data!",
   hovedenhet: "Hovudeining",
-  hvisfeil1: `Oversikten viser arbeidsforholda slik dei er rapportert av arbeidsgivar.`,
-  hvisfeil2: `Hvis det er feil i et arbeidsforhold, kan arbeidsgivaren endre gjennom a-meldinga.`,
+  hvisfeil1: `Oversikta viser arbeidsforholda slik dei er rapportert av arbeidsgivar.`,
+  hvisfeil2: `Dersom det er feil i et arbeidsforhold, kan arbeidsgivaren endre gjennom a-meldinga.`,
   ingenarbeidsforhold: `Du har ingen registrerte arbeidsforhold.`,
   land: "Land",
-  lonnsendring: "Lønnsendring",
+  lonnsendring: "Lønsendring",
   lukke: "Lukk",
   organisasjonsnummer: "Organisasjonsnummer",
   opptjeningsperiode: "Oppteningsperiode",
@@ -46,7 +46,7 @@ export default {
   visfaerrearbeidsforhold: "Vis færre arbeidsforhold",
   visflerearbeidsforhold: "Vis fleire arbeidsforhold",
   yrke: "Yrke",
-  pdfFooter1: `Oversikta viser arbeidsforholda slik dei er rapportert til Arbeidsgiver- og arbeidstakerregisteret`,
+  pdfFooter1: `Oversikta viser arbeidsforholda slik dei er rapportert til Arbeidsgivar- og arbeidstakarregisteret`,
   pdfFooter2: (date: string) =>
     `Arbeids- og velferdsetaten // Utskrift frå ${date}`,
   ERKONK:

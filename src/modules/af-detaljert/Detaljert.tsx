@@ -22,6 +22,7 @@ import DetaljertPDF from "./DetaljertPDF";
 import ModalWrapper from "nav-frontend-modal";
 import NavFrontendSpinner from "nav-frontend-spinner";
 import { AFUtvidet } from "../../types/arbeidsforhold";
+import { Locale } from "../../types/locale";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, locale } = props;
@@ -332,7 +333,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
 };
 
 interface DownloadPDFLinkProps {
-  locale: "nb" | "nn" | "en";
+  locale: Locale;
   arbeidsforhold: AFUtvidet;
   printGenerellOversikt: boolean;
   printTimerTimelonnet: boolean;

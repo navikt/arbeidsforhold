@@ -15,9 +15,10 @@ import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import UtenlandsoppholdPDF from "./tabs/UtenlandsoppholdPDF";
 import HistorikkPDF from "./tabs/HistorikkPDF";
 import { PdfFooter, PdfHeader, pdfStyles } from "../common/pdf";
+import { Locale } from "../../types/locale";
 
 interface Props {
-  locale: "nb" | "en" | "nn";
+  locale: Locale;
   arbeidsforhold: AFUtvidet;
   printGenerellOversikt: boolean;
   printTimerTimelonnet: boolean;

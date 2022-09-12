@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import Miljo from "../../src/types/miljo";
-import { DetaljertArbeidsforhold } from "@navikt/arbeidsforhold";
-import { ListeMedArbeidsforhold } from "@navikt/arbeidsforhold";
+import {
+  DetaljertArbeidsforhold,
+  ListeMedArbeidsforhold,
+} from "@navikt/arbeidsforhold";
 import InfoBoks from "./components/InfoBoks";
 import SprakVelger from "./components/SprakVelger";
-import { BrowserRouter as Router } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import { AFListeOnClick } from "../../src/modules/af-liste";
 import OnClickVelger from "./components/OnClickVelger";
 import { Normaltekst } from "nav-frontend-typografi";
+import { Locale } from "./types/locale";
 
 const App = () => {
-  const locales = ["nb", "en"];
+  const locales: Locale[] = ["nb", "nn", "en"];
   const host = window.location.host;
   const isDev = host.split(`.`)[1] === "dev";
   const miljo = (isDev ? "DEV" : "LOCAL") as Miljo;
@@ -21,7 +23,7 @@ const App = () => {
   const printSSN = "12345678911";
 
   const [valgtArbeidsforholdId, settValgtArbeidsforholdId] = useState<number>();
-  const [valgtLocale, settValgtLocale] = useState("nb" as "nb" | "en");
+  const [valgtLocale, settValgtLocale] = useState<Locale>("nb");
 
   const arbeidsforholdOnClick = (navArbeidsforholdId: number) => {
     console.log(`Clicked on ${navArbeidsforholdId}`);

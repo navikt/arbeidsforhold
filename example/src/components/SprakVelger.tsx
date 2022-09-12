@@ -1,9 +1,10 @@
 import React from "react";
+import { Locale } from "../types/locale";
 
 interface Props {
-  locales: string[];
-  valgtLocale: string;
-  settValgtLocale: (locale: "en" | "nb") => void;
+  locales: Locale[];
+  valgtLocale: Locale;
+  settValgtLocale: (locale: Locale) => void;
 }
 
 const SprakVelger = (props: Props) => {
@@ -19,7 +20,7 @@ const SprakVelger = (props: Props) => {
           <span
             key={i}
             className="example__sprak"
-            onClick={() => settValgtLocale(locale as "nb" | "en")}
+            onClick={() => settValgtLocale(locale)}
           >
             {locale}
           </span>

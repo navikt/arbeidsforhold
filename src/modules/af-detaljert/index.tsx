@@ -10,6 +10,7 @@ import Miljo from "types/miljo";
 import moment from "moment";
 import "moment/locale/nb";
 import { AFPrint } from "../../types/print";
+import { Locale } from "../../types/locale";
 
 type State =
   | { status: "READY" }
@@ -21,14 +22,14 @@ export type AFDetaljertProps = AFPrint &
   (
     | {
         rolle: "ARBEIDSTAKER";
-        locale: "nb" | "en";
+        locale: Locale;
         miljo: "LOCAL" | "DEV" | "PROD";
         navArbeidsforholdId: number;
         customApiUrl?: string;
       }
     | {
         rolle: "ARBEIDSGIVER";
-        locale: "nb" | "en";
+        locale: Locale;
         miljo: "LOCAL" | "DEV" | "PROD";
         navArbeidsforholdId: number;
         fnrArbeidstaker: string;

@@ -10,6 +10,7 @@ import Miljo from "../../types/miljo";
 import moment from "moment";
 import "moment/locale/nb";
 import { AFPrint } from "../../types/print";
+import { Locale } from "../../types/locale";
 
 type State =
   | { status: "LOADING" }
@@ -35,7 +36,7 @@ export type AFListeOnClick =
     };
 
 export type AFListeProps = AFPrint & {
-  locale: "nb" | "en";
+  locale: Locale;
   miljo: "LOCAL" | "DEV" | "PROD";
   onClick: AFListeOnClick;
   customApiUrl?: string;

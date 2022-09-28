@@ -26,7 +26,7 @@
     "core-js": "^3.6.5",
     "fetch-mock": "^9.10.1",
     "lodash.throttle": "^4.1.1",
-    "moment": "^2.26.0",
+    "moment": "^2.29.4",
     "nav-frontend-alertstriper": "^3.0.18",
     "nav-frontend-alertstriper-style": "^2.0.16",
     "nav-frontend-chevron": "^1.0.10",

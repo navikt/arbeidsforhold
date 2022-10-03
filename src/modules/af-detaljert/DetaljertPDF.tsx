@@ -1,6 +1,12 @@
 import React from "react";
-import { Font, View, Document, StyleSheet } from "@react-pdf/renderer";
-import { Page, Text } from "@react-pdf/renderer";
+import {
+  Document,
+  Font,
+  Page,
+  StyleSheet,
+  Text,
+  View,
+} from "@react-pdf/renderer";
 import { AFUtvidet } from "../../types/arbeidsforhold";
 import Regular from "../../assets/fonts/ODelI1aHBYDBqgeIAH2zlNRl0pGnog23EMYRrBmUzJQ.ttf";
 import Italic from "../../assets/fonts/M2Jd71oPJhLKp0zdtTvoMwRX4TIfMQQEXLu74GftruE.ttf";
@@ -95,18 +101,18 @@ const ListePDF = (props: Props) => {
                   </Text>
                 )}
               </View>
-              <PDFCheckAndPrintBox
-                title={sprak[locale].ansettelsesperiode}
-                data={arbeidsforhold.ansettelsesperiode?.periode}
-                period={true}
-              >
-                <Text style={pdfStyles.normaltekst}>
+              <Text style={pdfStyles.normaltekst}>
+                <PDFCheckAndPrintBox
+                  title={sprak[locale].ansettelsesperiode}
+                  data={arbeidsforhold.ansettelsesperiode?.periode}
+                  period={true}
+                >
                   <CheckAndPrint
                     data={arbeidsforhold.ansettelsesperiode?.sluttaarsak}
                     format={`(${sprak[locale].sluttaarsak}: %s)`}
                   />
-                </Text>
-              </PDFCheckAndPrintBox>
+                </PDFCheckAndPrintBox>
+              </Text>
             </View>
             <View style={{ ...pdfStyles.flexGrid }}>
               {arbeidsforhold.opplysningspliktigarbeidsgiver.type ===

@@ -11,9 +11,9 @@ interface Props {
 
 const CheckAndPrint = (props: Props) =>
   props.data ? (
-    <Text>
-      <span className={props.font}>{props.format ? parse(props.format, props.data) : props.data}</span>
-    </Text>
+    <span className={props.font}>
+      <Text>{props.format ? parse(props.format, props.data) : props.data}</Text>
+    </span>
   ) : (
     <NoData />
   );

@@ -8,7 +8,7 @@ interface Props {
   data?: string | number;
   format?: string;
   dateFormat?: string;
-  maskineltAvsluttet?: string;
+  maskineltAvsluttet?: string | null;
 }
 
 const CheckDateAndPrint = (props: Props) => {

@@ -7,7 +7,7 @@ interface Props {
   data?: AFPeriode;
   twoLines?: boolean;
   format?: string;
-  maskineltAvsluttet?: string;
+  maskineltAvsluttet?: string | null;
 }
 
 const CheckPeriodAndPrint = (props: Props) =>

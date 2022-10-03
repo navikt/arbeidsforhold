@@ -24,6 +24,7 @@
     "src"
   ],
   "exclude": [
-    "build"
+    "build",
+    "**/*.ttf"
   ]
 }

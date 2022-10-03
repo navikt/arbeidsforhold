@@ -48,10 +48,16 @@ export interface AFPeriode {
 
 export interface AFAnsettelsesperiode {
   periode: AFPeriode;
-  varslingskode?: string;
+  varslingskode?: Varslingskode;
   sluttaarsak?: string;
 }
 
+export type Varslingskode =
+  | "ERKONK"
+  | "EROPPH"
+  | "ERVIRK"
+  | "IBARBG"
+  | "IBKAOR";
 
 export type AFArbeidsgiver =
   | {

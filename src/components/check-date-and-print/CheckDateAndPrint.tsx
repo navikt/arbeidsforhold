@@ -3,6 +3,7 @@ import NoData from "../no-data/NoData";
 import moment from "moment";
 import { parse } from "../../utils/text";
 import Hjelpetekst from "nav-frontend-hjelpetekst";
+import { Text } from "@react-pdf/renderer";
 
 interface Props {
   data?: string | number;
@@ -22,7 +23,9 @@ const CheckDateAndPrint = (props: Props) => {
     <span>
       {props.maskineltAvsluttet ? (
         <span>
-          <span>{formattedDate}</span>
+          <span>
+            <Text>{formattedDate}</Text>
+          </span>
           <Hjelpetekst
             id={props.maskineltAvsluttet}
             className="af-date__hjelpetekst"
@@ -31,7 +34,7 @@ const CheckDateAndPrint = (props: Props) => {
           </Hjelpetekst>
         </span>
       ) : (
-        formattedDate
+        <Text>{formattedDate}</Text>
       )}
     </span>
   );

@@ -3,11 +3,12 @@ import logo from "../../assets/icons/logo.png";
 import React from "react";
 import sprak from "../../language/provider";
 import moment from "moment";
+import { Locale } from "../../types/locale";
 
 interface PdfHeaderProps {
   printName: string;
   printSSO: string;
-  locale: string;
+  locale: Locale;
 }
 
 export const PdfHeader = (props: PdfHeaderProps) => {
@@ -45,7 +46,7 @@ export const PdfHeader = (props: PdfHeaderProps) => {
   );
 };
 
-export const PdfFooter = ({ locale }: { locale: string }) => (
+export const PdfFooter = ({ locale }: { locale: Locale }) => (
   <View style={pdfStyles.footer} fixed={true}>
     <Text>{sprak[locale].pdfFooter1}</Text>
     <Text>{sprak[locale].pdfFooter2(moment().format("DD.MM.YYYY"))}</Text>

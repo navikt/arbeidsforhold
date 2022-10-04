@@ -1,3 +1,5 @@
 import React from "react";
-const NoData = () => <span> </span>;
+import { Text } from "@react-pdf/renderer";
+
+const NoData = () => <Text> </Text>;
 export default NoData;

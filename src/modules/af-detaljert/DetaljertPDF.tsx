@@ -1,6 +1,12 @@
 import React from "react";
-import { Font, View, Document, StyleSheet } from "@react-pdf/renderer";
-import { Page, Text } from "@react-pdf/renderer";
+import {
+  Document,
+  Font,
+  Page,
+  StyleSheet,
+  Text,
+  View,
+} from "@react-pdf/renderer";
 import { AFUtvidet } from "../../types/arbeidsforhold";
 import Regular from "../../assets/fonts/ODelI1aHBYDBqgeIAH2zlNRl0pGnog23EMYRrBmUzJQ.ttf";
 import Italic from "../../assets/fonts/M2Jd71oPJhLKp0zdtTvoMwRX4TIfMQQEXLu74GftruE.ttf";

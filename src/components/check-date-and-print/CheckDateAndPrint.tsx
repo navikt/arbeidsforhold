@@ -19,13 +19,12 @@ const CheckDateAndPrint = (props: Props) => {
 
   const date = moment(props.data).format(props.dateFormat || "DD.MM.YYYY");
   const formattedDate = props.format ? parse(props.format, date) : date;
+
   return (
     <span>
       {props.maskineltAvsluttet ? (
         <span>
-          <span>
-            <Text>{formattedDate}</Text>
-          </span>
+          <Text>{formattedDate}</Text>
           <Hjelpetekst
             id={props.maskineltAvsluttet}
             className="af-date__hjelpetekst"

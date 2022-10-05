@@ -35,13 +35,13 @@ const PDFCheckAndPrintBox = (props: Props) => {
       <Text style={pdfStyles.h3}>{props.title}</Text>
       <Text style={pdfStyles.normaltekst}>
         {props.date && (
-          <CheckDateAndPrint data={props.data} format={props.format} />
+          <CheckDateAndPrint data={props.data} format={props.format} isPdf={true} />
         )}
         {props.period && (
-          <CheckPeriodAndPrint data={props.data} format={props.format} />
+          <CheckPeriodAndPrint data={props.data} format={props.format} isPdf={true} />
         )}
         {!props.date && !props.period && (
-          <CheckAndPrint data={props.data} format={props.format} />
+          <CheckAndPrint data={props.data} format={props.format} isPdf={true} />
         )}
       </Text>
       {props.children}

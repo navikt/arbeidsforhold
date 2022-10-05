@@ -9,6 +9,7 @@ interface Props {
   twoLines?: boolean;
   format?: string;
   maskineltAvsluttet?: string | null;
+  isPdf?: boolean;
 }
 
 const CheckPeriodAndPrint = (props: Props) =>
@@ -17,17 +18,19 @@ const CheckPeriodAndPrint = (props: Props) =>
       <CheckDateAndPrint
         data={props.data.periodeFra}
         dateFormat={props.format}
+        isPdf={props.isPdf}
       />
-      <Text>{` - `}</Text>
+      {props.isPdf ? <Text>{` - `}</Text> : <>{` - `}</>}
       {props.twoLines && <br />}
       <CheckDateAndPrint
         data={props.data.periodeTil}
         dateFormat={props.format}
         maskineltAvsluttet={props.maskineltAvsluttet}
+        isPdf={props.isPdf}
       />
     </span>
   ) : (
-    <NoData />
+    <NoData isPdf={props.isPdf} />
   );
 
 export default CheckPeriodAndPrint;

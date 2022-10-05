@@ -7,12 +7,19 @@ interface Props {
   data?: string | number;
   format?: string;
   font?: string;
+  isPdf?: boolean;
 }
 
 const CheckAndPrint = (props: Props) =>
   props.data ? (
     <span className={props.font}>
-      <Text>{props.format ? parse(props.format, props.data) : props.data}</Text>
+      {props.isPdf ? (
+        <Text>
+          {props.format ? parse(props.format, props.data) : props.data}
+        </Text>
+      ) : (
+        <>{props.format ? parse(props.format, props.data) : props.data}</>
+      )}
     </span>
   ) : (
     <NoData />

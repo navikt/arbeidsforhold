@@ -10,11 +10,12 @@ interface Props {
   format?: string;
   dateFormat?: string;
   maskineltAvsluttet?: string | null;
+  isPdf?: boolean;
 }
 
 const CheckDateAndPrint = (props: Props) => {
   if (!props.data) {
-    return <NoData />;
+    return <NoData isPdf={props.isPdf} />;
   }
 
   const date = moment(props.data).format(props.dateFormat || "DD.MM.YYYY");
@@ -24,7 +25,7 @@ const CheckDateAndPrint = (props: Props) => {
     <span>
       {props.maskineltAvsluttet ? (
         <span>
-          <Text>{formattedDate}</Text>
+          {props.isPdf ? <Text>{formattedDate}</Text> : <>{formattedDate}</>}
           <Hjelpetekst
             id={props.maskineltAvsluttet}
             className="af-date__hjelpetekst"
@@ -33,7 +34,7 @@ const CheckDateAndPrint = (props: Props) => {
           </Hjelpetekst>
         </span>
       ) : (
-        <Text>{formattedDate}</Text>
+        <>{props.isPdf ? <Text>{formattedDate}</Text> : <>{formattedDate}</>}</>
       )}
     </span>
   );

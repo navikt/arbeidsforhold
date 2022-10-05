@@ -80,18 +80,19 @@ const TimerPDF = (props: Props) => {
                         <CheckDateAndPrint
                           data={time.rapporteringsperiode}
                           dateFormat="MMMM"
+                          isPdf={true}
                         />
                       )}
                     </Text>
                   </View>
                   <View style={pdfStyles.flexColumn}>
                     <Text style={pdfStyles.normaltekst}>
-                      <CheckPeriodAndPrint data={time.periode} />
+                      <CheckPeriodAndPrint data={time.periode} isPdf={true} />
                     </Text>
                   </View>
                   <View style={pdfStyles.flexColumn}>
                     <Text style={pdfStyles.normaltekst}>
-                      <CheckAndPrint data={time.antallTimer} />
+                      <CheckAndPrint data={time.antallTimer} isPdf={true} />
                     </Text>
                   </View>
                 </View>

@@ -55,7 +55,7 @@ const UtenlandsoppholdPDF = (props: Props) => {
             <Text style={pdfStyles.h3}>{sprak[locale].opptjeningsperiode}</Text>
           </View>
           <View style={pdfStyles.flexColumn}>
-            <Text style={pdfStyles.h3}>{sprak[locale].antalltimer}</Text>
+            <Text style={pdfStyles.h3}>{sprak[locale].land}</Text>
           </View>
         </View>
       </View>

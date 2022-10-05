@@ -1,5 +1,5 @@
-import React, { useState, SyntheticEvent, ChangeEvent } from "react";
-import { Undertittel, Normaltekst, Element } from "nav-frontend-typografi";
+import React, { ChangeEvent, SyntheticEvent, useState } from "react";
+import { Element, Normaltekst, Undertittel } from "nav-frontend-typografi";
 import { AFDetaljertData, AFDetaljertProps } from "./index";
 import { AlertStripeInfo } from "nav-frontend-alertstriper";
 import Tabs from "nav-frontend-tabs";
@@ -11,13 +11,12 @@ import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPe
 import CheckAndPrintBox from "../../components/check-and-print-box/CheckAndPrintBox";
 import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import sprak from "../../language/provider";
-import { Select } from "nav-frontend-skjema";
+import { Checkbox, CheckboxGruppe, Select } from "nav-frontend-skjema";
 import ArbeidsavtaleFelter from "../../components/arbeidsavtale/Felter";
 import { orgnr } from "../../utils/orgnr";
 import ArbeidsgiverTittel from "../../components/arbeidsgiver/ArbeidsgiverTittel";
 import PrinterIcon from "../../assets/icons/printer";
 import { PDFDownloadLink } from "@react-pdf/renderer";
-import { CheckboxGruppe, Checkbox } from "nav-frontend-skjema";
 import DetaljertPDF from "./DetaljertPDF";
 import ModalWrapper from "nav-frontend-modal";
 import NavFrontendSpinner from "nav-frontend-spinner";
@@ -44,9 +43,8 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   }
 
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const [printGenerellOversikt, settPrintGenerellOversikt] = useState<boolean>(
-    true
-  );
+  const [printGenerellOversikt, settPrintGenerellOversikt] =
+    useState<boolean>(true);
   const [printTimerTimelonnet, settPrintTimerTimelonnet] = useState<boolean>(
     antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0
   );
@@ -102,12 +100,10 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
                   <CheckPeriodAndPrint
                     data={arbeidsforhold.ansettelsesperiode.periode}
                   />
-                  <Normaltekst>
-                    <CheckAndPrint
-                      data={arbeidsforhold.ansettelsesperiode?.sluttaarsak}
-                      format={`(${sprak[locale].sluttaarsak}: %s)`}
-                    />
-                  </Normaltekst>
+                  <CheckAndPrint
+                    data={arbeidsforhold.ansettelsesperiode?.sluttaarsak}
+                    format={`(${sprak[locale].sluttaarsak}: %s)`}
+                  />
                 </Normaltekst>
               </div>
             </div>

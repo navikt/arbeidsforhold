@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useState } from 'react';
+import React, { useState } from 'react';
 import Tabs from 'nav-frontend-tabs';
 import { Select } from 'nav-frontend-skjema';
 import { Element } from 'nav-frontend-typografi';
@@ -25,13 +25,13 @@ const getTabsData = ({ locale, arbeidsforhold }: Props) => {
 
     const tabsData: {
         label: string;
-        TabComponent: React.FunctionComponent;
+        TabContent: React.FunctionComponent;
     }[] = [];
 
     if (antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0) {
         tabsData.push({
             label: sprak[locale].tabs.timerfortimelonnet,
-            TabComponent: () => (
+            TabContent: () => (
                 <Timer timer={antallTimerForTimelonnet} locale={locale} />
             ),
         });
@@ -39,7 +39,7 @@ const getTabsData = ({ locale, arbeidsforhold }: Props) => {
     if (permisjonPermittering && permisjonPermittering.length > 0) {
         tabsData.push({
             label: sprak[locale].tabs.permisjonpermittering,
-            TabComponent: () => (
+            TabContent: () => (
                 <Permisjon
                     permisjoner={permisjonPermittering}
                     locale={locale}
@@ -50,7 +50,7 @@ const getTabsData = ({ locale, arbeidsforhold }: Props) => {
     if (utenlandsopphold && utenlandsopphold.length > 0) {
         tabsData.push({
             label: sprak[locale].tabs.arbeidiutlandet,
-            TabComponent: () => (
+            TabContent: () => (
                 <Utenlandsopphold
                     utenlandsopphold={utenlandsopphold}
                     locale={locale}
@@ -61,7 +61,7 @@ const getTabsData = ({ locale, arbeidsforhold }: Props) => {
     if (arbeidsavtaler && arbeidsavtaler.length > 0) {
         tabsData.push({
             label: sprak[locale].tabs.historikk,
-            TabComponent: () => (
+            TabContent: () => (
                 <Historikk arbeidsavtaler={arbeidsavtaler} locale={locale} />
             ),
         });
@@ -79,17 +79,14 @@ export const DetaljertTabs = (props: Props) => {
         return null;
     }
 
-    const { TabComponent } = tabsData[visTab];
+    const { TabContent } = tabsData[visTab];
 
     return (
         <>
             <div className="af-detaljert__tabs">
                 <Tabs
                     tabs={tabsData}
-                    onChange={(
-                        _event: SyntheticEvent<EventTarget, Event>,
-                        index: number
-                    ) => settVisTab(index)}
+                    onChange={(_event, index) => settVisTab(index)}
                 />
             </div>
             <div className="af-detaljert__select">
@@ -102,7 +99,7 @@ export const DetaljertTabs = (props: Props) => {
                         }
                     >
                         {tabsData.map((tab, index) => (
-                            <option key={tab.label} value={index}>
+                            <option key={index} value={index}>
                                 {tab.label}
                             </option>
                         ))}
@@ -111,7 +108,7 @@ export const DetaljertTabs = (props: Props) => {
                     <Element>{tabsData[0].label}</Element>
                 )}
             </div>
-            <TabComponent />
+            <TabContent />
         </>
     );
 };

@@ -19,7 +19,7 @@ import { AFUtvidet } from "../../types/arbeidsforhold";
 import { Locale } from "../../types/locale";
 import { DetaljertTabs } from "./DetaljertTabs";
 
-const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
+const DetaljertArbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, locale } = props;
   const { arbeidsavtaler, permisjonPermittering } = arbeidsforhold;
   const { antallTimerForTimelonnet, utenlandsopphold } = arbeidsforhold;
@@ -294,4 +294,4 @@ const DownloadPDFLink = (props: DownloadPDFLinkProps) => (
   </PDFDownloadLink>
 );
 
-export default Arbeidsforhold;
+export default DetaljertArbeidsforhold;

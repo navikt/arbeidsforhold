@@ -1,17 +1,12 @@
-import React, { ChangeEvent, SyntheticEvent, useState } from "react";
-import { Element, Normaltekst, Undertittel } from "nav-frontend-typografi";
+import React, { useState } from "react";
+import { Normaltekst, Undertittel } from "nav-frontend-typografi";
 import { AFDetaljertData, AFDetaljertProps } from "./index";
 import { AlertStripeInfo } from "nav-frontend-alertstriper";
-import Tabs from "nav-frontend-tabs";
-import Historikk from "./tabs/Historikk";
-import Permisjon from "./tabs/Permisjon";
-import Timer from "./tabs/Timer";
-import Utenlandsopphold from "./tabs/Utenlandsopphold";
 import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
 import CheckAndPrintBox from "../../components/check-and-print-box/CheckAndPrintBox";
 import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import sprak from "../../language/provider";
-import { Checkbox, CheckboxGruppe, Select } from "nav-frontend-skjema";
+import { Checkbox, CheckboxGruppe } from "nav-frontend-skjema";
 import ArbeidsavtaleFelter from "../../components/arbeidsavtale/Felter";
 import { orgnr } from "../../utils/orgnr";
 import ArbeidsgiverTittel from "../../components/arbeidsgiver/ArbeidsgiverTittel";
@@ -22,25 +17,12 @@ import ModalWrapper from "nav-frontend-modal";
 import NavFrontendSpinner from "nav-frontend-spinner";
 import { AFUtvidet } from "../../types/arbeidsforhold";
 import { Locale } from "../../types/locale";
+import { DetaljertTabs } from "./DetaljertTabs";
 
 const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold, locale } = props;
   const { arbeidsavtaler, permisjonPermittering } = arbeidsforhold;
   const { antallTimerForTimelonnet, utenlandsopphold } = arbeidsforhold;
-
-  const tabs = [] as { label: string }[];
-  if (antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0) {
-    tabs.push({ label: sprak[locale].tabs.timerfortimelonnet });
-  }
-  if (permisjonPermittering && permisjonPermittering.length > 0) {
-    tabs.push({ label: sprak[locale].tabs.permisjonpermittering });
-  }
-  if (utenlandsopphold && utenlandsopphold.length > 0) {
-    tabs.push({ label: sprak[locale].tabs.arbeidiutlandet });
-  }
-  if (arbeidsavtaler && arbeidsavtaler.length > 0) {
-    tabs.push({ label: sprak[locale].tabs.historikk });
-  }
 
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [printGenerellOversikt, settPrintGenerellOversikt] =
@@ -57,12 +39,6 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const [printHistorikk, settPrintHistorikk] = useState<boolean>(
     arbeidsavtaler && arbeidsavtaler.length > 0
   );
-  const [visTab, settVisTab] = useState(
-    tabs.length > 0 ? tabs[0].label : "Ugyldig tab"
-  );
-
-  const selectOnClick = (event: ChangeEvent<HTMLSelectElement>) =>
-    settVisTab(event.currentTarget.value);
 
   return (
     <div className={`af-detaljert__container`}>
@@ -147,61 +123,7 @@ const Arbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           date={true}
         />
       </div>
-      {tabs.length > 0 && (
-        <>
-          <div className="af-detaljert__tabs">
-            <Tabs
-              tabs={tabs}
-              onChange={(
-                _event: SyntheticEvent<EventTarget, Event>,
-                index: number
-              ) => settVisTab(tabs[index].label)}
-            />
-          </div>
-          <div className="af-detaljert__select">
-            <hr className="af-detaljert__hr" />
-            {tabs.length > 1 ? (
-              <Select label="" onChange={selectOnClick}>
-                {tabs.map((tab) => (
-                  <option key={tab.label} value={tab.label}>
-                    {tab.label}
-                  </option>
-                ))}
-              </Select>
-            ) : (
-              <Element>{tabs[0].label}</Element>
-            )}
-          </div>
-          {(() => {
-            switch (visTab) {
-              case sprak[locale].tabs.timerfortimelonnet:
-                return (
-                  <Timer timer={antallTimerForTimelonnet} locale={locale} />
-                );
-              case sprak[locale].tabs.permisjonpermittering:
-                return (
-                  <Permisjon
-                    permisjoner={permisjonPermittering}
-                    locale={locale}
-                  />
-                );
-              case sprak[locale].tabs.arbeidiutlandet:
-                return (
-                  <Utenlandsopphold
-                    utenlandsopphold={utenlandsopphold}
-                    locale={locale}
-                  />
-                );
-              case sprak[locale].tabs.historikk:
-                return (
-                  <Historikk arbeidsavtaler={arbeidsavtaler} locale={locale} />
-                );
-              default:
-                return null;
-            }
-          })()}
-        </>
-      )}
+      <DetaljertTabs locale={locale} arbeidsforhold={arbeidsforhold} />
       <AlertStripeInfo>
         {sprak[locale].hvisfeil1}
         <br />

@@ -65,7 +65,7 @@ const getTabsData = ({ locale, arbeidsforhold }: Props) => {
 };
 
 export const DetaljertTabs = (props: Props) => {
-  const [visTab, settVisTab] = useState(0);
+  const [currentTabIndex, setCurrentTabIndex] = useState(0);
 
   const tabsData = getTabsData(props);
 
@@ -73,19 +73,24 @@ export const DetaljertTabs = (props: Props) => {
     return null;
   }
 
-  const { TabContent } = tabsData[visTab];
+  const { TabContent } = tabsData[currentTabIndex];
 
   return (
     <>
       <div className="af-detaljert__tabs">
-        <Tabs tabs={tabsData} onChange={(_event, index) => settVisTab(index)} />
+        <Tabs
+          tabs={tabsData}
+          onChange={(_event, index) => setCurrentTabIndex(index)}
+        />
       </div>
       <div className="af-detaljert__select">
         <hr className="af-detaljert__hr" />
         {tabsData.length > 1 ? (
           <Select
             label=""
-            onChange={(event) => settVisTab(Number(event.currentTarget.value))}
+            onChange={(event) =>
+              setCurrentTabIndex(Number(event.currentTarget.value))
+            }
           >
             {tabsData.map((tab, index) => (
               <option key={index} value={index}>

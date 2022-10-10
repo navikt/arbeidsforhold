@@ -7,6 +7,7 @@ import { fnr } from "../../utils/fnr";
 interface Props {
   arbeidsgiver: AFArbeidsgiver;
   overskrift?: boolean;
+  isPdf?: boolean;
 }
 
 const ArbeidsgiverTittel = (props: Props) => {
@@ -16,17 +17,17 @@ const ArbeidsgiverTittel = (props: Props) => {
         <CheckAndPrint
           data={fnr(props.arbeidsgiver.fnr)}
           font={props.overskrift ? "typo-undertittel" : "typo-element"}
+          isPdf={props.isPdf}
         />
       );
-      break;
     case "Organisasjon":
       return (
         <CheckAndPrint
           data={props.arbeidsgiver.orgnavn}
           font={props.overskrift ? "typo-undertittel" : "typo-element"}
+          isPdf={props.isPdf}
         />
       );
-      break;
     default:
       return null;
   }

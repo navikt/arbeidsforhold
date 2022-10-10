@@ -9,6 +9,7 @@ interface Props {
   children?: string | JSX.Element | JSX.Element[];
   format?: string;
   date?: boolean;
+  isPdf?: boolean;
 }
 
 const CheckAndPrintBox = (props: Props) =>
@@ -17,9 +18,17 @@ const CheckAndPrintBox = (props: Props) =>
       <Element>{props.title}</Element>
       <Normaltekst>
         {props.date ? (
-          <CheckDateAndPrint data={props.data} format={props.format} />
+          <CheckDateAndPrint
+            data={props.data}
+            format={props.format}
+            isPdf={props.isPdf}
+          />
         ) : (
-          <CheckAndPrint data={props.data} format={props.format} />
+          <CheckAndPrint
+            data={props.data}
+            format={props.format}
+            isPdf={props.isPdf}
+          />
         )}
       </Normaltekst>
       {props.children}

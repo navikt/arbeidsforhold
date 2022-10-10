@@ -55,8 +55,8 @@ const HistorikkPDF = ({ arbeidsavtaler, locale }: Props) => {
               data={arbeidsavtale.arbeidstidsordning}
             />
             <PDFCheckAndPrintBox
-                title={sprak[locale].ansettelsesform}
-                data={arbeidsavtale.ansettelsesform}
+              title={sprak[locale].ansettelsesform}
+              data={arbeidsavtale.ansettelsesform}
             />
             <PDFCheckAndPrintBox
               title={sprak[locale].sistelonnsendring}
@@ -71,6 +71,7 @@ const HistorikkPDF = ({ arbeidsavtaler, locale }: Props) => {
                 <CheckDateAndPrint
                   data={arbeidsavtale.sisteStillingsendring}
                   format={`(${sprak[locale].endretstillingsprosent} %s)`}
+                  isPdf={true}
                 />
               </Text>
             </PDFCheckAndPrintBox>

@@ -55,7 +55,7 @@ const UtenlandsoppholdPDF = (props: Props) => {
             <Text style={pdfStyles.h3}>{sprak[locale].opptjeningsperiode}</Text>
           </View>
           <View style={pdfStyles.flexColumn}>
-            <Text style={pdfStyles.h3}>{sprak[locale].antalltimer}</Text>
+            <Text style={pdfStyles.h3}>{sprak[locale].land}</Text>
           </View>
         </View>
       </View>
@@ -79,17 +79,18 @@ const UtenlandsoppholdPDF = (props: Props) => {
                       <CheckDateAndPrint
                         data={time.periode.periodeFra}
                         dateFormat="MMMM"
+                        isPdf={true}
                       />
                     </Text>
                   </View>
                   <View style={pdfStyles.flexColumn}>
                     <Text style={pdfStyles.normaltekst}>
-                      <CheckPeriodAndPrint data={time.periode} />
+                      <CheckPeriodAndPrint data={time.periode} isPdf={true} />
                     </Text>
                   </View>
                   <View style={pdfStyles.flexColumn}>
                     <Text style={pdfStyles.normaltekst}>
-                      <CheckAndPrint data={time.land} />
+                      <CheckAndPrint data={time.land} isPdf={true} />
                     </Text>
                   </View>
                 </View>

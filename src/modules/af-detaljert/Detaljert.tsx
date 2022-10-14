@@ -18,6 +18,7 @@ import NavFrontendSpinner from "nav-frontend-spinner";
 import { AFUtvidet } from "../../types/arbeidsforhold";
 import { DetaljertTabs } from "./DetaljertTabs";
 import { useLocale } from "../common/useLocale";
+import { useIsPdf } from "../common/useIsPdf";
 
 const DetaljertArbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold } = props;
@@ -260,35 +261,40 @@ interface DownloadPDFLinkProps {
   printSSO: string;
 }
 
-const DownloadPDFLink = (props: DownloadPDFLinkProps) => (
-  <PDFDownloadLink
-    key={Math.random()}
-    document={
-      <DetaljertPDF
-        arbeidsforhold={props.arbeidsforhold}
-        printGenerellOversikt={props.printGenerellOversikt}
-        printTimerTimelonnet={props.printTimerTimelonnet}
-        printPermisjon={props.printPermisjon}
-        printUtenlandsopphold={props.printUtenlandsopphold}
-        printHistorikk={props.printHistorikk}
-        printName={props.printName}
-        printSSO={props.printSSO}
-      />
-    }
-    fileName="arbeidsforhold.pdf"
-    className={"lenke"}
-  >
-    {({ loading }) =>
-      loading ? (
-        <NavFrontendSpinner type={"XXS"} />
-      ) : (
-        <>
-          <PrinterIcon />
-          <span>Skriv ut</span>
-        </>
-      )
-    }
-  </PDFDownloadLink>
-);
+const DownloadPDFLink = (props: DownloadPDFLinkProps) => {
+  const { IsPdfProvider } = useIsPdf();
+  return (
+    <IsPdfProvider value={true}>
+      <PDFDownloadLink
+        key={Math.random()}
+        document={
+          <DetaljertPDF
+            arbeidsforhold={props.arbeidsforhold}
+            printGenerellOversikt={props.printGenerellOversikt}
+            printTimerTimelonnet={props.printTimerTimelonnet}
+            printPermisjon={props.printPermisjon}
+            printUtenlandsopphold={props.printUtenlandsopphold}
+            printHistorikk={props.printHistorikk}
+            printName={props.printName}
+            printSSO={props.printSSO}
+          />
+        }
+        fileName="arbeidsforhold.pdf"
+        className={"lenke"}
+      >
+        {({ loading }) =>
+          loading ? (
+            <NavFrontendSpinner type={"XXS"} />
+          ) : (
+            <>
+              <PrinterIcon />
+              <span>Skriv ut</span>
+            </>
+          )
+        }
+      </PDFDownloadLink>
+    </IsPdfProvider>
+  );
+};
 
 export default DetaljertArbeidsforhold;

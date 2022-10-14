@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Normaltekst } from "nav-frontend-typografi";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
-import { AFListeProps, AFListeData } from "./index";
+import { AFListeData, AFListeProps } from "./index";
 import { sortPeriodeFraDesc, sortPeriodeTilDesc } from "../../utils/date";
 import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
@@ -11,12 +11,14 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 import ListePDF from "./ListePDF";
 import PrinterIcon from "../../assets/icons/printer";
 import { useLocale } from "../common/useLocale";
+import { useIsPdf } from "../common/useIsPdf";
 
 const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
   const { arbeidsforhold, onClick } = props;
   const [visAlle, settVisAlle] = useState<boolean>(false);
   const toggleVisAlle = () => settVisAlle(!visAlle);
   const { locale } = useLocale();
+  const { IsPdfProvider } = useIsPdf();
 
   const sorterteArbeidsforhold = arbeidsforhold
     .sort((a, b) =>
@@ -88,16 +90,19 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
           )}
         </button>
       )}
+
       {props.printActivated && arbeidsforhold.length > 0 && (
         <div className="af-liste__print-button">
           <Normaltekst>
             <PDFDownloadLink
               document={
-                <ListePDF
-                  arbeidsforhold={arbeidsforhold}
-                  printName={props.printName}
-                  printSSO={props.printSSN}
-                />
+                <IsPdfProvider value={true}>
+                  <ListePDF
+                    arbeidsforhold={arbeidsforhold}
+                    printName={props.printName}
+                    printSSO={props.printSSN}
+                  />
+                </IsPdfProvider>
               }
               fileName="arbeidsforhold.pdf"
               className={"lenke"}

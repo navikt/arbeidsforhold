@@ -1,11 +1,7 @@
 import React from "react";
-import { Text } from "@react-pdf/renderer";
+import CheckIsPdf from "../check-pdf/CheckIsPdf";
 
-interface Props {
-  isPdf?: boolean;
-}
-
-const NoData = (props: Props) => {
-  return props.isPdf ? <Text> </Text> : <> </>;
+const NoData = () => {
+  return <CheckIsPdf> : </CheckIsPdf>;
 };
 export default NoData;

@@ -79,18 +79,17 @@ const UtenlandsoppholdPDF = (props: Props) => {
                       <CheckDateAndPrint
                         data={time.periode.periodeFra}
                         dateFormat="MMMM"
-                        isPdf={true}
                       />
                     </Text>
                   </View>
                   <View style={pdfStyles.flexColumn}>
                     <Text style={pdfStyles.normaltekst}>
-                      <CheckPeriodAndPrint data={time.periode} isPdf={true} />
+                      <CheckPeriodAndPrint data={time.periode} />
                     </Text>
                   </View>
                   <View style={pdfStyles.flexColumn}>
                     <Text style={pdfStyles.normaltekst}>
-                      <CheckAndPrint data={time.land} isPdf={true} />
+                      <CheckAndPrint data={time.land} />
                     </Text>
                   </View>
                 </View>

@@ -105,7 +105,6 @@ const ListePDF = (props: Props) => {
                   <CheckAndPrint
                     data={arbeidsforhold.ansettelsesperiode?.sluttaarsak}
                     format={`(${sprak[locale].sluttaarsak}: %s)`}
-                    isPdf={true}
                   />
                 </Text>
               </PDFCheckAndPrintBox>
@@ -123,7 +122,6 @@ const ListePDF = (props: Props) => {
                         arbeidsforhold.opplysningspliktigarbeidsgiver.orgnr
                       )}
                       format={`${sprak[locale].organisasjonsnummer} %s`}
-                      isPdf={true}
                     />
                   </Text>
                 </PDFCheckAndPrintBox>
@@ -161,7 +159,6 @@ const ListePDF = (props: Props) => {
                   <CheckDateAndPrint
                     data={arbeidsforhold.sisteStillingsendring}
                     format={`(${sprak[locale].endretstillingsprosent} %s)`}
-                    isPdf={true}
                   />
                 </Text>
               </PDFCheckAndPrintBox>

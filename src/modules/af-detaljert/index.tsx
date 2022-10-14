@@ -118,7 +118,11 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
         </LocaleProvider>
       );
     case "ERROR":
-      return <Error error={state.error} />;
+      return (
+        <LocaleProvider value={props.locale}>
+          <Error error={state.error} />
+        </LocaleProvider>
+      );
   }
 };
 

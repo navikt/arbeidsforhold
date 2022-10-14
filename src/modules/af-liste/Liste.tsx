@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Normaltekst } from "nav-frontend-typografi";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
-import { AFListeProps, AFListeData } from "./index";
+import { AFListeData, AFListeProps } from "./index";
 import { sortPeriodeFraDesc, sortPeriodeTilDesc } from "../../utils/date";
 import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
@@ -16,7 +16,7 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
   const { arbeidsforhold, onClick } = props;
   const [visAlle, settVisAlle] = useState<boolean>(false);
   const toggleVisAlle = () => settVisAlle(!visAlle);
-  const { locale } = useLocale();
+  const { locale, LocaleProvider } = useLocale();
 
   const sorterteArbeidsforhold = arbeidsforhold
     .sort((a, b) =>
@@ -93,11 +93,14 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
           <Normaltekst>
             <PDFDownloadLink
               document={
-                <ListePDF
-                  arbeidsforhold={arbeidsforhold}
-                  printName={props.printName}
-                  printSSO={props.printSSN}
-                />
+                // LocaleProvider-wrapper nødvendig for å få med locale i PDF-rendering
+                <LocaleProvider value={locale}>
+                  <ListePDF
+                    arbeidsforhold={arbeidsforhold}
+                    printName={props.printName}
+                    printSSO={props.printSSN}
+                  />
+                </LocaleProvider>
               }
               fileName="arbeidsforhold.pdf"
               className={"lenke"}

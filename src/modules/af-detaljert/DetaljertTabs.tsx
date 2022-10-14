@@ -33,7 +33,7 @@ const getTabsData = ({ arbeidsforhold }: Props) => {
     tabsData.push({
       label: sprak[locale].tabs.timerfortimelonnet,
       TabContent: () => (
-        <Timer timer={antallTimerForTimelonnet} locale={locale} />
+        <Timer timer={antallTimerForTimelonnet} />
       ),
     });
   }
@@ -41,7 +41,7 @@ const getTabsData = ({ arbeidsforhold }: Props) => {
     tabsData.push({
       label: sprak[locale].tabs.permisjonpermittering,
       TabContent: () => (
-        <Permisjon permisjoner={permisjonPermittering} locale={locale} />
+        <Permisjon permisjoner={permisjonPermittering} />
       ),
     });
   }
@@ -49,7 +49,7 @@ const getTabsData = ({ arbeidsforhold }: Props) => {
     tabsData.push({
       label: sprak[locale].tabs.arbeidiutlandet,
       TabContent: () => (
-        <Utenlandsopphold utenlandsopphold={utenlandsopphold} locale={locale} />
+        <Utenlandsopphold utenlandsopphold={utenlandsopphold} />
       ),
     });
   }
@@ -57,7 +57,7 @@ const getTabsData = ({ arbeidsforhold }: Props) => {
     tabsData.push({
       label: sprak[locale].tabs.historikk,
       TabContent: () => (
-        <Historikk arbeidsavtaler={arbeidsavtaler} locale={locale} />
+        <Historikk arbeidsavtaler={arbeidsavtaler} />
       ),
     });
   }

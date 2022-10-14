@@ -9,7 +9,6 @@ import Spinner from "components/spinner/Spinner";
 import DetaljerArbeidsforhold from "./Detaljert";
 import Environment from "utils/environment";
 import Miljo from "types/miljo";
-import moment from "moment";
 import "moment/locale/nb";
 import "moment/locale/nn";
 import { AFPrint } from "../../types/print";
@@ -46,15 +45,13 @@ export interface AFDetaljertData {
 }
 
 const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
-  const { locale } = props;
   const [state, setState] = useState<State>({ status: "READY" });
 
   const { LocaleProvider } = useLocale();
 
   useEffect(() => {
     Environment.settEnv(props.miljo as Miljo);
-    moment.locale(locale);
-  }, [locale]);
+  }, []);
 
   useEffect(() => {
     if (props.navArbeidsforholdId) {

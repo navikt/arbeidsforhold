@@ -10,12 +10,13 @@ import { ListeTittel } from "./ListeTittel";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import ListePDF from "./ListePDF";
 import PrinterIcon from "../../assets/icons/printer";
+import { useLocale } from "../common/useLocale";
 
 const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
   const { arbeidsforhold, onClick } = props;
   const [visAlle, settVisAlle] = useState<boolean>(false);
   const toggleVisAlle = () => settVisAlle(!visAlle);
-  const locale = props.locale;
+  const { locale } = useLocale();
 
   const sorterteArbeidsforhold = arbeidsforhold
     .sort((a, b) =>
@@ -54,7 +55,7 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
                       data={foretak.ansettelsesperiode.periode}
                       maskineltAvsluttet={
                         foretak.ansettelsesperiode.varslingskode
-                          ? sprak[props.locale][
+                          ? sprak[locale][
                               foretak.ansettelsesperiode.varslingskode
                             ]
                           : null
@@ -66,7 +67,7 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
             ))
         ) : (
           <div className="af-liste__flex-rad">
-            <Normaltekst>{sprak[props.locale].ingenarbeidsforhold}</Normaltekst>
+            <Normaltekst>{sprak[locale].ingenarbeidsforhold}</Normaltekst>
           </div>
         )}
       </div>
@@ -78,11 +79,11 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
         >
           {visAlle ? (
             <Normaltekst>
-              {sprak[props.locale].visfaerrearbeidsforhold} <OppChevron />
+              {sprak[locale].visfaerrearbeidsforhold} <OppChevron />
             </Normaltekst>
           ) : (
             <Normaltekst>
-              {sprak[props.locale].visflerearbeidsforhold} <NedChevron />
+              {sprak[locale].visflerearbeidsforhold} <NedChevron />
             </Normaltekst>
           )}
         </button>
@@ -93,7 +94,6 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
             <PDFDownloadLink
               document={
                 <ListePDF
-                  locale={locale}
                   arbeidsforhold={arbeidsforhold}
                   printName={props.printName}
                   printSSO={props.printSSN}

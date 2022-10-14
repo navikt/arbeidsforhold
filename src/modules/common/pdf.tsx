@@ -3,15 +3,16 @@ import logo from "../../assets/icons/logo.png";
 import React from "react";
 import sprak from "../../language/provider";
 import moment from "moment";
-import { Locale } from "../../types/locale";
+import { useLocale } from "./useLocale";
 
 interface PdfHeaderProps {
   printName: string;
   printSSO: string;
-  locale: Locale;
 }
 
 export const PdfHeader = (props: PdfHeaderProps) => {
+  const { locale } = useLocale();
+
   const styles = StyleSheet.create({
     image: {
       padding: 10,
@@ -25,7 +26,7 @@ export const PdfHeader = (props: PdfHeaderProps) => {
         <Image style={styles.image} src={logo} />
       </View>
       <View style={[pdfStyles.section, pdfStyles.center, { width: "60%" }]}>
-        <Text style={pdfStyles.h1}>{sprak[props.locale].arbeidsforhold}</Text>
+        <Text style={pdfStyles.h1}>{sprak[locale].arbeidsforhold}</Text>
         <View style={pdfStyles.center}>
           <Text style={pdfStyles.name}>{props.printName}</Text>
           <Text style={pdfStyles.fnr}>
@@ -38,7 +39,7 @@ export const PdfHeader = (props: PdfHeaderProps) => {
           fixed
           style={pdfStyles.pageNumber}
           render={({ pageNumber, totalPages }) =>
-            `${sprak[props.locale].side} ${pageNumber} / ${totalPages}`
+            `${sprak[locale].side} ${pageNumber} / ${totalPages}`
           }
         />
       </View>
@@ -46,12 +47,16 @@ export const PdfHeader = (props: PdfHeaderProps) => {
   );
 };
 
-export const PdfFooter = ({ locale }: { locale: Locale }) => (
-  <View style={pdfStyles.footer} fixed={true}>
-    <Text>{sprak[locale].pdfFooter1}</Text>
-    <Text>{sprak[locale].pdfFooter2(moment().format("DD.MM.YYYY"))}</Text>
-  </View>
-);
+export const PdfFooter = () => {
+  const { locale } = useLocale();
+
+  return (
+    <View style={pdfStyles.footer} fixed={true}>
+      <Text>{sprak[locale].pdfFooter1}</Text>
+      <Text>{sprak[locale].pdfFooter2(moment().format("DD.MM.YYYY"))}</Text>
+    </View>
+  );
+};
 
 export const pdfStyles = StyleSheet.create({
   page: {

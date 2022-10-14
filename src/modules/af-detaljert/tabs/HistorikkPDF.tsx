@@ -6,13 +6,15 @@ import PDFCheckAndPrintBox from "../../../components/pdf-check-and-print-box/PDF
 import sprak from "../../../language/provider";
 import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
 import { pdfStyles } from "../../common/pdf";
+import { useLocale } from "../../common/useLocale";
 
 interface Props {
   arbeidsavtaler: AFArbeidsavtaler[];
-  locale: string;
 }
 
-const HistorikkPDF = ({ arbeidsavtaler, locale }: Props) => {
+const HistorikkPDF = ({ arbeidsavtaler }: Props) => {
+  const { locale } = useLocale();
+
   arbeidsavtaler
     .sort((left, right) =>
       sortPeriodeFraDesc(left.gyldighetsperiode, right.gyldighetsperiode)

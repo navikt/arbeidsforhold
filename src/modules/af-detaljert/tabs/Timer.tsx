@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { AFTimerForTimelonnet } from "../../../types/arbeidsforhold";
 import { Element } from "nav-frontend-typografi";
 import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
@@ -8,14 +8,14 @@ import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
 import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import sprak from "../../../language/provider";
+import { useLocale } from "../../common/useLocale";
 
 interface Props {
   timer: AFTimerForTimelonnet[];
-  locale: string;
 }
 
 const Timer = (props: Props) => {
-  const { locale } = props;
+  const { locale } = useLocale();
 
   props.timer.sort((left, right) =>
     sortPeriodeFraDesc(left.periode, right.periode)
@@ -34,7 +34,7 @@ const Timer = (props: Props) => {
     if (!initState[year]) {
       initState[year] = {
         timerObjekt: [timerObjekt],
-        ekspandert: !i ? true : false,
+        ekspandert: !i,
       };
     } else {
       initState[year].timerObjekt.push(timerObjekt);

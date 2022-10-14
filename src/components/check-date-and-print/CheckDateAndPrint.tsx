@@ -4,6 +4,7 @@ import moment from "moment";
 import { parse } from "../../utils/text";
 import Hjelpetekst from "nav-frontend-hjelpetekst";
 import { Text } from "@react-pdf/renderer";
+import { useLocale } from "../../modules/common/useLocale";
 
 interface Props {
   data?: string | number;
@@ -14,11 +15,15 @@ interface Props {
 }
 
 const CheckDateAndPrint = (props: Props) => {
+  const { locale } = useLocale();
+
   if (!props.data) {
     return <NoData isPdf={props.isPdf} />;
   }
 
-  const date = moment(props.data).format(props.dateFormat || "DD.MM.YYYY");
+  const date = moment(props.data)
+    .locale(locale)
+    .format(props.dateFormat || "DD.MM.YYYY");
   const formattedDate = props.format ? parse(props.format, date) : date;
 
   return (

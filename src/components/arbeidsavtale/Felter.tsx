@@ -4,24 +4,25 @@ import CheckDateAndPrint from "../check-date-and-print/CheckDateAndPrint";
 import { AFArbeidsavtaler, AFUtvidet } from "../../types/arbeidsforhold";
 import { Normaltekst } from "nav-frontend-typografi";
 import sprak from "../../language/provider";
+import { useLocale } from "../../modules/common/useLocale";
 
 interface Props {
-  locale: string;
   data: AFArbeidsavtaler | AFUtvidet;
 }
 
 const ArbeidsavtaleFelter = (props: Props) => {
-  const { locale, data } = props;
+  const { data } = props;
+  const { locale } = useLocale();
   return (
     <>
       <CheckAndPrintBox
         title={sprak[locale].arbeidstidsordning}
         data={data.arbeidstidsordning}
       />
-        <CheckAndPrintBox
-            title={sprak[locale].ansettelsesform}
-            data={data.ansettelsesform}
-        />
+      <CheckAndPrintBox
+        title={sprak[locale].ansettelsesform}
+        data={data.ansettelsesform}
+      />
       <CheckAndPrintBox
         title={sprak[locale].sistelonnsendring}
         data={data.sisteLoennsendring}

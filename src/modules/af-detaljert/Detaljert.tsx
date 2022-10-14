@@ -16,13 +16,14 @@ import DetaljertPDF from "./DetaljertPDF";
 import ModalWrapper from "nav-frontend-modal";
 import NavFrontendSpinner from "nav-frontend-spinner";
 import { AFUtvidet } from "../../types/arbeidsforhold";
-import { Locale } from "../../types/locale";
 import { DetaljertTabs } from "./DetaljertTabs";
+import { useLocale } from "../common/useLocale";
 
 const DetaljertArbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
-  const { arbeidsforhold, locale } = props;
+  const { arbeidsforhold } = props;
   const { arbeidsavtaler, permisjonPermittering } = arbeidsforhold;
   const { antallTimerForTimelonnet, utenlandsopphold } = arbeidsforhold;
+  const { locale } = useLocale();
 
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [printGenerellOversikt, settPrintGenerellOversikt] =
@@ -116,14 +117,14 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           title={sprak[locale].arbeidsforholdid}
           data={arbeidsforhold.eksternArbeidsforholdId}
         />
-        <ArbeidsavtaleFelter locale={locale} data={arbeidsforhold} />
+        <ArbeidsavtaleFelter data={arbeidsforhold} />
         <CheckAndPrintBox
           title={sprak[locale].sistbekreftet}
           data={arbeidsforhold.sistBekreftet}
           date={true}
         />
       </div>
-      <DetaljertTabs locale={locale} arbeidsforhold={arbeidsforhold} />
+      <DetaljertTabs arbeidsforhold={arbeidsforhold} />
       <AlertStripeInfo>
         {sprak[locale].hvisfeil1}
         <br />
@@ -149,7 +150,6 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
                 </button>
               ) : (
                 <DownloadPDFLink
-                  locale={locale}
                   arbeidsforhold={arbeidsforhold}
                   printGenerellOversikt={printGenerellOversikt}
                   printTimerTimelonnet={printTimerTimelonnet}
@@ -231,7 +231,6 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
             <div className="af-detaljert__print-button-modal">
               <Normaltekst>
                 <DownloadPDFLink
-                  locale={locale}
                   arbeidsforhold={arbeidsforhold}
                   printGenerellOversikt={printGenerellOversikt}
                   printTimerTimelonnet={printTimerTimelonnet}
@@ -251,7 +250,6 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
 };
 
 interface DownloadPDFLinkProps {
-  locale: Locale;
   arbeidsforhold: AFUtvidet;
   printGenerellOversikt: boolean;
   printTimerTimelonnet: boolean;
@@ -267,7 +265,6 @@ const DownloadPDFLink = (props: DownloadPDFLinkProps) => (
     key={Math.random()}
     document={
       <DetaljertPDF
-        locale={props.locale}
         arbeidsforhold={props.arbeidsforhold}
         printGenerellOversikt={props.printGenerellOversikt}
         printTimerTimelonnet={props.printTimerTimelonnet}

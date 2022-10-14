@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Error, { HTTPError } from "components/error/Error";
 import { AFUtvidet } from "types/arbeidsforhold";
-import { hentDetaljertArbeidsforholdArbeidstaker } from "clients/apiClient";
-import { hentDetaljertArbeidsforholdArbeidsgiver } from "clients/apiClient";
+import {
+  hentDetaljertArbeidsforholdArbeidsgiver,
+  hentDetaljertArbeidsforholdArbeidstaker,
+} from "clients/apiClient";
 import Spinner from "components/spinner/Spinner";
 import DetaljerArbeidsforhold from "./Detaljert";
 import Environment from "utils/environment";
 import Miljo from "types/miljo";
 import moment from "moment";
 import "moment/locale/nb";
+import "moment/locale/nn";
 import { AFPrint } from "../../types/print";
 import { Locale } from "../../types/locale";
+import { useLocale } from "../common/useLocale";
 
 type State =
   | { status: "READY" }
@@ -44,6 +48,8 @@ export interface AFDetaljertData {
 const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
   const { locale } = props;
   const [state, setState] = useState<State>({ status: "READY" });
+
+  const { LocaleProvider } = useLocale();
 
   useEffect(() => {
     Environment.settEnv(props.miljo as Miljo);
@@ -104,13 +110,15 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
       return <Spinner />;
     case "RESULT":
       return (
-        <DetaljerArbeidsforhold
-          arbeidsforhold={state.arbeidsforhold}
-          {...props}
-        />
+        <LocaleProvider value={props.locale}>
+          <DetaljerArbeidsforhold
+            arbeidsforhold={state.arbeidsforhold}
+            {...props}
+          />
+        </LocaleProvider>
       );
     case "ERROR":
-      return <Error error={state.error} locale={locale} />;
+      return <Error error={state.error} />;
   }
 };
 

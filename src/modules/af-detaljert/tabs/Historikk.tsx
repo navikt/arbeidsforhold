@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { AFArbeidsavtaler } from "../../../types/arbeidsforhold";
 import { Element } from "nav-frontend-typografi";
 import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
@@ -7,14 +7,14 @@ import { sortPeriodeFraDesc, sortPeriodeTilDesc } from "../../../utils/date";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import sprak from "../../../language/provider";
 import ArbeidsavtaleFelter from "../../../components/arbeidsavtale/Felter";
+import { useLocale } from "../../common/useLocale";
 
 interface Props {
   arbeidsavtaler: AFArbeidsavtaler[];
-  locale: string;
 }
 
 const Historikk = (props: Props) => {
-  const { locale } = props;
+  const { locale } = useLocale();
 
   props.arbeidsavtaler
     .sort((left, right) =>
@@ -82,7 +82,7 @@ const Historikk = (props: Props) => {
               <div className="af-detaljert__flex-rad">
                 <div className="af-detaljert__flex-kolonne">
                   <div className="af-detaljert__innhold">
-                    <ArbeidsavtaleFelter locale={locale} data={arbeidsavtale} />
+                    <ArbeidsavtaleFelter data={arbeidsavtale} />
                   </div>
                 </div>
               </div>

@@ -9,7 +9,7 @@ interface Props {
 const CheckIsPdf = (props: Props) => {
   const { isPdf } = useIsPdf();
 
-  return isPdf ? <Text>{props.children} </Text> : <>{props.children}</>;
+  return isPdf ? <Text>{props.children}</Text> : <>{props.children}</>;
 };
 
 export default CheckIsPdf;

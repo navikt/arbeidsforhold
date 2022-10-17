@@ -4,10 +4,10 @@ import Timer from "./Timer";
 import Permisjon from "./Permisjon";
 import Utenlandsopphold from "./Utenlandsopphold";
 import Historikk from "./Historikk";
-import { TabType } from "../DetaljertTabs";
+import { DetaljertTabType } from "../DetaljertTabs";
 
 type Props = {
-  type: TabType;
+  type: DetaljertTabType;
   arbeidsforhold: AFUtvidet;
 };
 

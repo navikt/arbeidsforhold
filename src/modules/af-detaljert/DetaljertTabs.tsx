@@ -7,7 +7,11 @@ import sprak from "../../language/provider";
 import { useLocale } from "../common/useLocale";
 import { TabContent } from "./tabs/TabContent";
 
-export type TabType = "timer" | "permisjon" | "utenlandsopphold" | "historikk";
+export type DetaljertTabType =
+  | "timer"
+  | "permisjon"
+  | "utenlandsopphold"
+  | "historikk";
 
 const getTabsData = (arbeidsforhold: AFUtvidet) => {
   const {
@@ -19,7 +23,7 @@ const getTabsData = (arbeidsforhold: AFUtvidet) => {
 
   const tabsData: {
     label: string;
-    type: TabType;
+    type: DetaljertTabType;
   }[] = [];
 
   const { locale } = useLocale();

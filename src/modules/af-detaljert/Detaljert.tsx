@@ -12,12 +12,13 @@ import { orgnr } from "../../utils/orgnr";
 import ArbeidsgiverTittel from "../../components/arbeidsgiver/ArbeidsgiverTittel";
 import PrinterIcon from "../../assets/icons/printer";
 import { PDFDownloadLink } from "@react-pdf/renderer";
+import DetaljertPDF from "./DetaljertPDF";
 import ModalWrapper from "nav-frontend-modal";
 import NavFrontendSpinner from "nav-frontend-spinner";
 import { AFUtvidet } from "../../types/arbeidsforhold";
 import { DetaljertTabs } from "./DetaljertTabs";
 import { useLocale } from "../common/useLocale";
-import DetaljertPDF from "./DetaljertPDF";
+import { useIsPdf } from "../common/useIsPdf";
 
 const DetaljertArbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold } = props;
@@ -261,24 +262,27 @@ interface DownloadPDFLinkProps {
 }
 
 const DownloadPDFLink = (props: DownloadPDFLinkProps) => {
+  const { IsPdfProvider } = useIsPdf();
   const { locale, LocaleProvider } = useLocale();
   return (
     <PDFDownloadLink
       key={Math.random()}
       document={
-        // LocaleProvider-wrapper nødvendig for å få med locale i PDF-rendering
-        <LocaleProvider value={locale}>
-          <DetaljertPDF
-            arbeidsforhold={props.arbeidsforhold}
-            printGenerellOversikt={props.printGenerellOversikt}
-            printTimerTimelonnet={props.printTimerTimelonnet}
-            printPermisjon={props.printPermisjon}
-            printUtenlandsopphold={props.printUtenlandsopphold}
-            printHistorikk={props.printHistorikk}
-            printName={props.printName}
-            printSSO={props.printSSO}
-          />
-        </LocaleProvider>
+        <IsPdfProvider value={true}>
+          {/* LocaleProvider-wrapper nødvendig for å få med locale i PDF-rendering */}
+          <LocaleProvider value={locale}>
+            <DetaljertPDF
+              arbeidsforhold={props.arbeidsforhold}
+              printGenerellOversikt={props.printGenerellOversikt}
+              printTimerTimelonnet={props.printTimerTimelonnet}
+              printPermisjon={props.printPermisjon}
+              printUtenlandsopphold={props.printUtenlandsopphold}
+              printHistorikk={props.printHistorikk}
+              printName={props.printName}
+              printSSO={props.printSSO}
+            />
+          </LocaleProvider>
+        </IsPdfProvider>
       }
       fileName="arbeidsforhold.pdf"
       className={"lenke"}

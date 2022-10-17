@@ -3,22 +3,21 @@ import NoData from "../no-data/NoData";
 import moment from "moment";
 import { parse } from "../../utils/text";
 import Hjelpetekst from "nav-frontend-hjelpetekst";
-import { Text } from "@react-pdf/renderer";
 import { useLocale } from "../../modules/common/useLocale";
+import TextIfPdf from "../text-if-pdf/TextIfPdf";
 
 interface Props {
   data?: string | number;
   format?: string;
   dateFormat?: string;
   maskineltAvsluttet?: string | null;
-  isPdf?: boolean;
 }
 
 const CheckDateAndPrint = (props: Props) => {
   const { locale } = useLocale();
 
   if (!props.data) {
-    return <NoData isPdf={props.isPdf} />;
+    return <NoData />;
   }
 
   const date = moment(props.data)
@@ -30,7 +29,7 @@ const CheckDateAndPrint = (props: Props) => {
     <span>
       {props.maskineltAvsluttet ? (
         <span>
-          {props.isPdf ? <Text>{formattedDate}</Text> : <>{formattedDate}</>}
+          <TextIfPdf>{formattedDate}</TextIfPdf>
           <Hjelpetekst
             id={props.maskineltAvsluttet}
             className="af-date__hjelpetekst"
@@ -39,7 +38,7 @@ const CheckDateAndPrint = (props: Props) => {
           </Hjelpetekst>
         </span>
       ) : (
-        <>{props.isPdf ? <Text>{formattedDate}</Text> : <>{formattedDate}</>}</>
+        <TextIfPdf>{formattedDate}</TextIfPdf>
       )}
     </span>
   );

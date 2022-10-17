@@ -43,7 +43,7 @@ const PermisjonPDF = (props: Props) => {
           </View>
           <View style={pdfStyles.flexColumn}>
             <Text style={pdfStyles.normaltekst}>
-              <CheckPeriodAndPrint data={permisjon.periode} isPdf={true} />
+              <CheckPeriodAndPrint data={permisjon.periode} />
             </Text>
           </View>
           <View style={pdfStyles.flexColumn}>

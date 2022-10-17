@@ -62,14 +62,12 @@ const ListePDF = ({ arbeidsforhold, printName, printSSO }: Props) => {
                 <ArbeidsgiverTittel
                   arbeidsgiver={foretak.arbeidsgiver}
                   overskrift={true}
-                  isPdf={true}
                 />
               </Text>
               <Text style={pdfStyles.normaltekst}>{foretak.yrke}</Text>
               <Text style={pdfStyles.normaltekst}>
                 <CheckPeriodAndPrint
                   data={foretak.ansettelsesperiode.periode}
-                  isPdf={true}
                 />
               </Text>
             </View>

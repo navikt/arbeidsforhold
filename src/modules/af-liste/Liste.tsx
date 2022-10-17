@@ -11,12 +11,14 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 import ListePDF from "./ListePDF";
 import PrinterIcon from "../../assets/icons/printer";
 import { useLocale } from "../common/useLocale";
+import { useIsPdf } from "../common/useIsPdf";
 
 const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
   const { arbeidsforhold, onClick } = props;
   const [visAlle, settVisAlle] = useState<boolean>(false);
   const toggleVisAlle = () => settVisAlle(!visAlle);
   const { locale, LocaleProvider } = useLocale();
+  const { IsPdfProvider } = useIsPdf();
 
   const sorterteArbeidsforhold = arbeidsforhold
     .sort((a, b) =>
@@ -88,19 +90,22 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
           )}
         </button>
       )}
+
       {props.printActivated && arbeidsforhold.length > 0 && (
         <div className="af-liste__print-button">
           <Normaltekst>
             <PDFDownloadLink
               document={
-                // LocaleProvider-wrapper nødvendig for å få med locale i PDF-rendering
-                <LocaleProvider value={locale}>
-                  <ListePDF
-                    arbeidsforhold={arbeidsforhold}
-                    printName={props.printName}
-                    printSSO={props.printSSN}
-                  />
-                </LocaleProvider>
+                <IsPdfProvider value={true}>
+                  {/* LocaleProvider-wrapper nødvendig for å få med locale i PDF-rendering */}
+                  <LocaleProvider value={locale}>
+                    <ListePDF
+                      arbeidsforhold={arbeidsforhold}
+                      printName={props.printName}
+                      printSSO={props.printSSN}
+                    />
+                  </LocaleProvider>
+                </IsPdfProvider>
               }
               fileName="arbeidsforhold.pdf"
               className={"lenke"}

@@ -265,11 +265,11 @@ const DownloadPDFLink = (props: DownloadPDFLinkProps) => {
   const { IsPdfProvider } = useIsPdf();
   const { locale, LocaleProvider } = useLocale();
   return (
-    <IsPdfProvider value={true}>
-      <PDFDownloadLink
-        key={Math.random()}
-        document={
-          // LocaleProvider-wrapper nødvendig for å få med locale i PDF-rendering
+    <PDFDownloadLink
+      key={Math.random()}
+      document={
+        <IsPdfProvider value={true}>
+          {/* LocaleProvider-wrapper nødvendig for å få med locale i PDF-rendering */}
           <LocaleProvider value={locale}>
             <DetaljertPDF
               arbeidsforhold={props.arbeidsforhold}
@@ -282,22 +282,22 @@ const DownloadPDFLink = (props: DownloadPDFLinkProps) => {
               printSSO={props.printSSO}
             />
           </LocaleProvider>
-        }
-        fileName="arbeidsforhold.pdf"
-        className={"lenke"}
-      >
-        {({ loading }) =>
-          loading ? (
-            <NavFrontendSpinner type={"XXS"} />
-          ) : (
-            <>
-              <PrinterIcon />
-              <span>Skriv ut</span>
-            </>
-          )
-        }
-      </PDFDownloadLink>
-    </IsPdfProvider>
+        </IsPdfProvider>
+      }
+      fileName="arbeidsforhold.pdf"
+      className={"lenke"}
+    >
+      {({ loading }) =>
+        loading ? (
+          <NavFrontendSpinner type={"XXS"} />
+        ) : (
+          <>
+            <PrinterIcon />
+            <span>Skriv ut</span>
+          </>
+        )
+      }
+    </PDFDownloadLink>
   );
 };
 

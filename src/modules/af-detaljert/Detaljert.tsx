@@ -263,21 +263,25 @@ interface DownloadPDFLinkProps {
 
 const DownloadPDFLink = (props: DownloadPDFLinkProps) => {
   const { IsPdfProvider } = useIsPdf();
+  const { locale, LocaleProvider } = useLocale();
   return (
     <IsPdfProvider value={true}>
       <PDFDownloadLink
         key={Math.random()}
         document={
-          <DetaljertPDF
-            arbeidsforhold={props.arbeidsforhold}
-            printGenerellOversikt={props.printGenerellOversikt}
-            printTimerTimelonnet={props.printTimerTimelonnet}
-            printPermisjon={props.printPermisjon}
-            printUtenlandsopphold={props.printUtenlandsopphold}
-            printHistorikk={props.printHistorikk}
-            printName={props.printName}
-            printSSO={props.printSSO}
-          />
+          // LocaleProvider-wrapper nødvendig for å få med locale i PDF-rendering
+          <LocaleProvider value={locale}>
+            <DetaljertPDF
+              arbeidsforhold={props.arbeidsforhold}
+              printGenerellOversikt={props.printGenerellOversikt}
+              printTimerTimelonnet={props.printTimerTimelonnet}
+              printPermisjon={props.printPermisjon}
+              printUtenlandsopphold={props.printUtenlandsopphold}
+              printHistorikk={props.printHistorikk}
+              printName={props.printName}
+              printSSO={props.printSSO}
+            />
+          </LocaleProvider>
         }
         fileName="arbeidsforhold.pdf"
         className={"lenke"}

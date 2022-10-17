@@ -17,7 +17,7 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
   const { arbeidsforhold, onClick } = props;
   const [visAlle, settVisAlle] = useState<boolean>(false);
   const toggleVisAlle = () => settVisAlle(!visAlle);
-  const { locale } = useLocale();
+  const { locale, LocaleProvider } = useLocale();
   const { IsPdfProvider } = useIsPdf();
 
   const sorterteArbeidsforhold = arbeidsforhold
@@ -97,11 +97,15 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
             <PDFDownloadLink
               document={
                 <IsPdfProvider value={true}>
-                  <ListePDF
-                    arbeidsforhold={arbeidsforhold}
-                    printName={props.printName}
-                    printSSO={props.printSSN}
-                  />
+                  // LocaleProvider-wrapper nødvendig for å få med locale i
+                  PDF-rendering
+                  <LocaleProvider value={locale}>
+                    <ListePDF
+                      arbeidsforhold={arbeidsforhold}
+                      printName={props.printName}
+                      printSSO={props.printSSN}
+                    />
+                  </LocaleProvider>
                 </IsPdfProvider>
               }
               fileName="arbeidsforhold.pdf"

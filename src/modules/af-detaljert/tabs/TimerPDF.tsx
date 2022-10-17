@@ -8,14 +8,14 @@ import CheckPeriodAndPrint from "../../../components/check-period-and-print/Chec
 import sprak from "../../../language/provider";
 import { Text, View } from "@react-pdf/renderer";
 import { pdfStyles } from "../../common/pdf";
+import { useLocale } from "../../common/useLocale";
 
 interface Props {
   timer: AFTimerForTimelonnet[];
-  locale: string;
 }
 
 const TimerPDF = (props: Props) => {
-  const { locale } = props;
+  const { locale } = useLocale();
 
   props.timer.sort((left, right) =>
     sortPeriodeFraDesc(left.periode, right.periode)

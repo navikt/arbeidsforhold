@@ -1,7 +1,7 @@
 import React from "react";
 import AlertStripe from "nav-frontend-alertstriper";
 import { sprak } from "../../language/provider";
-import { Locale } from "../../types/locale";
+import { useLocale } from "../../modules/common/useLocale";
 
 export interface HTTPError {
   code: string;
@@ -10,15 +10,15 @@ export interface HTTPError {
 
 interface Props {
   error: HTTPError;
-  locale: Locale;
 }
 
 const Error = (props: Props) => {
   const { error } = props;
+  const { locale } = useLocale();
   return error ? (
     <div className="error__container">
       <AlertStripe type="feil">
-        {sprak[props.locale].httperror}
+        {sprak[locale].httperror}
         <br />
         {error.code && <span>{`${error.code}: `}</span>}
         {error.text && <span>{`${error.text}`}</span>}

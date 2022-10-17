@@ -21,10 +21,9 @@ import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import UtenlandsoppholdPDF from "./tabs/UtenlandsoppholdPDF";
 import HistorikkPDF from "./tabs/HistorikkPDF";
 import { PdfFooter, PdfHeader, pdfStyles } from "../common/pdf";
-import { Locale } from "../../types/locale";
+import { useLocale } from "../common/useLocale";
 
 interface Props {
-  locale: Locale;
   arbeidsforhold: AFUtvidet;
   printGenerellOversikt: boolean;
   printTimerTimelonnet: boolean;
@@ -37,7 +36,7 @@ interface Props {
 
 // Create Document Component
 const ListePDF = (props: Props) => {
-  const locale = props.locale;
+  const { locale } = useLocale();
   const arbeidsforhold = props.arbeidsforhold;
   const printGenerellOversikt = props.printGenerellOversikt;
   const printTimerTimelonnet = props.printTimerTimelonnet;
@@ -74,11 +73,7 @@ const ListePDF = (props: Props) => {
     <Document>
       {printGenerellOversikt && (
         <Page size="A4" style={pdfStyles.page}>
-          <PdfHeader
-            printName={printName}
-            printSSO={printSSO}
-            locale={locale}
-          />
+          <PdfHeader printName={printName} printSSO={printSSO} />
           <View>
             <View style={styles.introRow}>
               <View style={[pdfStyles.section, pdfStyles.twoColumns]}>
@@ -193,17 +188,17 @@ const ListePDF = (props: Props) => {
               />
             </View>
           </View>
-          <PdfFooter locale={locale} />
+          <PdfFooter />
         </Page>
       )}
       <Page size="A4" style={pdfStyles.page}>
-        <PdfHeader printName={printName} printSSO={printSSO} locale={locale} />
+        <PdfHeader printName={printName} printSSO={printSSO} />
 
         {printTimerTimelonnet && (
           <>
             {antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0 && (
               <View style={pdfStyles.section}>
-                <TimerPDF timer={antallTimerForTimelonnet} locale={locale} />
+                <TimerPDF timer={antallTimerForTimelonnet} />
               </View>
             )}
           </>
@@ -212,10 +207,7 @@ const ListePDF = (props: Props) => {
           <>
             {permisjonPermittering && permisjonPermittering.length > 0 && (
               <View style={pdfStyles.section}>
-                <PermisjonPDF
-                  permisjoner={permisjonPermittering}
-                  locale={locale}
-                />
+                <PermisjonPDF permisjoner={permisjonPermittering} />
               </View>
             )}
           </>
@@ -224,10 +216,7 @@ const ListePDF = (props: Props) => {
           <>
             {utenlandsopphold && utenlandsopphold.length > 0 && (
               <View style={pdfStyles.section}>
-                <UtenlandsoppholdPDF
-                  utenlandsopphold={utenlandsopphold}
-                  locale={locale}
-                />
+                <UtenlandsoppholdPDF utenlandsopphold={utenlandsopphold} />
               </View>
             )}
           </>
@@ -235,11 +224,11 @@ const ListePDF = (props: Props) => {
         {printHistorikk && (
           <>
             {arbeidsavtaler && arbeidsavtaler.length > 0 && (
-              <HistorikkPDF arbeidsavtaler={arbeidsavtaler} locale={locale} />
+              <HistorikkPDF arbeidsavtaler={arbeidsavtaler} />
             )}
           </>
         )}
-        <PdfFooter locale={locale} />
+        <PdfFooter />
       </Page>
     </Document>
   );

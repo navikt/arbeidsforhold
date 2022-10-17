@@ -8,14 +8,14 @@ import moment from "moment";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
 import sprak from "../../../language/provider";
+import { useLocale } from "../../common/useLocale";
 
 interface Props {
   utenlandsopphold: AFUtenlandsopphold[];
-  locale: string;
 }
 
 const Utenlandsopphold = (props: Props) => {
-  const { locale } = props;
+  const { locale } = useLocale();
 
   props.utenlandsopphold.sort((left, right) =>
     sortPeriodeFraDesc(left.periode, right.periode)
@@ -34,7 +34,7 @@ const Utenlandsopphold = (props: Props) => {
     if (!initState[year]) {
       initState[year] = {
         opphold: [opphold],
-        ekspandert: !i ? true : false,
+        ekspandert: !i,
       };
     } else {
       initState[year].opphold.push(opphold);
@@ -48,7 +48,7 @@ const Utenlandsopphold = (props: Props) => {
         <div className="af-detaljert__flex-kolonne">
           <Element>{sprak[locale].periode}</Element>
         </div>
-        <div className="af-detaljert__flex-kolonne"></div>
+        <div className="af-detaljert__flex-kolonne" />
         <div className="af-detaljert__flex-kolonne">
           <Element>{sprak[locale].land}</Element>
         </div>

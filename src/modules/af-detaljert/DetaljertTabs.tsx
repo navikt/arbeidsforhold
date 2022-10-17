@@ -2,20 +2,19 @@ import React, { useState } from "react";
 import Tabs from "nav-frontend-tabs";
 import { Select } from "nav-frontend-skjema";
 import { Element } from "nav-frontend-typografi";
-import { Locale } from "../../types/locale";
 import { AFUtvidet } from "../../types/arbeidsforhold";
 import sprak from "../../language/provider";
 import Timer from "./tabs/Timer";
 import Permisjon from "./tabs/Permisjon";
 import Utenlandsopphold from "./tabs/Utenlandsopphold";
 import Historikk from "./tabs/Historikk";
+import { useLocale } from "../common/useLocale";
 
 type Props = {
-  locale: Locale;
   arbeidsforhold: AFUtvidet;
 };
 
-const getTabsData = ({ locale, arbeidsforhold }: Props) => {
+const getTabsData = ({ arbeidsforhold }: Props) => {
   const {
     antallTimerForTimelonnet,
     permisjonPermittering,
@@ -28,11 +27,13 @@ const getTabsData = ({ locale, arbeidsforhold }: Props) => {
     TabContent: React.FunctionComponent;
   }[] = [];
 
+  const { locale } = useLocale();
+
   if (antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0) {
     tabsData.push({
       label: sprak[locale].tabs.timerfortimelonnet,
       TabContent: () => (
-        <Timer timer={antallTimerForTimelonnet} locale={locale} />
+        <Timer timer={antallTimerForTimelonnet} />
       ),
     });
   }
@@ -40,7 +41,7 @@ const getTabsData = ({ locale, arbeidsforhold }: Props) => {
     tabsData.push({
       label: sprak[locale].tabs.permisjonpermittering,
       TabContent: () => (
-        <Permisjon permisjoner={permisjonPermittering} locale={locale} />
+        <Permisjon permisjoner={permisjonPermittering} />
       ),
     });
   }
@@ -48,7 +49,7 @@ const getTabsData = ({ locale, arbeidsforhold }: Props) => {
     tabsData.push({
       label: sprak[locale].tabs.arbeidiutlandet,
       TabContent: () => (
-        <Utenlandsopphold utenlandsopphold={utenlandsopphold} locale={locale} />
+        <Utenlandsopphold utenlandsopphold={utenlandsopphold} />
       ),
     });
   }
@@ -56,7 +57,7 @@ const getTabsData = ({ locale, arbeidsforhold }: Props) => {
     tabsData.push({
       label: sprak[locale].tabs.historikk,
       TabContent: () => (
-        <Historikk arbeidsavtaler={arbeidsavtaler} locale={locale} />
+        <Historikk arbeidsavtaler={arbeidsavtaler} />
       ),
     });
   }

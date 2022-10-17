@@ -1,6 +1,12 @@
 import React from "react";
-import { Font, View, Document, StyleSheet } from "@react-pdf/renderer";
-import { Page, Text } from "@react-pdf/renderer";
+import {
+  Document,
+  Font,
+  Page,
+  StyleSheet,
+  Text,
+  View,
+} from "@react-pdf/renderer";
 import { AFSimpel } from "../../types/arbeidsforhold";
 import ArbeidsgiverTittel from "../../components/arbeidsgiver/ArbeidsgiverTittel";
 import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
@@ -8,17 +14,15 @@ import Regular from "../../assets/fonts/ODelI1aHBYDBqgeIAH2zlNRl0pGnog23EMYRrBmU
 import Italic from "../../assets/fonts/M2Jd71oPJhLKp0zdtTvoMwRX4TIfMQQEXLu74GftruE.ttf";
 import Bold from "../../assets/fonts/toadOcfmlt9b38dHJxOBGPgXsetDviZcdR5OzC1KPcw.ttf";
 import { PdfFooter, PdfHeader, pdfStyles } from "../common/pdf";
-import { Locale } from "../../types/locale";
 
 interface Props {
-  locale: Locale;
   arbeidsforhold: AFSimpel[];
   printName: string;
   printSSO: string;
 }
 
 // Create Document Component
-const ListePDF = ({ arbeidsforhold, locale, printName, printSSO }: Props) => {
+const ListePDF = ({ arbeidsforhold, printName, printSSO }: Props) => {
   Font.register({
     family: "SourceSansPro",
     fonts: [
@@ -50,7 +54,7 @@ const ListePDF = ({ arbeidsforhold, locale, printName, printSSO }: Props) => {
   return (
     <Document>
       <Page size="A4" style={pdfStyles.page}>
-        <PdfHeader printName={printName} printSSO={printSSO} locale={locale} />
+        <PdfHeader printName={printName} printSSO={printSSO} />
         <View style={styles.liste}>
           {arbeidsforhold.map((foretak, i) => (
             <View key={i} style={styles.listeRow} wrap={false}>
@@ -71,7 +75,7 @@ const ListePDF = ({ arbeidsforhold, locale, printName, printSSO }: Props) => {
             </View>
           ))}
         </View>
-        <PdfFooter locale={locale} />
+        <PdfFooter />
       </Page>
     </Document>
   );

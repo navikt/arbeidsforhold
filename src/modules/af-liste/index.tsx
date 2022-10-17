@@ -7,10 +7,11 @@ import Liste from "./Liste";
 import Environment from "../../utils/environment";
 import { Link } from "react-router-dom";
 import Miljo from "../../types/miljo";
-import moment from "moment";
 import "moment/locale/nb";
+import "moment/locale/nn";
 import { AFPrint } from "../../types/print";
 import { Locale } from "../../types/locale";
+import { useLocale } from "../common/useLocale";
 
 type State =
   | { status: "LOADING" }
@@ -51,13 +52,13 @@ export interface AFListeData {
 let persistState: State = { status: "LOADING" };
 
 const ListeMedArbeidsforhold = (props: AFListeProps) => {
-  const { locale } = props;
   const [state, setState] = useState(persistState);
+
+  const { LocaleProvider } = useLocale();
 
   useEffect(() => {
     Environment.settEnv(props.miljo as Miljo);
-    moment.locale(locale);
-  }, [locale]);
+  }, []);
 
   useEffect(() => {
     if (state.status === "LOADING") {
@@ -84,9 +85,17 @@ const ListeMedArbeidsforhold = (props: AFListeProps) => {
     case "LOADING":
       return <Spinner />;
     case "RESULT":
-      return <Liste arbeidsforhold={state.arbeidsforhold} {...props} />;
+      return (
+        <LocaleProvider value={props.locale}>
+          <Liste arbeidsforhold={state.arbeidsforhold} {...props} />
+        </LocaleProvider>
+      );
     case "ERROR":
-      return <Error error={state.error} locale={props.locale} />;
+      return (
+        <LocaleProvider value={props.locale}>
+          <Error error={state.error} />
+        </LocaleProvider>
+      );
   }
 };
 

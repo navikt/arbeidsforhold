@@ -12,17 +12,18 @@ import { orgnr } from "../../utils/orgnr";
 import ArbeidsgiverTittel from "../../components/arbeidsgiver/ArbeidsgiverTittel";
 import PrinterIcon from "../../assets/icons/printer";
 import { PDFDownloadLink } from "@react-pdf/renderer";
-import DetaljertPDF from "./DetaljertPDF";
 import ModalWrapper from "nav-frontend-modal";
 import NavFrontendSpinner from "nav-frontend-spinner";
 import { AFUtvidet } from "../../types/arbeidsforhold";
-import { Locale } from "../../types/locale";
 import { DetaljertTabs } from "./DetaljertTabs";
+import { useLocale } from "../common/useLocale";
+import DetaljertPDF from "./DetaljertPDF";
 
 const DetaljertArbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
-  const { arbeidsforhold, locale } = props;
+  const { arbeidsforhold } = props;
   const { arbeidsavtaler, permisjonPermittering } = arbeidsforhold;
   const { antallTimerForTimelonnet, utenlandsopphold } = arbeidsforhold;
+  const { locale } = useLocale();
 
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [printGenerellOversikt, settPrintGenerellOversikt] =
@@ -116,14 +117,14 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
           title={sprak[locale].arbeidsforholdid}
           data={arbeidsforhold.eksternArbeidsforholdId}
         />
-        <ArbeidsavtaleFelter locale={locale} data={arbeidsforhold} />
+        <ArbeidsavtaleFelter data={arbeidsforhold} />
         <CheckAndPrintBox
           title={sprak[locale].sistbekreftet}
           data={arbeidsforhold.sistBekreftet}
           date={true}
         />
       </div>
-      <DetaljertTabs locale={locale} arbeidsforhold={arbeidsforhold} />
+      <DetaljertTabs arbeidsforhold={arbeidsforhold} />
       <AlertStripeInfo>
         {sprak[locale].hvisfeil1}
         <br />
@@ -149,7 +150,6 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
                 </button>
               ) : (
                 <DownloadPDFLink
-                  locale={locale}
                   arbeidsforhold={arbeidsforhold}
                   printGenerellOversikt={printGenerellOversikt}
                   printTimerTimelonnet={printTimerTimelonnet}
@@ -231,7 +231,6 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
             <div className="af-detaljert__print-button-modal">
               <Normaltekst>
                 <DownloadPDFLink
-                  locale={locale}
                   arbeidsforhold={arbeidsforhold}
                   printGenerellOversikt={printGenerellOversikt}
                   printTimerTimelonnet={printTimerTimelonnet}
@@ -251,7 +250,6 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
 };
 
 interface DownloadPDFLinkProps {
-  locale: Locale;
   arbeidsforhold: AFUtvidet;
   printGenerellOversikt: boolean;
   printTimerTimelonnet: boolean;
@@ -262,36 +260,41 @@ interface DownloadPDFLinkProps {
   printSSO: string;
 }
 
-const DownloadPDFLink = (props: DownloadPDFLinkProps) => (
-  <PDFDownloadLink
-    key={Math.random()}
-    document={
-      <DetaljertPDF
-        locale={props.locale}
-        arbeidsforhold={props.arbeidsforhold}
-        printGenerellOversikt={props.printGenerellOversikt}
-        printTimerTimelonnet={props.printTimerTimelonnet}
-        printPermisjon={props.printPermisjon}
-        printUtenlandsopphold={props.printUtenlandsopphold}
-        printHistorikk={props.printHistorikk}
-        printName={props.printName}
-        printSSO={props.printSSO}
-      />
-    }
-    fileName="arbeidsforhold.pdf"
-    className={"lenke"}
-  >
-    {({ loading }) =>
-      loading ? (
-        <NavFrontendSpinner type={"XXS"} />
-      ) : (
-        <>
-          <PrinterIcon />
-          <span>Skriv ut</span>
-        </>
-      )
-    }
-  </PDFDownloadLink>
-);
+const DownloadPDFLink = (props: DownloadPDFLinkProps) => {
+  const { locale, LocaleProvider } = useLocale();
+  return (
+    <PDFDownloadLink
+      key={Math.random()}
+      document={
+        // LocaleProvider-wrapper nødvendig for å få med locale i PDF-rendering
+        <LocaleProvider value={locale}>
+          <DetaljertPDF
+            arbeidsforhold={props.arbeidsforhold}
+            printGenerellOversikt={props.printGenerellOversikt}
+            printTimerTimelonnet={props.printTimerTimelonnet}
+            printPermisjon={props.printPermisjon}
+            printUtenlandsopphold={props.printUtenlandsopphold}
+            printHistorikk={props.printHistorikk}
+            printName={props.printName}
+            printSSO={props.printSSO}
+          />
+        </LocaleProvider>
+      }
+      fileName="arbeidsforhold.pdf"
+      className={"lenke"}
+    >
+      {({ loading }) =>
+        loading ? (
+          <NavFrontendSpinner type={"XXS"} />
+        ) : (
+          <>
+            <PrinterIcon />
+            <span>Skriv ut</span>
+          </>
+        )
+      }
+    </PDFDownloadLink>
+  );
+};
 
 export default DetaljertArbeidsforhold;

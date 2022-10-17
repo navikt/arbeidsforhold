@@ -6,13 +6,12 @@ import Utenlandsopphold from "./Utenlandsopphold";
 import Historikk from "./Historikk";
 import { TabType } from "../DetaljertTabs";
 
-export const TabContent = ({
-  type,
-  arbeidsforhold,
-}: {
+type Props = {
   type: TabType;
   arbeidsforhold: AFUtvidet;
-}) => {
+};
+
+export const TabContent = ({ type, arbeidsforhold }: Props) => {
   const {
     antallTimerForTimelonnet,
     permisjonPermittering,

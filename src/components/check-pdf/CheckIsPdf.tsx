@@ -1,3 +1,4 @@
+import React from "react";
 import { useIsPdf } from "../../modules/common/useIsPdf";
 import { Text } from "@react-pdf/renderer";
 

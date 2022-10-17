@@ -10,11 +10,37 @@ import Utenlandsopphold from "./tabs/Utenlandsopphold";
 import Historikk from "./tabs/Historikk";
 import { useLocale } from "../common/useLocale";
 
-type Props = {
+type TabType = "timer" | "permisjon" | "utenlandsopphold" | "historikk";
+
+const TabContent = ({
+  type,
+  arbeidsforhold,
+}: {
+  type: TabType;
   arbeidsforhold: AFUtvidet;
+}) => {
+  const {
+    antallTimerForTimelonnet,
+    permisjonPermittering,
+    utenlandsopphold,
+    arbeidsavtaler,
+  } = arbeidsforhold;
+
+  switch (type) {
+    case "timer":
+      return <Timer timer={antallTimerForTimelonnet} />;
+    case "permisjon":
+      return <Permisjon permisjoner={permisjonPermittering} />;
+    case "utenlandsopphold":
+      return <Utenlandsopphold utenlandsopphold={utenlandsopphold} />;
+    case "historikk":
+      return <Historikk arbeidsavtaler={arbeidsavtaler} />;
+    default:
+      return null;
+  }
 };
 
-const getTabsData = ({ arbeidsforhold }: Props) => {
+const getTabsData = (arbeidsforhold: AFUtvidet) => {
   const {
     antallTimerForTimelonnet,
     permisjonPermittering,
@@ -24,7 +50,7 @@ const getTabsData = ({ arbeidsforhold }: Props) => {
 
   const tabsData: {
     label: string;
-    TabContent: React.FunctionComponent;
+    type: TabType;
   }[] = [];
 
   const { locale } = useLocale();
@@ -32,49 +58,45 @@ const getTabsData = ({ arbeidsforhold }: Props) => {
   if (antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0) {
     tabsData.push({
       label: sprak[locale].tabs.timerfortimelonnet,
-      TabContent: () => (
-        <Timer timer={antallTimerForTimelonnet} />
-      ),
+      type: "timer",
     });
   }
   if (permisjonPermittering && permisjonPermittering.length > 0) {
     tabsData.push({
       label: sprak[locale].tabs.permisjonpermittering,
-      TabContent: () => (
-        <Permisjon permisjoner={permisjonPermittering} />
-      ),
+      type: "permisjon",
     });
   }
   if (utenlandsopphold && utenlandsopphold.length > 0) {
     tabsData.push({
       label: sprak[locale].tabs.arbeidiutlandet,
-      TabContent: () => (
-        <Utenlandsopphold utenlandsopphold={utenlandsopphold} />
-      ),
+      type: "utenlandsopphold",
     });
   }
   if (arbeidsavtaler && arbeidsavtaler.length > 0) {
     tabsData.push({
       label: sprak[locale].tabs.historikk,
-      TabContent: () => (
-        <Historikk arbeidsavtaler={arbeidsavtaler} />
-      ),
+      type: "historikk",
     });
   }
 
   return tabsData;
 };
 
-export const DetaljertTabs = (props: Props) => {
+type Props = {
+  arbeidsforhold: AFUtvidet;
+};
+
+export const DetaljertTabs = ({ arbeidsforhold }: Props) => {
   const [currentTabIndex, setCurrentTabIndex] = useState(0);
 
-  const tabsData = getTabsData(props);
+  const tabsData = getTabsData(arbeidsforhold);
 
   if (tabsData.length === 0) {
     return null;
   }
 
-  const { TabContent } = tabsData[currentTabIndex];
+  const { type } = tabsData[currentTabIndex];
 
   return (
     <>
@@ -103,7 +125,7 @@ export const DetaljertTabs = (props: Props) => {
           <Element>{tabsData[0].label}</Element>
         )}
       </div>
-      <TabContent />
+      <TabContent arbeidsforhold={arbeidsforhold} type={type} />
     </>
   );
 };

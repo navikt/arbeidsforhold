@@ -4,7 +4,7 @@ import moment from "moment";
 import { parse } from "../../utils/text";
 import Hjelpetekst from "nav-frontend-hjelpetekst";
 import { useLocale } from "../../modules/common/useLocale";
-import CheckIsPdf from "../check-pdf/CheckIsPdf";
+import TextIfPdf from "../text-if-pdf/TextIfPdf";
 
 interface Props {
   data?: string | number;
@@ -29,7 +29,7 @@ const CheckDateAndPrint = (props: Props) => {
     <span>
       {props.maskineltAvsluttet ? (
         <span>
-          <CheckIsPdf>{formattedDate}</CheckIsPdf>
+          <TextIfPdf>{formattedDate}</TextIfPdf>
           <Hjelpetekst
             id={props.maskineltAvsluttet}
             className="af-date__hjelpetekst"
@@ -38,7 +38,7 @@ const CheckDateAndPrint = (props: Props) => {
           </Hjelpetekst>
         </span>
       ) : (
-        <CheckIsPdf>{formattedDate}</CheckIsPdf>
+        <TextIfPdf>{formattedDate}</TextIfPdf>
       )}
     </span>
   );

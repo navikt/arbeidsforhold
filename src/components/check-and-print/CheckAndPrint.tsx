@@ -1,7 +1,7 @@
 import React from "react";
 import NoData from "../no-data/NoData";
 import { parse } from "../../utils/text";
-import CheckIsPdf from "../check-pdf/CheckIsPdf";
+import TextIfPdf from "../text-if-pdf/TextIfPdf";
 
 interface Props {
   data?: string | number;
@@ -12,9 +12,9 @@ interface Props {
 const CheckAndPrint = (props: Props) =>
   props.data ? (
     <span className={props.font}>
-      <CheckIsPdf>
+      <TextIfPdf>
         {props.format ? parse(props.format, props.data) : props.data}
-      </CheckIsPdf>
+      </TextIfPdf>
     </span>
   ) : (
     <NoData />

@@ -1,7 +1,7 @@
 import React from "react";
-import CheckIsPdf from "../check-pdf/CheckIsPdf";
+import TextIfPdf from "../text-if-pdf/TextIfPdf";
 
 const NoData = () => {
-  return <CheckIsPdf />;
+  return <TextIfPdf />;
 };
 export default NoData;

@@ -2,7 +2,7 @@ import React from "react";
 import { AFPeriode } from "../../types/arbeidsforhold";
 import NoData from "../no-data/NoData";
 import CheckDateAndPrint from "../check-date-and-print/CheckDateAndPrint";
-import CheckIsPdf from "../check-pdf/CheckIsPdf";
+import TextIfPdf from "../text-if-pdf/TextIfPdf";
 
 interface Props {
   data?: AFPeriode;
@@ -18,7 +18,7 @@ const CheckPeriodAndPrint = (props: Props) =>
         data={props.data.periodeFra}
         dateFormat={props.format}
       />
-      <CheckIsPdf>{` - `}</CheckIsPdf>
+      <TextIfPdf>{` - `}</TextIfPdf>
       {props.twoLines && <br />}
       <CheckDateAndPrint
         data={props.data.periodeTil}

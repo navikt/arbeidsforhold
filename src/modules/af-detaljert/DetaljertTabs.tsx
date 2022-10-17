@@ -4,41 +4,10 @@ import { Select } from "nav-frontend-skjema";
 import { Element } from "nav-frontend-typografi";
 import { AFUtvidet } from "../../types/arbeidsforhold";
 import sprak from "../../language/provider";
-import Timer from "./tabs/Timer";
-import Permisjon from "./tabs/Permisjon";
-import Utenlandsopphold from "./tabs/Utenlandsopphold";
-import Historikk from "./tabs/Historikk";
 import { useLocale } from "../common/useLocale";
+import { TabContent } from "./tabs/TabContent";
 
-type TabType = "timer" | "permisjon" | "utenlandsopphold" | "historikk";
-
-const TabContent = ({
-  type,
-  arbeidsforhold,
-}: {
-  type: TabType;
-  arbeidsforhold: AFUtvidet;
-}) => {
-  const {
-    antallTimerForTimelonnet,
-    permisjonPermittering,
-    utenlandsopphold,
-    arbeidsavtaler,
-  } = arbeidsforhold;
-
-  switch (type) {
-    case "timer":
-      return <Timer timer={antallTimerForTimelonnet} />;
-    case "permisjon":
-      return <Permisjon permisjoner={permisjonPermittering} />;
-    case "utenlandsopphold":
-      return <Utenlandsopphold utenlandsopphold={utenlandsopphold} />;
-    case "historikk":
-      return <Historikk arbeidsavtaler={arbeidsavtaler} />;
-    default:
-      return null;
-  }
-};
+export type TabType = "timer" | "permisjon" | "utenlandsopphold" | "historikk";
 
 const getTabsData = (arbeidsforhold: AFUtvidet) => {
   const {

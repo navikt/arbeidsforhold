@@ -6,7 +6,7 @@ import CheckPeriodAndPrint from "../../../components/check-period-and-print/Chec
 import { sortPeriodeFraDesc, sortPeriodeTilDesc } from "../../../utils/date";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import sprak from "../../../language/provider";
-import ArbeidsavtaleFelter from "../../../components/arbeidsavtale/Felter";
+import ArbeidsavtaleFelter from "../../../components/arbeidsavtale/ArbeidsavtaleFelter";
 import { useLocale } from "../../common/useLocale";
 
 interface Props {

@@ -14,57 +14,6 @@ type Props = {
   arbeidsforhold: AFUtvidet;
 };
 
-const getTabsData = ({ arbeidsforhold }: Props) => {
-  const {
-    antallTimerForTimelonnet,
-    permisjonPermittering,
-    utenlandsopphold,
-    arbeidsavtaler,
-  } = arbeidsforhold;
-
-  const tabsData: {
-    label: string;
-    TabContent: React.FunctionComponent;
-  }[] = [];
-
-  const { locale } = useLocale();
-
-  if (antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0) {
-    tabsData.push({
-      label: sprak[locale].tabs.timerfortimelonnet,
-      TabContent: () => (
-        <Timer timer={antallTimerForTimelonnet} />
-      ),
-    });
-  }
-  if (permisjonPermittering && permisjonPermittering.length > 0) {
-    tabsData.push({
-      label: sprak[locale].tabs.permisjonpermittering,
-      TabContent: () => (
-        <Permisjon permisjoner={permisjonPermittering} />
-      ),
-    });
-  }
-  if (utenlandsopphold && utenlandsopphold.length > 0) {
-    tabsData.push({
-      label: sprak[locale].tabs.arbeidiutlandet,
-      TabContent: () => (
-        <Utenlandsopphold utenlandsopphold={utenlandsopphold} />
-      ),
-    });
-  }
-  if (arbeidsavtaler && arbeidsavtaler.length > 0) {
-    tabsData.push({
-      label: sprak[locale].tabs.historikk,
-      TabContent: () => (
-        <Historikk arbeidsavtaler={arbeidsavtaler} />
-      ),
-    });
-  }
-
-  return tabsData;
-};
-
 export const DetaljertTabs = (props: Props) => {
   const [currentTabIndex, setCurrentTabIndex] = useState(0);
 
@@ -106,4 +55,49 @@ export const DetaljertTabs = (props: Props) => {
       <TabContent />
     </>
   );
+};
+
+const getTabsData = ({ arbeidsforhold }: Props) => {
+  const {
+    antallTimerForTimelonnet,
+    permisjonPermittering,
+    utenlandsopphold,
+    arbeidsavtaler,
+  } = arbeidsforhold;
+
+  const tabsData: {
+    label: string;
+    TabContent: React.FunctionComponent;
+  }[] = [];
+
+  const { locale } = useLocale();
+
+  if (antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0) {
+    tabsData.push({
+      label: sprak[locale].tabs.timerfortimelonnet,
+      TabContent: () => <Timer timer={antallTimerForTimelonnet} />,
+    });
+  }
+  if (permisjonPermittering && permisjonPermittering.length > 0) {
+    tabsData.push({
+      label: sprak[locale].tabs.permisjonpermittering,
+      TabContent: () => <Permisjon permisjoner={permisjonPermittering} />,
+    });
+  }
+  if (utenlandsopphold && utenlandsopphold.length > 0) {
+    tabsData.push({
+      label: sprak[locale].tabs.arbeidiutlandet,
+      TabContent: () => (
+        <Utenlandsopphold utenlandsopphold={utenlandsopphold} />
+      ),
+    });
+  }
+  if (arbeidsavtaler && arbeidsavtaler.length > 0) {
+    tabsData.push({
+      label: sprak[locale].tabs.historikk,
+      TabContent: () => <Historikk arbeidsavtaler={arbeidsavtaler} />,
+    });
+  }
+
+  return tabsData;
 };

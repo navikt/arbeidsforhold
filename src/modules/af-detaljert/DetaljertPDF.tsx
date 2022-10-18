@@ -35,7 +35,7 @@ interface Props {
 }
 
 // Create Document Component
-const ListePDF = (props: Props) => {
+const DetaljertPDF = (props: Props) => {
   const { locale } = useLocale();
   const arbeidsforhold = props.arbeidsforhold;
   const printGenerellOversikt = props.printGenerellOversikt;
@@ -231,4 +231,4 @@ const ListePDF = (props: Props) => {
   );
 };
 
-export default ListePDF;
+export default DetaljertPDF;

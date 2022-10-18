@@ -7,7 +7,7 @@ import CheckAndPrintBox from "../../components/check-and-print-box/CheckAndPrint
 import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
 import sprak from "../../language/provider";
 import { Checkbox, CheckboxGruppe } from "nav-frontend-skjema";
-import ArbeidsavtaleFelter from "../../components/arbeidsavtale/Felter";
+import ArbeidsavtaleFelter from "../../components/arbeidsavtale/ArbeidsavtaleFelter";
 import { orgnr } from "../../utils/orgnr";
 import ArbeidsgiverTittel from "../../components/arbeidsgiver/ArbeidsgiverTittel";
 import PrinterIcon from "../../assets/icons/printer";
@@ -20,7 +20,7 @@ import { DetaljertTabs } from "./DetaljertTabs";
 import { useLocale } from "../common/useLocale";
 import { useIsPdf } from "../common/useIsPdf";
 
-const DetaljertArbeidsforhold = (props: AFDetaljertProps & AFDetaljertData) => {
+const Detaljert = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold } = props;
   const { arbeidsavtaler, permisjonPermittering } = arbeidsforhold;
   const { antallTimerForTimelonnet, utenlandsopphold } = arbeidsforhold;
@@ -301,4 +301,4 @@ const DownloadPDFLink = (props: DownloadPDFLinkProps) => {
   );
 };
 
-export default DetaljertArbeidsforhold;
+export default Detaljert;

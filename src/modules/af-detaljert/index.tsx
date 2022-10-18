@@ -6,7 +6,7 @@ import {
   hentDetaljertArbeidsforholdArbeidstaker,
 } from "clients/apiClient";
 import Spinner from "components/spinner/Spinner";
-import DetaljerArbeidsforhold from "./Detaljert";
+import Detaljert from "./Detaljert";
 import Environment from "utils/environment";
 import Miljo from "types/miljo";
 import "moment/locale/nb";
@@ -108,10 +108,7 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
     case "RESULT":
       return (
         <LocaleProvider value={props.locale}>
-          <DetaljerArbeidsforhold
-            arbeidsforhold={state.arbeidsforhold}
-            {...props}
-          />
+          <Detaljert arbeidsforhold={state.arbeidsforhold} {...props} />
         </LocaleProvider>
       );
     case "ERROR":

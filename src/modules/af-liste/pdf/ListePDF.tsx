@@ -13,7 +13,9 @@ import CheckPeriodAndPrint from "../../../components/check-period-and-print/Chec
 import Regular from "../../../assets/fonts/ODelI1aHBYDBqgeIAH2zlNRl0pGnog23EMYRrBmUzJQ.ttf";
 import Italic from "../../../assets/fonts/M2Jd71oPJhLKp0zdtTvoMwRX4TIfMQQEXLu74GftruE.ttf";
 import Bold from "../../../assets/fonts/toadOcfmlt9b38dHJxOBGPgXsetDviZcdR5OzC1KPcw.ttf";
-import { PdfFooter, PdfHeader, pdfStyles } from "../../common/pdf";
+import { PdfHeader } from "../../common/PdfHeader";
+import { pdfStyles } from "../../common/pdfStyles";
+import { PdfFooter } from "../../common/PdfFooter";
 
 interface Props {
   arbeidsforhold: AFSimpel[];

@@ -6,7 +6,7 @@ import CheckPeriodAndPrint from "../../../components/check-period-and-print/Chec
 import { sortPeriodeFraDesc, sortPeriodeTilDesc } from "../../../utils/date";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import sprak from "../../../language/provider";
-import ArbeidsavtaleFelter from "../../../components/arbeidsavtale/ArbeidsavtaleFelter";
+import ArbeidsavtaleFelter from "../detaljer/ArbeidsavtaleFelter";
 import { useLocale } from "../../common/useLocale";
 
 interface Props {
@@ -81,9 +81,7 @@ const Historikk = (props: Props) => {
             {ekspandert && (
               <div className="af-detaljert__flex-rad">
                 <div className="af-detaljert__flex-kolonne">
-                  <div className="af-detaljert__innhold">
-                    <ArbeidsavtaleFelter data={arbeidsavtale} />
-                  </div>
+                  <ArbeidsavtaleFelter data={arbeidsavtale} />
                 </div>
               </div>
             )}

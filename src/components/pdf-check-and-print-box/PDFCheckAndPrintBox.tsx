@@ -4,7 +4,7 @@ import CheckAndPrint from "../check-and-print/CheckAndPrint";
 import CheckPeriodAndPrint from "../check-period-and-print/CheckPeriodAndPrint";
 import { Text, View } from "@react-pdf/renderer";
 import { AFPeriode } from "../../types/arbeidsforhold";
-import { pdfStyles } from "../../modules/common/pdf";
+import { pdfStyles } from "../../modules/common/pdfStyles";
 
 type Props = {
   title: string;

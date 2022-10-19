@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import Tabs from "nav-frontend-tabs";
 import { Select } from "nav-frontend-skjema";
 import { Element } from "nav-frontend-typografi";
-import { AFUtvidet } from "../../types/arbeidsforhold";
-import sprak from "../../language/provider";
-import Timer from "./tabs/Timer";
-import Permisjon from "./tabs/Permisjon";
-import Utenlandsopphold from "./tabs/Utenlandsopphold";
-import Historikk from "./tabs/Historikk";
-import { useLocale } from "../common/useLocale";
+import { AFUtvidet } from "../../../types/arbeidsforhold";
+import sprak from "../../../language/provider";
+import Timer from "./Timer";
+import Permisjon from "./Permisjon";
+import Utenlandsopphold from "./Utenlandsopphold";
+import Historikk from "./Historikk";
+import { useLocale } from "../../common/useLocale";
 
 type Props = {
   arbeidsforhold: AFUtvidet;

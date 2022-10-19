@@ -1,11 +1,11 @@
 import React from "react";
-import { AFPermisjonPermittering } from "../../../types/arbeidsforhold";
-import { sortPeriodeFraDesc } from "../../../utils/date";
-import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
-import sprak from "../../../language/provider";
+import { AFPermisjonPermittering } from "../../../../types/arbeidsforhold";
+import { sortPeriodeFraDesc } from "../../../../utils/date";
+import CheckPeriodAndPrint from "../../../../components/check-period-and-print/CheckPeriodAndPrint";
+import sprak from "../../../../language/provider";
 import { Text, View } from "@react-pdf/renderer";
-import { pdfStyles } from "../../common/pdf";
-import { useLocale } from "../../common/useLocale";
+import { pdfStyles } from "../../../common/pdf";
+import { useLocale } from "../../../common/useLocale";
 
 interface Props {
   permisjoner: AFPermisjonPermittering[];

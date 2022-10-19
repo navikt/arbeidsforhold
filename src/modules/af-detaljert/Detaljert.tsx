@@ -12,7 +12,7 @@ import { orgnr } from "../../utils/orgnr";
 import ArbeidsgiverTittel from "../../components/arbeidsgiver/ArbeidsgiverTittel";
 import PrinterIcon from "../../assets/icons/printer";
 import { PDFDownloadLink } from "@react-pdf/renderer";
-import DetaljertPDF from "./DetaljertPDF";
+import DetaljertPDF from "./pdf/DetaljertPDF";
 import ModalWrapper from "nav-frontend-modal";
 import NavFrontendSpinner from "nav-frontend-spinner";
 import { AFUtvidet } from "../../types/arbeidsforhold";

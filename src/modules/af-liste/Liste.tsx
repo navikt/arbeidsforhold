@@ -8,7 +8,7 @@ import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPe
 import sprak from "../../language/provider";
 import { ListeTittel } from "./ListeTittel";
 import { PDFDownloadLink } from "@react-pdf/renderer";
-import ListePDF from "./ListePDF";
+import ListePDF from "./pdf/ListePDF";
 import PrinterIcon from "../../assets/icons/printer";
 import { useLocale } from "../common/useLocale";
 import { useIsPdf } from "../common/useIsPdf";

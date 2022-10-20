@@ -2,15 +2,19 @@ import React, { useState } from "react";
 import { Normaltekst } from "nav-frontend-typografi";
 import PrinterIcon from "../../../assets/icons/printer";
 import { DownloadPDFLink } from "./DownloadPdfLink";
-import { AFDetaljertData, AFDetaljertProps } from "../index";
 import ModalWrapper from "nav-frontend-modal";
 import { Checkbox, CheckboxGruppe } from "nav-frontend-skjema";
 import sprak from "../../../language/provider";
 import { useLocale } from "../../common/useLocale";
+import { AFUtvidet } from "../../../types/arbeidsforhold";
 
-export const PrintButtonOversikt = (
-  props: AFDetaljertProps & AFDetaljertData
-) => {
+interface Props {
+  arbeidsforhold: AFUtvidet;
+  printName: string;
+  printSSN: string;
+}
+
+export const PrintButton = (props: Props) => {
   const { arbeidsforhold } = props;
   const { arbeidsavtaler, permisjonPermittering } = arbeidsforhold;
   const { antallTimerForTimelonnet, utenlandsopphold } = arbeidsforhold;
@@ -32,7 +36,7 @@ export const PrintButtonOversikt = (
     arbeidsavtaler && arbeidsavtaler.length > 0
   );
 
-  return props.printActivated ? (
+  return (
     <>
       <div className="af-detaljert__print-button-oversikt">
         <Normaltekst>
@@ -141,7 +145,5 @@ export const PrintButtonOversikt = (
         </div>
       </ModalWrapper>
     </>
-  ) : (
-    <></>
   );
 };

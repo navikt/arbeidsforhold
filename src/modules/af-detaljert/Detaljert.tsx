@@ -6,7 +6,7 @@ import ArbeidsavtaleFelter from "./detaljer/ArbeidsavtaleFelter";
 import { DetaljertTabs } from "./tabs/DetaljertTabs";
 import { useLocale } from "../common/useLocale";
 import { DetaljertHeader } from "./detaljer/DetaljertHeader";
-import { PrintButtonOversikt } from "./print/PrintButtonOversikt";
+import { PrintButton } from "./print/PrintButton";
 
 const Detaljert = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold } = props;
@@ -18,12 +18,20 @@ const Detaljert = (props: AFDetaljertProps & AFDetaljertData) => {
       <hr />
       <ArbeidsavtaleFelter data={arbeidsforhold} />
       <DetaljertTabs arbeidsforhold={arbeidsforhold} />
+
       <AlertStripeInfo>
         {sprak[locale].hvisfeil1}
         <br />
         {sprak[locale].hvisfeil2}
       </AlertStripeInfo>
-      <PrintButtonOversikt {...props} />
+
+      {props.printActivated && (
+        <PrintButton
+          arbeidsforhold={arbeidsforhold}
+          printName={props.printName}
+          printSSN={props.printSSN}
+        />
+      )}
     </div>
   );
 };

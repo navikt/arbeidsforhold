@@ -1,24 +1,17 @@
 import React, { useState } from "react";
 import { Normaltekst } from "nav-frontend-typografi";
-import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import { AFListeData, AFListeProps } from "./index";
 import { sortPeriodeFraDesc, sortPeriodeTilDesc } from "../../utils/date";
-import CheckAndPrint from "../../components/check-and-print/CheckAndPrint";
-import CheckPeriodAndPrint from "../../components/check-period-and-print/CheckPeriodAndPrint";
 import sprak from "../../language/provider";
-import { ListeTittel } from "./ListeTittel";
-import { PDFDownloadLink } from "@react-pdf/renderer";
-import ListePDF from "./pdf/ListePDF";
-import PrinterIcon from "../../assets/icons/printer";
 import { useLocale } from "../common/useLocale";
-import { useIsPdf } from "../common/useIsPdf";
+import { ListeInnslag } from "./innslag/ListeInnslag";
+import { VisFlereButton } from "./vis-flere-button/VisFlereButton";
+import { PrintButton } from "./print/PrintButton";
 
 const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
   const { arbeidsforhold, onClick } = props;
   const [visAlle, settVisAlle] = useState<boolean>(false);
-  const toggleVisAlle = () => settVisAlle(!visAlle);
-  const { locale, LocaleProvider } = useLocale();
-  const { IsPdfProvider } = useIsPdf();
+  const { locale } = useLocale();
 
   const sorterteArbeidsforhold = arbeidsforhold
     .sort((a, b) =>
@@ -41,31 +34,11 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
           sorterteArbeidsforhold
             .slice(0, visAlle ? arbeidsforhold.length : 5)
             .map((foretak, counter) => (
-              <div
-                className="af-liste__flex-rad"
-                key={`${foretak.arbeidsforholdId}-${counter}`}
-              >
-                <div className="af-liste__flex-innhold">
-                  <div className="af-liste__tekst">
-                    <ListeTittel foretak={foretak} onClick={onClick} />
-                  </div>
-                  <div className="af-liste__tekst">
-                    <CheckAndPrint data={foretak.yrke} font="typo-normal" />
-                  </div>
-                  <div className="af-liste__tekst typo-normal">
-                    <CheckPeriodAndPrint
-                      data={foretak.ansettelsesperiode.periode}
-                      maskineltAvsluttet={
-                        foretak.ansettelsesperiode.varslingskode
-                          ? sprak[locale][
-                              foretak.ansettelsesperiode.varslingskode
-                            ]
-                          : null
-                      }
-                    />
-                  </div>
-                </div>
-              </div>
+              <ListeInnslag
+                foretak={foretak}
+                onClick={onClick}
+                counter={counter}
+              />
             ))
         ) : (
           <div className="af-liste__flex-rad">
@@ -73,54 +46,20 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
           </div>
         )}
       </div>
+
       {arbeidsforhold.length > 5 && (
-        <button
-          className="af-liste__vis-flere lenke"
-          onClick={toggleVisAlle}
-          aria-expanded={visAlle}
-        >
-          {visAlle ? (
-            <Normaltekst>
-              {sprak[locale].visfaerrearbeidsforhold} <OppChevron />
-            </Normaltekst>
-          ) : (
-            <Normaltekst>
-              {sprak[locale].visflerearbeidsforhold} <NedChevron />
-            </Normaltekst>
-          )}
-        </button>
+        <VisFlereButton
+          toggleVisAlle={() => settVisAlle(!visAlle)}
+          visAlle={visAlle}
+        />
       )}
 
       {props.printActivated && arbeidsforhold.length > 0 && (
-        <div className="af-liste__print-button">
-          <Normaltekst>
-            <PDFDownloadLink
-              document={
-                <IsPdfProvider value={true}>
-                  {/* LocaleProvider-wrapper nødvendig for å få med locale i PDF-rendering */}
-                  <LocaleProvider value={locale}>
-                    <ListePDF
-                      arbeidsforhold={arbeidsforhold}
-                      printName={props.printName}
-                      printSSO={props.printSSN}
-                    />
-                  </LocaleProvider>
-                </IsPdfProvider>
-              }
-              fileName="arbeidsforhold.pdf"
-              className={"lenke"}
-            >
-              {({ loading }) =>
-                loading ? null : (
-                  <>
-                    <PrinterIcon />
-                    <span>Skriv ut</span>
-                  </>
-                )
-              }
-            </PDFDownloadLink>
-          </Normaltekst>
-        </div>
+        <PrintButton
+          arbeidsforhold={arbeidsforhold}
+          printSSN={props.printSSN}
+          printName={props.printName}
+        />
       )}
     </div>
   );

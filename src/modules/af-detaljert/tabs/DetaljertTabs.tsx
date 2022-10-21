@@ -4,10 +4,10 @@ import { Select } from "nav-frontend-skjema";
 import { Element } from "nav-frontend-typografi";
 import { AFUtvidet } from "../../../types/arbeidsforhold";
 import sprak from "../../../language/provider";
-import Timer from "./Timer";
-import Permisjon from "./Permisjon";
-import Utenlandsopphold from "./Utenlandsopphold";
-import Historikk from "./Historikk";
+import { Timer } from "./Timer";
+import { Permisjon } from "./Permisjon";
+import { Utenlandsopphold } from "./Utenlandsopphold";
+import { Historikk } from "./Historikk";
 import { useLocale } from "../../common/useLocale";
 
 type Props = {

@@ -1,7 +1,7 @@
 import { useIsPdf } from "../../common/useIsPdf";
 import { useLocale } from "../../common/useLocale";
 import { PDFDownloadLink } from "@react-pdf/renderer";
-import DetaljertPDF from "./pdf/DetaljertPDF";
+import { DetaljertPDF } from "./pdf/DetaljertPDF";
 import NavFrontendSpinner from "nav-frontend-spinner";
 import PrinterIcon from "../../../assets/icons/printer";
 import React from "react";

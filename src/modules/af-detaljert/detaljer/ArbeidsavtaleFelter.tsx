@@ -1,11 +1,11 @@
 import React from "react";
-import CheckAndPrintBox from "../../../components/check-and-print-box/CheckAndPrintBox";
-import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
+import { CheckAndPrintBox } from "../../../components/check-and-print-box/CheckAndPrintBox";
+import { CheckDateAndPrint } from "../../../components/check-date-and-print/CheckDateAndPrint";
 import { AFArbeidsavtaler, AFUtvidet } from "../../../types/arbeidsforhold";
 import { Normaltekst } from "nav-frontend-typografi";
 import sprak from "../../../language/provider";
 import { useLocale } from "../../common/useLocale";
-import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
+import { CheckAndPrint } from "../../../components/check-and-print/CheckAndPrint";
 import { orgnr } from "../../../utils/orgnr";
 
 interface PropsStandard {
@@ -18,7 +18,7 @@ interface PropsUtvidet {
   isUtvidet?: true;
 }
 
-const ArbeidsavtaleFelter = (props: PropsStandard | PropsUtvidet) => {
+export const ArbeidsavtaleFelter = (props: PropsStandard | PropsUtvidet) => {
   const { locale } = useLocale();
   return (
     <div className="af-detaljert__innhold">
@@ -103,5 +103,3 @@ const ArbeidsavtaleFelter = (props: PropsStandard | PropsUtvidet) => {
     </div>
   );
 };
-
-export default ArbeidsavtaleFelter;

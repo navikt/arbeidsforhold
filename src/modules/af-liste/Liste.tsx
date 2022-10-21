@@ -8,7 +8,7 @@ import { ListeInnslag } from "./innslag/ListeInnslag";
 import { VisFlereButton } from "./vis-flere-button/VisFlereButton";
 import { PrintButton } from "./print/PrintButton";
 
-const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
+export const Liste = (props: AFListeProps & AFListeData) => {
   const { arbeidsforhold, onClick } = props;
   const [visAlle, settVisAlle] = useState<boolean>(false);
   const { locale } = useLocale();
@@ -64,5 +64,3 @@ const Arbeidsforhold = (props: AFListeProps & AFListeData) => {
     </div>
   );
 };
-
-export default Arbeidsforhold;

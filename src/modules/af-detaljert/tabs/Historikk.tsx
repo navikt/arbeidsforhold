@@ -1,19 +1,19 @@
 import React, { Fragment, useState } from "react";
 import { AFArbeidsavtaler } from "../../../types/arbeidsforhold";
 import { Element } from "nav-frontend-typografi";
-import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
-import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
+import { CheckAndPrint } from "../../../components/check-and-print/CheckAndPrint";
+import { CheckPeriodAndPrint } from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import { sortPeriodeFraDesc, sortPeriodeTilDesc } from "../../../utils/date";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import sprak from "../../../language/provider";
-import ArbeidsavtaleFelter from "../detaljer/ArbeidsavtaleFelter";
+import { ArbeidsavtaleFelter } from "../detaljer/ArbeidsavtaleFelter";
 import { useLocale } from "../../common/useLocale";
 
 interface Props {
   arbeidsavtaler: AFArbeidsavtaler[];
 }
 
-const Historikk = (props: Props) => {
+export const Historikk = (props: Props) => {
   const { locale } = useLocale();
 
   props.arbeidsavtaler
@@ -91,5 +91,3 @@ const Historikk = (props: Props) => {
     </div>
   );
 };
-
-export default Historikk;

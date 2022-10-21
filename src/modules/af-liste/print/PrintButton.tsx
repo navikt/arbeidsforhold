@@ -1,7 +1,7 @@
 import React from "react";
 import { Normaltekst } from "nav-frontend-typografi";
 import { PDFDownloadLink } from "@react-pdf/renderer";
-import ListePDF from "./pdf/ListePDF";
+import { ListePDF } from "./pdf/ListePDF";
 import PrinterIcon from "../../../assets/icons/printer";
 import { useLocale } from "../../common/useLocale";
 import { useIsPdf } from "../../common/useIsPdf";

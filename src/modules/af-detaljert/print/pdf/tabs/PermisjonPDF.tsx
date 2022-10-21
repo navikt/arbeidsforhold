@@ -1,7 +1,7 @@
 import React from "react";
 import { AFPermisjonPermittering } from "../../../../../types/arbeidsforhold";
 import { sortPeriodeFraDesc } from "../../../../../utils/date";
-import CheckPeriodAndPrint from "../../../../../components/check-period-and-print/CheckPeriodAndPrint";
+import { CheckPeriodAndPrint } from "../../../../../components/check-period-and-print/CheckPeriodAndPrint";
 import sprak from "../../../../../language/provider";
 import { Text, View } from "@react-pdf/renderer";
 import { pdfStyles } from "../../../../common/pdfStyles";
@@ -11,7 +11,7 @@ interface Props {
   permisjoner: AFPermisjonPermittering[];
 }
 
-const PermisjonPDF = (props: Props) => {
+export const PermisjonPDF = (props: Props) => {
   const { locale } = useLocale();
 
   props.permisjoner.sort((left, right) =>
@@ -54,5 +54,3 @@ const PermisjonPDF = (props: Props) => {
     </>
   );
 };
-
-export default PermisjonPDF;

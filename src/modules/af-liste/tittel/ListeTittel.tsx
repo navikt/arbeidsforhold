@@ -1,7 +1,7 @@
 import React from "react";
 import { AFListeOnClick } from "../index";
 import { AFSimpel } from "../../../types/arbeidsforhold";
-import ArbeidsgiverTittel from "../../../components/arbeidsgiver/ArbeidsgiverTittel";
+import { ArbeidsgiverTittel } from "../../../components/arbeidsgiver/ArbeidsgiverTittel";
 
 interface Props {
   foretak: AFSimpel;

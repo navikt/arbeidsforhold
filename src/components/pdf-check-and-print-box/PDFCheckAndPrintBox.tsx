@@ -1,7 +1,7 @@
 import React from "react";
-import CheckDateAndPrint from "../check-date-and-print/CheckDateAndPrint";
-import CheckAndPrint from "../check-and-print/CheckAndPrint";
-import CheckPeriodAndPrint from "../check-period-and-print/CheckPeriodAndPrint";
+import { CheckDateAndPrint } from "../check-date-and-print/CheckDateAndPrint";
+import { CheckAndPrint } from "../check-and-print/CheckAndPrint";
+import { CheckPeriodAndPrint } from "../check-period-and-print/CheckPeriodAndPrint";
 import { Text, View } from "@react-pdf/renderer";
 import { AFPeriode } from "../../types/arbeidsforhold";
 import { pdfStyles } from "../../modules/common/pdfStyles";
@@ -29,7 +29,7 @@ type Props = {
     }
 );
 
-const PDFCheckAndPrintBox = (props: Props) => {
+export const PDFCheckAndPrintBox = (props: Props) => {
   return props.data ? (
     <View style={[pdfStyles.twoColumns, pdfStyles.section]}>
       <Text style={pdfStyles.h3}>{props.title}</Text>
@@ -48,5 +48,3 @@ const PDFCheckAndPrintBox = (props: Props) => {
     </View>
   ) : null;
 };
-
-export default PDFCheckAndPrintBox;

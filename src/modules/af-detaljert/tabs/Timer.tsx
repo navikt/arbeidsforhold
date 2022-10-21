@@ -1,12 +1,12 @@
 import React, { Fragment, useState } from "react";
 import { AFTimerForTimelonnet } from "../../../types/arbeidsforhold";
 import { Element } from "nav-frontend-typografi";
-import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
+import { CheckAndPrint } from "../../../components/check-and-print/CheckAndPrint";
 import { sortPeriodeFraDesc } from "../../../utils/date";
 import moment from "moment";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
-import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
-import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
+import { CheckDateAndPrint } from "../../../components/check-date-and-print/CheckDateAndPrint";
+import { CheckPeriodAndPrint } from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import sprak from "../../../language/provider";
 import { useLocale } from "../../common/useLocale";
 
@@ -14,7 +14,7 @@ interface Props {
   timer: AFTimerForTimelonnet[];
 }
 
-const Timer = (props: Props) => {
+export const Timer = (props: Props) => {
   const { locale } = useLocale();
 
   props.timer.sort((left, right) =>
@@ -106,5 +106,3 @@ const Timer = (props: Props) => {
     </div>
   );
 };
-
-export default Timer;

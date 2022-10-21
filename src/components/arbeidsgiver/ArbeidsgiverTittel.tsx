@@ -1,6 +1,6 @@
 import React from "react";
 import { AFArbeidsgiver } from "../../types/arbeidsforhold";
-import CheckAndPrint from "../check-and-print/CheckAndPrint";
+import { CheckAndPrint } from "../check-and-print/CheckAndPrint";
 import { fnr } from "../../utils/fnr";
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
   overskrift?: boolean;
 }
 
-const ArbeidsgiverTittel = (props: Props) => {
+export const ArbeidsgiverTittel = (props: Props) => {
   return (
     <CheckAndPrint
       data={
@@ -20,4 +20,3 @@ const ArbeidsgiverTittel = (props: Props) => {
     />
   );
 };
-export default ArbeidsgiverTittel;

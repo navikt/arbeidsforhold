@@ -8,8 +8,8 @@ import {
   View,
 } from "@react-pdf/renderer";
 import { AFSimpel } from "../../../../types/arbeidsforhold";
-import ArbeidsgiverTittel from "../../../../components/arbeidsgiver/ArbeidsgiverTittel";
-import CheckPeriodAndPrint from "../../../../components/check-period-and-print/CheckPeriodAndPrint";
+import { ArbeidsgiverTittel } from "../../../../components/arbeidsgiver/ArbeidsgiverTittel";
+import { CheckPeriodAndPrint } from "../../../../components/check-period-and-print/CheckPeriodAndPrint";
 import Regular from "../../../../assets/fonts/ODelI1aHBYDBqgeIAH2zlNRl0pGnog23EMYRrBmUzJQ.ttf";
 import Italic from "../../../../assets/fonts/M2Jd71oPJhLKp0zdtTvoMwRX4TIfMQQEXLu74GftruE.ttf";
 import Bold from "../../../../assets/fonts/toadOcfmlt9b38dHJxOBGPgXsetDviZcdR5OzC1KPcw.ttf";
@@ -24,7 +24,7 @@ interface Props {
 }
 
 // Create Document Component
-const ListePDF = ({ arbeidsforhold, printName, printSSO }: Props) => {
+export const ListePDF = ({ arbeidsforhold, printName, printSSO }: Props) => {
   Font.register({
     family: "SourceSansPro",
     fonts: [
@@ -80,5 +80,3 @@ const ListePDF = ({ arbeidsforhold, printName, printSSO }: Props) => {
     </Document>
   );
 };
-
-export default ListePDF;

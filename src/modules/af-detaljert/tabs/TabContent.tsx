@@ -1,10 +1,10 @@
 import React from "react";
 import { AFUtvidet } from "../../../types/arbeidsforhold";
-import Timer from "./Timer";
-import Permisjon from "./Permisjon";
-import Utenlandsopphold from "./Utenlandsopphold";
-import Historikk from "./Historikk";
-import { DetaljertTabType } from "../DetaljertTabs";
+import { Timer } from "./Timer";
+import { Permisjon } from "./Permisjon";
+import { Utenlandsopphold } from "./Utenlandsopphold";
+import { Historikk } from "./Historikk";
+import { DetaljertTabType } from "./DetaljertTabs";
 
 type Props = {
   type: DetaljertTabType;

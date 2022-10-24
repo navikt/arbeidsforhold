@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import Tabs from "nav-frontend-tabs";
 import { Select } from "nav-frontend-skjema";
 import { Element } from "nav-frontend-typografi";
-import { AFUtvidet } from "../../types/arbeidsforhold";
-import sprak from "../../language/provider";
-import { useLocale } from "../common/useLocale";
-import { TabContent } from "./tabs/TabContent";
+import { AFUtvidet } from "../../../types/arbeidsforhold";
+import { useLocale } from "../../common/useLocale";
+import sprak from "../../../language/provider";
+import { TabContent } from "./TabContent";
 
 export type DetaljertTabType =
   | "timer"

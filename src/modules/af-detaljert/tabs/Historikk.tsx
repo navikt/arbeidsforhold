@@ -81,7 +81,7 @@ export const Historikk = (props: Props) => {
             {ekspandert && (
               <div className="af-detaljert__flex-rad">
                 <div className="af-detaljert__flex-kolonne">
-                  <ArbeidsavtaleFelter data={arbeidsavtale} />
+                  <ArbeidsavtaleFelter data={arbeidsavtale} isUtvidet={false} />
                 </div>
               </div>
             )}

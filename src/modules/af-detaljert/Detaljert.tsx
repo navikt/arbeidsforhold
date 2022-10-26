@@ -16,7 +16,7 @@ export const Detaljert = (props: AFDetaljertProps & AFDetaljertData) => {
     <div className={`af-detaljert__container`}>
       <DetaljertHeader arbeidsforhold={arbeidsforhold} />
       <hr />
-      <ArbeidsavtaleFelter data={arbeidsforhold} />
+      <ArbeidsavtaleFelter data={arbeidsforhold} isUtvidet={true} />
       <DetaljertTabs arbeidsforhold={arbeidsforhold} />
 
       <AlertStripeInfo>

@@ -28,17 +28,24 @@ interface Props {
 }
 
 // Create Document Component
-export const DetaljertPDF = (props: Props) => {
+export const DetaljertPDF = ({
+  arbeidsforhold,
+  printGenerellOversikt,
+  printTimerTimelonnet,
+  printPermisjon,
+  printUtenlandsopphold,
+  printHistorikk,
+  printName,
+  printSSO,
+}: Props) => {
   const { locale } = useLocale();
-  const arbeidsforhold = props.arbeidsforhold;
-  const printGenerellOversikt = props.printGenerellOversikt;
-  const printTimerTimelonnet = props.printTimerTimelonnet;
-  const printPermisjon = props.printPermisjon;
-  const printUtenlandsopphold = props.printUtenlandsopphold;
-  const printHistorikk = props.printHistorikk;
-  const { printName, printSSO } = props;
-  const { arbeidsavtaler, permisjonPermittering } = arbeidsforhold;
-  const { antallTimerForTimelonnet, utenlandsopphold } = arbeidsforhold;
+
+  const {
+    arbeidsavtaler,
+    permisjonPermittering,
+    antallTimerForTimelonnet,
+    utenlandsopphold,
+  } = arbeidsforhold;
 
   Font.register(pdfFont);
 

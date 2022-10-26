@@ -1,16 +1,6 @@
 import React from "react";
-import {
-  Document,
-  Font,
-  Page,
-  StyleSheet,
-  Text,
-  View,
-} from "@react-pdf/renderer";
+import { Document, Font, Page, Text, View } from "@react-pdf/renderer";
 import { AFUtvidet } from "../../../../types/arbeidsforhold";
-import Regular from "../../../../assets/fonts/ODelI1aHBYDBqgeIAH2zlNRl0pGnog23EMYRrBmUzJQ.ttf";
-import Italic from "../../../../assets/fonts/M2Jd71oPJhLKp0zdtTvoMwRX4TIfMQQEXLu74GftruE.ttf";
-import Bold from "../../../../assets/fonts/toadOcfmlt9b38dHJxOBGPgXsetDviZcdR5OzC1KPcw.ttf";
 import { PDFCheckAndPrintBox } from "../../../../components/pdf-check-and-print-box/PDFCheckAndPrintBox";
 import sprak from "../../../../language/provider";
 import { orgnr } from "../../../../utils/orgnr";
@@ -24,6 +14,7 @@ import { useLocale } from "../../../common/useLocale";
 import { PdfHeader } from "../../../common/PdfHeader";
 import { pdfStyles } from "../../../common/pdfStyles";
 import { PdfFooter } from "../../../common/PdfFooter";
+import { pdfFont } from "../../../common/pdfFont";
 
 interface Props {
   arbeidsforhold: AFUtvidet;
@@ -49,27 +40,7 @@ export const DetaljertPDF = (props: Props) => {
   const { arbeidsavtaler, permisjonPermittering } = arbeidsforhold;
   const { antallTimerForTimelonnet, utenlandsopphold } = arbeidsforhold;
 
-  Font.register({
-    family: "SourceSansPro",
-    fonts: [
-      { src: Regular },
-      { src: Italic, fontStyle: "italic" },
-      { src: Bold, fontWeight: 700 },
-    ],
-  });
-
-  const styles = StyleSheet.create({
-    h2Container: {
-      display: "flex",
-      flexDirection: "column",
-    },
-    introRow: {
-      display: "flex",
-      paddingVertical: 5,
-      flexDirection: "row",
-      alignItems: "flex-end",
-    },
-  });
+  Font.register(pdfFont);
 
   return (
     <Document>
@@ -77,10 +48,10 @@ export const DetaljertPDF = (props: Props) => {
         <Page size="A4" style={pdfStyles.page}>
           <PdfHeader printName={printName} printSSO={printSSO} />
           <View>
-            <View style={styles.introRow}>
+            <View style={pdfStyles.introRow}>
               <View style={[pdfStyles.section, pdfStyles.twoColumns]}>
                 {arbeidsforhold.arbeidsgiver.type === "Organisasjon" ? (
-                  <View style={styles.h2Container}>
+                  <View style={pdfStyles.h2Container}>
                     <View>
                       <Text style={pdfStyles.h2}>
                         {arbeidsforhold.arbeidsgiver.orgnavn}

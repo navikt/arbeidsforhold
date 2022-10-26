@@ -95,4 +95,27 @@ export const pdfStyles = StyleSheet.create({
     paddingTop: 10,
     fontSize: 11,
   },
+
+  //Detaljert
+  h2Container: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  introRow: {
+    display: "flex",
+    paddingVertical: 5,
+    flexDirection: "row",
+    alignItems: "flex-end",
+  },
+
+  //Liste
+  liste: {
+    marginHorizontal: 10,
+    borderTop: "1px solid black",
+    borderBottom: "1px solid #979797",
+  },
+  listeRow: {
+    paddingVertical: 10,
+    borderTop: "1px solid #979797",
+  },
 });

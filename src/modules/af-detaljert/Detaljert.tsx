@@ -1,7 +1,7 @@
 import React from "react";
 import { AFDetaljertData, AFDetaljertProps } from "./index";
 import { AlertStripeInfo } from "nav-frontend-alertstriper";
-import sprak from "../../language/provider";
+import { sprak } from "../../language/provider";
 import { ArbeidsavtaleFelter } from "./detaljer/ArbeidsavtaleFelter";
 import { DetaljertTabs } from "./tabs/DetaljertTabs";
 import { useLocale } from "../common/useLocale";

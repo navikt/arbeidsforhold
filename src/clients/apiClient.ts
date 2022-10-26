@@ -1,5 +1,5 @@
 import { logApiError } from "../utils/logger";
-import Environment from "../utils/environment";
+import { Environment } from "../utils/environment";
 
 const parseJson = (data: any) => data.json();
 
@@ -27,7 +27,7 @@ const sjekkForFeil = (
     : (logApiError(url, response),
       reject({
         code: response.status,
-        text: response.statusText
+        text: response.statusText,
       }));
 
 const hentJsonOgSjekkAuth = (url: string, headers?: object) =>
@@ -36,12 +36,12 @@ const hentJsonOgSjekkAuth = (url: string, headers?: object) =>
       method: "GET",
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
-        ...headers
+        ...headers,
       },
-      credentials: "include"
+      credentials: "include",
     })
       .then(sjekkAuth)
-      .then(response => sjekkForFeil(url, response, reject))
+      .then((response) => sjekkForFeil(url, response, reject))
       .then(parseJson)
       .then(resolve)
       .catch(reject)

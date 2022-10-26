@@ -3,7 +3,7 @@ import { Normaltekst, Undertittel } from "nav-frontend-typografi";
 import { ArbeidsgiverTittel } from "../../../components/arbeidsgiver/ArbeidsgiverTittel";
 import { CheckAndPrint } from "../../../components/check-and-print/CheckAndPrint";
 import { orgnr } from "../../../utils/orgnr";
-import sprak from "../../../language/provider";
+import { sprak } from "../../../language/provider";
 import { CheckPeriodAndPrint } from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import { useLocale } from "../../common/useLocale";
 import { AFUtvidet } from "../../../types/arbeidsforhold";

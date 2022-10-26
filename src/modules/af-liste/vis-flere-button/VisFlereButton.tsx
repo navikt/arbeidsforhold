@@ -1,6 +1,6 @@
 import React from "react";
 import { Normaltekst } from "nav-frontend-typografi";
-import sprak from "../../../language/provider";
+import { sprak } from "../../../language/provider";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import { useLocale } from "../../common/useLocale";
 

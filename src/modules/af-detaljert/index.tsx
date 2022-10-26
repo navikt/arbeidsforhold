@@ -7,8 +7,8 @@ import {
 } from "clients/apiClient";
 import { Spinner } from "components/spinner/Spinner";
 import { Detaljert } from "./Detaljert";
-import Environment from "utils/environment";
-import Miljo from "types/miljo";
+import { Environment } from "utils/environment";
+import { Miljo } from "types/miljo";
 import "moment/locale/nb";
 import "moment/locale/nn";
 import { AFPrint } from "../../types/print";

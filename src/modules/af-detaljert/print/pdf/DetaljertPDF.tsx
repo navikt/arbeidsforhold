@@ -2,7 +2,7 @@ import React from "react";
 import { Document, Font, Page, Text, View } from "@react-pdf/renderer";
 import { AFUtvidet } from "../../../../types/arbeidsforhold";
 import { PDFCheckAndPrintBox } from "../../../../components/pdf-check-and-print-box/PDFCheckAndPrintBox";
-import sprak from "../../../../language/provider";
+import { sprak } from "../../../../language/provider";
 import { orgnr } from "../../../../utils/orgnr";
 import { TimerPDF } from "./tabs/TimerPDF";
 import { PermisjonPDF } from "./tabs/PermisjonPDF";

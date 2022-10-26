@@ -1,2 +1,1 @@
-type Miljo = "LOCAL" | "DEV" | "PROD";
-export default Miljo;
+export type Miljo = "LOCAL" | "DEV" | "PROD";

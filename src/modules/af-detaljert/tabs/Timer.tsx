@@ -7,7 +7,7 @@ import moment from "moment";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import { CheckDateAndPrint } from "../../../components/check-date-and-print/CheckDateAndPrint";
 import { CheckPeriodAndPrint } from "../../../components/check-period-and-print/CheckPeriodAndPrint";
-import sprak from "../../../language/provider";
+import { sprak } from "../../../language/provider";
 import { useLocale } from "../../common/useLocale";
 
 interface Props {

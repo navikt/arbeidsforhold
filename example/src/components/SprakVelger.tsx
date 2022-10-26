@@ -7,7 +7,7 @@ interface Props {
   settValgtLocale: (locale: Locale) => void;
 }
 
-const SprakVelger = (props: Props) => {
+export const SprakVelger = (props: Props) => {
   const { locales, valgtLocale, settValgtLocale } = props;
   return (
     <div className="example__velger">
@@ -29,5 +29,3 @@ const SprakVelger = (props: Props) => {
     </div>
   );
 };
-
-export default SprakVelger;

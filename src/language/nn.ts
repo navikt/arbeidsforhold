@@ -1,4 +1,4 @@
-export default {
+export const nn = {
   antalltimer: "Antal timar",
   ansettelsesform: "Tillsettingsform",
   ansettelsesperiode: "Tilsettingsperiode",

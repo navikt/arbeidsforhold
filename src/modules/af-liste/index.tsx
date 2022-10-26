@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Error, { HTTPError } from "../../components/error/Error";
+import { Error, HTTPError } from "../../components/error/Error";
 import { AFSimpel } from "../../types/arbeidsforhold";
 import { hentListeMedArbeidsforhold } from "../../clients/apiClient";
-import Spinner from "../../components/spinner/Spinner";
-import Liste from "./Liste";
+import { Spinner } from "../../components/spinner/Spinner";
+import { Liste } from "./Liste";
 import Environment from "../../utils/environment";
 import { Link } from "react-router-dom";
 import Miljo from "../../types/miljo";

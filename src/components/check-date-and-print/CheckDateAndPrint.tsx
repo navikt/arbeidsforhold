@@ -1,10 +1,10 @@
 import React from "react";
-import NoData from "../no-data/NoData";
+import { NoData } from "../no-data/NoData";
 import moment from "moment";
 import { parse } from "../../utils/text";
 import Hjelpetekst from "nav-frontend-hjelpetekst";
 import { useLocale } from "../../modules/common/useLocale";
-import TextIfPdf from "../text-if-pdf/TextIfPdf";
+import { TextIfPdf } from "../text-if-pdf/TextIfPdf";
 
 interface Props {
   data?: string | number;
@@ -13,7 +13,7 @@ interface Props {
   maskineltAvsluttet?: string | null;
 }
 
-const CheckDateAndPrint = (props: Props) => {
+export const CheckDateAndPrint = (props: Props) => {
   const { locale } = useLocale();
 
   if (!props.data) {
@@ -43,4 +43,3 @@ const CheckDateAndPrint = (props: Props) => {
     </span>
   );
 };
-export default CheckDateAndPrint;

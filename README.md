@@ -63,7 +63,7 @@ Se komplett eksempel under mappen <i>/example</i>
 #### Detaljert arbeidsforhold
 
 ```js
-import { DetaljertArbeidsforhold } from "@navikt/arbeidsforhold";
+import { Detaljert } from "@navikt/arbeidsforhold";
 ```
 
 <img alt="Screenshot av detaljert arbeidsforhold" src="screenshots/DetaljertArbeidsforhold.png" width="60%"/>
@@ -77,7 +77,7 @@ render = () => {
   const miljo = "DEV" as "LOCAL" | "DEV" | "PROD";
   const rolle = "ARBEIDSTAKER" as "ARBEIDSTAKER" | "ARBEIDSGIVER"
 
-  return <DetaljertArbeidsforhold
+  return <Detaljert
             navArbeidsforholdId={id}
             locale={locale}
             miljo={miljo}

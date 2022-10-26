@@ -1,20 +1,20 @@
 import React from "react";
-import { AFTimerForTimelonnet } from "../../../types/arbeidsforhold";
-import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
-import { sortPeriodeFraDesc } from "../../../utils/date";
+import { AFTimerForTimelonnet } from "../../../../../types/arbeidsforhold";
+import { CheckAndPrint } from "../../../../../components/check-and-print/CheckAndPrint";
+import { sortPeriodeFraDesc } from "../../../../../utils/date";
 import moment from "moment";
-import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
-import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
-import sprak from "../../../language/provider";
+import { CheckDateAndPrint } from "../../../../../components/check-date-and-print/CheckDateAndPrint";
+import { CheckPeriodAndPrint } from "../../../../../components/check-period-and-print/CheckPeriodAndPrint";
+import sprak from "../../../../../language/provider";
 import { Text, View } from "@react-pdf/renderer";
-import { pdfStyles } from "../../common/pdf";
-import { useLocale } from "../../common/useLocale";
+import { useLocale } from "../../../../common/useLocale";
+import { pdfStyles } from "../../../../common/pdfStyles";
 
 interface Props {
   timer: AFTimerForTimelonnet[];
 }
 
-const TimerPDF = (props: Props) => {
+export const TimerPDF = (props: Props) => {
   const { locale } = useLocale();
 
   props.timer.sort((left, right) =>
@@ -102,5 +102,3 @@ const TimerPDF = (props: Props) => {
     </View>
   );
 };
-
-export default TimerPDF;

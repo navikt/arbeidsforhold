@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Error, { HTTPError } from "components/error/Error";
+import { Error, HTTPError } from "components/error/Error";
 import { AFUtvidet } from "types/arbeidsforhold";
 import {
   hentDetaljertArbeidsforholdArbeidsgiver,
   hentDetaljertArbeidsforholdArbeidstaker,
 } from "clients/apiClient";
-import Spinner from "components/spinner/Spinner";
-import DetaljerArbeidsforhold from "./Detaljert";
+import { Spinner } from "components/spinner/Spinner";
+import { Detaljert } from "./Detaljert";
 import Environment from "utils/environment";
 import Miljo from "types/miljo";
 import "moment/locale/nb";
@@ -108,10 +108,7 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
     case "RESULT":
       return (
         <LocaleProvider value={props.locale}>
-          <DetaljerArbeidsforhold
-            arbeidsforhold={state.arbeidsforhold}
-            {...props}
-          />
+          <Detaljert arbeidsforhold={state.arbeidsforhold} {...props} />
         </LocaleProvider>
       );
     case "ERROR":

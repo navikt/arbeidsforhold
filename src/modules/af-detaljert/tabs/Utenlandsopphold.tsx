@@ -1,12 +1,12 @@
-import React, { useState, Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { AFUtenlandsopphold } from "../../../types/arbeidsforhold";
 import { Element } from "nav-frontend-typografi";
-import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
-import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
+import { CheckPeriodAndPrint } from "../../../components/check-period-and-print/CheckPeriodAndPrint";
+import { CheckAndPrint } from "../../../components/check-and-print/CheckAndPrint";
 import { sortPeriodeFraDesc } from "../../../utils/date";
 import moment from "moment";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
-import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
+import { CheckDateAndPrint } from "../../../components/check-date-and-print/CheckDateAndPrint";
 import sprak from "../../../language/provider";
 import { useLocale } from "../../common/useLocale";
 
@@ -14,7 +14,7 @@ interface Props {
   utenlandsopphold: AFUtenlandsopphold[];
 }
 
-const Utenlandsopphold = (props: Props) => {
+export const Utenlandsopphold = (props: Props) => {
   const { locale } = useLocale();
 
   props.utenlandsopphold.sort((left, right) =>
@@ -101,5 +101,3 @@ const Utenlandsopphold = (props: Props) => {
     </div>
   );
 };
-
-export default Utenlandsopphold;

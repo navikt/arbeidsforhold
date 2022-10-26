@@ -6,10 +6,8 @@ interface Props {
   children?: string | number;
 }
 
-const TextIfPdf = (props: Props) => {
+export const TextIfPdf = (props: Props) => {
   const { isPdf } = useIsPdf();
 
   return isPdf ? <Text>{props.children}</Text> : <>{props.children}</>;
 };
-
-export default TextIfPdf;

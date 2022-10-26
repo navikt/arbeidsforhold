@@ -1,20 +1,20 @@
 import React from "react";
-import { AFUtenlandsopphold } from "../../../types/arbeidsforhold";
-import CheckAndPrint from "../../../components/check-and-print/CheckAndPrint";
-import { sortPeriodeFraDesc } from "../../../utils/date";
+import { AFUtenlandsopphold } from "../../../../../types/arbeidsforhold";
+import { CheckAndPrint } from "../../../../../components/check-and-print/CheckAndPrint";
+import { sortPeriodeFraDesc } from "../../../../../utils/date";
 import moment from "moment";
-import CheckDateAndPrint from "../../../components/check-date-and-print/CheckDateAndPrint";
-import CheckPeriodAndPrint from "../../../components/check-period-and-print/CheckPeriodAndPrint";
-import sprak from "../../../language/provider";
+import { CheckDateAndPrint } from "../../../../../components/check-date-and-print/CheckDateAndPrint";
+import { CheckPeriodAndPrint } from "../../../../../components/check-period-and-print/CheckPeriodAndPrint";
+import sprak from "../../../../../language/provider";
 import { Text, View } from "@react-pdf/renderer";
-import { pdfStyles } from "../../common/pdf";
-import { useLocale } from "../../common/useLocale";
+import { pdfStyles } from "../../../../common/pdfStyles";
+import { useLocale } from "../../../../common/useLocale";
 
 interface Props {
   utenlandsopphold: AFUtenlandsopphold[];
 }
 
-const UtenlandsoppholdPDF = (props: Props) => {
+export const UtenlandsoppholdPDF = (props: Props) => {
   const { locale } = useLocale();
 
   props.utenlandsopphold.sort((left, right) =>
@@ -100,5 +100,3 @@ const UtenlandsoppholdPDF = (props: Props) => {
     </View>
   );
 };
-
-export default UtenlandsoppholdPDF;

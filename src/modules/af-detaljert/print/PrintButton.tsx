@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Normaltekst } from "nav-frontend-typografi";
-import PrinterIcon from "../../../assets/icons/printer";
+import { PrinterIcon } from "../../../assets/icons/PrinterIcon";
 import { DownloadPDFLink } from "./DownloadPdfLink";
 import ModalWrapper from "nav-frontend-modal";
 import { Checkbox, CheckboxGruppe } from "nav-frontend-skjema";
-import sprak from "../../../language/provider";
+import { sprak } from "../../../language/provider";
 import { useLocale } from "../../common/useLocale";
 import { AFUtvidet } from "../../../types/arbeidsforhold";
 

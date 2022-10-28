@@ -11,10 +11,10 @@ const CONVERTER = {
   INGEN_ON_CLICK: "Ingen onClick",
   LENKE: "Lenke",
   REACT_ROUTER_LENKE: "React Router Lenke",
-  KNAPP: "Knapp"
+  KNAPP: "Knapp",
 };
 
-const OnClickVelger = (props: Props) => {
+export const OnClickVelger = (props: Props) => {
   const { onClicks, valgtOnClick, settValgtOnClick } = props;
   return (
     <div className="example__velger">
@@ -36,5 +36,3 @@ const OnClickVelger = (props: Props) => {
     </div>
   );
 };
-
-export default OnClickVelger;

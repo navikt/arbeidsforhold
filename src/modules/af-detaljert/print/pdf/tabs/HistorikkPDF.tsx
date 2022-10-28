@@ -6,7 +6,7 @@ import {
 } from "../../../../../utils/date";
 import { Text, View } from "@react-pdf/renderer";
 import { PDFCheckAndPrintBox } from "../../../../../components/pdf-check-and-print-box/PDFCheckAndPrintBox";
-import sprak from "../../../../../language/provider";
+import { sprak } from "../../../../../language/provider";
 import { CheckDateAndPrint } from "../../../../../components/check-date-and-print/CheckDateAndPrint";
 import { pdfStyles } from "../../../../common/pdfStyles";
 import { useLocale } from "../../../../common/useLocale";

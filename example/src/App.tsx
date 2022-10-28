@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import Miljo from "../../src/types/miljo";
+import { Miljo } from "../../src/types/miljo";
 import {
   DetaljertArbeidsforhold,
   ListeMedArbeidsforhold,
 } from "@navikt/arbeidsforhold";
-import InfoBoks from "./components/InfoBoks";
-import SprakVelger from "./components/SprakVelger";
+import { InfoBoks } from "./components/InfoBoks";
+import { SprakVelger } from "./components/SprakVelger";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import { AFListeOnClick } from "../../src/modules/af-liste";
-import OnClickVelger from "./components/OnClickVelger";
+import { OnClickVelger } from "./components/OnClickVelger";
 import { Normaltekst } from "nav-frontend-typografi";
 import { Locale } from "./types/locale";
 

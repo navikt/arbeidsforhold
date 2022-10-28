@@ -1,6 +1,6 @@
-import Miljo from "../types/miljo";
+import { Miljo } from "../types/miljo";
 
-class Environment {
+export class Environment {
   static apiUrl: string;
   static loginUrl: string;
 
@@ -22,5 +22,3 @@ class Environment {
     }
   };
 }
-
-export default Environment;

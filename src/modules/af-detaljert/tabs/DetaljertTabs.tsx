@@ -4,7 +4,7 @@ import { Select } from "nav-frontend-skjema";
 import { Element } from "nav-frontend-typografi";
 import { AFUtvidet } from "../../../types/arbeidsforhold";
 import { useLocale } from "../../common/useLocale";
-import sprak from "../../../language/provider";
+import { sprak } from "../../../language/provider";
 import { TabContent } from "./TabContent";
 
 export type DetaljertTabType =

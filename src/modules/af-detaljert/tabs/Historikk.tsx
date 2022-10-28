@@ -5,7 +5,7 @@ import { CheckAndPrint } from "../../../components/check-and-print/CheckAndPrint
 import { CheckPeriodAndPrint } from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import { sortPeriodeFraDesc, sortPeriodeTilDesc } from "../../../utils/date";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
-import sprak from "../../../language/provider";
+import { sprak } from "../../../language/provider";
 import { ArbeidsavtaleFelter } from "../detaljer/ArbeidsavtaleFelter";
 import { useLocale } from "../../common/useLocale";
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default () => (
+export const PrinterIcon = () => (
   <svg viewBox="0 0 24 22" version="1.1">
     <title>Outline/30-hardware/print-text</title>
     <g

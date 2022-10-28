@@ -1,4 +1,4 @@
-export default {
+export const en = {
   antalltimer: "Number of hours",
   ansettelsesform: "Form of employment",
   ansettelsesperiode: "Employment period",

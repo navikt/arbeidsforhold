@@ -18,7 +18,7 @@ export interface AFArbeidsavtaler {
   sisteLoennsendring?: string;
   sisteStillingsendring?: string;
   stillingsprosent?: number;
-  yrke?: number;
+  yrke?: string;
 }
 
 export interface AFPermisjonPermittering {

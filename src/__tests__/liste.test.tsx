@@ -21,7 +21,7 @@ describe("Liste over arbeidsforhold", () => {
     afListe.forEach((arbeidsforhold) => {
       arbeidsforhold.arbeidsgiver.type === "Organisasjon" &&
         expect(
-          screen.getByText(arbeidsforhold.arbeidsgiver.orgnavn)
+          screen.getByText(arbeidsforhold.arbeidsgiver.orgnavn as string)
         ).toBeInTheDocument();
       expect(screen.getAllByText(arbeidsforhold.yrke).length).toBeGreaterThan(
         0

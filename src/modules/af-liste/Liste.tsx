@@ -38,6 +38,7 @@ export const Liste = (props: AFListeProps & AFListeData) => {
                 foretak={foretak}
                 onClick={onClick}
                 counter={counter}
+                key={counter}
               />
             ))
         ) : (

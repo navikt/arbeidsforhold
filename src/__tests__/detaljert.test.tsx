@@ -138,7 +138,7 @@ describe("Detaljert arbeidsforhold", () => {
       )
     );
     uniqueYears.forEach((year) => {
-      if (year !== Math.max.apply(this, [...uniqueYears])) {
+      if (year !== Math.max(...uniqueYears)) {
         fireEvent.click(screen.getByText(year));
       }
     });

@@ -10,17 +10,13 @@ import { AFListeOnClick } from "../index";
 interface Props {
   foretak: AFSimpel;
   onClick: AFListeOnClick;
-  counter: number;
 }
 
 export const ListeInnslag = (props: Props) => {
   const { locale } = useLocale();
 
   return (
-    <div
-      className="af-liste__flex-rad"
-      key={`${props.foretak.arbeidsforholdId}-${props.counter}`}
-    >
+    <div className="af-liste__flex-rad">
       <div className="af-liste__flex-innhold">
         <div className="af-liste__tekst">
           <ListeTittel foretak={props.foretak} onClick={props.onClick} />

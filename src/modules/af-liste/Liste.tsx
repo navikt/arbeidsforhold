@@ -34,12 +34,7 @@ export const Liste = (props: AFListeProps & AFListeData) => {
           sorterteArbeidsforhold
             .slice(0, visAlle ? arbeidsforhold.length : 5)
             .map((foretak, counter) => (
-              <ListeInnslag
-                foretak={foretak}
-                onClick={onClick}
-                counter={counter}
-                key={counter}
-              />
+              <ListeInnslag foretak={foretak} onClick={onClick} key={counter} />
             ))
         ) : (
           <div className="af-liste__flex-rad">

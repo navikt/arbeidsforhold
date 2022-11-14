@@ -1,12 +1,12 @@
 import React from "react";
 import { AFDetaljertData, AFDetaljertProps } from "./index";
-import { AlertStripeInfo } from "nav-frontend-alertstriper";
 import { sprak } from "../../language/provider";
 import { ArbeidsavtaleFelter } from "./detaljer/ArbeidsavtaleFelter";
 import { DetaljertTabs } from "./tabs/DetaljertTabs";
 import { useLocale } from "../common/useLocale";
 import { DetaljertHeader } from "./detaljer/DetaljertHeader";
 import { PrintButton } from "./print/PrintButton";
+import { Alert } from "@navikt/ds-react";
 
 export const Detaljert = (props: AFDetaljertProps & AFDetaljertData) => {
   const { arbeidsforhold } = props;
@@ -19,11 +19,11 @@ export const Detaljert = (props: AFDetaljertProps & AFDetaljertData) => {
       <ArbeidsavtaleFelter data={arbeidsforhold} isUtvidet={true} />
       <DetaljertTabs arbeidsforhold={arbeidsforhold} />
 
-      <AlertStripeInfo>
+      <Alert variant="error">
         {sprak[locale].hvisfeil1}
         <br />
         {sprak[locale].hvisfeil2}
-      </AlertStripeInfo>
+      </Alert>
 
       {props.printActivated && (
         <PrintButton

@@ -1,13 +1,13 @@
 import React, { Fragment, useState } from "react";
 import { AFArbeidsavtaler } from "../../../types/arbeidsforhold";
-import { Element } from "nav-frontend-typografi";
 import { CheckAndPrint } from "../../../components/check-and-print/CheckAndPrint";
 import { CheckPeriodAndPrint } from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import { sortPeriodeFraDesc, sortPeriodeTilDesc } from "../../../utils/date";
-import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import { sprak } from "../../../language/provider";
 import { ArbeidsavtaleFelter } from "../detaljer/ArbeidsavtaleFelter";
 import { useLocale } from "../../common/useLocale";
+import { Collapse, Expand } from "@navikt/ds-icons";
+import { Heading } from "@navikt/ds-react";
 
 interface Props {
   arbeidsavtaler: AFArbeidsavtaler[];
@@ -35,10 +35,14 @@ export const Historikk = (props: Props) => {
     <div className="af-detaljert__tabs-innhold af-detaljert__flex-table">
       <div className="af-detaljert__flex-rad af-detaljert__head">
         <div className="af-detaljert__flex-kolonne">
-          <Element>{sprak[locale].yrke}</Element>
+          <Heading as="p" size="xsmall">
+            {sprak[locale].yrke}
+          </Heading>
         </div>
         <div className="af-detaljert__flex-kolonne">
-          <Element>{sprak[locale].periode}</Element>
+          <Heading as="p" size="xsmall">
+            {sprak[locale].periode}
+          </Heading>
         </div>
         <div className="af-detaljert__flex-kolonne" />
       </div>
@@ -69,11 +73,11 @@ export const Historikk = (props: Props) => {
               >
                 {!ekspandert ? (
                   <span>
-                    {sprak[locale].apne} <NedChevron />
+                    {sprak[locale].apne} <Expand />
                   </span>
                 ) : (
                   <span>
-                    {sprak[locale].lukke} <OppChevron />
+                    {sprak[locale].lukke} <Collapse />
                   </span>
                 )}
               </button>

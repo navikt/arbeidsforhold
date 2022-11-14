@@ -9,8 +9,10 @@ import { SprakVelger } from "./components/SprakVelger";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import { AFListeOnClick } from "../../src/modules/af-liste";
 import { OnClickVelger } from "./components/OnClickVelger";
-import { Normaltekst } from "nav-frontend-typografi";
 import { Locale } from "./types/locale";
+
+import "@navikt/ds-css/dist/index.css";
+import { BodyLong } from "@navikt/ds-react";
 
 const App = () => {
   const locales: Locale[] = ["nb", "nn", "en"];
@@ -94,10 +96,10 @@ const App = () => {
           </div>
           <div className={"example__header"}>
             <h2>Arbeidsgivere</h2>
-            <Normaltekst>
+            <BodyLong>
               Logg inn med 16120101181. <br />
               Viser arbeidsforhold 47720602 for arbeidstaker 27127424204
-            </Normaltekst>
+            </BodyLong>
           </div>
           <div className="example__section">
             <DetaljertArbeidsforhold

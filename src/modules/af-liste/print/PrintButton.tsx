@@ -1,11 +1,11 @@
 import React from "react";
-import { Normaltekst } from "nav-frontend-typografi";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { ListePDF } from "./pdf/ListePDF";
 import { PrinterIcon } from "../../../assets/icons/PrinterIcon";
 import { useLocale } from "../../common/useLocale";
 import { useIsPdf } from "../../common/useIsPdf";
 import { AFSimpel } from "../../../types/arbeidsforhold";
+import { BodyShort } from "@navikt/ds-react";
 
 interface Props {
   arbeidsforhold: AFSimpel[];
@@ -19,7 +19,7 @@ export const PrintButton = (props: Props) => {
 
   return (
     <div className="af-liste__print-button">
-      <Normaltekst>
+      <BodyShort>
         <PDFDownloadLink
           document={
             <IsPdfProvider value={true}>
@@ -45,7 +45,7 @@ export const PrintButton = (props: Props) => {
             )
           }
         </PDFDownloadLink>
-      </Normaltekst>
+      </BodyShort>
     </div>
   );
 };

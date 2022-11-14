@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Normaltekst } from "nav-frontend-typografi";
 import { AFListeData, AFListeProps } from "./index";
 import { sortPeriodeFraDesc, sortPeriodeTilDesc } from "../../utils/date";
 import { sprak } from "../../language/provider";
@@ -7,6 +6,7 @@ import { useLocale } from "../common/useLocale";
 import { ListeInnslag } from "./innslag/ListeInnslag";
 import { VisFlereButton } from "./vis-flere-button/VisFlereButton";
 import { PrintButton } from "./print/PrintButton";
+import { BodyShort } from "@navikt/ds-react";
 
 export const Liste = (props: AFListeProps & AFListeData) => {
   const { arbeidsforhold, onClick } = props;
@@ -42,7 +42,7 @@ export const Liste = (props: AFListeProps & AFListeData) => {
             ))
         ) : (
           <div className="af-liste__flex-rad">
-            <Normaltekst>{sprak[locale].ingenarbeidsforhold}</Normaltekst>
+            <BodyShort>{sprak[locale].ingenarbeidsforhold}</BodyShort>
           </div>
         )}
       </div>

@@ -2,11 +2,11 @@ import React from "react";
 import { CheckAndPrintBox } from "../../../components/check-and-print-box/CheckAndPrintBox";
 import { CheckDateAndPrint } from "../../../components/check-date-and-print/CheckDateAndPrint";
 import { AFArbeidsavtaler, AFUtvidet } from "../../../types/arbeidsforhold";
-import { Normaltekst } from "nav-frontend-typografi";
 import { sprak } from "../../../language/provider";
 import { useLocale } from "../../common/useLocale";
 import { CheckAndPrint } from "../../../components/check-and-print/CheckAndPrint";
 import { orgnr } from "../../../utils/orgnr";
+import { BodyShort } from "@navikt/ds-react";
 
 interface PropsStandard {
   data: AFArbeidsavtaler;
@@ -31,14 +31,14 @@ export const ArbeidsavtaleFelter = (props: PropsStandard | PropsUtvidet) => {
                 title={sprak[locale].hovedenhet}
                 data={props.data.opplysningspliktigarbeidsgiver.orgnavn}
               >
-                <Normaltekst>
+                <BodyShort>
                   <CheckAndPrint
                     data={orgnr(
                       props.data.opplysningspliktigarbeidsgiver.orgnr
                     )}
                     format={`${sprak[locale].organisasjonsnummer} %s`}
                   />
-                </Normaltekst>
+                </BodyShort>
               </CheckAndPrintBox>
             )}
           </>
@@ -70,12 +70,12 @@ export const ArbeidsavtaleFelter = (props: PropsStandard | PropsUtvidet) => {
         title={sprak[locale].stillingsprosent}
         data={props.data.stillingsprosent}
       >
-        <Normaltekst>
+        <BodyShort>
           <CheckDateAndPrint
             data={props.data.sisteStillingsendring}
             format={`(${sprak[locale].endretstillingsprosent} %s)`}
           />
-        </Normaltekst>
+        </BodyShort>
       </CheckAndPrintBox>
       <CheckAndPrintBox
         title={sprak[locale].timerperuke}

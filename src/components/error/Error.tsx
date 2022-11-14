@@ -1,5 +1,5 @@
 import React from "react";
-import AlertStripe from "nav-frontend-alertstriper";
+import { Alert } from "@navikt/ds-react";
 import { sprak } from "../../language/provider";
 import { useLocale } from "../../modules/common/useLocale";
 
@@ -17,12 +17,12 @@ export const Error = (props: Props) => {
   const { locale } = useLocale();
   return error ? (
     <div className="error__container">
-      <AlertStripe type="feil">
+      <Alert variant="error">
         {sprak[locale].httperror}
         <br />
         {error.code && <span>{`${error.code}: `}</span>}
         {error.text && <span>{`${error.text}`}</span>}
-      </AlertStripe>
+      </Alert>
     </div>
   ) : null;
 };

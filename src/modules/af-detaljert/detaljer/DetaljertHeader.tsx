@@ -7,6 +7,7 @@ import { sprak } from "../../../language/provider";
 import { CheckPeriodAndPrint } from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import { useLocale } from "../../common/useLocale";
 import { AFUtvidet } from "../../../types/arbeidsforhold";
+import { Heading } from "@navikt/ds-react";
 
 interface Props {
   arbeidsforhold: AFUtvidet;
@@ -20,12 +21,12 @@ export const DetaljertHeader = (props: Props) => {
     <div className="af-detaljert__header">
       <div className="af-detaljert__kolonne">
         <div className="af-detaljert__arbeidsgiver">
-          <Undertittel>
+          <Heading level={"2"} size={"small"}>
             <ArbeidsgiverTittel
               overskrift={true}
               arbeidsgiver={arbeidsforhold.arbeidsgiver}
             />
-          </Undertittel>
+          </Heading>
           {arbeidsforhold.arbeidsgiver.type === "Organisasjon" && (
             <div className="af-detaljert__orgnr">
               <Normaltekst>

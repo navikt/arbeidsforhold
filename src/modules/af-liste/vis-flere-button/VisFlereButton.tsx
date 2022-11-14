@@ -1,8 +1,8 @@
 import React from "react";
-import { Normaltekst } from "nav-frontend-typografi";
 import { sprak } from "../../../language/provider";
-import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import { useLocale } from "../../common/useLocale";
+import { Expand, Next } from "@navikt/ds-icons";
+import { BodyShort } from "@navikt/ds-react";
 
 interface Props {
   toggleVisAlle: () => void;
@@ -18,13 +18,13 @@ export const VisFlereButton = (props: Props) => {
       aria-expanded={props.visAlle}
     >
       {props.visAlle ? (
-        <Normaltekst>
-          {sprak[locale].visfaerrearbeidsforhold} <OppChevron />
-        </Normaltekst>
+        <BodyShort>
+          {sprak[locale].visfaerrearbeidsforhold} <Next />
+        </BodyShort>
       ) : (
-        <Normaltekst>
-          {sprak[locale].visflerearbeidsforhold} <NedChevron />
-        </Normaltekst>
+        <BodyShort>
+          {sprak[locale].visflerearbeidsforhold} <Expand />
+        </BodyShort>
       )}
     </button>
   );

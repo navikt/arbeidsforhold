@@ -1,7 +1,9 @@
-import { fireEvent, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import afListe from "../clients/apiMock/af-liste.json";
 import "@testing-library/jest-dom";
-import { formatDate, renderListeOverArbeidsforhold } from "./testutils";
+import { Liste } from "../modules/af-liste/Liste";
+import { AFSimpel } from "../types/arbeidsforhold";
+import { formatDate } from "../utils/date";
 
 jest.mock("@react-pdf/renderer", () => ({
   Text: () => <div>Text</div>,
@@ -11,7 +13,14 @@ jest.mock("@react-pdf/renderer", () => ({
 }));
 
 beforeEach(() => {
-  renderListeOverArbeidsforhold();
+  render(
+    <Liste
+      locale={"nb"}
+      miljo={"LOCAL"}
+      onClick={{ type: "INGEN_ON_CLICK" }}
+      arbeidsforhold={afListe as unknown as AFSimpel[]}
+    />
+  );
 });
 
 describe("Liste over arbeidsforhold", () => {

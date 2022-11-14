@@ -1,9 +1,11 @@
-import { fireEvent, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import afDetaljert from "../clients/apiMock/af-detaljert.json";
 import "@testing-library/jest-dom";
 import { orgnr } from "../utils/orgnr";
 import moment from "moment";
-import { formatDate, renderDetaljertArbeidsforhold } from "./testutils";
+import { formatDate } from "../utils/date";
+import { Detaljert } from "../modules/af-detaljert/Detaljert";
+import { AFUtvidet } from "../types/arbeidsforhold";
 
 jest.mock("@react-pdf/renderer", () => ({
   Text: () => <div>Text</div>,
@@ -13,7 +15,18 @@ jest.mock("@react-pdf/renderer", () => ({
 }));
 
 beforeEach(() => {
-  renderDetaljertArbeidsforhold();
+  render(
+    <Detaljert
+      rolle={"ARBEIDSTAKER"}
+      locale={"nb"}
+      miljo={"LOCAL"}
+      navArbeidsforholdId={1}
+      printActivated={true}
+      printSSN={"12345678911"}
+      printName={"Ola Nordmann"}
+      arbeidsforhold={afDetaljert as AFUtvidet}
+    />
+  );
 });
 
 describe("Detaljert arbeidsforhold", () => {

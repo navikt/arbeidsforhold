@@ -10,7 +10,8 @@
     "build": "rollup -c",
     "start": "npm-run-all -p start:*",
     "start:module": "rollup -c -w",
-    "start:example": "cd example && npm start"
+    "start:example": "cd example && npm start",
+    "test": "react-scripts test"
   },
   "repository": {
     "type": "git",

@@ -89,27 +89,6 @@ Komponenten vil hente data fra arbeidsforhold-api basert på miljo-variabelen, m
 CustomApiUrl må inneholde {id} som erstattes av navArbeidsforholdId.
 Eksempel: "https://din-api-proxy.nav.no/arbeidsforhold/{id}"
 
-## Videreutvikling / test
-
-- Hent repoet fra github
-
-```
-git clone https://github.com/navikt/arbeidsforhold.git
-```
-
-- Installer nødvendige pakker, start mock-container og start applikasjonen
-
-```
-npm install && docker-compose up -d && npm start
-```
-
-Test-applikasjonen består av en simpel create-react-app som importerer og benytter pakkene <br>
-Prosjektet støtter hot-reloading, endringer i komponentene vil føre til at test-applikasjonen oppdateres
-
-## Publisering
-
-Publiseres til Github Packages med [Github Actions](https://github.com/navikt/arbeidsforhold/actions)
-
 ## Logging
 
 Vi bruker fo-frontendlogger for logging. For oppslag i kibana:

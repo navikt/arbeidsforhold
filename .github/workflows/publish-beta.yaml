@@ -29,6 +29,8 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN  }}
       - name: Build package
         run: npm run build
+      - name: Run tests
+        run: npm test
       - name: Publish package
         id: publish
         run: npm publish --tag beta

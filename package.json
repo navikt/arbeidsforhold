@@ -1,7 +1,7 @@
 {
   "name": "@navikt/arbeidsforhold",
   "author": "NAVIKT",
-  "version": "2.0.7",
+  "version": "2.0.8-beta.2",
   "description": "React modul som viser brukerens arbeidsforhold",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -10,7 +10,11 @@
     "build": "rollup -c",
     "start": "npm-run-all -p start:*",
     "start:module": "rollup -c -w",
-    "start:example": "cd example && npm start"
+    "start:example": "cd example && npm start",
+    "test": "react-scripts test",
+    "publish:prepatch": "npm run build && npm version prepatch --preid beta && npm publish --access public --tag beta",
+    "publish:preminor": "npm run build && npm version preminor --preid beta && npm publish --access public --tag beta",
+    "publish:premajor": "npm run build && npm version premajor --preid beta && npm publish --access public --tag beta"
   },
   "repository": {
     "type": "git",
@@ -47,6 +51,8 @@
     "@babel/preset-typescript": "^7.18.6",
     "@rollup/plugin-image": "^2.1.1",
     "@svgr/rollup": "^6.3.1",
+    "@testing-library/jest-dom": "5.16.5",
+    "@testing-library/react": "12.1.5",
     "@types/fetch-mock": "^7.3.5",
     "@types/jest": "^29.0.3",
     "@types/react": "^18.0.21",

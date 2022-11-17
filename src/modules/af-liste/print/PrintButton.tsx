@@ -5,7 +5,6 @@ import { PrinterIcon } from "../../../assets/icons/PrinterIcon";
 import { useLocale } from "../../common/useLocale";
 import { useIsPdf } from "../../common/useIsPdf";
 import { AFSimpel } from "../../../types/arbeidsforhold";
-import { BodyShort } from "@navikt/ds-react";
 
 interface Props {
   arbeidsforhold: AFSimpel[];
@@ -19,33 +18,30 @@ export const PrintButton = (props: Props) => {
 
   return (
     <div className="af-liste__print-button">
-      <BodyShort>
-        <PDFDownloadLink
-          document={
-            <IsPdfProvider value={true}>
-              {/* LocaleProvider-wrapper nødvendig for å få med locale i PDF-rendering */}
-              <LocaleProvider value={locale}>
-                <ListePDF
-                  arbeidsforhold={props.arbeidsforhold}
-                  printName={props.printName}
-                  printSSO={props.printSSN}
-                />
-              </LocaleProvider>
-            </IsPdfProvider>
-          }
-          fileName="arbeidsforhold.pdf"
-          className={"lenke"}
-        >
-          {({ loading }) =>
-            loading ? null : (
-              <>
-                <PrinterIcon />
-                <span>Skriv ut</span>
-              </>
-            )
-          }
-        </PDFDownloadLink>
-      </BodyShort>
+      <PDFDownloadLink
+        document={
+          <IsPdfProvider value={true}>
+            {/* LocaleProvider-wrapper nødvendig for å få med locale i PDF-rendering */}
+            <LocaleProvider value={locale}>
+              <ListePDF
+                arbeidsforhold={props.arbeidsforhold}
+                printName={props.printName}
+                printSSO={props.printSSN}
+              />
+            </LocaleProvider>
+          </IsPdfProvider>
+        }
+        fileName="arbeidsforhold.pdf"
+      >
+        {({ loading }) =>
+          loading ? null : (
+            <>
+              <PrinterIcon />
+              <span>Skriv ut</span>
+            </>
+          )
+        }
+      </PDFDownloadLink>
     </div>
   );
 };

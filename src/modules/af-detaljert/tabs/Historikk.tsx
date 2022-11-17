@@ -68,17 +68,17 @@ export const Historikk = (props: Props) => {
                 <CheckPeriodAndPrint data={arbeidsavtale.gyldighetsperiode} />
               </div>
               <button
-                className="af-detaljert__flex-kolonne af-liste__ekspander lenke"
+                className="af-detaljert__flex-kolonne af-liste__ekspander"
                 onClick={onClick}
               >
                 {!ekspandert ? (
-                  <span>
+                  <>
                     {sprak[locale].apne} <Expand />
-                  </span>
+                  </>
                 ) : (
-                  <span>
+                  <>
                     {sprak[locale].lukke} <Collapse />
-                  </span>
+                  </>
                 )}
               </button>
             </div>

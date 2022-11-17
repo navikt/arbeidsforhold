@@ -14,22 +14,20 @@ export const ListeTittel = (props: Props) => {
   const replaceId = (path: string, id: number) =>
     path.replace("{id}", id.toString());
 
+  console.log(onClick.type);
+
   switch (onClick.type) {
     case "INGEN_ON_CLICK":
       return <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} />;
     case "LENKE":
       return (
-        <a
-          className="lenke"
-          href={replaceId(onClick.href, foretak.navArbeidsforholdId)}
-        >
+        <a href={replaceId(onClick.href, foretak.navArbeidsforholdId)}>
           <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} />
         </a>
       );
     case "REACT_ROUTER_LENKE":
       return (
         <onClick.Component
-          className="lenke"
           to={replaceId(onClick.to, foretak.navArbeidsforholdId)}
         >
           <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} />
@@ -38,7 +36,7 @@ export const ListeTittel = (props: Props) => {
     case "KNAPP":
       return (
         <button
-          className="lenke af-liste__knapp"
+          className="af-liste__knapp"
           onClick={() => onClick.getId(foretak.navArbeidsforholdId)}
         >
           <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} />

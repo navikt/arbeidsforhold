@@ -80,7 +80,7 @@ export const Timer = (props: Props) => {
             <Fragment key={year}>
               <div className="af-detaljert__flex-rad" key={year}>
                 <button
-                  className="af-detaljert__flex-kolonne af-liste__ekspander lenke"
+                  className="af-detaljert__flex-kolonne af-liste__ekspander"
                   onClick={onClick}
                 >
                   {year} {value.ekspandert ? <Collapse /> : <Expand />}

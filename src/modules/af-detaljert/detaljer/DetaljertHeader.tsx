@@ -1,5 +1,4 @@
 import React from "react";
-import { Normaltekst, Undertittel } from "nav-frontend-typografi";
 import { ArbeidsgiverTittel } from "../../../components/arbeidsgiver/ArbeidsgiverTittel";
 import { CheckAndPrint } from "../../../components/check-and-print/CheckAndPrint";
 import { orgnr } from "../../../utils/orgnr";
@@ -7,7 +6,7 @@ import { sprak } from "../../../language/provider";
 import { CheckPeriodAndPrint } from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import { useLocale } from "../../common/useLocale";
 import { AFUtvidet } from "../../../types/arbeidsforhold";
-import { Heading } from "@navikt/ds-react";
+import { BodyShort, Heading } from "@navikt/ds-react";
 
 interface Props {
   arbeidsforhold: AFUtvidet;
@@ -29,12 +28,12 @@ export const DetaljertHeader = (props: Props) => {
           </Heading>
           {arbeidsforhold.arbeidsgiver.type === "Organisasjon" && (
             <div className="af-detaljert__orgnr">
-              <Normaltekst>
+              <BodyShort>
                 <CheckAndPrint
                   data={orgnr(arbeidsforhold.arbeidsgiver.orgnr)}
                   format={`${sprak[locale].organisasjonsnummer} %s`}
                 />
-              </Normaltekst>
+              </BodyShort>
             </div>
           )}
         </div>
@@ -42,13 +41,13 @@ export const DetaljertHeader = (props: Props) => {
       {arbeidsforhold.ansettelsesperiode && (
         <div className="af-detaljert__kolonne af-detaljert__periode">
           <div className="af-detaljert__arbeidsgiver">
-            <Undertittel>
+            <Heading level={"2"} size={"xsmall"}>
               <span className="typo-element">
                 {sprak[locale].ansettelsesperiode}
               </span>
-            </Undertittel>
+            </Heading>
             <div className="af-detaljert__orgnr">
-              <Normaltekst>
+              <BodyShort>
                 <CheckPeriodAndPrint
                   data={arbeidsforhold.ansettelsesperiode.periode}
                 />
@@ -56,7 +55,7 @@ export const DetaljertHeader = (props: Props) => {
                   data={arbeidsforhold.ansettelsesperiode?.sluttaarsak}
                   format={`(${sprak[locale].sluttaarsak}: %s)`}
                 />
-              </Normaltekst>
+              </BodyShort>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { sprak } from "../../../language/provider";
 import { useLocale } from "../../common/useLocale";
-import { Expand, Next } from "@navikt/ds-icons";
+import { Collapse, Expand } from "@navikt/ds-icons";
 import { BodyShort } from "@navikt/ds-react";
 
 interface Props {
@@ -13,18 +13,18 @@ export const VisFlereButton = (props: Props) => {
   const { locale } = useLocale();
   return (
     <button
-      className="af-liste__vis-flere lenke"
+      className="af-liste__vis-flere"
       onClick={props.toggleVisAlle}
       aria-expanded={props.visAlle}
     >
       {props.visAlle ? (
-        <BodyShort>
-          {sprak[locale].visfaerrearbeidsforhold} <Next />
-        </BodyShort>
+        <>
+          {sprak[locale].visfaerrearbeidsforhold} <Collapse />
+        </>
       ) : (
-        <BodyShort>
+        <>
           {sprak[locale].visflerearbeidsforhold} <Expand />
-        </BodyShort>
+        </>
       )}
     </button>
   );

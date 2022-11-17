@@ -1,6 +1,4 @@
 .af-liste {
-  &__container {
-  }
   &__tekst {
     margin: 0 0 0.2rem 0;
   }
@@ -18,12 +16,19 @@
     min-width: 7rem;
   }
   &__vis-flere {
-    margin-top: 1rem;
-    cursor: pointer;
-    text-decoration: underline;
+    align-items: center;
     background: none;
     border: none;
-    padding: 0;
+    color: var(--navds-semantic-color-interaction-primary);
+    cursor: pointer;
+    display: flex;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0;
+    text-decoration: underline;
+
+    svg {
+      width: 20px;
+    }
   }
   &__maskinelt-avsluttet {
     display: flex;
@@ -40,6 +45,7 @@
     color: #0067c5;
     text-decoration: underline;
     border: 0;
+    background-color: transparent;
   }
   &__month {
     text-transform: capitalize;
@@ -50,9 +56,27 @@
   &__knapp {
     background: none;
     border: none;
+    color: var(--navds-semantic-color-interaction-primary);
+    cursor: pointer;
     padding: 0;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
   &__print-button {
     margin-top: 0.5rem;
+    text-decoration: underline;
+    display: block;
+
+    a {
+      display: inline-flex;
+    }
+
+    svg {
+      width: 22px;
+      margin-right: 0.5rem;
+    }
   }
 }

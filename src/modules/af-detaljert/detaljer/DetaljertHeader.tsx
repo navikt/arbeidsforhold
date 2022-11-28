@@ -42,9 +42,7 @@ export const DetaljertHeader = (props: Props) => {
         <div className="af-detaljert__kolonne af-detaljert__periode">
           <div className="af-detaljert__arbeidsgiver">
             <Heading level={"2"} size={"xsmall"}>
-              <span className="typo-element">
-                {sprak[locale].ansettelsesperiode}
-              </span>
+              {sprak[locale].ansettelsesperiode}
             </Heading>
             <div className="af-detaljert__orgnr">
               <BodyShort>

@@ -14,8 +14,6 @@ export const ListeTittel = (props: Props) => {
   const replaceId = (path: string, id: number) =>
     path.replace("{id}", id.toString());
 
-  console.log(onClick.type);
-
   switch (onClick.type) {
     case "INGEN_ON_CLICK":
       return <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} />;

@@ -19,7 +19,7 @@ export const Detaljert = (props: AFDetaljertProps & AFDetaljertData) => {
       <ArbeidsavtaleFelter data={arbeidsforhold} isUtvidet={true} />
       <DetaljertTabs arbeidsforhold={arbeidsforhold} />
 
-      <Alert variant="error">
+      <Alert variant="info">
         {sprak[locale].hvisfeil1}
         <br />
         {sprak[locale].hvisfeil2}

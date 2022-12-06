@@ -2,10 +2,10 @@ import { useIsPdf } from "../../common/useIsPdf";
 import { useLocale } from "../../common/useLocale";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { DetaljertPDF } from "./pdf/DetaljertPDF";
-import NavFrontendSpinner from "nav-frontend-spinner";
 import { PrinterIcon } from "../../../assets/icons/PrinterIcon";
 import React from "react";
 import { AFUtvidet } from "../../../types/arbeidsforhold";
+import { Loader } from "@navikt/ds-react";
 
 interface Props {
   arbeidsforhold: AFUtvidet;
@@ -46,7 +46,7 @@ export const DownloadPDFLink = (props: Props) => {
     >
       {({ loading }) =>
         loading ? (
-          <NavFrontendSpinner type={"XXS"} />
+          <Loader size={"xsmall"} />
         ) : (
           <>
             <PrinterIcon />

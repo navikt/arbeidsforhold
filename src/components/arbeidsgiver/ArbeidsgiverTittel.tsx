@@ -16,7 +16,6 @@ export const ArbeidsgiverTittel = (props: Props) => {
           ? fnr(props.arbeidsgiver.fnr)
           : props.arbeidsgiver.orgnavn
       }
-      font={props.overskrift ? "typo-undertittel" : "typo-element"}
     />
   );
 };

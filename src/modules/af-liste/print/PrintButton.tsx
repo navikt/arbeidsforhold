@@ -1,5 +1,4 @@
 import React from "react";
-import { Normaltekst } from "nav-frontend-typografi";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { ListePDF } from "./pdf/ListePDF";
 import { PrinterIcon } from "../../../assets/icons/PrinterIcon";
@@ -19,33 +18,30 @@ export const PrintButton = (props: Props) => {
 
   return (
     <div className="af-liste__print-button">
-      <Normaltekst>
-        <PDFDownloadLink
-          document={
-            <IsPdfProvider value={true}>
-              {/* LocaleProvider-wrapper nødvendig for å få med locale i PDF-rendering */}
-              <LocaleProvider value={locale}>
-                <ListePDF
-                  arbeidsforhold={props.arbeidsforhold}
-                  printName={props.printName}
-                  printSSO={props.printSSN}
-                />
-              </LocaleProvider>
-            </IsPdfProvider>
-          }
-          fileName="arbeidsforhold.pdf"
-          className={"lenke"}
-        >
-          {({ loading }) =>
-            loading ? null : (
-              <>
-                <PrinterIcon />
-                <span>Skriv ut</span>
-              </>
-            )
-          }
-        </PDFDownloadLink>
-      </Normaltekst>
+      <PDFDownloadLink
+        document={
+          <IsPdfProvider value={true}>
+            {/* LocaleProvider-wrapper nødvendig for å få med locale i PDF-rendering */}
+            <LocaleProvider value={locale}>
+              <ListePDF
+                arbeidsforhold={props.arbeidsforhold}
+                printName={props.printName}
+                printSSO={props.printSSN}
+              />
+            </LocaleProvider>
+          </IsPdfProvider>
+        }
+        fileName="arbeidsforhold.pdf"
+      >
+        {({ loading }) =>
+          loading ? null : (
+            <>
+              <PrinterIcon />
+              <span>Skriv ut</span>
+            </>
+          )
+        }
+      </PDFDownloadLink>
     </div>
   );
 };

@@ -22,9 +22,9 @@ export const ListeInnslag = (props: Props) => {
           <ListeTittel foretak={props.foretak} onClick={props.onClick} />
         </div>
         <div className="af-liste__tekst">
-          <CheckAndPrint data={props.foretak.yrke} font="typo-normal" />
+          <CheckAndPrint data={props.foretak.yrke} />
         </div>
-        <div className="af-liste__tekst typo-normal">
+        <div className="af-liste__tekst">
           <CheckPeriodAndPrint
             data={props.foretak.ansettelsesperiode.periode}
             maskineltAvsluttet={

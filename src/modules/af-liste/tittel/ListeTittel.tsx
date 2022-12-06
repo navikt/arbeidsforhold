@@ -19,17 +19,13 @@ export const ListeTittel = (props: Props) => {
       return <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} />;
     case "LENKE":
       return (
-        <a
-          className="lenke"
-          href={replaceId(onClick.href, foretak.navArbeidsforholdId)}
-        >
+        <a href={replaceId(onClick.href, foretak.navArbeidsforholdId)}>
           <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} />
         </a>
       );
     case "REACT_ROUTER_LENKE":
       return (
         <onClick.Component
-          className="lenke"
           to={replaceId(onClick.to, foretak.navArbeidsforholdId)}
         >
           <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} />
@@ -38,7 +34,7 @@ export const ListeTittel = (props: Props) => {
     case "KNAPP":
       return (
         <button
-          className="lenke af-liste__knapp"
+          className="af-liste__knapp"
           onClick={() => onClick.getId(foretak.navArbeidsforholdId)}
         >
           <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} />

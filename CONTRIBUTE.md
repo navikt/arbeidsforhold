@@ -32,9 +32,17 @@ Du finner [mer informasjon om autentisering mot Github Packages her](https://doc
 
 Du finner [mer informasjon om semver her](https://docs.npmjs.com/about-semantic-versioning) dersom du er usikker på om du skal velge prepatch, preminor eller premajor.
 
-Beta-versjonen du har publisert blir gjort tilgjengelig som `x.x.x-beta-x` og kan hentes inn som en spesifikk versjon i den konsumerende applikasjonen, feks
+Beta-versjonen du har publisert blir gjort tilgjengelig som `x.x.x-beta.x` og kan hentes inn som en spesifikk versjon i den konsumerende applikasjonen, feks
 
 `npm install @navikt/arbeidsforhold@1.9.0-beta.0`.
+
+## Publisering av flere betaer
+
+Enkelte ganger er det nødvendig å publisere flere betaer iløpet av testingen, feks `x.x.x-beta.0`, `x.x.x-beta.1`, `x.x.x-beta.2` osv. Etter å ha publisert første beta (se ovenfor) kan du 'betabumpe' pakken med
+
+`npm version prerelease`
+og deretter
+`npm publish --access public --tag beta`
 
 ### Publisering av ny versjon
 

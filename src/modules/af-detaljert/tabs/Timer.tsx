@@ -1,14 +1,14 @@
 import React, { Fragment, useState } from "react";
 import { AFTimerForTimelonnet } from "../../../types/arbeidsforhold";
-import { Element } from "nav-frontend-typografi";
 import { CheckAndPrint } from "../../../components/check-and-print/CheckAndPrint";
 import { sortPeriodeFraDesc } from "../../../utils/date";
 import moment from "moment";
-import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import { CheckDateAndPrint } from "../../../components/check-date-and-print/CheckDateAndPrint";
 import { CheckPeriodAndPrint } from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import { sprak } from "../../../language/provider";
 import { useLocale } from "../../common/useLocale";
+import { Collapse, Expand } from "@navikt/ds-icons";
+import { Heading } from "@navikt/ds-react";
 
 interface Props {
   timer: AFTimerForTimelonnet[];
@@ -47,13 +47,19 @@ export const Timer = (props: Props) => {
     <div className="af-detaljert__tabs-innhold af-detaljert__flex-table">
       <div className="af-detaljert__flex-rad af-detaljert__head">
         <div className="af-detaljert__flex-kolonne af-detaljert__rapporteringsperiode">
-          <Element>{sprak[locale].rapporteringsperiode}</Element>
+          <Heading as="p" size="xsmall">
+            {sprak[locale].rapporteringsperiode}
+          </Heading>
         </div>
         <div className="af-detaljert__flex-kolonne">
-          <Element>{sprak[locale].opptjeningsperiode}</Element>
+          <Heading as="p" size="xsmall">
+            {sprak[locale].opptjeningsperiode}
+          </Heading>
         </div>
         <div className="af-detaljert__flex-kolonne">
-          <Element>{sprak[locale].antalltimer}</Element>
+          <Heading as="p" size="xsmall">
+            {sprak[locale].antalltimer}
+          </Heading>
         </div>
       </div>
       {Object.keys(data)
@@ -74,10 +80,10 @@ export const Timer = (props: Props) => {
             <Fragment key={year}>
               <div className="af-detaljert__flex-rad" key={year}>
                 <button
-                  className="af-detaljert__flex-kolonne af-liste__ekspander lenke"
+                  className="af-detaljert__flex-kolonne af-liste__ekspander"
                   onClick={onClick}
                 >
-                  {year} {value.ekspandert ? <OppChevron /> : <NedChevron />}
+                  {year} {value.ekspandert ? <Collapse /> : <Expand />}
                 </button>
                 <div />
               </div>

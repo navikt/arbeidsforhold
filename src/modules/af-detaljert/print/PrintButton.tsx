@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { Normaltekst } from "nav-frontend-typografi";
 import { PrinterIcon } from "../../../assets/icons/PrinterIcon";
 import { DownloadPDFLink } from "./DownloadPdfLink";
-import ModalWrapper from "nav-frontend-modal";
-import { Checkbox, CheckboxGruppe } from "nav-frontend-skjema";
 import { sprak } from "../../../language/provider";
 import { useLocale } from "../../common/useLocale";
 import { AFUtvidet } from "../../../types/arbeidsforhold";
+import { BodyShort, Checkbox, CheckboxGroup, Modal } from "@navikt/ds-react";
 
 interface Props {
   arbeidsforhold: AFUtvidet;
@@ -39,7 +37,7 @@ export const PrintButton = (props: Props) => {
   return (
     <>
       <div className="af-detaljert__print-button-oversikt">
-        <Normaltekst>
+        <BodyShort>
           {
             // Show modal with checkboxes if user has relevant data
             (antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0) ||
@@ -66,70 +64,71 @@ export const PrintButton = (props: Props) => {
               />
             )
           }
-        </Normaltekst>
+        </BodyShort>
       </div>
-      <ModalWrapper
-        isOpen={openModal}
-        onRequestClose={() => setOpenModal(false)}
-        contentLabel="Utskriftsvalg"
+      <Modal
+        open={openModal}
+        onClose={() => setOpenModal(false)}
         closeButton={true}
       >
-        <div style={{ padding: "2rem 2.5rem" }}>
-          <CheckboxGruppe
+        <Modal.Content style={{ padding: "2rem 2.5rem" }}>
+          <CheckboxGroup
             legend={sprak[locale].utskriftsvalg}
             className={"af-detaljert__checkboxes"}
           >
             <Checkbox
-              label={sprak[locale].generelleopplysninger}
               className={"af-detaljert__checkbox"}
               checked={printGenerellOversikt}
               onChange={() => settPrintGenerellOversikt(!printGenerellOversikt)}
-            />
-          </CheckboxGruppe>
-          <CheckboxGruppe
+            >
+              {sprak[locale].generelleopplysninger}
+            </Checkbox>
+          </CheckboxGroup>
+          <CheckboxGroup
             legend={sprak[locale].tilleggsopplysninger}
             className={"af-detaljert__checkboxes"}
           >
-            {antallTimerForTimelonnet &&
-              antallTimerForTimelonnet.length > 0 && (
-                <Checkbox
-                  label={sprak[locale].tabs.timerfortimelonnet}
-                  className={"af-detaljert__checkbox"}
-                  checked={printTimerTimelonnet}
-                  onChange={() =>
-                    settPrintTimerTimelonnet(!printTimerTimelonnet)
-                  }
-                />
-              )}
+            {antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0 && (
+              <Checkbox
+                className={"af-detaljert__checkbox"}
+                checked={printTimerTimelonnet}
+                onChange={() => settPrintTimerTimelonnet(!printTimerTimelonnet)}
+              >
+                {sprak[locale].tabs.timerfortimelonnet}
+              </Checkbox>
+            )}
             {permisjonPermittering && permisjonPermittering.length > 0 && (
               <Checkbox
-                label={sprak[locale].tabs.permisjonpermittering}
                 className={"af-detaljert__checkbox"}
                 checked={printPermisjon}
                 onChange={() => settPrintPermisjon(!printPermisjon)}
-              />
+              >
+                {sprak[locale].tabs.permisjonpermittering}
+              </Checkbox>
             )}
             {utenlandsopphold && utenlandsopphold.length > 0 && (
               <Checkbox
-                label={sprak[locale].tabs.arbeidiutlandet}
                 className={"af-detaljert__checkbox"}
                 checked={printUtenlandsopphold}
                 onChange={() =>
                   settPrintUtenlandsopphold(!printUtenlandsopphold)
                 }
-              />
+              >
+                {sprak[locale].tabs.arbeidiutlandet}
+              </Checkbox>
             )}
             {arbeidsavtaler && arbeidsavtaler.length > 0 && (
               <Checkbox
-                label={sprak[locale].tabs.historikk}
                 className={"af-detaljert__checkbox"}
                 checked={printHistorikk}
                 onChange={() => settPrintHistorikk(!printHistorikk)}
-              />
+              >
+                {sprak[locale].tabs.historikk}
+              </Checkbox>
             )}
-          </CheckboxGruppe>
+          </CheckboxGroup>
           <div className="af-detaljert__print-button-modal">
-            <Normaltekst>
+            <BodyShort>
               <DownloadPDFLink
                 arbeidsforhold={arbeidsforhold}
                 printGenerellOversikt={printGenerellOversikt}
@@ -140,10 +139,10 @@ export const PrintButton = (props: Props) => {
                 printName={props.printName}
                 printSSO={props.printSSN}
               />
-            </Normaltekst>
+            </BodyShort>
           </div>
-        </div>
-      </ModalWrapper>
+        </Modal.Content>
+      </Modal>
     </>
   );
 };

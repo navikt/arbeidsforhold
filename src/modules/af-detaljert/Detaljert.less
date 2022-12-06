@@ -112,12 +112,46 @@
   &__print-button-oversikt {
     margin-left: 1rem;
     margin-top: 1.5rem;
+
+    svg {
+      width: 22px;
+      margin-right: 0.5rem;
+    }
+
+    button {
+      display: flex;
+      background-color: transparent;
+      cursor: pointer;
+      align-items: center;
+      color: var(--a-surface-action);
+    }
   }
   &__print-button {
     border: 0px;
+    text-decoration: underline;
+
+    a {
+      display: flex;
+    }
+
+    svg {
+      width: 22px;
+      margin-right: 0.5rem;
+    }
   }
   &__print-button-modal {
     margin: 1rem 0;
+    text-decoration: underline;
+    cursor: pointer;
+
+    a {
+      display: flex;
+    }
+
+    svg {
+      width: 22px;
+      margin-right: 0.5rem;
+    }
   }
   &__checkbox {
     padding: 0.25rem 0;

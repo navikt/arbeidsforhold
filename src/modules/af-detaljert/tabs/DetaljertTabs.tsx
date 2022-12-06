@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import Tabs from "nav-frontend-tabs";
-import { Select } from "nav-frontend-skjema";
-import { Element } from "nav-frontend-typografi";
 import { AFUtvidet } from "../../../types/arbeidsforhold";
 import { useLocale } from "../../common/useLocale";
 import { sprak } from "../../../language/provider";
 import { TabContent } from "./TabContent";
+import { Tabs } from "@navikt/ds-react";
 
 export type DetaljertTabType =
   | "timer"
@@ -61,44 +59,34 @@ type Props = {
 };
 
 export const DetaljertTabs = ({ arbeidsforhold }: Props) => {
-  const [currentTabIndex, setCurrentTabIndex] = useState(0);
-
   const tabsData = getTabsData(arbeidsforhold);
+  const [currentTab, setCurrentTab] = useState<DetaljertTabType>(
+    tabsData[0]?.type
+  );
 
   if (tabsData.length === 0) {
     return null;
   }
 
-  const { type } = tabsData[currentTabIndex];
-
   return (
-    <>
-      <div className="af-detaljert__tabs">
-        <Tabs
-          tabs={tabsData}
-          onChange={(_event, index) => setCurrentTabIndex(index)}
-        />
-      </div>
-      <div className="af-detaljert__select">
-        <hr className="af-detaljert__hr" />
-        {tabsData.length > 1 ? (
-          <Select
-            label=""
-            onChange={(event) =>
-              setCurrentTabIndex(Number(event.currentTarget.value))
-            }
-          >
-            {tabsData.map((tab, index) => (
-              <option key={index} value={index}>
-                {tab.label}
-              </option>
-            ))}
-          </Select>
-        ) : (
-          <Element>{tabsData[0].label}</Element>
-        )}
-      </div>
-      <TabContent arbeidsforhold={arbeidsforhold} type={type} />
-    </>
+    <div className="af-detaljert__tabs">
+      <Tabs
+        value={currentTab}
+        onChange={(type) => {
+          setCurrentTab(type as DetaljertTabType);
+        }}
+      >
+        <Tabs.List>
+          {tabsData.map((item) => (
+            <Tabs.Tab value={item.type} label={item.label} />
+          ))}
+        </Tabs.List>
+        {tabsData.map((item) => (
+          <Tabs.Panel value={item.type}>
+            <TabContent arbeidsforhold={arbeidsforhold} type={item.type} />
+          </Tabs.Panel>
+        ))}
+      </Tabs>
+    </div>
   );
 };

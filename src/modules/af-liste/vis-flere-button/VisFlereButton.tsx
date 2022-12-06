@@ -1,8 +1,7 @@
 import React from "react";
-import { Normaltekst } from "nav-frontend-typografi";
 import { sprak } from "../../../language/provider";
-import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import { useLocale } from "../../common/useLocale";
+import { Collapse, Expand } from "@navikt/ds-icons";
 
 interface Props {
   toggleVisAlle: () => void;
@@ -13,18 +12,18 @@ export const VisFlereButton = (props: Props) => {
   const { locale } = useLocale();
   return (
     <button
-      className="af-liste__vis-flere lenke"
+      className="af-liste__vis-flere"
       onClick={props.toggleVisAlle}
       aria-expanded={props.visAlle}
     >
       {props.visAlle ? (
-        <Normaltekst>
-          {sprak[locale].visfaerrearbeidsforhold} <OppChevron />
-        </Normaltekst>
+        <>
+          {sprak[locale].visfaerrearbeidsforhold} <Collapse />
+        </>
       ) : (
-        <Normaltekst>
-          {sprak[locale].visflerearbeidsforhold} <NedChevron />
-        </Normaltekst>
+        <>
+          {sprak[locale].visflerearbeidsforhold} <Expand />
+        </>
       )}
     </button>
   );

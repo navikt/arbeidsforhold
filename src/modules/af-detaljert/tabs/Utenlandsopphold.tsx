@@ -1,14 +1,14 @@
 import React, { Fragment, useState } from "react";
 import { AFUtenlandsopphold } from "../../../types/arbeidsforhold";
-import { Element } from "nav-frontend-typografi";
 import { CheckPeriodAndPrint } from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import { CheckAndPrint } from "../../../components/check-and-print/CheckAndPrint";
 import { sortPeriodeFraDesc } from "../../../utils/date";
 import moment from "moment";
-import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import { CheckDateAndPrint } from "../../../components/check-date-and-print/CheckDateAndPrint";
 import { sprak } from "../../../language/provider";
 import { useLocale } from "../../common/useLocale";
+import { Collapse, Expand } from "@navikt/ds-icons";
+import { Heading } from "@navikt/ds-react";
 
 interface Props {
   utenlandsopphold: AFUtenlandsopphold[];
@@ -46,11 +46,15 @@ export const Utenlandsopphold = (props: Props) => {
     <div className="af-detaljert__tabs-innhold af-detaljert__flex-table">
       <div className="af-detaljert__flex-rad af-detaljert__head">
         <div className="af-detaljert__flex-kolonne">
-          <Element>{sprak[locale].periode}</Element>
+          <Heading as="p" size="xsmall">
+            {sprak[locale].periode}
+          </Heading>
         </div>
         <div className="af-detaljert__flex-kolonne" />
         <div className="af-detaljert__flex-kolonne">
-          <Element>{sprak[locale].land}</Element>
+          <Heading as="p" size="xsmall">
+            {sprak[locale].land}
+          </Heading>
         </div>
       </div>
       {Object.keys(data)
@@ -71,10 +75,10 @@ export const Utenlandsopphold = (props: Props) => {
             <Fragment key={year}>
               <div className="af-detaljert__flex-rad" key={year}>
                 <button
-                  className="af-detaljert__flex-kolonne af-liste__ekspander lenke"
+                  className="af-detaljert__flex-kolonne af-liste__ekspander"
                   onClick={onClick}
                 >
-                  {year} {value.ekspandert ? <OppChevron /> : <NedChevron />}
+                  {year} {value.ekspandert ? <Collapse /> : <Expand />}
                 </button>
                 <div />
               </div>

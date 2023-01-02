@@ -29,6 +29,7 @@ export const en = {
   sistelonnsendring: "Last salary change",
   skipsregister: "Ship registry",
   skipstype: "Ship type",
+  skrivut: "Print",
   sluttaarsak: "Reason for employment termination",
   stillingsprosent: "Employment percent",
   tabs: {

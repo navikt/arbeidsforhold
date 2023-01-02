@@ -49,7 +49,7 @@ export const PrintButton = (props: Props) => {
                 onClick={() => setOpenModal(true)}
               >
                 <PrinterIcon />
-                <span>Skriv ut</span>
+                <span>{sprak[locale].skrivut}</span>
               </button>
             ) : (
               <DownloadPDFLink

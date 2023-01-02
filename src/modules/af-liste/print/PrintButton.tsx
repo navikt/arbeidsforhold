@@ -5,6 +5,7 @@ import { PrinterIcon } from "../../../assets/icons/PrinterIcon";
 import { useLocale } from "../../common/useLocale";
 import { useIsPdf } from "../../common/useIsPdf";
 import { AFSimpel } from "../../../types/arbeidsforhold";
+import { sprak } from "../../../language/provider";
 
 interface Props {
   arbeidsforhold: AFSimpel[];
@@ -37,7 +38,7 @@ export const PrintButton = (props: Props) => {
           loading ? null : (
             <>
               <PrinterIcon />
-              <span>Skriv ut</span>
+              <span>{sprak[locale].skrivut}</span>
             </>
           )
         }

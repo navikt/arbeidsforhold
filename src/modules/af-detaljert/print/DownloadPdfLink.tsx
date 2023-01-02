@@ -6,6 +6,7 @@ import { PrinterIcon } from "../../../assets/icons/PrinterIcon";
 import React from "react";
 import { AFUtvidet } from "../../../types/arbeidsforhold";
 import { Loader } from "@navikt/ds-react";
+import { sprak } from "../../../language/provider";
 
 interface Props {
   arbeidsforhold: AFUtvidet;
@@ -50,7 +51,7 @@ export const DownloadPDFLink = (props: Props) => {
         ) : (
           <>
             <PrinterIcon />
-            <span>Skriv ut</span>
+            <span>{sprak[locale].skrivut}</span>
           </>
         )
       }

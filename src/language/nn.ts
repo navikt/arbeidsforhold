@@ -29,6 +29,7 @@ export const nn = {
   sistelonnsendring: "Siste lønsendring",
   skipsregister: "Skipsregister",
   skipstype: "Skipstype",
+  skrivut: "Skriv ut",
   sluttaarsak: "Sluttårsak",
   stillingsprosent: "Stillingsprosent",
   tabs: {

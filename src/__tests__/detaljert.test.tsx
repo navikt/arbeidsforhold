@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import afDetaljert from "../clients/apiMock/af-detaljert.json";
 import "@testing-library/jest-dom";
 import { orgnr } from "../utils/orgnr";
@@ -112,24 +112,29 @@ describe("Detaljert arbeidsforhold", () => {
   });
 
   test("inneholder data fra Permisjon-komponent", () => {
-    fireEvent.click(screen.getAllByText("Permisjon/Permittering")[0]);
+    fireEvent.click(
+      screen.getByRole("tab", { name: "Permisjon/Permittering" })
+    );
 
-    afDetaljert.permisjonPermittering.forEach((permisjon) => {
-      expect(screen.getAllByText(permisjon.type).length).toBeGreaterThanOrEqual(
-        1
-      );
-      expect(
-        screen.getAllByText(formatDate(permisjon.periode.periodeFra)).length
-      ).toBeGreaterThan(0);
-      expect(
-        screen.getAllByText(formatDate(permisjon.periode.periodeTil)).length
-      ).toBeGreaterThan(0);
-      expect(screen.getAllByText(permisjon.prosent).length).toBeGreaterThan(0);
+    afDetaljert.permisjonPermittering.forEach(async (permisjon) => {
+      await waitFor(() => {
+        expect(screen.getByText(permisjon.type)).toBeGreaterThanOrEqual(1);
+        expect(
+          screen.getAllByText(formatDate(permisjon.periode.periodeFra)).length
+        ).toBeGreaterThan(0);
+        expect(
+          screen.getAllByText(formatDate(permisjon.periode.periodeTil)).length
+        ).toBeGreaterThan(0);
+        expect(screen.getAllByText(permisjon.prosent).length).toBeGreaterThan(
+          0
+        );
+      });
     });
   });
 
   test("inneholder data fra Utenlandsopphold-komponent", () => {
-    fireEvent.click(screen.getAllByText("Arbeid i utlandet")[0]);
+    // console.log(screen.getByRole("tab", { name: "Arbeid i utlandet" }));
+    fireEvent.click(screen.getByRole("tab", { name: "Arbeid i utlandet" }));
 
     // Expand all years
     const uniqueYears = new Set(
@@ -137,29 +142,33 @@ describe("Detaljert arbeidsforhold", () => {
         moment(utenlandsopphold.periode.periodeFra).year()
       )
     );
-    uniqueYears.forEach((year) => {
+    uniqueYears.forEach(async (year) => {
       if (year !== Math.max(...uniqueYears)) {
-        fireEvent.click(screen.getByText(year));
+        await waitFor(() => {
+          fireEvent.click(screen.getByText(year));
+        });
       }
     });
 
-    afDetaljert.utenlandsopphold.forEach((utenlandsopphold) => {
-      expect(
-        screen.getAllByText(
-          formatDate(utenlandsopphold.periode.periodeFra, "MMMM")
-        ).length
-      ).toBeGreaterThan(0);
-      expect(
-        screen.getAllByText(formatDate(utenlandsopphold.periode.periodeFra))
-          .length
-      ).toBeGreaterThan(0);
-      expect(
-        screen.getAllByText(formatDate(utenlandsopphold.periode.periodeTil))
-          .length
-      ).toBeGreaterThan(0);
-      expect(screen.getAllByText(utenlandsopphold.land).length).toBeGreaterThan(
-        0
-      );
+    afDetaljert.utenlandsopphold.forEach(async (utenlandsopphold) => {
+      await waitFor(() => {
+        expect(
+          screen.getAllByText(
+            formatDate(utenlandsopphold.periode.periodeFra, "MMMM")
+          ).length
+        ).toBeGreaterThan(0);
+        expect(
+          screen.getAllByText(formatDate(utenlandsopphold.periode.periodeFra))
+            .length
+        ).toBeGreaterThan(0);
+        expect(
+          screen.getAllByText(formatDate(utenlandsopphold.periode.periodeTil))
+            .length
+        ).toBeGreaterThan(0);
+        expect(
+          screen.getAllByText(utenlandsopphold.land).length
+        ).toBeGreaterThan(0);
+      });
     });
   });
 
@@ -167,59 +176,66 @@ describe("Detaljert arbeidsforhold", () => {
     fireEvent.click(screen.getAllByText("Historikk")[0]);
 
     // Expand all
-    [...afDetaljert.arbeidsavtaler.keys()].forEach(() => {
-      fireEvent.click(screen.getAllByText("Åpne")[0]);
+    [...afDetaljert.arbeidsavtaler.keys()].forEach(async () => {
+      await waitFor(() => {
+        fireEvent.click(screen.getAllByText("Åpne")[0]);
+      });
     });
 
-    afDetaljert.arbeidsavtaler.forEach((arbeidsavtale) => {
-      expect(screen.getAllByText(arbeidsavtale.yrke).length).toBeGreaterThan(0);
-      expect(
-        screen.getAllByText(
-          formatDate(arbeidsavtale.gyldighetsperiode.periodeFra)
-        ).length
-      ).toBeGreaterThan(0);
-      if (arbeidsavtale.gyldighetsperiode.periodeTil) {
+    afDetaljert.arbeidsavtaler.forEach(async (arbeidsavtale) => {
+      await waitFor(() => {
+        expect(screen.getAllByText(arbeidsavtale.yrke).length).toBeGreaterThan(
+          0
+        );
         expect(
           screen.getAllByText(
-            formatDate(arbeidsavtale.gyldighetsperiode.periodeTil)
+            formatDate(arbeidsavtale.gyldighetsperiode.periodeFra)
           ).length
         ).toBeGreaterThan(0);
-      }
-      expect(
-        screen.getAllByText(arbeidsavtale.arbeidstidsordning).length
-      ).toBeGreaterThan(0);
-      arbeidsavtale.ansettelsesform &&
+        if (arbeidsavtale.gyldighetsperiode.periodeTil) {
+          expect(
+            screen.getAllByText(
+              formatDate(arbeidsavtale.gyldighetsperiode.periodeTil)
+            ).length
+          ).toBeGreaterThan(0);
+        }
         expect(
-          screen.getAllByText(arbeidsavtale.ansettelsesform).length
+          screen.getAllByText(arbeidsavtale.arbeidstidsordning).length
         ).toBeGreaterThan(0);
-      expect(
-        screen.getAllByText(formatDate(arbeidsavtale.sisteLoennsendring)).length
-      ).toBeGreaterThan(0);
-      expect(
-        screen.getAllByText(arbeidsavtale.stillingsprosent).length
-      ).toBeGreaterThan(0);
-      expect(
-        screen.getAllByText(
-          "(Endret stillingsprosent " +
-            formatDate(arbeidsavtale.sisteStillingsendring) +
-            ")"
-        ).length
-      ).toBeGreaterThan(0);
-      expect(
-        screen.getAllByText(arbeidsavtale.antallTimerPrUke).length
-      ).toBeGreaterThan(0);
-      arbeidsavtale.skipsregister &&
+        arbeidsavtale.ansettelsesform &&
+          expect(
+            screen.getAllByText(arbeidsavtale.ansettelsesform).length
+          ).toBeGreaterThan(0);
         expect(
-          screen.getAllByText(arbeidsavtale.skipsregister).length
+          screen.getAllByText(formatDate(arbeidsavtale.sisteLoennsendring))
+            .length
         ).toBeGreaterThan(0);
-      arbeidsavtale.skipstype &&
         expect(
-          screen.getAllByText(arbeidsavtale.skipstype).length
+          screen.getAllByText(arbeidsavtale.stillingsprosent).length
         ).toBeGreaterThan(0);
-      arbeidsavtale.fartsomraade &&
         expect(
-          screen.getAllByText(arbeidsavtale.fartsomraade).length
+          screen.getAllByText(
+            "(Endret stillingsprosent " +
+              formatDate(arbeidsavtale.sisteStillingsendring) +
+              ")"
+          ).length
         ).toBeGreaterThan(0);
+        expect(
+          screen.getAllByText(arbeidsavtale.antallTimerPrUke).length
+        ).toBeGreaterThan(0);
+        arbeidsavtale.skipsregister &&
+          expect(
+            screen.getAllByText(arbeidsavtale.skipsregister).length
+          ).toBeGreaterThan(0);
+        arbeidsavtale.skipstype &&
+          expect(
+            screen.getAllByText(arbeidsavtale.skipstype).length
+          ).toBeGreaterThan(0);
+        arbeidsavtale.fartsomraade &&
+          expect(
+            screen.getAllByText(arbeidsavtale.fartsomraade).length
+          ).toBeGreaterThan(0);
+      });
     });
   });
 });

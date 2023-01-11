@@ -77,12 +77,12 @@ export const DetaljertTabs = ({ arbeidsforhold }: Props) => {
         }}
       >
         <Tabs.List>
-          {tabsData.map((item) => (
-            <Tabs.Tab value={item.type} label={item.label} />
+          {tabsData.map((item, index) => (
+            <Tabs.Tab key={index}  value={item.type} label={item.label} />
           ))}
         </Tabs.List>
-        {tabsData.map((item) => (
-          <Tabs.Panel value={item.type}>
+        {tabsData.map((item, index) => (
+          <Tabs.Panel value={item.type} key={index}>
             <TabContent arbeidsforhold={arbeidsforhold} type={item.type} />
           </Tabs.Panel>
         ))}

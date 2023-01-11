@@ -11,7 +11,7 @@ import { AFListeOnClick } from "../../src/modules/af-liste";
 import { OnClickVelger } from "./components/OnClickVelger";
 import { Locale } from "./types/locale";
 
-import "@navikt/ds-css/dist/index.css";
+import "@navikt/ds-css";
 import { BodyLong } from "@navikt/ds-react";
 
 const App = () => {

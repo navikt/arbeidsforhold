@@ -133,7 +133,6 @@ describe("Detaljert arbeidsforhold", () => {
   });
 
   test("inneholder data fra Utenlandsopphold-komponent", () => {
-    // console.log(screen.getByRole("tab", { name: "Arbeid i utlandet" }));
     fireEvent.click(screen.getByRole("tab", { name: "Arbeid i utlandet" }));
 
     // Expand all years

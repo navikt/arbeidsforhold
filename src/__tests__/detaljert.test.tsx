@@ -38,7 +38,7 @@ describe("Detaljert arbeidsforhold", () => {
       screen.getAllByText(
         "Organisasjonsnummer " + orgnr(afDetaljert.arbeidsgiver.orgnr)
       )
-    ).toHaveLength(2);
+    ).toHaveLength(3);
     expect(
       screen.getByText(
         formatDate(afDetaljert.ansettelsesperiode.periode.periodeFra)

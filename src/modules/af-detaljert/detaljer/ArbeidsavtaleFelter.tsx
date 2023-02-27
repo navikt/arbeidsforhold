@@ -21,7 +21,7 @@ interface PropsUtvidet {
 export const ArbeidsavtaleFelter = (props: PropsStandard | PropsUtvidet) => {
   const { locale } = useLocale();
   return (
-    <div className="af-detaljert__innhold">
+    <dl className="af-detaljert__innhold">
       {props.isUtvidet && (
         <>
           <>
@@ -100,6 +100,6 @@ export const ArbeidsavtaleFelter = (props: PropsStandard | PropsUtvidet) => {
           date={true}
         />
       )}
-    </div>
+    </dl>
   );
 };

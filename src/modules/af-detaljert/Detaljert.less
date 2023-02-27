@@ -25,13 +25,15 @@
   }
   &__boks {
     margin: 0.75rem 0;
-    @media @desktop, @tablet {
-      width: 50%;
-      padding-right: 2rem;
-      box-sizing: border-box;
-    }
+    width: 50%;
+    padding-right: 2rem;
+
     @media @mobile {
       width: 100%;
+    }
+
+    & dd {
+      margin: 0
     }
   }
   &__status {

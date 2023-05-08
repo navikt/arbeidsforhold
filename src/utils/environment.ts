@@ -12,8 +12,8 @@ export class Environment {
         Environment.loginUrl = `http://localhost:5000`;
         break;
       case "DEV":
-        Environment.apiUrl = `https://person.ekstern.dev.nav.no/person/arbeidsforhold-api`;
-        Environment.loginUrl = `https://loginservice.dev.nav.no`;
+        Environment.apiUrl = `https://www.intern.dev.nav.no/person/arbeidsforhold-api`;
+        Environment.loginUrl = `https://loginservice.intern.dev.nav.no`;
         break;
       case "PROD":
         Environment.apiUrl = `https://www.nav.no/person/arbeidsforhold-api`;

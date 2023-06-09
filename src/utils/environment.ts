@@ -13,11 +13,11 @@ export class Environment {
         break;
       case "DEV":
         Environment.apiUrl = `https://www.intern.dev.nav.no/person/arbeidsforhold-api`;
-        Environment.loginUrl = `https://loginservice.intern.dev.nav.no/login`;
+        Environment.loginUrl = `https://login.ekstern.dev.nav.no/oauth2/login`;
         break;
       case "PROD":
         Environment.apiUrl = `https://www.nav.no/person/arbeidsforhold-api`;
-        Environment.loginUrl = `https://loginservice.nav.no/login`;
+        Environment.loginUrl = `https://login.nav.no/oauth2/login`;
         break;
     }
   };

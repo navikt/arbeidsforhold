@@ -51,9 +51,7 @@ export default {
       browser: true,
       modulesOnly: true,
     }),
-    typescript({
-      objectHashIgnoreUnknownHack: true,
-    }),
+    typescript(),
     commonjs(),
     json(),
     babel({

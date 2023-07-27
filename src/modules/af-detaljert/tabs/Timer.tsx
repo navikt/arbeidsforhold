@@ -7,7 +7,7 @@ import { CheckDateAndPrint } from "../../../components/check-date-and-print/Chec
 import { CheckPeriodAndPrint } from "../../../components/check-period-and-print/CheckPeriodAndPrint";
 import { sprak } from "../../../language/provider";
 import { useLocale } from "../../common/useLocale";
-import { Collapse, Expand } from "@navikt/ds-icons";
+import { ChevronUpIcon, ChevronDownIcon } from "@navikt/aksel-icons";
 import { Heading } from "@navikt/ds-react";
 
 interface Props {
@@ -83,7 +83,8 @@ export const Timer = (props: Props) => {
                   className="af-detaljert__flex-kolonne af-liste__ekspander"
                   onClick={onClick}
                 >
-                  {year} {value.ekspandert ? <Collapse /> : <Expand />}
+                  {year}{" "}
+                  {value.ekspandert ? <ChevronUpIcon /> : <ChevronDownIcon />}
                 </button>
                 <div />
               </div>

@@ -6,7 +6,7 @@ import { sortPeriodeFraDesc, sortPeriodeTilDesc } from "../../../utils/date";
 import { sprak } from "../../../language/provider";
 import { ArbeidsavtaleFelter } from "../detaljer/ArbeidsavtaleFelter";
 import { useLocale } from "../../common/useLocale";
-import { Collapse, Expand } from "@navikt/ds-icons";
+import { ChevronUpIcon, ChevronDownIcon } from "@navikt/aksel-icons";
 import { Heading } from "@navikt/ds-react";
 
 interface Props {
@@ -73,11 +73,11 @@ export const Historikk = (props: Props) => {
               >
                 {!ekspandert ? (
                   <>
-                    {sprak[locale].apne} <Expand />
+                    {sprak[locale].apne} <ChevronDownIcon />
                   </>
                 ) : (
                   <>
-                    {sprak[locale].lukke} <Collapse />
+                    {sprak[locale].lukke} <ChevronUpIcon />
                   </>
                 )}
               </button>

@@ -1,7 +1,7 @@
 import React from "react";
 import { sprak } from "../../../language/provider";
 import { useLocale } from "../../common/useLocale";
-import { Collapse, Expand } from "@navikt/ds-icons";
+import { ChevronUpIcon, ChevronDownIcon } from "@navikt/aksel-icons";
 
 interface Props {
   toggleVisAlle: () => void;
@@ -18,11 +18,11 @@ export const VisFlereButton = (props: Props) => {
     >
       {props.visAlle ? (
         <>
-          {sprak[locale].visfaerrearbeidsforhold} <Collapse />
+          {sprak[locale].visfaerrearbeidsforhold} <ChevronUpIcon />
         </>
       ) : (
         <>
-          {sprak[locale].visflerearbeidsforhold} <Expand />
+          {sprak[locale].visflerearbeidsforhold} <ChevronDownIcon />
         </>
       )}
     </button>

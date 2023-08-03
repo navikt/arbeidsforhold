@@ -43,7 +43,7 @@ export const DownloadPDFLink = (props: Props) => {
         </IsPdfProvider>
       }
       fileName="arbeidsforhold.pdf"
-      className={"lenke"}
+      className={"lenke af-detaljert__print-button"}
     >
       {({ loading }) =>
         loading ? (

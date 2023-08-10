@@ -201,6 +201,36 @@
       "antallTimer": 6.25,
       "periode": { "periodeFra": "2019-08-02", "periodeTil": "2019-08-02" },
       "rapporteringsperiode": "2019-09"
+    },
+    {
+      "antallTimer": 7.25,
+      "periode": { "periodeFra": "2018-08-10", "periodeTil": "2018-08-10" },
+      "rapporteringsperiode": "2018-09"
+    },
+    {
+      "antallTimer": 6.75,
+      "periode": { "periodeFra": "2018-08-24", "periodeTil": "2018-08-24" },
+      "rapporteringsperiode": "2018-09"
+    },
+    {
+      "antallTimer": 7.25,
+      "periode": { "periodeFra": "2018-08-01", "periodeTil": "2018-08-01" },
+      "rapporteringsperiode": "2018-09"
+    },
+    {
+      "antallTimer": 6.75,
+      "periode": { "periodeFra": "2018-08-14", "periodeTil": "2018-08-14" },
+      "rapporteringsperiode": "2018-09"
+    },
+    {
+      "antallTimer": 6.75,
+      "periode": { "periodeFra": "2018-08-11", "periodeTil": "2018-08-11" },
+      "rapporteringsperiode": "2018-09"
+    },
+    {
+      "antallTimer": 6.25,
+      "periode": { "periodeFra": "2018-08-02", "periodeTil": "2018-08-02" },
+      "rapporteringsperiode": "2018-09"
     }
   ],
   "antallTimerPrUke": 37.5,

@@ -21,7 +21,7 @@ interface PropsUtvidet {
 export const ArbeidsavtaleFelter = (props: PropsStandard | PropsUtvidet) => {
   const { locale } = useLocale();
   return (
-    <dl className="af-detaljert__innhold">
+    <dl className="af-detaljert__arbeidsavtaleinnhold">
       {props.isUtvidet && (
         <>
           <>

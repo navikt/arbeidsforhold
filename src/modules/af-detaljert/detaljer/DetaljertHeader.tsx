@@ -17,8 +17,8 @@ export const DetaljertHeader = (props: Props) => {
   const { locale } = useLocale();
 
   return (
-    <div className="af-detaljert__header">
-      <div className="af-detaljert__kolonne">
+    <div className="af-detaljert__intro">
+      <div className="af-detaljert__seksjon">
         <div className="af-detaljert__arbeidsgiver">
           <Heading level={"2"} size={"small"}>
             <ArbeidsgiverTittel
@@ -39,7 +39,7 @@ export const DetaljertHeader = (props: Props) => {
         </div>
       </div>
       {arbeidsforhold.ansettelsesperiode && (
-        <div className="af-detaljert__kolonne af-detaljert__periode">
+        <div className="af-detaljert__seksjon af-detaljert__periode">
           <div className="af-detaljert__arbeidsgiver">
             <Heading level={"2"} size={"xsmall"}>
               {sprak[locale].ansettelsesperiode}

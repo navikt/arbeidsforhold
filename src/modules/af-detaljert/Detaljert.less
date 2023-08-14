@@ -1,5 +1,6 @@
 .af-detaljert {
-  &__header {
+  /** Intro-seksjon */
+  &__intro {
     display: flex;
     flex-wrap: wrap;
     @media @desktop {
@@ -9,7 +10,7 @@
       padding: 0 0 0.5rem 0;
     }
   }
-  &__kolonne {
+  &__seksjon {
     @media @desktop {
       width: 50%;
       padding-right: 2rem;
@@ -19,29 +20,22 @@
       width: 100%;
     }
   }
-  &__innhold {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  &__boks {
-    margin: 0.75rem 0;
-    width: 50%;
-    padding-right: 2rem;
 
-    @media @mobile {
-      width: 100%;
-    }
-
-    & dd {
-      margin: 0;
-    }
-  }
-  &__status {
-    display: flex;
-  }
   &__arbeidsgiver {
     padding: 0.5rem 0;
   }
+
+  &__orgnr {
+    padding: 0.25rem 0;
+  }
+  &__periode {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  /** Tabs                   */
+  /** ---------------------- */
   &__tabs {
     margin: 1rem 0;
     @media @desktop, @tablet {
@@ -57,27 +51,26 @@
       }
     }
   }
-  &__select {
-    @media @desktop, @tablet {
-      display: none;
-    }
+
+  /** Tabellen               */
+  /** ---------------------- */
+  &__boks {
+    margin: 0.75rem 0;
+    width: 50%;
+    padding-right: 2rem;
+
     @media @mobile {
-      display: block;
+      width: 100%;
+    }
+
+    & dd {
+      margin: 0;
     }
   }
-  &__orgnr {
-    padding: 0.25rem 0;
-  }
-  &__periode {
+
+  &__arbeidsavtaleinnhold {
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-  }
-  &__periode-content {
-    padding-left: 0.5rem;
-  }
-  &__hr {
-    margin: 1rem 0;
+    flex-wrap: wrap;
   }
   &__flex-table {
     max-width: 100%;
@@ -111,6 +104,9 @@
       font-weight: 600;
     }
   }
+
+  /** Print-funksjonalitet   */
+  /** ---------------------- */
   &__print-button-oversikt {
     margin-left: 1rem;
     margin-top: 1.5rem;

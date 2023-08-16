@@ -34,26 +34,11 @@
     align-items: flex-end;
   }
 
-  /** Tabs                   */
-  /** ---------------------- */
-  &__tabs {
-    margin: 1rem 0;
-    @media @desktop, @tablet {
-      display: block;
-      &-innhold {
-        margin: 2rem 1rem;
-      }
-    }
-    @media @mobile {
-      display: none;
-      &-innhold {
-        margin: 1rem 0rem;
-      }
-    }
+  &__arbeidsavtaleinnhold {
+    display: flex;
+    flex-wrap: wrap;
   }
 
-  /** Tabellen               */
-  /** ---------------------- */
   &__boks {
     margin: 0.75rem 0;
     width: 50%;
@@ -68,40 +53,41 @@
     }
   }
 
-  &__arbeidsavtaleinnhold {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  &__flex-table {
-    max-width: 100%;
-    border-collapse: collapse;
-  }
-  &__flex-rad {
-    border-bottom: 1px solid #979797;
-    display: flex;
-    padding: 0.25rem 0;
-    @media @desktop, @tablet {
-      flex-direction: row;
-    }
-    @media @mobile {
-      flex-direction: column;
-    }
-  }
-  &__flex-kolonne {
-    padding: 0.25rem 0;
-    flex-basis: 100%;
-  }
-  &__head {
+  /** Tabs                   */
+  /** ---------------------- */
+  &__tabs {
+    margin: 1rem 0;
     @media @mobile {
       display: none;
     }
   }
-  &__heading {
+
+  /** Tabellen               */
+  /** ---------------------- */
+  &__tableWrapper {
+    margin: 2rem 1rem;
+  }
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+
     @media @mobile {
-      font-family: "Source Sans Pro", Arial, sans-serif;
-      font-size: 1rem;
-      line-height: 1.375rem;
-      font-weight: 600;
+      display: none;
+    }
+
+    tr {
+      border-bottom: 1px solid #979797;
+    }
+
+    th {
+      text-align: left;
+      width: 33%;
+      padding: 0.5rem 0;
+    }
+
+    td {
+      padding: 0.5rem 0;
+      width: 33%;
     }
   }
 

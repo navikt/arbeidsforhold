@@ -44,72 +44,83 @@ export const Timer = (props: Props) => {
   const [data, setData] = useState(initState);
 
   return (
-    <div className="af-detaljert__tabs-innhold af-detaljert__flex-table">
-      <div className="af-detaljert__flex-rad af-detaljert__head">
-        <div className="af-detaljert__flex-kolonne af-detaljert__rapporteringsperiode">
-          <Heading as="p" size="xsmall">
-            {sprak[locale].rapporteringsperiode}
-          </Heading>
-        </div>
-        <div className="af-detaljert__flex-kolonne">
-          <Heading as="p" size="xsmall">
-            {sprak[locale].opptjeningsperiode}
-          </Heading>
-        </div>
-        <div className="af-detaljert__flex-kolonne">
-          <Heading as="p" size="xsmall">
-            {sprak[locale].antalltimer}
-          </Heading>
-        </div>
-      </div>
-      {Object.keys(data)
-        .reverse()
-        .map((year) => {
-          const value = data[year];
+    <div className="af-detaljert__tableWrapper">
+      <table className="af-detaljert__tabs-innhold af-detaljert__table">
+        <thead>
+          <tr>
+            <th className="af-detaljert__rapporteringsperiode">
+              <Heading as="p" size="xsmall">
+                {sprak[locale].rapporteringsperiode}
+              </Heading>
+            </th>
+            <th>
+              <Heading as="p" size="xsmall">
+                {sprak[locale].opptjeningsperiode}
+              </Heading>
+            </th>
+            <th>
+              <Heading as="p" size="xsmall">
+                {sprak[locale].antalltimer}
+              </Heading>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.keys(data)
+            .reverse()
+            .map((year) => {
+              const value = data[year];
 
-          const onClick = () =>
-            setData({
-              ...data,
-              [year]: {
-                ...data[year],
-                ekspandert: !data[year].ekspandert,
-              },
-            });
+              const onClick = () =>
+                setData({
+                  ...data,
+                  [year]: {
+                    ...data[year],
+                    ekspandert: !data[year].ekspandert,
+                  },
+                });
 
-          return (
-            <Fragment key={year}>
-              <div className="af-detaljert__flex-rad" key={year}>
-                <button
-                  className="af-detaljert__flex-kolonne af-liste__ekspander"
-                  onClick={onClick}
-                >
-                  {year}{" "}
-                  {value.ekspandert ? <ChevronUpIcon /> : <ChevronDownIcon />}
-                </button>
-                <div />
-              </div>
-              {value.ekspandert &&
-                value.timerObjekt.map((time, i) => (
-                  <div className="af-detaljert__flex-rad" key={`${i}`}>
-                    <div className="af-detaljert__flex-kolonne af-liste__month af-detaljert__heading">
-                      {time.periode && (
-                        <CheckDateAndPrint
-                          data={time.rapporteringsperiode}
-                          dateFormat="MMMM"
-                        />
-                      )}
-                    </div>
-                    <div className="af-detaljert__flex-kolonne">
-                      <CheckPeriodAndPrint data={time.periode} />
-                    </div>
-                    <div className="af-detaljert__flex-kolonne">
-                      <CheckAndPrint data={time.antallTimer} />
-                    </div>
-                  </div>
-                ))}
-            </Fragment>
-          );
-        })}
+              return (
+                <Fragment key={year}>
+                  <tr  key={year}>
+                    <td>
+                      <button
+                        className="af-liste__ekspander"
+                        onClick={onClick}
+                      >
+                        {year}{" "}
+                        {value.ekspandert ? (
+                          <ChevronUpIcon />
+                        ) : (
+                          <ChevronDownIcon />
+                        )}
+                      </button>
+                    </td>
+                  </tr>
+                  {value.ekspandert &&
+                    value.timerObjekt.map((time, i) => (
+                      <tr  key={`${i}`}>
+                        <td className=" af-liste__month">
+                          {time.periode && (
+                            <CheckDateAndPrint
+                              data={time.rapporteringsperiode}
+                              dateFormat="MMMM"
+                            />
+                          )}
+                        </td>
+                        <td>
+                          <CheckPeriodAndPrint data={time.periode} />
+                        </td>
+                        <td>
+                          <CheckAndPrint data={time.antallTimer} />
+                        </td>
+                      </tr>
+                    ))}
+                </Fragment>
+              );
+            })}
+        </tbody>
+      </table>
     </div>
   );
 };

@@ -78,7 +78,7 @@ export const Utenlandsopphold = (props: Props) => {
               return (
                 <Fragment key={year}>
                   <tr key={year}>
-                    <td>
+                    <td colSpan={3}>
                       <button
                         className="af-liste__ekspander"
                         onClick={onClick}

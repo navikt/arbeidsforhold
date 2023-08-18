@@ -1,5 +1,6 @@
 .af-detaljert {
-  &__header {
+  /** Intro-seksjon */
+  &__intro {
     display: flex;
     flex-wrap: wrap;
     @media @desktop {
@@ -9,7 +10,7 @@
       padding: 0 0 0.5rem 0;
     }
   }
-  &__kolonne {
+  &__seksjon {
     @media @desktop {
       width: 50%;
       padding-right: 2rem;
@@ -19,10 +20,25 @@
       width: 100%;
     }
   }
-  &__innhold {
+
+  &__arbeidsgiver {
+    padding: 0.5rem 0;
+  }
+
+  &__orgnr {
+    padding: 0.25rem 0;
+  }
+  &__periode {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  &__arbeidsavtaleinnhold {
     display: flex;
     flex-wrap: wrap;
   }
+
   &__boks {
     margin: 0.75rem 0;
     width: 50%;
@@ -36,81 +52,47 @@
       margin: 0;
     }
   }
-  &__status {
-    display: flex;
-  }
-  &__arbeidsgiver {
-    padding: 0.5rem 0;
-  }
+
+  /** Tabs                   */
+  /** ---------------------- */
   &__tabs {
     margin: 1rem 0;
-    @media @desktop, @tablet {
-      display: block;
-      &-innhold {
-        margin: 2rem 1rem;
-      }
-    }
     @media @mobile {
       display: none;
-      &-innhold {
-        margin: 1rem 0rem;
-      }
     }
   }
-  &__select {
-    @media @desktop, @tablet {
-      display: none;
-    }
-    @media @mobile {
-      display: block;
-    }
+
+  /** Tabellen               */
+  /** ---------------------- */
+  &__tableWrapper {
+    margin: 2rem 1rem;
   }
-  &__orgnr {
-    padding: 0.25rem 0;
-  }
-  &__periode {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-  }
-  &__periode-content {
-    padding-left: 0.5rem;
-  }
-  &__hr {
-    margin: 1rem 0;
-  }
-  &__flex-table {
-    max-width: 100%;
+  &__table {
+    width: 100%;
     border-collapse: collapse;
-  }
-  &__flex-rad {
-    border-bottom: 1px solid #979797;
-    display: flex;
-    padding: 0.25rem 0;
-    @media @desktop, @tablet {
-      flex-direction: row;
-    }
-    @media @mobile {
-      flex-direction: column;
-    }
-  }
-  &__flex-kolonne {
-    padding: 0.25rem 0;
-    flex-basis: 100%;
-  }
-  &__head {
+
     @media @mobile {
       display: none;
     }
-  }
-  &__heading {
-    @media @mobile {
-      font-family: "Source Sans Pro", Arial, sans-serif;
-      font-size: 1rem;
-      line-height: 1.375rem;
-      font-weight: 600;
+
+    tr {
+      border-bottom: 1px solid #979797;
+    }
+
+    th {
+      text-align: left;
+      width: 33%;
+      padding: 0.5rem 0;
+    }
+
+    td {
+      padding: 0.5rem 0;
+      width: 33%;
     }
   }
+
+  /** Print-funksjonalitet   */
+  /** ---------------------- */
   &__print-button-oversikt {
     margin-left: 1rem;
     margin-top: 1.5rem;

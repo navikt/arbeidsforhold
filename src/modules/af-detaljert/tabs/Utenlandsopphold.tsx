@@ -43,66 +43,77 @@ export const Utenlandsopphold = (props: Props) => {
 
   const [data, setData] = useState(initState);
   return (
-    <div className="af-detaljert__tabs-innhold af-detaljert__flex-table">
-      <div className="af-detaljert__flex-rad af-detaljert__head">
-        <div className="af-detaljert__flex-kolonne">
-          <Heading as="p" size="xsmall">
-            {sprak[locale].periode}
-          </Heading>
-        </div>
-        <div className="af-detaljert__flex-kolonne" />
-        <div className="af-detaljert__flex-kolonne">
-          <Heading as="p" size="xsmall">
-            {sprak[locale].land}
-          </Heading>
-        </div>
-      </div>
-      {Object.keys(data)
-        .reverse()
-        .map((year) => {
-          const value = data[year];
+    <div className="af-detaljert__tableWrapper">
+      <table className="af-detaljert__tabs-innhold af-detaljert__table">
+        <thead>
+          <tr>
+            <th>
+              <Heading as="p" size="xsmall">
+                {sprak[locale].periode}
+              </Heading>
+            </th>
+            <th/>
+            <th>
+              <Heading as="p" size="xsmall">
+                {sprak[locale].land}
+              </Heading>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.keys(data)
+            .reverse()
+            .map((year) => {
+              const value = data[year];
 
-          const onClick = () =>
-            setData({
-              ...data,
-              [year]: {
-                ...data[year],
-                ekspandert: !data[year].ekspandert,
-              },
-            });
+              const onClick = () =>
+                setData({
+                  ...data,
+                  [year]: {
+                    ...data[year],
+                    ekspandert: !data[year].ekspandert,
+                  },
+                });
 
-          return (
-            <Fragment key={year}>
-              <div className="af-detaljert__flex-rad" key={year}>
-                <button
-                  className="af-detaljert__flex-kolonne af-liste__ekspander"
-                  onClick={onClick}
-                >
-                  {year}{" "}
-                  {value.ekspandert ? <ChevronUpIcon /> : <ChevronDownIcon />}
-                </button>
-                <div />
-              </div>
-              {value.ekspandert &&
-                value.opphold.map((time, i) => (
-                  <div className="af-detaljert__flex-rad" key={`${i}`}>
-                    <div className="af-detaljert__flex-kolonne af-liste__month  af-detaljert__heading">
-                      <CheckDateAndPrint
-                        data={time.periode.periodeFra}
-                        dateFormat="MMMM"
-                      />
-                    </div>
-                    <div className="af-detaljert__flex-kolonne">
-                      <CheckPeriodAndPrint data={time.periode} />
-                    </div>
-                    <div className="af-detaljert__flex-kolonne">
-                      <CheckAndPrint data={time.land} />
-                    </div>
-                  </div>
-                ))}
-            </Fragment>
-          );
-        })}
+              return (
+                <Fragment key={year}>
+                  <tr key={year}>
+                    <td colSpan={3}>
+                      <button
+                        className="af-liste__ekspander"
+                        onClick={onClick}
+                      >
+                        {year}{" "}
+                        {value.ekspandert ? (
+                          <ChevronUpIcon />
+                        ) : (
+                          <ChevronDownIcon />
+                        )}
+                      </button>
+                    </td>
+                  </tr>
+                  {value.ekspandert &&
+                    value.opphold.map((time, i) => (
+                      <tr key={`${i}`}>
+                        <td className="af-liste__month">
+                          <CheckDateAndPrint
+                            data={time.periode.periodeFra}
+                            dateFormat="MMMM"
+                          />
+                        </td>
+                        <td>
+                          <CheckPeriodAndPrint data={time.periode} />
+                        </td>
+                        <td>
+                          <CheckAndPrint data={time.land} />
+                        </td>
+                      </tr>
+                    ))}
+                </Fragment>
+              );
+            })}
+        </tbody>
+      </table>
     </div>
   );
 };

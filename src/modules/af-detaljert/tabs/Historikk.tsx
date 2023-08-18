@@ -32,66 +32,77 @@ export const Historikk = (props: Props) => {
   );
 
   return (
-    <div className="af-detaljert__tabs-innhold af-detaljert__flex-table">
-      <div className="af-detaljert__flex-rad af-detaljert__head">
-        <div className="af-detaljert__flex-kolonne">
-          <Heading as="p" size="xsmall">
-            {sprak[locale].yrke}
-          </Heading>
-        </div>
-        <div className="af-detaljert__flex-kolonne">
-          <Heading as="p" size="xsmall">
-            {sprak[locale].periode}
-          </Heading>
-        </div>
-        <div className="af-detaljert__flex-kolonne" />
-      </div>
-      {data.map((innslag, counter) => {
-        const { arbeidsavtale, ekspandert } = innslag;
+    <div className="af-detaljert__tableWrapper">
+      <table className="af-detaljert__tabs-innhold af-detaljert__table">
+        <thead>
+          <tr>
+            <th>
+              <Heading as="p" size="xsmall">
+                {sprak[locale].yrke}
+              </Heading>
+            </th>
+            <th>
+              <Heading as="p" size="xsmall">
+                {sprak[locale].periode}
+              </Heading>
+            </th>
+            <th />
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((innslag, counter) => {
+            const { arbeidsavtale, ekspandert } = innslag;
 
-        const onClick = () =>
-          setData(
-            data.map((values, i) =>
-              i === counter
-                ? { ...values, ekspandert: !data[i].ekspandert }
-                : values
-            )
-          );
+            const onClick = () =>
+              setData(
+                data.map((values, i) =>
+                  i === counter
+                    ? { ...values, ekspandert: !data[i].ekspandert }
+                    : values
+                )
+              );
 
-        return (
-          <Fragment key={counter}>
-            <div className="af-detaljert__flex-rad" key={counter}>
-              <div className="af-detaljert__flex-kolonne af-detaljert__heading">
-                <CheckAndPrint data={arbeidsavtale.yrke} />
-              </div>
-              <div className="af-detaljert__flex-kolonne">
-                <CheckPeriodAndPrint data={arbeidsavtale.gyldighetsperiode} />
-              </div>
-              <button
-                className="af-detaljert__flex-kolonne af-liste__ekspander"
-                onClick={onClick}
-              >
-                {!ekspandert ? (
-                  <>
-                    {sprak[locale].apne} <ChevronDownIcon />
-                  </>
-                ) : (
-                  <>
-                    {sprak[locale].lukke} <ChevronUpIcon />
-                  </>
+            return (
+              <Fragment key={counter}>
+                <tr key={counter}>
+                  <td>
+                    <CheckAndPrint data={arbeidsavtale.yrke} />
+                  </td>
+                  <td>
+                    <CheckPeriodAndPrint data={arbeidsavtale.gyldighetsperiode} />
+                  </td>
+                  <td>
+                    <button
+                      className="af-liste__ekspander"
+                      onClick={onClick}
+                    >
+                      {!ekspandert ? (
+                        <>
+                          {sprak[locale].apne} <ChevronDownIcon />
+                        </>
+                      ) : (
+                        <>
+                          {sprak[locale].lukke} <ChevronUpIcon />
+                        </>
+                      )}
+                    </button>
+                  </td>
+                </tr>
+                {ekspandert && (
+                  <tr>
+                    <td colSpan={3}>
+                      <ArbeidsavtaleFelter
+                        data={arbeidsavtale}
+                        isUtvidet={false}
+                      />
+                    </td>
+                  </tr>
                 )}
-              </button>
-            </div>
-            {ekspandert && (
-              <div className="af-detaljert__flex-rad">
-                <div className="af-detaljert__flex-kolonne">
-                  <ArbeidsavtaleFelter data={arbeidsavtale} isUtvidet={false} />
-                </div>
-              </div>
-            )}
-          </Fragment>
-        );
-      })}
+              </Fragment>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 };

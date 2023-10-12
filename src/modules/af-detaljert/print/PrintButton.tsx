@@ -4,7 +4,7 @@ import { DownloadPDFLink } from './DownloadPdfLink';
 import { sprak } from '../../../language/provider';
 import { useLocale } from '../../common/useLocale';
 import { AFUtvidet } from '../../../types/arbeidsforhold';
-import { BodyShort, Checkbox, CheckboxGroup, Heading, Modal } from '@navikt/ds-react';
+import { BodyShort, Checkbox, Heading, Modal } from '@navikt/ds-react';
 
 interface Props {
     arbeidsforhold: AFUtvidet;

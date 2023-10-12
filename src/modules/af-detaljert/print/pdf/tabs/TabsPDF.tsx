@@ -34,7 +34,6 @@ export const TabsPDF = ({
     antallTimerForTimelonnet,
     utenlandsopphold,
 }: Props) => {
-    console.log(utenlandsopphold.length);
     return (
         <Page size="A4" style={pdfStyles.page}>
             <PdfHeader printName={printName} printSSO={printSSO} />

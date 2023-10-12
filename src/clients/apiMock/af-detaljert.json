@@ -613,60 +613,6 @@
                 "periodeTil": "2011-11-01"
             },
             "rapporteringsperiode": "2017-12"
-        },
-        {
-            "land": "Portugal",
-            "landkode": "SPN",
-            "periode": {
-                "periodeFra": "2018-01-01",
-                "periodeTil": "2018-02-01"
-            },
-            "rapporteringsperiode": "2017-12"
-        },
-        {
-            "land": "Albania",
-            "landkode": "SPN",
-            "periode": {
-                "periodeFra": "2018-02-01",
-                "periodeTil": "2018-05-01"
-            },
-            "rapporteringsperiode": "2017-12"
-        },
-        {
-            "land": "Albania",
-            "landkode": "SPN",
-            "periode": {
-                "periodeFra": "2018-02-01",
-                "periodeTil": "2018-05-01"
-            },
-            "rapporteringsperiode": "2017-12"
-        },
-        {
-            "land": "Albania",
-            "landkode": "SPN",
-            "periode": {
-                "periodeFra": "2018-02-01",
-                "periodeTil": "2018-05-01"
-            },
-            "rapporteringsperiode": "2017-12"
-        },
-        {
-            "land": "Albania",
-            "landkode": "SPN",
-            "periode": {
-                "periodeFra": "2018-02-01",
-                "periodeTil": "2018-05-01"
-            },
-            "rapporteringsperiode": "2017-12"
-        },
-        {
-            "land": "Albania",
-            "landkode": "SPN",
-            "periode": {
-                "periodeFra": "2018-02-01",
-                "periodeTil": "2018-05-01"
-            },
-            "rapporteringsperiode": "2017-12"
         }
     ],
     "ansettelsesform": "fast",

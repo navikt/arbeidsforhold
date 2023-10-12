@@ -37,8 +37,10 @@ export const UtenlandsoppholdPDF = (props: Props) => {
         }
     });
 
+    const isLongEnoughToWrap = Object.keys(data).reduce((acc, year) => acc + year.length, 0) > 14;
+
     return (
-        <View wrap={true}>
+        <View wrap={isLongEnoughToWrap}>
             <View>
                 <View style={pdfStyles.tableTitle}>
                     <Text style={pdfStyles.h2}>Arbeid i utlandet</Text>
@@ -60,7 +62,7 @@ export const UtenlandsoppholdPDF = (props: Props) => {
                 .map((year) => {
                     const value = data[year];
                     return (
-                        <View key={year} style={pdfStyles.flexSection} wrap={true}>
+                        <View key={year} style={pdfStyles.flexSection} wrap={isLongEnoughToWrap}>
                             <View style={pdfStyles.flexRow}>
                                 <View style={pdfStyles.flexColumn}>
                                     <Text style={pdfStyles.h3}>{year}</Text>

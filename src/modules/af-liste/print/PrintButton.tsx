@@ -1,11 +1,11 @@
 import React from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { ListePDF } from "./pdf/ListePDF";
-import { PrinterIcon } from "../../../assets/icons/PrinterIcon";
 import { useLocale } from "../../common/useLocale";
 import { useIsPdf } from "../../common/useIsPdf";
-import { AFSimpel } from "../../../types/arbeidsforhold";
-import { sprak } from "../../../language/provider";
+import { AFSimpel } from "types/arbeidsforhold";
+import { sprak } from "language/provider";
+import { PrinterSmallIcon } from '@navikt/aksel-icons';
 
 interface Props {
   arbeidsforhold: AFSimpel[];
@@ -37,7 +37,7 @@ export const PrintButton = (props: Props) => {
         {({ loading }) =>
           loading ? null : (
             <>
-              <PrinterIcon />
+              <PrinterSmallIcon aria-hidden="true" />
               <span>{sprak[locale].skrivut}</span>
             </>
           )

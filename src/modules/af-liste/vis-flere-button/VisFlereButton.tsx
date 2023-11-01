@@ -18,11 +18,11 @@ export const VisFlereButton = (props: Props) => {
     >
       {props.visAlle ? (
         <>
-          {sprak[locale].visfaerrearbeidsforhold} <ChevronUpIcon />
+          {sprak[locale].visfaerrearbeidsforhold} <ChevronUpIcon aria-hidden="true" />
         </>
       ) : (
         <>
-          {sprak[locale].visflerearbeidsforhold} <ChevronDownIcon />
+          {sprak[locale].visflerearbeidsforhold} <ChevronDownIcon aria-hidden="true" />
         </>
       )}
     </button>

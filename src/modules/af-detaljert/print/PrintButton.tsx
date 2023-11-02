@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { PrinterIcon } from '../../../assets/icons/PrinterIcon';
 import { DownloadPDFLink } from './DownloadPdfLink';
-import { sprak } from '../../../language/provider';
 import { useLocale } from '../../common/useLocale';
-import { AFUtvidet } from '../../../types/arbeidsforhold';
+import { AFUtvidet } from 'types/arbeidsforhold';
+import { sprak } from 'language/provider';
 import { BodyShort, Checkbox, Heading, Modal } from '@navikt/ds-react';
+import { PrinterSmallIcon } from '@navikt/aksel-icons';
 
 interface Props {
     arbeidsforhold: AFUtvidet;
@@ -36,7 +36,7 @@ export const PrintButton = (props: Props) => {
                         (utenlandsopphold && utenlandsopphold.length > 0) ||
                         (arbeidsavtaler && arbeidsavtaler.length > 0) ? (
                             <button className={'lenke af-detaljert__print-button'} onClick={() => setOpenModal(true)}>
-                                <PrinterIcon />
+                                <PrinterSmallIcon aria-hidden="true" />
                                 <span>{sprak[locale].skrivut}</span>
                             </button>
                         ) : (

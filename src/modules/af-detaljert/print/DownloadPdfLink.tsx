@@ -1,12 +1,12 @@
+import React from 'react';
 import { useIsPdf } from '../../common/useIsPdf';
 import { useLocale } from '../../common/useLocale';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import { DetaljertPDF } from './pdf/DetaljertPDF';
-import { PrinterIcon } from '../../../assets/icons/PrinterIcon';
-import React from 'react';
-import { AFUtvidet } from '../../../types/arbeidsforhold';
+import { sprak } from 'language/provider';
+import { AFUtvidet } from 'types/arbeidsforhold';
 import { Loader } from '@navikt/ds-react';
-import { sprak } from '../../../language/provider';
+import { PrinterSmallIcon } from '@navikt/aksel-icons';
 
 interface Props {
     arbeidsforhold: AFUtvidet;
@@ -51,7 +51,7 @@ export const DownloadPDFLink = (props: Props) => {
                     <Loader size={'xsmall'} />
                 ) : (
                     <>
-                        <PrinterIcon />
+                        <PrinterSmallIcon aria-hidden="true" />
                         <span>{sprak[locale].skrivut}</span>
                     </>
                 )

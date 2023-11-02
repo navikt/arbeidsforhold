@@ -17,7 +17,7 @@ export const Error = (props: Props) => {
   const { locale } = useLocale();
   return error ? (
     <div className="error__container">
-      <Alert variant="error">
+      <Alert role="alert" variant="error">
         {sprak[locale].httperror}
         <br />
         {error.code && <span>{`${error.code}: `}</span>}

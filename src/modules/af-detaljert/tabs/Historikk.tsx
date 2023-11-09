@@ -78,11 +78,11 @@ export const Historikk = (props: Props) => {
                     >
                       {!ekspandert ? (
                         <>
-                          {sprak[locale].apne} <ChevronDownIcon />
+                          {sprak[locale].apne} <ChevronDownIcon aria-hidden="true" />
                         </>
                       ) : (
                         <>
-                          {sprak[locale].lukke} <ChevronUpIcon />
+                          {sprak[locale].lukke} <ChevronUpIcon aria-hidden="true" />
                         </>
                       )}
                     </button>

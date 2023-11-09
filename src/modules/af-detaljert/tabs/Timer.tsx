@@ -90,9 +90,9 @@ export const Timer = (props: Props) => {
                       >
                         {year}{" "}
                         {value.ekspandert ? (
-                          <ChevronUpIcon />
+                          <ChevronUpIcon aria-hidden="true" />
                         ) : (
-                          <ChevronDownIcon />
+                          <ChevronDownIcon aria-hidden="true" />
                         )}
                       </button>
                     </td>

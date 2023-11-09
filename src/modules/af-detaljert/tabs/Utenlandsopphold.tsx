@@ -28,7 +28,7 @@ export const Utenlandsopphold = (props: Props) => {
     };
   } = {};
 
-  props.utenlandsopphold.map((opphold, i) => {
+  props.utenlandsopphold.forEach((opphold, i) => {
     const year = moment(opphold.periode.periodeFra).year();
 
     if (!initState[year]) {

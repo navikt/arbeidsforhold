@@ -12,7 +12,7 @@ interface Props {
   error: HTTPError;
 }
 
-export const Error = (props: Props) => {
+export const ErrorMessage = (props: Props) => {
   const { error } = props;
   const { locale } = useLocale();
   return error ? (

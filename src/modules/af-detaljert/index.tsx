@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Error, HTTPError } from "components/error/Error";
+import { ErrorMessage, HTTPError } from "components/error/Error";
 import { AFUtvidet } from "types/arbeidsforhold";
 import {
   hentDetaljertArbeidsforholdArbeidsgiver,
@@ -114,7 +114,7 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
     case "ERROR":
       return (
         <LocaleProvider value={props.locale}>
-          <Error error={state.error} />
+          <ErrorMessage error={state.error} />
         </LocaleProvider>
       );
   }

@@ -25,7 +25,7 @@ export const UtenlandsoppholdPDF = (props: Props) => {
         };
     } = {};
 
-    props.utenlandsopphold.map((opphold) => {
+    props.utenlandsopphold.forEach((opphold) => {
         const year = moment(opphold.periode.periodeFra).year();
 
         if (!data[year]) {

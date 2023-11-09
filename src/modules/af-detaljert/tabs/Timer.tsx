@@ -28,7 +28,7 @@ export const Timer = (props: Props) => {
     };
   } = {};
 
-  props.timer.map((timerObjekt, i) => {
+  props.timer.forEach((timerObjekt, i) => {
     const year = moment(timerObjekt.rapporteringsperiode).year();
 
     if (!initState[year]) {

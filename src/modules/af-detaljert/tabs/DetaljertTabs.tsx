@@ -4,6 +4,7 @@ import { useLocale } from "../../common/useLocale";
 import { sprak } from "../../../language/provider";
 import { TabContent } from "./TabContent";
 import { Tabs } from "@navikt/ds-react";
+import { Locale } from "types/locale";
 
 export type DetaljertTabType =
   | "timer"
@@ -11,7 +12,7 @@ export type DetaljertTabType =
   | "utenlandsopphold"
   | "historikk";
 
-const getTabsData = (arbeidsforhold: AFUtvidet) => {
+const getTabsData = (arbeidsforhold: AFUtvidet, locale:Locale) => {
   const {
     antallTimerForTimelonnet,
     permisjonPermittering,
@@ -23,8 +24,6 @@ const getTabsData = (arbeidsforhold: AFUtvidet) => {
     label: string;
     type: DetaljertTabType;
   }[] = [];
-
-  const { locale } = useLocale();
 
   if (antallTimerForTimelonnet && antallTimerForTimelonnet.length > 0) {
     tabsData.push({
@@ -59,7 +58,8 @@ type Props = {
 };
 
 export const DetaljertTabs = ({ arbeidsforhold }: Props) => {
-  const tabsData = getTabsData(arbeidsforhold);
+  const { locale } = useLocale();
+  const tabsData = getTabsData(arbeidsforhold, locale);
   const [currentTab, setCurrentTab] = useState<DetaljertTabType>(
     tabsData[0]?.type
   );

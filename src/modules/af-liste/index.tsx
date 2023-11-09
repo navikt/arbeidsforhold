@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Error, HTTPError } from '../../components/error/Error';
+import { ErrorMessage, HTTPError } from '../../components/error/Error';
 import { AFSimpel } from '../../types/arbeidsforhold';
 import { hentListeMedArbeidsforhold } from '../../clients/apiClient';
 import { Spinner } from '../../components/spinner/Spinner';
@@ -90,7 +90,7 @@ const ListeMedArbeidsforhold = (props: AFListeProps) => {
         case 'ERROR':
             return (
                 <LocaleProvider value={props.locale}>
-                    <Error error={state.error} />
+                    <ErrorMessage error={state.error} />
                 </LocaleProvider>
             );
     }

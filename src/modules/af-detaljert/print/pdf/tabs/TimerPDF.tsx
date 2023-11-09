@@ -27,7 +27,7 @@ export const TimerPDF = (props: Props) => {
     };
   } = {};
 
-  props.timer.map((timerObjekt) => {
+  props.timer.forEach((timerObjekt) => {
     const year = moment(timerObjekt.rapporteringsperiode).year();
 
     if (!data[year]) {

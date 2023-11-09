@@ -24,7 +24,6 @@ export const DownloadPDFLink = (props: Props) => {
   const { locale, LocaleProvider } = useLocale();
   return (
     <PDFDownloadLink
-      key={Math.random()}
       document={
         <IsPdfProvider value={true}>
           {/* LocaleProvider-wrapper nødvendig for å få med locale i PDF-rendering */}

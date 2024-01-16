@@ -18,7 +18,7 @@ interface Props {
 export const HistorikkPDF = ({ arbeidsavtaler }: Props) => {
   const { locale } = useLocale();
 
-  arbeidsavtaler
+  const sortedArbeidsavtaler = arbeidsavtaler
     .sort((left, right) =>
       sortPeriodeFraDesc(left.gyldighetsperiode, right.gyldighetsperiode)
     )
@@ -28,7 +28,7 @@ export const HistorikkPDF = ({ arbeidsavtaler }: Props) => {
 
   return (
     <>
-      {arbeidsavtaler.map((arbeidsavtale, i) => (
+      {sortedArbeidsavtaler.map((arbeidsavtale, i) => (
         <View key={i} wrap={false}>
           {!i && (
             <View style={{ ...pdfStyles.tableTitle, padding: 10 }}>

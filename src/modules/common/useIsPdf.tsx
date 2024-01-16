@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-const IsPdfContext = React.createContext<Boolean>(false);
+const IsPdfContext = React.createContext<boolean>(false);
 
 export const useIsPdf = () => {
   const isPdf = useContext(IsPdfContext);

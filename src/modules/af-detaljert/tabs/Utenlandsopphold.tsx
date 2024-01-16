@@ -28,7 +28,7 @@ export const Utenlandsopphold = (props: Props) => {
     };
   } = {};
 
-  props.utenlandsopphold.map((opphold, i) => {
+  props.utenlandsopphold.forEach((opphold, i) => {
     const year = moment(opphold.periode.periodeFra).year();
 
     if (!initState[year]) {
@@ -85,9 +85,9 @@ export const Utenlandsopphold = (props: Props) => {
                       >
                         {year}{" "}
                         {value.ekspandert ? (
-                          <ChevronUpIcon />
+                          <ChevronUpIcon aria-hidden="true" />
                         ) : (
-                          <ChevronDownIcon />
+                          <ChevronDownIcon aria-hidden="true" />
                         )}
                       </button>
                     </td>

@@ -6,7 +6,6 @@ export class Environment {
 
   static settEnv = (miljo: Miljo) => {
     switch (miljo) {
-      default:
       case "LOCAL":
         Environment.apiUrl = `http://localhost:8096/person/arbeidsforhold-api`;
         Environment.loginUrl = `http://localhost:5000`;
@@ -19,6 +18,7 @@ export class Environment {
         Environment.apiUrl = `https://www.nav.no/person/arbeidsforhold-api`;
         Environment.loginUrl = `https://login.nav.no/oauth2/login`;
         break;
+      default:
     }
   };
 }

@@ -12,12 +12,12 @@ interface Props {
   error: HTTPError;
 }
 
-export const Error = (props: Props) => {
+export const ErrorMessage = (props: Props) => {
   const { error } = props;
   const { locale } = useLocale();
   return error ? (
     <div className="error__container">
-      <Alert variant="error">
+      <Alert role="alert" variant="error">
         {sprak[locale].httperror}
         <br />
         {error.code && <span>{`${error.code}: `}</span>}

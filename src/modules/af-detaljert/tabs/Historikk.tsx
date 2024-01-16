@@ -16,7 +16,7 @@ interface Props {
 export const Historikk = (props: Props) => {
   const { locale } = useLocale();
 
-  props.arbeidsavtaler
+  const sortedArbeidsavtaler = props.arbeidsavtaler
     .sort((left, right) =>
       sortPeriodeFraDesc(left.gyldighetsperiode, right.gyldighetsperiode)
     )
@@ -25,7 +25,7 @@ export const Historikk = (props: Props) => {
     );
 
   const [data, setData] = useState(
-    props.arbeidsavtaler.map((arbeidsavtale) => ({
+    sortedArbeidsavtaler.map((arbeidsavtale) => ({
       arbeidsavtale: arbeidsavtale,
       ekspandert: false,
     }))
@@ -78,11 +78,11 @@ export const Historikk = (props: Props) => {
                     >
                       {!ekspandert ? (
                         <>
-                          {sprak[locale].apne} <ChevronDownIcon />
+                          {sprak[locale].apne} <ChevronDownIcon aria-hidden="true" />
                         </>
                       ) : (
                         <>
-                          {sprak[locale].lukke} <ChevronUpIcon />
+                          {sprak[locale].lukke} <ChevronUpIcon aria-hidden="true" />
                         </>
                       )}
                     </button>

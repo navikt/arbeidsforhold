@@ -30,13 +30,14 @@ export const Liste = (props: AFListeProps & AFListeData) => {
   return (
     <div className={`af-liste__container`}>
       <div className="af-liste__table">
-        {sorterteArbeidsforhold.length > 0 ? (
+        {sorterteArbeidsforhold.length > 0 && (
           sorterteArbeidsforhold
             .slice(0, visAlle ? arbeidsforhold.length : 5)
             .map((foretak, counter) => (
               <ListeInnslag foretak={foretak} onClick={onClick} key={counter} />
             ))
-        ) : (
+        )}
+        {sorterteArbeidsforhold.length === 0 && (
           <div className="af-liste__flex-rad">
             <BodyShort>{sprak[locale].ingenarbeidsforhold}</BodyShort>
           </div>

@@ -14,7 +14,7 @@ interface Props {
 export const PermisjonPDF = (props: Props) => {
   const { locale } = useLocale();
 
-  props.permisjoner.sort((left, right) =>
+  const sortedPermisjoner = props.permisjoner.sort((left, right) =>
     sortPeriodeFraDesc(left.periode, right.periode)
   );
 
@@ -36,7 +36,7 @@ export const PermisjonPDF = (props: Props) => {
           </View>
         </View>
       </View>
-      {props.permisjoner.map((permisjon, i) => (
+      {sortedPermisjoner.map((permisjon, i) => (
         <View key={`${i}`} style={pdfStyles.flexRow} wrap={false}>
           <View style={pdfStyles.flexColumn}>
             <Text style={pdfStyles.normaltekst}>{permisjon.type}</Text>

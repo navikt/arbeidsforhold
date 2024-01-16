@@ -7,11 +7,12 @@ import { Liste } from './Liste';
 import { Environment } from '../../utils/environment';
 import { Link } from 'react-router-dom';
 import { Miljo } from '../../types/miljo';
-import 'moment/locale/nb';
-import 'moment/locale/nn';
 import { AFPrint } from '../../types/print';
 import { Locale } from '../../types/locale';
 import { useLocale } from '../common/useLocale';
+
+import 'moment/locale/nb.js';
+import 'moment/locale/nn.js';
 
 type State = { status: 'LOADING' } | { status: 'RESULT'; arbeidsforhold: AFSimpel[] } | { status: 'ERROR'; error: HTTPError };
 

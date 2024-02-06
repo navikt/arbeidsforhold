@@ -10,9 +10,6 @@ import { AFPrint } from '../../types/print';
 import { Locale } from '../../types/locale';
 import { useLocale } from '../common/useLocale';
 
-import 'moment/locale/nb.js';
-import 'moment/locale/nn.js';
-
 type State = { status: 'READY' } | { status: 'LOADING' } | { status: 'RESULT'; arbeidsforhold: AFUtvidet } | { status: 'ERROR'; error: HTTPError };
 
 export type AFDetaljertProps = AFPrint &

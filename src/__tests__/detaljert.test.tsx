@@ -2,7 +2,7 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import afDetaljert from '../clients/apiMock/af-detaljert.json';
 import '@testing-library/jest-dom';
 import { orgnr } from '../utils/orgnr';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { formatDate } from '../utils/date';
 import { Detaljert } from '../modules/af-detaljert/Detaljert';
 import { AFUtvidet } from '../types/arbeidsforhold';
@@ -83,7 +83,7 @@ describe('Detaljert arbeidsforhold', () => {
         fireEvent.click(screen.getByRole('tab', { name: 'Arbeid i utlandet' }));
 
         // Expand all years
-        const uniqueYears = new Set(afDetaljert.utenlandsopphold.map((utenlandsopphold) => moment(utenlandsopphold.periode.periodeFra).year()));
+        const uniqueYears = new Set(afDetaljert.utenlandsopphold.map((utenlandsopphold) => dayjs(utenlandsopphold.periode.periodeFra).year()));
         uniqueYears.forEach(async (year) => {
             if (year !== Math.max(...uniqueYears)) {
                 await waitFor(() => {

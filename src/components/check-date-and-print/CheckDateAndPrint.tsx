@@ -1,6 +1,8 @@
 import React from 'react';
 import { NoData } from '../no-data/NoData';
-import moment from 'moment';
+import dayjs from 'dayjs';
+import 'dayjs/locale/nb.js';
+import 'dayjs/locale/nn.js';
 import { parse } from '../../utils/text';
 import { useLocale } from '../../modules/common/useLocale';
 import { TextIfPdf } from '../text-if-pdf/TextIfPdf';
@@ -20,9 +22,10 @@ export const CheckDateAndPrint = (props: Props) => {
         return <NoData />;
     }
 
-    const date = moment(props.data)
+    const date = dayjs(props.data)
         .locale(locale)
         .format(props.dateFormat || 'DD.MM.YYYY');
+
     const formattedDate = props.format ? parse(props.format, date) : date;
 
     return (

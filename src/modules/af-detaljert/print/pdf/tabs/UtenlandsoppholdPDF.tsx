@@ -2,7 +2,7 @@ import React from 'react';
 import { AFUtenlandsopphold } from '../../../../../types/arbeidsforhold';
 import { CheckAndPrint } from '../../../../../components/check-and-print/CheckAndPrint';
 import { sortPeriodeFraDesc } from '../../../../../utils/date';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { CheckDateAndPrint } from '../../../../../components/check-date-and-print/CheckDateAndPrint';
 import { CheckPeriodAndPrint } from '../../../../../components/check-period-and-print/CheckPeriodAndPrint';
 import { sprak } from '../../../../../language/provider';
@@ -26,7 +26,7 @@ export const UtenlandsoppholdPDF = (props: Props) => {
     } = {};
 
     props.utenlandsopphold.forEach((opphold) => {
-        const year = moment(opphold.periode.periodeFra).year();
+        const year = dayjs(opphold.periode.periodeFra).year();
 
         if (!data[year]) {
             data[year] = {

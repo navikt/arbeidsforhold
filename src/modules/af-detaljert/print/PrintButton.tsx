@@ -54,7 +54,7 @@ export const PrintButton = (props: Props) => {
                     }
                 </BodyShort>
             </div>
-            <Modal open={openModal} onClose={() => setOpenModal(false)}>
+            <Modal open={openModal} onClose={() => setOpenModal(false)} aria-label={sprak[locale].utskriftsvalg}>
                 <Modal.Header closeButton={true}>
                     <Heading level="2" size="small" className={'af-detaljert__header'}>
                         {sprak[locale].utskriftsvalg}

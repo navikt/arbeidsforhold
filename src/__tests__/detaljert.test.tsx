@@ -1,4 +1,5 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import afDetaljert from '../clients/apiMock/af-detaljert.json';
 import '@testing-library/jest-dom';
 import { orgnr } from '../utils/orgnr';
@@ -7,7 +8,7 @@ import { formatDate } from '../utils/date';
 import { Detaljert } from '../modules/af-detaljert/Detaljert';
 import { AFUtvidet } from '../types/arbeidsforhold';
 
-jest.mock('@react-pdf/renderer', () => ({
+vi.mock('@react-pdf/renderer', () => ({
     Text: () => <div>Text</div>,
     StyleSheet: {
         create: () => {},
@@ -15,7 +16,7 @@ jest.mock('@react-pdf/renderer', () => ({
 }));
 
 beforeEach(() => {
-    render(
+    const result = render(
         <Detaljert
             rolle={'ARBEIDSTAKER'}
             locale={'nb'}
@@ -66,17 +67,24 @@ describe('Detaljert arbeidsforhold', () => {
         });
     });
 
-    test('inneholder data fra Permisjon-komponent', () => {
+    test('inneholder data fra Permisjon-komponent', async () => {
         fireEvent.click(screen.getByRole('tab', { name: 'Permisjon/Permittering' }));
 
-        afDetaljert.permisjonPermittering.forEach(async (permisjon) => {
-            await waitFor(() => {
-                expect(screen.getByText(permisjon.type)).toBeGreaterThanOrEqual(1);
+        const promiseMap = [];
+
+        for (let i = 0; i < afDetaljert.permisjonPermittering.length; i++) {
+            const permisjon = afDetaljert.permisjonPermittering[i];
+            const waitPromise = waitFor(() => {
+                expect(screen.getAllByText(permisjon.type).length).toBeGreaterThanOrEqual(1);
                 expect(screen.getAllByText(formatDate(permisjon.periode.periodeFra)).length).toBeGreaterThan(0);
                 expect(screen.getAllByText(formatDate(permisjon.periode.periodeTil)).length).toBeGreaterThan(0);
                 expect(screen.getAllByText(permisjon.prosent).length).toBeGreaterThan(0);
             });
-        });
+
+            promiseMap.push(waitPromise);
+        }
+
+        await Promise.all(promiseMap);
     });
 
     test('inneholder data fra Utenlandsopphold-komponent', () => {

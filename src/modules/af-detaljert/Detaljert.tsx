@@ -18,13 +18,11 @@ export const Detaljert = (props: AFDetaljertProps & AFDetaljertData) => {
             <hr />
             <ArbeidsavtaleFelter data={arbeidsforhold} isUtvidet={true} />
             <DetaljertTabs arbeidsforhold={arbeidsforhold} />
-
             <Alert variant="info">
                 {sprak[locale].hvisfeil1}
                 <br />
                 {sprak[locale].hvisfeil2}
             </Alert>
-
             {props.printActivated && <PrintButton arbeidsforhold={arbeidsforhold} printName={props.printName} printSSN={props.printSSN} />}
         </div>
     );

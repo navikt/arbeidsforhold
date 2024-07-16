@@ -5,7 +5,7 @@ import { Liste } from "../modules/af-liste/Liste";
 import { AFSimpel } from "../types/arbeidsforhold";
 import { formatDate } from "../utils/date";
 
-jest.mock("@react-pdf/renderer", () => ({
+vi.mock("@react-pdf/renderer", () => ({
   Text: () => <div>Text</div>,
   StyleSheet: {
     create: () => {},

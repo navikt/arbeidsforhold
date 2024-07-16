@@ -8,6 +8,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
 import image from '@rollup/plugin-image';
 import url from '@rollup/plugin-url';
+import analyze from 'rollup-plugin-analyzer';
 
 import svgr from '@svgr/rollup';
 import pkg from './package.json' assert { type: 'json' };
@@ -56,5 +57,6 @@ export default {
         babel({
             extensions: ['.js', '.jsx', '.ts', '.tsx'],
         }),
+        analyze({ summaryOnly: true }),
     ],
 };

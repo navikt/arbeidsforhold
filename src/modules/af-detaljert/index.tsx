@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { ErrorMessage, HTTPError } from 'components/error/Error';
-import { AFUtvidet } from 'types/arbeidsforhold';
-import { hentDetaljertArbeidsforholdArbeidsgiver, hentDetaljertArbeidsforholdArbeidstaker } from 'clients/apiClient';
-import { Spinner } from 'components/spinner/Spinner';
+import { ErrorMessage, HTTPError } from '@/components/error/Error';
+import { AFUtvidet } from '@/types/arbeidsforhold';
+import { hentDetaljertArbeidsforholdArbeidsgiver, hentDetaljertArbeidsforholdArbeidstaker } from '@/clients/apiClient';
+import { Spinner } from '@/components/spinner/Spinner';
 import { Detaljert } from './Detaljert';
-import { Environment } from 'utils/environment';
-import { Miljo } from 'types/miljo';
+import { Environment } from '@/utils/environment';
+import { Miljo } from '@/types/miljo';
 import { AFPrint } from '../../types/print';
 import { Locale } from '../../types/locale';
 import { useLocale } from '../common/useLocale';

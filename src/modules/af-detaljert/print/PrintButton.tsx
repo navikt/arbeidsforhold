@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { DownloadPDFLink } from './DownloadPdfLink';
 import { useLocale } from '../../common/useLocale';
-import { AFUtvidet } from 'types/arbeidsforhold';
-import { sprak } from 'language/provider';
+import { AFUtvidet } from '@/types/arbeidsforhold';
+import { sprak } from '@/language/provider';
 import { BodyShort, Checkbox, Heading, Modal } from '@navikt/ds-react';
 import { PrinterSmallIcon } from '@navikt/aksel-icons';
 

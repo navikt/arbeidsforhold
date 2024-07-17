@@ -1,5 +1,4 @@
-import { fireEvent, render, screen, waitFor, within } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import afDetaljert from '../clients/apiMock/af-detaljert.json';
 import '@testing-library/jest-dom';
 import { orgnr } from '../utils/orgnr';
@@ -16,7 +15,7 @@ vi.mock('@react-pdf/renderer', () => ({
 }));
 
 beforeEach(() => {
-    const result = render(
+    render(
         <Detaljert
             rolle={'ARBEIDSTAKER'}
             locale={'nb'}
@@ -72,8 +71,7 @@ describe('Detaljert arbeidsforhold', () => {
 
         const promiseMap = [];
 
-        for (let i = 0; i < afDetaljert.permisjonPermittering.length; i++) {
-            const permisjon = afDetaljert.permisjonPermittering[i];
+        for (const permisjon of afDetaljert.permisjonPermittering) {
             const waitPromise = waitFor(() => {
                 expect(screen.getAllByText(permisjon.type).length).toBeGreaterThanOrEqual(1);
                 expect(screen.getAllByText(formatDate(permisjon.periode.periodeFra)).length).toBeGreaterThan(0);

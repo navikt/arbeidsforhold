@@ -4,7 +4,7 @@ import { CheckAndPrint } from '@/components/check-and-print/CheckAndPrint';
 import { orgnr } from '@/utils/orgnr';
 import { sprak } from '@/language/provider';
 import { CheckPeriodAndPrint } from '@/components/check-period-and-print/CheckPeriodAndPrint';
-import { useLocale } from '../../common/useLocale';
+import { useLocale } from '@/modules/common/useLocale';
 import { AFUtvidet } from '@/types/arbeidsforhold';
 import { BodyShort, Heading } from '@navikt/ds-react';
 

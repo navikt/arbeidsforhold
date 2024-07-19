@@ -3,10 +3,10 @@ import { Document, Font, Page, Text, View } from '@react-pdf/renderer';
 import { AFSimpel } from '@/types/arbeidsforhold';
 import { ArbeidsgiverTittel } from '@/components/arbeidsgiver/ArbeidsgiverTittel';
 import { CheckPeriodAndPrint } from '@/components/check-period-and-print/CheckPeriodAndPrint';
-import { PdfHeader } from '../../../common/PdfHeader';
-import { pdfStyles } from '../../../common/pdfStyles';
-import { PdfFooter } from '../../../common/PdfFooter';
-import { pdfFont } from '../../../common/pdfFont';
+import { PdfHeader } from '@/modules/common/PdfHeader';
+import { pdfStyles } from '@/modules/common/pdfStyles';
+import { PdfFooter } from '@/modules/common/PdfFooter';
+import { pdfFont } from '@/modules/common/pdfFont';
 
 interface Props {
     arbeidsforhold: AFSimpel[];

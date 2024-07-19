@@ -1,12 +1,12 @@
 import React from 'react';
 import { Page, View } from '@react-pdf/renderer';
-import { pdfStyles } from '../../../../common/pdfStyles';
-import { PdfHeader } from '../../../../common/PdfHeader';
+import { pdfStyles } from '@/modules/common/pdfStyles';
+import { PdfHeader } from '@/modules/common/PdfHeader';
 import { TimerPDF } from './TimerPDF';
 import { PermisjonPDF } from './PermisjonPDF';
 import { UtenlandsoppholdPDF } from './UtenlandsoppholdPDF';
 import { HistorikkPDF } from './HistorikkPDF';
-import { PdfFooter } from '../../../../common/PdfFooter';
+import { PdfFooter } from '@/modules/common/PdfFooter';
 import { AFArbeidsavtaler, AFPermisjonPermittering, AFTimerForTimelonnet, AFUtenlandsopphold } from '@/types/arbeidsforhold';
 
 interface Props {

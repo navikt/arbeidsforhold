@@ -1,15 +1,15 @@
 import React from 'react';
 import { Page, Text, View } from '@react-pdf/renderer';
-import { pdfStyles } from '../../../common/pdfStyles';
-import { PdfHeader } from '../../../common/PdfHeader';
+import { pdfStyles } from '@/modules/common/pdfStyles';
+import { PdfHeader } from '@/modules/common/PdfHeader';
 import { PDFCheckAndPrintBox } from '@/components/pdf-check-and-print-box/PDFCheckAndPrintBox';
 import { sprak } from '@/language/provider';
 import { CheckAndPrint } from '@/components/check-and-print/CheckAndPrint';
 import { orgnr } from '@/utils/orgnr';
 import { CheckDateAndPrint } from '@/components/check-date-and-print/CheckDateAndPrint';
-import { PdfFooter } from '../../../common/PdfFooter';
+import { PdfFooter } from '@/modules/common/PdfFooter';
 import { AFUtvidet } from '@/types/arbeidsforhold';
-import { useLocale } from '../../../common/useLocale';
+import { useLocale } from '@/modules/common/useLocale';
 
 interface Props {
     arbeidsforhold: AFUtvidet;

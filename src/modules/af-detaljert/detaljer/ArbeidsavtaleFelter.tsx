@@ -3,7 +3,7 @@ import { CheckAndPrintBox } from '@/components/check-and-print-box/CheckAndPrint
 import { CheckDateAndPrint } from '@/components/check-date-and-print/CheckDateAndPrint';
 import { AFArbeidsavtaler, AFUtvidet } from '@/types/arbeidsforhold';
 import { sprak } from '@/language/provider';
-import { useLocale } from '../../common/useLocale';
+import { useLocale } from '@/modules/common/useLocale';
 import { CheckAndPrint } from '@/components/check-and-print/CheckAndPrint';
 import { orgnr } from '@/utils/orgnr';
 import { BodyShort } from '@navikt/ds-react';

@@ -5,7 +5,7 @@ import { CheckPeriodAndPrint } from '@/components/check-period-and-print/CheckPe
 import { sortPeriodeFraDesc, sortPeriodeTilDesc } from '@/utils/date';
 import { sprak } from '@/language/provider';
 import { ArbeidsavtaleFelter } from '../detaljer/ArbeidsavtaleFelter';
-import { useLocale } from '../../common/useLocale';
+import { useLocale } from '@/modules/common/useLocale';
 import { ChevronUpIcon, ChevronDownIcon } from '@navikt/aksel-icons';
 import { Heading } from '@navikt/ds-react';
 

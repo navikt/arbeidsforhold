@@ -8,7 +8,7 @@ import { Environment } from '@/utils/environment';
 import { Miljo } from '@/types/miljo';
 import { AFPrint } from '@/types/print';
 import { Locale } from '@/types/locale';
-import { useLocale } from '../common/useLocale';
+import { useLocale } from '@/modules/common/useLocale';
 
 type State = { status: 'READY' } | { status: 'LOADING' } | { status: 'RESULT'; arbeidsforhold: AFUtvidet } | { status: 'ERROR'; error: HTTPError };
 

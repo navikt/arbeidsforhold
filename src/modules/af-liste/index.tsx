@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { Miljo } from '@/types/miljo';
 import { AFPrint } from '@/types/print';
 import { Locale } from '@/types/locale';
-import { useLocale } from '../common/useLocale';
+import { useLocale } from '@/modules/common/useLocale';
 
 type State = { status: 'LOADING' } | { status: 'RESULT'; arbeidsforhold: AFSimpel[] } | { status: 'ERROR'; error: HTTPError };
 

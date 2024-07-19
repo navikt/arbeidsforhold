@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AFListeData, AFListeProps } from './index';
 import { sortPeriodeFraDesc, sortPeriodeTilDesc } from '@/utils/date';
 import { sprak } from '@/language/provider';
-import { useLocale } from '../common/useLocale';
+import { useLocale } from '@/modules/common/useLocale';
 import { ListeInnslag } from './innslag/ListeInnslag';
 import { VisFlereButton } from './vis-flere-button/VisFlereButton';
 import { PrintButton } from './print/PrintButton';

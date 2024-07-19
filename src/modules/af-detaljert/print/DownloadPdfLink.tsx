@@ -1,6 +1,6 @@
 import React from 'react';
-import { useIsPdf } from '../../common/useIsPdf';
-import { useLocale } from '../../common/useLocale';
+import { useIsPdf } from '@/modules/common/useIsPdf';
+import { useLocale } from '@/modules/common/useLocale';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import { DetaljertPDF } from './pdf/DetaljertPDF';
 import { sprak } from '@/language/provider';

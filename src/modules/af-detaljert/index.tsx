@@ -6,8 +6,8 @@ import { Spinner } from '@/components/spinner/Spinner';
 import { Detaljert } from './Detaljert';
 import { Environment } from '@/utils/environment';
 import { Miljo } from '@/types/miljo';
-import { AFPrint } from '../../types/print';
-import { Locale } from '../../types/locale';
+import { AFPrint } from '@/types/print';
+import { Locale } from '@/types/locale';
 import { useLocale } from '../common/useLocale';
 
 type State = { status: 'READY' } | { status: 'LOADING' } | { status: 'RESULT'; arbeidsforhold: AFUtvidet } | { status: 'ERROR'; error: HTTPError };

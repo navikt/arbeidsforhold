@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { AFUtvidet } from '../../../types/arbeidsforhold';
+import { AFUtvidet } from '@/types/arbeidsforhold';
 import { useLocale } from '../../common/useLocale';
-import { sprak } from '../../../language/provider';
+import { sprak } from '@/language/provider';
 import { TabContent } from './TabContent';
 import { Tabs } from '@navikt/ds-react';
 import { Locale } from '@/types/locale';

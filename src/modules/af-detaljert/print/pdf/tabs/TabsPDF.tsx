@@ -7,7 +7,7 @@ import { PermisjonPDF } from './PermisjonPDF';
 import { UtenlandsoppholdPDF } from './UtenlandsoppholdPDF';
 import { HistorikkPDF } from './HistorikkPDF';
 import { PdfFooter } from '../../../../common/PdfFooter';
-import { AFArbeidsavtaler, AFPermisjonPermittering, AFTimerForTimelonnet, AFUtenlandsopphold } from '../../../../../types/arbeidsforhold';
+import { AFArbeidsavtaler, AFPermisjonPermittering, AFTimerForTimelonnet, AFUtenlandsopphold } from '@/types/arbeidsforhold';
 
 interface Props {
     printTimerTimelonnet: boolean;

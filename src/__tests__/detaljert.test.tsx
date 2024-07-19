@@ -1,11 +1,11 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import afDetaljert from '../clients/apiMock/af-detaljert.json';
 import '@testing-library/jest-dom';
-import { orgnr } from '../utils/orgnr';
+import { orgnr } from '@/utils/orgnr';
 import dayjs from 'dayjs';
-import { formatDate } from '../utils/date';
+import { formatDate } from '@/utils/date';
 import { Detaljert } from '../modules/af-detaljert/Detaljert';
-import { AFUtvidet } from '../types/arbeidsforhold';
+import { AFUtvidet } from '@/types/arbeidsforhold';
 
 vi.mock('@react-pdf/renderer', () => ({
     Text: () => <div>Text</div>,

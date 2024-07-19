@@ -1,6 +1,6 @@
 import React from 'react';
 import { Document, Font } from '@react-pdf/renderer';
-import { AFUtvidet } from '../../../../types/arbeidsforhold';
+import { AFUtvidet } from '@/types/arbeidsforhold';
 import { pdfFont } from '../../../common/pdfFont';
 import { TabsPDF } from './tabs/TabsPDF';
 import { GenerellOversiktPDF } from './GenerellOversiktPDF';

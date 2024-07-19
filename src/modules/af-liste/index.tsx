@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { ErrorMessage, HTTPError } from '../../components/error/Error';
-import { AFSimpel } from '../../types/arbeidsforhold';
-import { hentListeMedArbeidsforhold } from '../../clients/apiClient';
-import { Spinner } from '../../components/spinner/Spinner';
+import { ErrorMessage, HTTPError } from '@/components/error/Error';
+import { AFSimpel } from '@/types/arbeidsforhold';
+import { hentListeMedArbeidsforhold } from '@/clients/apiClient';
+import { Spinner } from '@/components/spinner/Spinner';
 import { Liste } from './Liste';
-import { Environment } from '../../utils/environment';
+import { Environment } from '@/utils/environment';
 import { Link } from 'react-router-dom';
-import { Miljo } from '../../types/miljo';
-import { AFPrint } from '../../types/print';
-import { Locale } from '../../types/locale';
+import { Miljo } from '@/types/miljo';
+import { AFPrint } from '@/types/print';
+import { Locale } from '@/types/locale';
 import { useLocale } from '../common/useLocale';
 
 type State = { status: 'LOADING' } | { status: 'RESULT'; arbeidsforhold: AFSimpel[] } | { status: 'ERROR'; error: HTTPError };

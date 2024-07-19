@@ -1,4 +1,4 @@
-import { Miljo } from '../types/miljo';
+import { Miljo } from '@/types/miljo';
 
 export class Environment {
     static apiUrl: string;

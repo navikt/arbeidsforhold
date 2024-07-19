@@ -71,6 +71,8 @@ describe('Detaljert arbeidsforhold', () => {
 
         const promiseMap = [];
 
+        // Note: forEach doesn't work with waitFor and expect for some reason
+        // so need to do a for-of
         for (const permisjon of afDetaljert.permisjonPermittering) {
             const waitPromise = waitFor(() => {
                 expect(screen.getAllByText(permisjon.type).length).toBeGreaterThanOrEqual(1);

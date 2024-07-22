@@ -1,4 +1,3 @@
-import React from 'react';
 import { sprak } from '@/language/provider';
 import { useLocale } from '@/modules/common/useLocale';
 import { ChevronUpIcon, ChevronDownIcon } from '@navikt/aksel-icons';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ErrorMessage, HTTPError } from '@/components/error/Error';
 import { AFSimpel } from '@/types/arbeidsforhold';
 import { hentListeMedArbeidsforhold } from '@/clients/apiClient';

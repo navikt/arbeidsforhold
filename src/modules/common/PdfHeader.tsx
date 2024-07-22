@@ -1,6 +1,5 @@
 import { Image, StyleSheet, Text, View } from '@react-pdf/renderer';
 import logo from '@/assets/icons/logo.png';
-import React from 'react';
 import { sprak } from '@/language/provider';
 import { useLocale } from './useLocale';
 import { pdfStyles } from './pdfStyles';

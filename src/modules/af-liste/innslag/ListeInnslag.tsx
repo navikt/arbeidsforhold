@@ -1,4 +1,3 @@
-import React from 'react';
 import { ListeTittel } from '../tittel/ListeTittel';
 import { CheckAndPrint } from '@/components/check-and-print/CheckAndPrint';
 import { CheckPeriodAndPrint } from '@/components/check-period-and-print/CheckPeriodAndPrint';

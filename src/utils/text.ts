@@ -1,2 +1,1 @@
-export const parse = (str: string, data: string | number) =>
-  str.replace(`%s`, data.toString());
+export const parse = (str: string, data: string | number) => str.replace('%s', data.toString());

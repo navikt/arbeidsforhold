@@ -1,4 +1,3 @@
-import React from 'react';
 import { Page, View } from '@react-pdf/renderer';
 import { pdfStyles } from '@/modules/common/pdfStyles';
 import { PdfHeader } from '@/modules/common/PdfHeader';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { AFListeData, AFListeProps } from './index';
 import { sortPeriodeFraDesc, sortPeriodeTilDesc } from '@/utils/date';
 import { sprak } from '@/language/provider';

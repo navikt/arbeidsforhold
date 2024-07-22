@@ -1,4 +1,3 @@
-import React from 'react';
 import { AFArbeidsgiver } from '@/types/arbeidsforhold';
 import { CheckAndPrint } from '../check-and-print/CheckAndPrint';
 import { fnr } from '@/utils/fnr';

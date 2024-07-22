@@ -1,4 +1,3 @@
-import React from 'react';
 import { CheckAndPrintBox } from '@/components/check-and-print-box/CheckAndPrintBox';
 import { CheckDateAndPrint } from '@/components/check-date-and-print/CheckDateAndPrint';
 import { AFArbeidsavtaler, AFUtvidet } from '@/types/arbeidsforhold';

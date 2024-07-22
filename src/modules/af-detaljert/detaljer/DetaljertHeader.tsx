@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArbeidsgiverTittel } from '@/components/arbeidsgiver/ArbeidsgiverTittel';
 import { CheckAndPrint } from '@/components/check-and-print/CheckAndPrint';
 import { orgnr } from '@/utils/orgnr';

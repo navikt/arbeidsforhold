@@ -1,4 +1,3 @@
-import React from 'react';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import { ListePDF } from './pdf/ListePDF';
 import { useLocale } from '@/modules/common/useLocale';

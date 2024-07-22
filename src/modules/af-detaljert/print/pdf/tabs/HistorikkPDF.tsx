@@ -1,4 +1,3 @@
-import React from 'react';
 import { AFArbeidsavtaler } from '@/types/arbeidsforhold';
 import { sortPeriodeFraDesc, sortPeriodeTilDesc } from '@/utils/date';
 import { Text, View } from '@react-pdf/renderer';

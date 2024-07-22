@@ -1,4 +1,3 @@
-import React from 'react';
 import { AFUtvidet } from '@/types/arbeidsforhold';
 import { Timer } from './Timer';
 import { Permisjon } from './Permisjon';

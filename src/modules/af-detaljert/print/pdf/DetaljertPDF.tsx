@@ -1,4 +1,3 @@
-import React from 'react';
 import { Document, Font } from '@react-pdf/renderer';
 import { AFUtvidet } from '@/types/arbeidsforhold';
 import { pdfFont } from '@/modules/common/pdfFont';

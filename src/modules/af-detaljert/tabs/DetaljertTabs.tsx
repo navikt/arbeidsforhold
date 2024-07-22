@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { AFUtvidet } from '@/types/arbeidsforhold';
 import { useLocale } from '@/modules/common/useLocale';
 import { sprak } from '@/language/provider';

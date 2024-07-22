@@ -1,4 +1,3 @@
-import React from 'react';
 import { AFDetaljertData, AFDetaljertProps } from './index';
 import { sprak } from '@/language/provider';
 import { ArbeidsavtaleFelter } from './detaljer/ArbeidsavtaleFelter';
@@ -13,7 +12,7 @@ export const Detaljert = (props: AFDetaljertProps & AFDetaljertData) => {
     const { locale } = useLocale();
 
     return (
-        <div className={`af-detaljert__container`}>
+        <div className={'af-detaljert__container'}>
             <DetaljertHeader arbeidsforhold={arbeidsforhold} />
             <hr />
             <ArbeidsavtaleFelter data={arbeidsforhold} isUtvidet={true} />

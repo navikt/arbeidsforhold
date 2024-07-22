@@ -1,4 +1,3 @@
-import React from 'react';
 import { AFPermisjonPermittering } from '@/types/arbeidsforhold';
 import { CheckPeriodAndPrint } from '@/components/check-period-and-print/CheckPeriodAndPrint';
 import { sprak } from '@/language/provider';

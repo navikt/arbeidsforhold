@@ -1,4 +1,3 @@
-import React from 'react';
 import { AFListeOnClick } from '@/index';
 import { AFSimpel } from '@/types/arbeidsforhold';
 import { ArbeidsgiverTittel } from '@/components/arbeidsgiver/ArbeidsgiverTittel';

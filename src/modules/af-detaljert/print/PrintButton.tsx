@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { DownloadPDFLink } from './DownloadPdfLink';
 import { useLocale } from '@/modules/common/useLocale';
 import { AFUtvidet } from '@/types/arbeidsforhold';

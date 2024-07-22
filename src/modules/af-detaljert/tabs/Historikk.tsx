@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import { Fragment, useState } from 'react';
 import { AFArbeidsavtaler } from '@/types/arbeidsforhold';
 import { CheckAndPrint } from '@/components/check-and-print/CheckAndPrint';
 import { CheckPeriodAndPrint } from '@/components/check-period-and-print/CheckPeriodAndPrint';

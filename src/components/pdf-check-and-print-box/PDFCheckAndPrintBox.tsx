@@ -1,4 +1,3 @@
-import React from 'react';
 import { CheckDateAndPrint } from '../check-date-and-print/CheckDateAndPrint';
 import { CheckAndPrint } from '../check-and-print/CheckAndPrint';
 import { CheckPeriodAndPrint } from '../check-period-and-print/CheckPeriodAndPrint';

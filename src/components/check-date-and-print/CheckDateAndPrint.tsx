@@ -1,4 +1,3 @@
-import React from 'react';
 import { NoData } from '../no-data/NoData';
 import dayjs from 'dayjs';
 import 'dayjs/locale/nb.js';

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Locale } from '@/types/locale';
 import { useContext } from 'react';
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useContext } from 'react';
 
 const IsPdfContext = React.createContext<boolean>(false);

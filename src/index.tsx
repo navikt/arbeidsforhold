@@ -7,7 +7,9 @@ import ListeMedArbeidsforhold, { AFListeOnClick } from './modules/af-liste';
 import DetaljertArbeidsforhold from './modules/af-detaljert';
 import './language/provider';
 
-if (process.env.NODE_ENV === 'development') {
+console.log(import.meta.env.MODE);
+
+if (import.meta.env.MODE === 'development') {
     Environment.settEnv('LOCAL');
     setUpMock();
 }

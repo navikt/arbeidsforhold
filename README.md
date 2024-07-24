@@ -17,7 +17,7 @@ Prosjektet er delt opp i uavhengige moduler som kan importeres
 #### Liste med arbeidsforhold
 
 ```js
-import { ListeMedArbeidsforhold } from "@navikt/arbeidsforhold";
+import { ListeMedArbeidsforhold } from '@navikt/arbeidsforhold';
 ```
 
 <img alt="Screenshot av liste med arbeidsforhold" src="screenshots/ListeMedArbeidsforhold.png" width="60%"/>
@@ -63,7 +63,7 @@ Se komplett eksempel under mappen <i>/example</i>
 #### Detaljert arbeidsforhold
 
 ```js
-import { Detaljert } from "@navikt/arbeidsforhold";
+import { Detaljert } from '@navikt/arbeidsforhold';
 ```
 
 <img alt="Screenshot av detaljert arbeidsforhold" src="screenshots/DetaljertArbeidsforhold.png" width="60%"/>
@@ -88,6 +88,14 @@ render = () => {
 Komponenten vil hente data fra arbeidsforhold-api basert på miljo-variabelen, med mindre customApiUrl er satt.
 CustomApiUrl må inneholde {id} som erstattes av navArbeidsforholdId.
 Eksempel: "https://din-api-proxy.nav.no/arbeidsforhold/{id}"
+
+#### CSS
+
+CSS må importeres spesifikt, feks i app.css/less/scss i applikasjonen din:
+
+```
+@import '@navikt/arbeidsforhold/style.css'
+```
 
 ## Logging
 

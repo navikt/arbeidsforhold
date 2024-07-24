@@ -14,12 +14,12 @@
         "resolveJsonModule": true,
         "isolatedModules": false,
         "noEmit": true,
-        "jsx": "react-jsx",
+        "jsx": "preserve",
         "paths": {
             "@/*": ["./src/*"]
         },
         "types": ["vite/client", "vitest/globals", "@testing-library/jest-dom"]
     },
-    "include": ["src"],
+    "include": ["src", "vite-env.d.ts"],
     "exclude": ["node_modules", "example/*"]
 }

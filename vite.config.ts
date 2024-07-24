@@ -4,7 +4,7 @@ import typescript from '@rollup/plugin-typescript';
 
 import path from 'path';
 
-const isLocal = process.env.VITE_ENV === 'local';
+const isDev = process.env.NODE_ENV === 'developent';
 
 export default defineConfig(() => {
     return {
@@ -23,12 +23,12 @@ export default defineConfig(() => {
                 external: ['react', 'react-dom'],
                 output: [
                     {
-                        format: 'es',
+                        format: 'es' as LibraryFormats,
                         entryFileNames: '[name].esm.js',
                         dir: 'dist',
                     },
                     {
-                        format: 'cjs',
+                        format: 'cjs' as LibraryFormats,
                         entryFileNames: '[name].cjs.js',
                         dir: 'dist',
                     },
@@ -49,7 +49,7 @@ export default defineConfig(() => {
                 },
             },
         },
-        base: isLocal ? '' : process.env.PUBLIC_URL,
+        base: isDev ? '' : process.env.PUBLIC_URL,
         plugins: [react()],
         resolve: {
             alias: {

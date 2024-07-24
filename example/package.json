@@ -12,15 +12,11 @@
     "scripts": {
         "start": "npm-run-all -p start:*",
         "start:less": "less-watch-compiler",
-        "start:build": "vite build --watch",
-        "start:vite": "vite",
-        "build": "npm-run-all build:*",
-        "build:css": "less-watch-compiler --run-once",
-        "build:vite": "vite build"
+        "start:vite": "vite"
     },
     "dependencies": {
         "@navikt/aksel-icons": "6.13.0",
-        "@navikt/arbeidsforhold": "3.4.2-beta.1",
+        "@navikt/arbeidsforhold": "file:../",
         "@navikt/ds-css": "6.13.0",
         "@navikt/ds-react": "6.13.0",
         "@navikt/fnrvalidator": "2.1.0",

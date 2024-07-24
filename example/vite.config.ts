@@ -4,6 +4,9 @@ import path from 'path';
 
 export default defineConfig(() => {
     return {
+        define: {
+            'process.env': {},
+        },
         build: {
             outDir: 'build',
             assetsInlineLimit: 0,

@@ -8,6 +8,9 @@ const isDev = process.env.NODE_ENV === 'developent';
 
 export default defineConfig(() => {
     return {
+        define: {
+            'process.env': {},
+        },
         build: {
             outDir: 'dist',
             assetsInlineLimit: 0,

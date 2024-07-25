@@ -32,18 +32,7 @@ export const DetaljertPDF = ({
 
     return (
         <Document>
-            {printGenerellOversikt && (
-                <GenerellOversiktPDF
-                    arbeidsforhold={arbeidsforhold}
-                    printGenerellOversikt={printGenerellOversikt}
-                    printTimerTimelonnet={printTimerTimelonnet}
-                    printPermisjon={printPermisjon}
-                    printUtenlandsopphold={printUtenlandsopphold}
-                    printHistorikk={printHistorikk}
-                    printName={printName}
-                    printSSO={printSSO}
-                />
-            )}
+            {printGenerellOversikt && <GenerellOversiktPDF arbeidsforhold={arbeidsforhold} printName={printName} printSSO={printSSO} />}
             <TabsPDF
                 printTimerTimelonnet={printTimerTimelonnet}
                 printPermisjon={printPermisjon}

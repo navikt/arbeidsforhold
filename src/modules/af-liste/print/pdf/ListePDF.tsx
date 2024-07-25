@@ -25,7 +25,7 @@ export const ListePDF = ({ arbeidsforhold, printName, printSSO }: Props) => {
                     {arbeidsforhold.map((foretak, i) => (
                         <View key={i} style={pdfStyles.listeRow} wrap={false}>
                             <Text style={pdfStyles.h3}>
-                                <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} overskrift={true} />
+                                <ArbeidsgiverTittel arbeidsgiver={foretak.arbeidsgiver} />
                             </Text>
                             <Text style={pdfStyles.normaltekst}>{foretak.yrke}</Text>
                             <Text style={pdfStyles.normaltekst}>

@@ -20,7 +20,7 @@ export const DetaljertHeader = (props: Props) => {
             <div className="af-detaljert__seksjon">
                 <div className="af-detaljert__arbeidsgiver">
                     <Heading level={'2'} size={'small'}>
-                        <ArbeidsgiverTittel overskrift={true} arbeidsgiver={arbeidsforhold.arbeidsgiver} />
+                        <ArbeidsgiverTittel arbeidsgiver={arbeidsforhold.arbeidsgiver} />
                     </Heading>
                     {arbeidsforhold.arbeidsgiver.type === 'Organisasjon' && (
                         <div className="af-detaljert__orgnr">

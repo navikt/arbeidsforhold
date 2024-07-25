@@ -6,9 +6,9 @@ import ListeMedArbeidsforhold, { AFListeOnClick } from './modules/af-liste';
 import DetaljertArbeidsforhold from './modules/af-detaljert';
 import './language/provider';
 
-if (import.meta.env.VITE_ENV === 'local') {
+const initLocalMock = () => {
     Environment.settEnv('LOCAL');
     setUpMock();
-}
+};
 
-export { ListeMedArbeidsforhold, DetaljertArbeidsforhold, AFListeOnClick };
+export { ListeMedArbeidsforhold, DetaljertArbeidsforhold, AFListeOnClick, initLocalMock };

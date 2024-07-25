@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Miljo } from '../../src/types/miljo';
-import { DetaljertArbeidsforhold, ListeMedArbeidsforhold } from '@navikt/arbeidsforhold';
+import { DetaljertArbeidsforhold, ListeMedArbeidsforhold, initLocalMock } from '@navikt/arbeidsforhold';
 import { InfoBoks } from './components/InfoBoks';
 import { SprakVelger } from './components/SprakVelger';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
@@ -16,6 +16,8 @@ const App = () => {
     const host = window.location.host;
     const isDev = host.split(`.`)[1] === 'dev';
     const miljo = (isDev ? 'DEV' : 'LOCAL') as Miljo;
+
+    initLocalMock();
 
     const printActivated = true;
     const printName = 'Ola Nordmann';

@@ -11,13 +11,13 @@ import { Locale } from './types/locale';
 import '@navikt/ds-css';
 import { BodyLong } from '@navikt/ds-react';
 
+initLocalMock();
+
 const App = () => {
     const locales: Locale[] = ['nb', 'nn', 'en'];
     const host = window.location.host;
     const isDev = host.split(`.`)[1] === 'dev';
     const miljo = (isDev ? 'DEV' : 'LOCAL') as Miljo;
-
-    initLocalMock();
 
     const printActivated = true;
     const printName = 'Ola Nordmann';

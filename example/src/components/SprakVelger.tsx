@@ -1,4 +1,4 @@
-import { Locale } from '@/types/locale';
+import { Locale } from '../types/locale';
 
 interface Props {
     locales: Locale[];
@@ -16,9 +16,9 @@ export const SprakVelger = (props: Props) => {
                         <b>{locale}</b>
                     </span>
                 ) : (
-                    <span key={i} className="example__sprak" onClick={() => settValgtLocale(locale)}>
+                    <button key={i} className="example__sprak" onClick={() => settValgtLocale(locale)}>
                         {locale}
-                    </span>
+                    </button>
                 )
             )}
         </div>

@@ -4,7 +4,6 @@ import { fnr } from '@/utils/fnr';
 
 interface Props {
     arbeidsgiver: AFArbeidsgiver;
-    overskrift?: boolean;
 }
 
 export const ArbeidsgiverTittel = (props: Props) => {

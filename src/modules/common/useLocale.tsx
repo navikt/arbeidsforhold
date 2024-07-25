@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Locale } from '@/types/locale';
-import { useContext } from 'react';
 
 const LocaleContext = React.createContext<Locale>('nb');
 

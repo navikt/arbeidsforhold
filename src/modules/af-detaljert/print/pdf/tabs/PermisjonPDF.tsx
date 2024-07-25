@@ -10,10 +10,14 @@ interface Props {
     permisjoner: AFPermisjonPermittering[];
 }
 
+const sortPermisjoner = (left: AFPermisjonPermittering, right: AFPermisjonPermittering) => {
+    return sortPeriodeFraDesc(left.periode, right.periode);
+};
+
 export const PermisjonPDF = (props: Props) => {
     const { locale } = useLocale();
 
-    const sortedPermisjoner = props.permisjoner.sort((left, right) => sortPeriodeFraDesc(left.periode, right.periode));
+    const sortedPermisjoner = props.permisjoner.sort(sortPermisjoner);
 
     return (
         <>

@@ -36,19 +36,19 @@ const hentJsonOgSjekkAuth = (url: string, headers?: object) =>
 
 export const hentListeMedArbeidsforhold = (customApiUrl?: string) => {
     const defaultApiUrl = `${Environment.apiUrl}/arbeidsforhold`;
-    return hentJsonOgSjekkAuth(customApiUrl || defaultApiUrl);
+    return hentJsonOgSjekkAuth(customApiUrl ?? defaultApiUrl);
 };
 
 // Henter fødselsnummer fra token
 export const hentDetaljertArbeidsforholdArbeidstaker = (id: number, customApiUrl?: string) => {
     const defaultApiUrl = `${Environment.apiUrl}/arbeidsforholdinnslag/arbeidstaker/{id}`;
-    const apiUrl = (customApiUrl || defaultApiUrl).replace('{id}', id.toString());
+    const apiUrl = (customApiUrl ?? defaultApiUrl).replace('{id}', id.toString());
     return hentJsonOgSjekkAuth(apiUrl);
 };
 
 // Bruker tokenet til arbeidsgiver
 export const hentDetaljertArbeidsforholdArbeidsgiver = (fnr: string, id: number, customApiUrl?: string) => {
     const defaultApiUrl = `${Environment.apiUrl}/arbeidsforholdinnslag/arbeidsgiver/{id}`;
-    const apiUrl = (customApiUrl || defaultApiUrl).replace('{id}', id.toString());
+    const apiUrl = (customApiUrl ?? defaultApiUrl).replace('{id}', id.toString());
     return hentJsonOgSjekkAuth(apiUrl, { 'Fnr-Arbeidstaker': `${fnr}` });
 };

@@ -10,13 +10,13 @@ export const SprakVelger = (props: Props) => {
     const { locales, valgtLocale, settValgtLocale } = props;
     return (
         <div className="example__velger">
-            {locales.map((locale, i) =>
+            {locales.map((locale) =>
                 valgtLocale === locale ? (
-                    <span key={i} className="example__sprak">
+                    <span key={locale} className="example__sprak">
                         <b>{locale}</b>
                     </span>
                 ) : (
-                    <button key={i} className="example__sprak" onClick={() => settValgtLocale(locale)}>
+                    <button key={locale} className="example__sprak" onClick={() => settValgtLocale(locale)}>
                         {locale}
                     </button>
                 )

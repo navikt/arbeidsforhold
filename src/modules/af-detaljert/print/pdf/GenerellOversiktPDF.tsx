@@ -12,11 +12,6 @@ import { useLocale } from '@/modules/common/useLocale';
 
 interface Props {
     arbeidsforhold: AFUtvidet;
-    printGenerellOversikt: boolean;
-    printTimerTimelonnet: boolean;
-    printPermisjon: boolean;
-    printUtenlandsopphold: boolean;
-    printHistorikk: boolean;
     printName: string;
     printSSO: string;
 }

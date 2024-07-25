@@ -23,7 +23,7 @@ export const CheckDateAndPrint = (props: Props) => {
 
     const date = dayjs(props.data)
         .locale(locale)
-        .format(props.dateFormat || 'DD.MM.YYYY');
+        .format(props.dateFormat ?? 'DD.MM.YYYY');
 
     const formattedDate = props.format ? parse(props.format, date) : date;
 

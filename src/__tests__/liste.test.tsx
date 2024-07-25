@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import afListe from '../clients/apiMock/af-liste.json';
+import afListe from '@/assets/mockdata/af-liste.json';
 import '@testing-library/jest-dom';
 import { Liste } from '../modules/af-liste/Liste';
 import { AFSimpel } from '@/types/arbeidsforhold';

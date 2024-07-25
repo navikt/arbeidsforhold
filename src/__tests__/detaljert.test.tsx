@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import afDetaljert from '../clients/apiMock/af-detaljert.json';
+import afDetaljert from '@/assets/mockdata/af-detaljert.json';
 import '@testing-library/jest-dom';
 import { orgnr } from '@/utils/orgnr';
 import dayjs from 'dayjs';

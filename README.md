@@ -9,6 +9,13 @@ NPM-modul med React-komponenter som viser brukerens arbeidsforhold
 ```
 npm install @navikt/arbeidsforhold
 ```
+### Peke til korrekt pakkeregister
+Merk at pakken er publisert til Github Package Registry (npm.pkg.github.com) og ikke npmjs.com. Det betyr at du i roten av prosjektet ditt
+må legge inn .npmrc med følgende innhold:
+
+```
+@navikt:registry=https://npm.pkg.github.com
+```
 
 ## Komponenter
 
@@ -91,7 +98,7 @@ Eksempel: "https://din-api-proxy.nav.no/arbeidsforhold/{id}"
 
 #### CSS
 
-CSS må importeres spesifikt, feks i app.css/less/scss i applikasjonen din:
+CSS må importeres spesifikt, feks i index.tsx eller app.tsx i applikasjonen din:
 
 ```
 @import '@navikt/arbeidsforhold/style.css'

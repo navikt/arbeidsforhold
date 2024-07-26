@@ -1,7 +1,5 @@
 # NAV Arbeidsforhold
 
-[![npm version](https://badge.fury.io/js/%40navikt%2Farbeidsforhold.svg)](https://badge.fury.io/js/%40navikt%2Farbeidsforhold) |
-
 NPM-modul med React-komponenter som viser brukerens arbeidsforhold
 
 ## Installasjon
@@ -9,7 +7,9 @@ NPM-modul med React-komponenter som viser brukerens arbeidsforhold
 ```
 npm install @navikt/arbeidsforhold
 ```
+
 ### Peke til korrekt pakkeregister
+
 Merk at pakken er publisert til Github Package Registry (npm.pkg.github.com) og ikke npmjs.com. Det betyr at du i roten av prosjektet ditt
 må legge inn .npmrc med følgende innhold:
 

@@ -1,4 +1,4 @@
-import './index.less';
+import './index.scss';
 import { setUpMock } from './clients/apiMock';
 import { Environment } from './utils/environment';
 

@@ -1,0 +1,9 @@
+@use "/src/media.scss" as mq;
+
+.spinner {
+  &__wrapper {
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+  }
+}

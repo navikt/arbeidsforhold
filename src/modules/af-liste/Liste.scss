@@ -1,0 +1,93 @@
+@use "../../media.scss" as mq;
+
+.af-liste {
+  &__tekst {
+    margin: 0 0 0.2rem 0;
+  }
+
+  &__flex-rad {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #979797;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  &__flex-innhold {
+    min-width: 7rem;
+  }
+
+  &__vis-flere {
+    align-items: center;
+    background: none;
+    border: none;
+    color: var(--a-surface-action);
+    cursor: pointer;
+    display: flex;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0;
+    text-decoration: underline;
+
+    svg {
+      width: 20px;
+    }
+  }
+
+  &__maskinelt-avsluttet {
+    display: flex;
+    align-items: center;
+  }
+
+  &__tittel {
+    flex: 1;
+  }
+
+  &__ekspander {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    color: #0067c5;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+  }
+
+  &__month {
+    text-transform: capitalize;
+  }
+
+  &__rapporteringsperiode {
+    width: 15rem;
+  }
+
+  &__knapp {
+    background: none;
+    border: none;
+    color: var(--a-surface-action);
+    cursor: pointer;
+    padding: 0;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &__print-button {
+    margin-top: 0.5rem;
+    display: block;
+
+    a {
+      display: inline-flex;
+    }
+
+    svg {
+      width: 22px;
+      margin-right: 0.5rem;
+    }
+  }
+}

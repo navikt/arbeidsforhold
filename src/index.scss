@@ -1,0 +1,26 @@
+@use "./components/spinner/Spinner.scss";
+@use "./components/error/Error.scss";
+
+@use "modules/af-detaljert/Detaljert.scss";
+@use "modules/af-liste/Liste.scss";
+
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.sr-only {
+  // Burde hentes fra nav-frontend-core
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

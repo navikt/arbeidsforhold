@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { AFPeriode } from '../types/arbeidsforhold';
+import { AFPeriode } from '@/types/arbeidsforhold';
 
 export const sortDateStringDesc = (a?: string, b?: string) => (a && b ? dayjs(b).diff(dayjs(a)) : !a && b ? -1 : a && !b ? 1 : 0);
 

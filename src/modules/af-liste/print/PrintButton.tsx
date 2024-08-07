@@ -1,10 +1,9 @@
-import React from 'react';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import { ListePDF } from './pdf/ListePDF';
-import { useLocale } from '../../common/useLocale';
-import { useIsPdf } from '../../common/useIsPdf';
-import { AFSimpel } from '../../../types/arbeidsforhold';
-import { sprak } from '../../../language/provider';
+import { useLocale } from '@/modules/common/useLocale';
+import { useIsPdf } from '@/modules/common/useIsPdf';
+import { AFSimpel } from '@/types/arbeidsforhold';
+import { sprak } from '@/language/provider';
 import { PrinterSmallIcon } from '@navikt/aksel-icons';
 
 interface Props {

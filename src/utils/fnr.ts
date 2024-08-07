@@ -1,1 +1,1 @@
-export const fnr = (x: string) => x.replace(/(?=.{5}$)/, " ");
+export const fnr = (x: string) => x.replace(/(?=.{5}$)/, ' ');

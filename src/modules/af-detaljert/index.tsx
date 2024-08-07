@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { ErrorMessage, HTTPError } from 'components/error/Error';
-import { AFUtvidet } from 'types/arbeidsforhold';
-import { hentDetaljertArbeidsforholdArbeidsgiver, hentDetaljertArbeidsforholdArbeidstaker } from 'clients/apiClient';
-import { Spinner } from 'components/spinner/Spinner';
+import { useEffect, useState } from 'react';
+import { ErrorMessage, HTTPError } from '@/components/error/Error';
+import { AFUtvidet } from '@/types/arbeidsforhold';
+import { hentDetaljertArbeidsforholdArbeidsgiver, hentDetaljertArbeidsforholdArbeidstaker } from '@/clients/apiClient';
+import { Spinner } from '@/components/spinner/Spinner';
 import { Detaljert } from './Detaljert';
-import { Environment } from 'utils/environment';
-import { Miljo } from 'types/miljo';
-import { AFPrint } from '../../types/print';
-import { Locale } from '../../types/locale';
-import { useLocale } from '../common/useLocale';
+import { Environment } from '@/utils/environment';
+import { Miljo } from '@/types/miljo';
+import { AFPrint } from '@/types/print';
+import { Locale } from '@/types/locale';
+import { useLocale } from '@/modules/common/useLocale';
 
 type State = { status: 'READY' } | { status: 'LOADING' } | { status: 'RESULT'; arbeidsforhold: AFUtvidet } | { status: 'ERROR'; error: HTTPError };
 

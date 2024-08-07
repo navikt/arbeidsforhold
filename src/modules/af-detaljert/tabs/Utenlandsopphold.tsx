@@ -1,12 +1,12 @@
-import React, { Fragment, useState } from 'react';
-import { AFUtenlandsopphold } from '../../../types/arbeidsforhold';
-import { CheckPeriodAndPrint } from '../../../components/check-period-and-print/CheckPeriodAndPrint';
-import { CheckAndPrint } from '../../../components/check-and-print/CheckAndPrint';
-import { sortPeriodeFraDesc } from '../../../utils/date';
+import { Fragment, useState } from 'react';
+import { AFUtenlandsopphold } from '@/types/arbeidsforhold';
+import { CheckPeriodAndPrint } from '@/components/check-period-and-print/CheckPeriodAndPrint';
+import { CheckAndPrint } from '@/components/check-and-print/CheckAndPrint';
+import { sortPeriodeFraDesc } from '@/utils/date';
 import dayjs from 'dayjs';
-import { CheckDateAndPrint } from '../../../components/check-date-and-print/CheckDateAndPrint';
-import { sprak } from '../../../language/provider';
-import { useLocale } from '../../common/useLocale';
+import { CheckDateAndPrint } from '@/components/check-date-and-print/CheckDateAndPrint';
+import { sprak } from '@/language/provider';
+import { useLocale } from '@/modules/common/useLocale';
 import { ChevronUpIcon, ChevronDownIcon } from '@navikt/aksel-icons';
 import { Heading } from '@navikt/ds-react';
 

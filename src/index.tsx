@@ -1,16 +1,14 @@
-import "./index.less";
+import './index.less';
+import { setUpMock } from './clients/apiMock';
+import { Environment } from './utils/environment';
 
-import { setUpMock } from "./clients/apiMock";
-import { Environment } from "./utils/environment";
+import ListeMedArbeidsforhold, { AFListeOnClick } from './modules/af-liste';
+import DetaljertArbeidsforhold from './modules/af-detaljert';
+import './language/provider';
 
-import ListeMedArbeidsforhold, { AFListeOnClick } from "./modules/af-liste";
-import DetaljertArbeidsforhold from "./modules/af-detaljert";
-import "./language/provider";
+const initLocalMock = () => {
+    Environment.settEnv('LOCAL');
+    setUpMock();
+};
 
-if (process.env.NODE_ENV === "development") {
-  Environment.settEnv("LOCAL");
-  setUpMock();
-}
-
-export { ListeMedArbeidsforhold, DetaljertArbeidsforhold, AFListeOnClick };
-export default ListeMedArbeidsforhold;
+export { ListeMedArbeidsforhold, DetaljertArbeidsforhold, AFListeOnClick, initLocalMock };

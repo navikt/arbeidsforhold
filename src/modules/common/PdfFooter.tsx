@@ -1,6 +1,5 @@
 import { Text, View } from '@react-pdf/renderer';
-import React from 'react';
-import { sprak } from '../../language/provider';
+import { sprak } from '@/language/provider';
 import dayjs from 'dayjs';
 import { useLocale } from './useLocale';
 import { pdfStyles } from './pdfStyles';

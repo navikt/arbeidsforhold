@@ -1,13 +1,13 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import afDetaljert from '../clients/apiMock/af-detaljert.json';
+import afDetaljert from '@/assets/mockdata/af-detaljert.json';
 import '@testing-library/jest-dom';
-import { orgnr } from '../utils/orgnr';
+import { orgnr } from '@/utils/orgnr';
 import dayjs from 'dayjs';
-import { formatDate } from '../utils/date';
+import { formatDate } from '@/utils/date';
 import { Detaljert } from '../modules/af-detaljert/Detaljert';
-import { AFUtvidet } from '../types/arbeidsforhold';
+import { AFUtvidet } from '@/types/arbeidsforhold';
 
-jest.mock('@react-pdf/renderer', () => ({
+vi.mock('@react-pdf/renderer', () => ({
     Text: () => <div>Text</div>,
     StyleSheet: {
         create: () => {},
@@ -66,17 +66,25 @@ describe('Detaljert arbeidsforhold', () => {
         });
     });
 
-    test('inneholder data fra Permisjon-komponent', () => {
+    test('inneholder data fra Permisjon-komponent', async () => {
         fireEvent.click(screen.getByRole('tab', { name: 'Permisjon/Permittering' }));
 
-        afDetaljert.permisjonPermittering.forEach(async (permisjon) => {
-            await waitFor(() => {
-                expect(screen.getByText(permisjon.type)).toBeGreaterThanOrEqual(1);
+        const promiseMap = [];
+
+        // Note: forEach doesn't work with waitFor and expect for some reason
+        // so need to do a for-of
+        for (const permisjon of afDetaljert.permisjonPermittering) {
+            const waitPromise = waitFor(() => {
+                expect(screen.getAllByText(permisjon.type).length).toBeGreaterThanOrEqual(1);
                 expect(screen.getAllByText(formatDate(permisjon.periode.periodeFra)).length).toBeGreaterThan(0);
                 expect(screen.getAllByText(formatDate(permisjon.periode.periodeTil)).length).toBeGreaterThan(0);
                 expect(screen.getAllByText(permisjon.prosent).length).toBeGreaterThan(0);
             });
-        });
+
+            promiseMap.push(waitPromise);
+        }
+
+        await Promise.all(promiseMap);
     });
 
     test('inneholder data fra Utenlandsopphold-komponent', () => {
@@ -120,16 +128,25 @@ describe('Detaljert arbeidsforhold', () => {
                     expect(screen.getAllByText(formatDate(arbeidsavtale.gyldighetsperiode.periodeTil)).length).toBeGreaterThan(0);
                 }
                 expect(screen.getAllByText(arbeidsavtale.arbeidstidsordning).length).toBeGreaterThan(0);
-                arbeidsavtale.ansettelsesform && expect(screen.getAllByText(arbeidsavtale.ansettelsesform).length).toBeGreaterThan(0);
+                if (arbeidsavtale.ansettelsesform) {
+                    expect(screen.getAllByText(arbeidsavtale.ansettelsesform).length).toBeGreaterThan(0);
+                }
                 expect(screen.getAllByText(formatDate(arbeidsavtale.sisteLoennsendring)).length).toBeGreaterThan(0);
                 expect(screen.getAllByText(arbeidsavtale.stillingsprosent).length).toBeGreaterThan(0);
                 expect(
                     screen.getAllByText('(Endret stillingsprosent ' + formatDate(arbeidsavtale.sisteStillingsendring) + ')').length
                 ).toBeGreaterThan(0);
                 expect(screen.getAllByText(arbeidsavtale.antallTimerPrUke).length).toBeGreaterThan(0);
-                arbeidsavtale.skipsregister && expect(screen.getAllByText(arbeidsavtale.skipsregister).length).toBeGreaterThan(0);
-                arbeidsavtale.skipstype && expect(screen.getAllByText(arbeidsavtale.skipstype).length).toBeGreaterThan(0);
-                arbeidsavtale.fartsomraade && expect(screen.getAllByText(arbeidsavtale.fartsomraade).length).toBeGreaterThan(0);
+                if (arbeidsavtale.skipsregister) {
+                    expect(screen.getAllByText(arbeidsavtale.skipsregister).length).toBeGreaterThan(0);
+                }
+
+                if (arbeidsavtale.skipstype) {
+                    expect(screen.getAllByText(arbeidsavtale.skipstype).length).toBeGreaterThan(0);
+                }
+                if (arbeidsavtale.fartsomraade) {
+                    expect(screen.getAllByText(arbeidsavtale.fartsomraade).length).toBeGreaterThan(0);
+                }
             });
         });
     });

@@ -1,7 +1,6 @@
-import React from 'react';
 import { Document, Font } from '@react-pdf/renderer';
-import { AFUtvidet } from '../../../../types/arbeidsforhold';
-import { pdfFont } from '../../../common/pdfFont';
+import { AFUtvidet } from '@/types/arbeidsforhold';
+import { pdfFont } from '@/modules/common/pdfFont';
 import { TabsPDF } from './tabs/TabsPDF';
 import { GenerellOversiktPDF } from './GenerellOversiktPDF';
 
@@ -33,18 +32,7 @@ export const DetaljertPDF = ({
 
     return (
         <Document>
-            {printGenerellOversikt && (
-                <GenerellOversiktPDF
-                    arbeidsforhold={arbeidsforhold}
-                    printGenerellOversikt={printGenerellOversikt}
-                    printTimerTimelonnet={printTimerTimelonnet}
-                    printPermisjon={printPermisjon}
-                    printUtenlandsopphold={printUtenlandsopphold}
-                    printHistorikk={printHistorikk}
-                    printName={printName}
-                    printSSO={printSSO}
-                />
-            )}
+            {printGenerellOversikt && <GenerellOversiktPDF arbeidsforhold={arbeidsforhold} printName={printName} printSSO={printSSO} />}
             <TabsPDF
                 printTimerTimelonnet={printTimerTimelonnet}
                 printPermisjon={printPermisjon}

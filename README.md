@@ -1,13 +1,20 @@
 # NAV Arbeidsforhold
 
-[![npm version](https://badge.fury.io/js/%40navikt%2Farbeidsforhold.svg)](https://badge.fury.io/js/%40navikt%2Farbeidsforhold) |
-
 NPM-modul med React-komponenter som viser brukerens arbeidsforhold
 
 ## Installasjon
 
 ```
 npm install @navikt/arbeidsforhold
+```
+
+### Peke til korrekt pakkeregister
+
+Merk at pakken er publisert til Github Package Registry (npm.pkg.github.com) og ikke npmjs.com. Det betyr at du i roten av prosjektet ditt
+må legge inn .npmrc med følgende innhold:
+
+```
+@navikt:registry=https://npm.pkg.github.com
 ```
 
 ## Komponenter
@@ -17,7 +24,7 @@ Prosjektet er delt opp i uavhengige moduler som kan importeres
 #### Liste med arbeidsforhold
 
 ```js
-import { ListeMedArbeidsforhold } from "@navikt/arbeidsforhold";
+import { ListeMedArbeidsforhold } from '@navikt/arbeidsforhold';
 ```
 
 <img alt="Screenshot av liste med arbeidsforhold" src="screenshots/ListeMedArbeidsforhold.png" width="60%"/>
@@ -63,7 +70,7 @@ Se komplett eksempel under mappen <i>/example</i>
 #### Detaljert arbeidsforhold
 
 ```js
-import { Detaljert } from "@navikt/arbeidsforhold";
+import { Detaljert } from '@navikt/arbeidsforhold';
 ```
 
 <img alt="Screenshot av detaljert arbeidsforhold" src="screenshots/DetaljertArbeidsforhold.png" width="60%"/>
@@ -88,6 +95,14 @@ render = () => {
 Komponenten vil hente data fra arbeidsforhold-api basert på miljo-variabelen, med mindre customApiUrl er satt.
 CustomApiUrl må inneholde {id} som erstattes av navArbeidsforholdId.
 Eksempel: "https://din-api-proxy.nav.no/arbeidsforhold/{id}"
+
+#### CSS
+
+CSS må importeres spesifikt, feks i index.tsx eller app.tsx i applikasjonen din:
+
+```
+@import '@navikt/arbeidsforhold/style.css'
+```
 
 ## Logging
 

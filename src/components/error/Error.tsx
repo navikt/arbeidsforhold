@@ -1,6 +1,5 @@
-import React from 'react';
 import { Alert } from '@navikt/ds-react';
-import { sprak } from '../../language/provider';
+import { sprak } from '@/language/provider';
 import { useLocale } from '../../modules/common/useLocale';
 
 export interface HTTPError {

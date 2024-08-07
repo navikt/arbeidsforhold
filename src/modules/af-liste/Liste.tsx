@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { AFListeData, AFListeProps } from './index';
-import { sortPeriodeFraDesc, sortPeriodeTilDesc } from '../../utils/date';
-import { sprak } from '../../language/provider';
-import { useLocale } from '../common/useLocale';
+import { sortPeriodeFraDesc, sortPeriodeTilDesc } from '@/utils/date';
+import { sprak } from '@/language/provider';
+import { useLocale } from '@/modules/common/useLocale';
 import { ListeInnslag } from './innslag/ListeInnslag';
 import { VisFlereButton } from './vis-flere-button/VisFlereButton';
 import { PrintButton } from './print/PrintButton';
@@ -18,7 +18,7 @@ export const Liste = (props: AFListeProps & AFListeData) => {
         .sort((a, b) => sortPeriodeTilDesc(a.ansettelsesperiode.periode, b.ansettelsesperiode.periode));
 
     return (
-        <div className={`af-liste__container`}>
+        <div className={'af-liste__container'}>
             <div className="af-liste__table">
                 {sorterteArbeidsforhold.length > 0 &&
                     sorterteArbeidsforhold

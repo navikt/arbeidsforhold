@@ -128,16 +128,25 @@ describe('Detaljert arbeidsforhold', () => {
                     expect(screen.getAllByText(formatDate(arbeidsavtale.gyldighetsperiode.periodeTil)).length).toBeGreaterThan(0);
                 }
                 expect(screen.getAllByText(arbeidsavtale.arbeidstidsordning).length).toBeGreaterThan(0);
-                arbeidsavtale.ansettelsesform && expect(screen.getAllByText(arbeidsavtale.ansettelsesform).length).toBeGreaterThan(0);
+                if (arbeidsavtale.ansettelsesform) {
+                    expect(screen.getAllByText(arbeidsavtale.ansettelsesform).length).toBeGreaterThan(0);
+                }
                 expect(screen.getAllByText(formatDate(arbeidsavtale.sisteLoennsendring)).length).toBeGreaterThan(0);
                 expect(screen.getAllByText(arbeidsavtale.stillingsprosent).length).toBeGreaterThan(0);
                 expect(
                     screen.getAllByText('(Endret stillingsprosent ' + formatDate(arbeidsavtale.sisteStillingsendring) + ')').length
                 ).toBeGreaterThan(0);
                 expect(screen.getAllByText(arbeidsavtale.antallTimerPrUke).length).toBeGreaterThan(0);
-                arbeidsavtale.skipsregister && expect(screen.getAllByText(arbeidsavtale.skipsregister).length).toBeGreaterThan(0);
-                arbeidsavtale.skipstype && expect(screen.getAllByText(arbeidsavtale.skipstype).length).toBeGreaterThan(0);
-                arbeidsavtale.fartsomraade && expect(screen.getAllByText(arbeidsavtale.fartsomraade).length).toBeGreaterThan(0);
+                if (arbeidsavtale.skipsregister) {
+                    expect(screen.getAllByText(arbeidsavtale.skipsregister).length).toBeGreaterThan(0);
+                }
+
+                if (arbeidsavtale.skipstype) {
+                    expect(screen.getAllByText(arbeidsavtale.skipstype).length).toBeGreaterThan(0);
+                }
+                if (arbeidsavtale.fartsomraade) {
+                    expect(screen.getAllByText(arbeidsavtale.fartsomraade).length).toBeGreaterThan(0);
+                }
             });
         });
     });

@@ -21,12 +21,14 @@ describe('Liste over arbeidsforhold', () => {
         fireEvent.click(screen.getByText('Vis flere arbeidsforhold'));
 
         afListe.forEach((arbeidsforhold) => {
-            arbeidsforhold.arbeidsgiver.type === 'Organisasjon' &&
+            if (arbeidsforhold.arbeidsgiver.type === 'Organisasjon') {
                 expect(screen.getByText(arbeidsforhold.arbeidsgiver.orgnavn as string)).toBeInTheDocument();
+            }
             expect(screen.getAllByText(arbeidsforhold.yrke).length).toBeGreaterThan(0);
             expect(screen.getAllByText(formatDate(arbeidsforhold.ansettelsesperiode.periode.periodeFra)).length).toBeGreaterThan(0);
-            arbeidsforhold.ansettelsesperiode.periode.periodeTil &&
+            if (arbeidsforhold.ansettelsesperiode.periode.periodeTil) {
                 expect(screen.getAllByText(formatDate(arbeidsforhold.ansettelsesperiode.periode.periodeTil)).length).toBeGreaterThan(0);
+            }
         });
     });
 });

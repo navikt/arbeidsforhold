@@ -1,3 +1,5 @@
+@use "../../media.scss" as mq;
+
 .error {
   &__container {
     padding: 1rem 0;

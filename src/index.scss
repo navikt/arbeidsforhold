@@ -1,12 +1,8 @@
-@desktop: ~"all and (min-width: 959px)";
-@tablet: ~"all and (max-width: 959px)";
-@mobile: ~"all and (max-width: 420px)";
+@use "./components/spinner/Spinner.scss";
+@use "./components/error/Error.scss";
 
-@import "./components/spinner/Spinner.less";
-@import "./components/error/Error.less";
-
-@import "modules/af-detaljert/Detaljert.less";
-@import "modules/af-liste/Liste.less";
+@use "modules/af-detaljert/Detaljert.scss";
+@use "modules/af-liste/Liste.scss";
 
 input,
 button,

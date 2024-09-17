@@ -40,7 +40,7 @@
         "classnames": "2.5.1",
         "fetch-mock": "10.1.0",
         "sass": "^1.77.8",
-        "vite": "5.3.5",
+        "vite": "5.4.6",
         "vite-tsconfig-paths": "4.3.2",
         "vitest": "2.0.5",
         "vitest-fetch-mock": "0.3.0"

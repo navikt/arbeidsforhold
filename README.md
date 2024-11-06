@@ -1,4 +1,4 @@
-# NAV Arbeidsforhold
+# Nav Arbeidsforhold
 
 NPM-modul med React-komponenter som viser brukerens arbeidsforhold
 
@@ -116,6 +116,6 @@ application:frontendlogger AND x_appname:arbeidsforhold
 
 Spørsmål knyttet til koden eller prosjektet kan rettes mot https://github.com/orgs/navikt/teams/team-personbruker
 
-## For NAV-ansatte
+## For Nav-ansatte
 
 Interne henvendelser kan sendes via Slack i kanalen #team-personbruker.

@@ -10,8 +10,6 @@ const delay = (min: number, max: number) => {
 };
 
 export const setUpMock = () => {
-    // Config
-    fetchMock.config.fallbackToNetwork = true;
     // Routes
     fetchMock.get(
         `${Environment.apiUrl}/arbeidsforhold`,

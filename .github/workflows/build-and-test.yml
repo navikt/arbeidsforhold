@@ -1,7 +1,16 @@
 name: Build and test
-
 on:
-    push:
+    workflow_call:
+        inputs:
+            environment:
+                required: true
+                type: string
+            app_origin:
+                required: true
+                type: string
+        secrets:
+            READER_TOKEN:
+                required: true
 
 jobs:
     build:

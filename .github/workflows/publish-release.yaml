@@ -19,7 +19,6 @@ jobs:
     publish:
         name: Publish to package registry
         runs-on: ubuntu-latest
-        if: github.ref == 'refs/heads/main'
         permissions:
             contents: write
             packages: write

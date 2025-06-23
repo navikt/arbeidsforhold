@@ -11,7 +11,7 @@ export class Environment {
                 Environment.loginUrl = 'http://localhost:5000';
                 break;
             case 'DEV':
-                Environment.apiUrl = 'https://www.ansatt.dev.nav.no/person/arbeidsforhold-api';
+                Environment.apiUrl = 'https://www.ansatt.dev.nav.no/tms-arbeidsforhold-api';
                 Environment.loginUrl = 'https://login.ekstern.dev.nav.no/oauth2/login';
                 break;
             case 'PROD':

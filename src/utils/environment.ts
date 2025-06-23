@@ -15,7 +15,7 @@ export class Environment {
                 Environment.loginUrl = 'https://login.ekstern.dev.nav.no/oauth2/login';
                 break;
             case 'PROD':
-                Environment.apiUrl = 'https://www.nav.no/person/arbeidsforhold-api';
+                Environment.apiUrl = 'https://www.nav.no/tms-arbeidsforhold-api';
                 Environment.loginUrl = 'https://login.nav.no/oauth2/login';
                 break;
             default:

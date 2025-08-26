@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ErrorMessage, HTTPError } from '@/components/error/Error';
 import { AFUtvidet } from '@/types/arbeidsforhold';
-import { hentDetaljertArbeidsforholdArbeidsgiver, hentDetaljertArbeidsforholdArbeidstaker } from '@/clients/apiClient';
+import { hentDetaljertArbeidsforhold } from '@/clients/apiClient';
 import { Spinner } from '@/components/spinner/Spinner';
 import { Detaljert } from './Detaljert';
 import { Environment } from '@/utils/environment';
@@ -48,39 +48,19 @@ const DetaljertArbeidsforhold = (props: AFDetaljertProps) => {
         if (props.navArbeidsforholdId) {
             setState({ status: 'LOADING' });
 
-            // Arbeidstakere
-            if (props.rolle === 'ARBEIDSTAKER') {
-                hentDetaljertArbeidsforholdArbeidstaker(props.navArbeidsforholdId, props.customApiUrl)
-                    .then((arbeidsforhold) =>
-                        setState({
-                            status: 'RESULT',
-                            arbeidsforhold: arbeidsforhold as AFUtvidet,
-                        })
-                    )
-                    .catch((error: HTTPError) =>
-                        setState({
-                            status: 'ERROR',
-                            error,
-                        })
-                    );
-            }
-
-            // Arbeidsgivere
-            if (props.rolle === 'ARBEIDSGIVER') {
-                hentDetaljertArbeidsforholdArbeidsgiver(props.fnrArbeidstaker, props.navArbeidsforholdId, props.customApiUrl)
-                    .then((arbeidsforhold) =>
-                        setState({
-                            status: 'RESULT',
-                            arbeidsforhold: arbeidsforhold as AFUtvidet,
-                        })
-                    )
-                    .catch((error: HTTPError) =>
-                        setState({
-                            status: 'ERROR',
-                            error,
-                        })
-                    );
-            }
+            hentDetaljertArbeidsforhold(props.navArbeidsforholdId, props.customApiUrl)
+                .then((arbeidsforhold) =>
+                    setState({
+                        status: 'RESULT',
+                        arbeidsforhold: arbeidsforhold as AFUtvidet,
+                    })
+                )
+                .catch((error: HTTPError) =>
+                    setState({
+                        status: 'ERROR',
+                        error,
+                    })
+                );
         }
     }, [props.navArbeidsforholdId]);
 
